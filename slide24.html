@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+
+<html lang="id">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Handling 100+ Order per Hari</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&amp;family=Inter:wght@300;400;500;600;700&amp;family=JetBrains+Mono:wght@700&amp;display=swap"
+        rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #0B0F19;
+            font-family: 'Inter', sans-serif;
+            overflow: hidden;
+        }
+
+        .slide-container {
+            width: 1280px;
+            height: 720px;
+            background-color: #0B0F19;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Background Graphics */
+        .bg-grid {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image:
+                linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+            background-size: 40px 40px;
+            z-index: 0;
+        }
+
+        .growth-line-bg {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 60%;
+            opacity: 0.1;
+            z-index: 0;
+        }
+
+        /* Header */
+        .header {
+            padding: 50px 80px 10px 80px;
+            z-index: 10;
+        }
+
+        .header h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 800;
+            font-size: 42px;
+            color: #FFFFFF;
+            margin-bottom: 10px;
+            letter-spacing: -0.02em;
+        }
+
+        .header p {
+            font-family: 'Inter', sans-serif;
+            font-size: 18px;
+            color: #9CA3AF;
+        }
+
+        .gold-line {
+            width: 100px;
+            height: 4px;
+            background-color: #D4AF37;
+            margin-top: 20px;
+        }
+
+        /* Content Layout */
+        .content-wrapper {
+            flex: 1;
+            padding: 40px 80px 60px 80px;
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+            z-index: 10;
+        }
+
+        /* Stages Grid */
+        .stages-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 30px;
+            height: 320px;
+        }
+
+        .stage-card {
+            background-color: #1F2937;
+            border-radius: 16px;
+            padding: 25px;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            transition: transform 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .stage-card:hover {
+            transform: translateY(-5px);
+        }
+
+        /* Stage 1 Styling */
+        .stage-1 {
+            border-top: 6px solid #6B7280;
+        }
+
+        .stage-1 .stage-icon {
+            background-color: rgba(107, 114, 128, 0.2);
+            color: #9CA3AF;
+        }
+
+        /* Stage 2 Styling */
+        .stage-2 {
+            border-top: 6px solid #D4AF37;
+        }
+
+        .stage-2 .stage-icon {
+            background-color: rgba(212, 175, 55, 0.2);
+            color: #D4AF37;
+        }
+
+        /* Stage 3 Styling */
+        .stage-3 {
+            border-top: 6px solid #10B981;
+            background-color: #111827;
+            box-shadow: 0 0 30px rgba(16, 185, 129, 0.1);
+        }
+
+        .stage-3 .stage-icon {
+            background-color: rgba(16, 185, 129, 0.2);
+            color: #10B981;
+        }
+
+        .stage-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .stage-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+        }
+
+        .stage-title h3 {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 20px;
+            color: #FFFFFF;
+            margin-bottom: 4px;
+        }
+
+        .stage-title span {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            padding: 2px 8px;
+            border-radius: 4px;
+        }
+
+        .badge-basic {
+            background-color: #374151;
+            color: #D1D5DB;
+        }
+
+        .badge-crucial {
+            background-color: rgba(212, 175, 55, 0.2);
+            color: #D4AF37;
+        }
+
+        .badge-critical {
+            background-color: rgba(16, 185, 129, 0.2);
+            color: #10B981;
+        }
+
+        .stage-desc {
+            font-family: 'Inter', sans-serif;
+            font-size: 14px;
+            color: #D1D5DB;
+            line-height: 1.5;
+            margin-bottom: 20px;
+            flex: 1;
+        }
+
+        .comparison-box {
+            background-color: rgba(0, 0, 0, 0.3);
+            border-radius: 8px;
+            padding: 15px;
+        }
+
+        .comparison-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+            font-size: 12px;
+        }
+
+        .comp-label {
+            color: #9CA3AF;
+        }
+
+        .comp-val-bad {
+            color: #F87171;
+            font-weight: 600;
+        }
+
+        .comp-val-good {
+            color: #34D399;
+            font-weight: 600;
+        }
+
+        /* Metrics Bar */
+        .metrics-bar {
+            display: flex;
+            justify-content: space-between;
+            gap: 30px;
+            margin-top: 10px;
+        }
+
+        .metric-item {
+            flex: 1;
+            background-color: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .metric-value {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 800;
+            font-size: 32px;
+            color: #FFFFFF;
+            line-height: 1;
+        }
+
+        .metric-info h4 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 14px;
+            color: #9CA3AF;
+            margin-bottom: 4px;
+            text-transform: uppercase;
+        }
+
+        .metric-info p {
+            font-size: 13px;
+            color: #D4AF37;
+        }
+
+        /* Arrows connecting stages */
+        .stage-arrow {
+            position: absolute;
+            top: 40%;
+            font-size: 24px;
+            color: #4B5563;
+            z-index: 2;
+        }
+
+        .arrow-1 {
+            left: 32%;
+        }
+
+        .arrow-2 {
+            left: 65%;
+        }
+
+        /* Page Number */
+        .page-number {
+            position: absolute;
+            bottom: 30px;
+            right: 40px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            color: #4B5563;
+            font-size: 14px;
+        }
+
+        .notes-container {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="slide-container">
+        <!-- Background -->
+        <div class="bg-grid"></div>
+        <svg class="growth-line-bg" preserveaspectratio="none" viewbox="0 0 1000 500">
+            <path d="M0,500 L200,450 L400,300 L600,200 L800,50 L1000,0 V500 Z" fill="url(#grad1)"></path>
+            <defs>
+                <lineargradient id="grad1" x1="0%" x2="0%" y1="0%" y2="100%">
+                    <stop offset="0%" style="stop-color:rgb(212,175,55);stop-opacity:0.2"></stop>
+                    <stop offset="100%" style="stop-color:rgb(11,15,25);stop-opacity:0"></stop>
+                </lineargradient>
+            </defs>
+        </svg>
+        <!-- Header -->
+        <div class="header">
+            <h1>Handling 100+ Order per Hari</h1>
+            <p>Skalabilitas bisnis tanpa menambah pusing operasional</p>
+            <div class="gold-line"></div>
+        </div>
+        <!-- Content -->
+        <div class="content-wrapper">
+            <!-- Stages -->
+            <div class="stages-container">
+                <!-- Stage 1 -->
+                <div class="stage-card stage-1">
+                    <div class="stage-header">
+                        <div class="stage-icon">
+                            <i class="fa-solid fa-box-open"></i>
+                        </div>
+                        <div class="stage-title">
+                            <h3>10 Order</h3>
+                            <span class="badge-basic">HELPFUL</span>
+                        </div>
+                    </div>
+                    <div class="stage-desc">
+                        <p>Pada tahap ini, sistem membantu membangun habit yang baik. Manual masih mungkin, tapi sistem
+                            mulai menghemat waktu admin harian.</p>
+                    </div>
+                    <div class="comparison-box">
+                        <div class="comparison-row">
+                            <span class="comp-label">Manual:</span>
+                            <span style="color: #9CA3AF;">1 Jam kerja</span>
+                        </div>
+                        <div class="comparison-row">
+                            <span class="comp-label">Sistem:</span>
+                            <span class="comp-val-good">10 Menit kerja</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Arrow -->
+                <i class="fa-solid fa-angle-right stage-arrow arrow-1"></i>
+                <!-- Stage 2 -->
+                <div class="stage-card stage-2">
+                    <div class="stage-header">
+                        <div class="stage-icon">
+                            <i class="fa-solid fa-fire-flame-curved"></i>
+                        </div>
+                        <div class="stage-title">
+                            <h3>50 Order</h3>
+                            <span class="badge-crucial">CRUCIAL</span>
+                        </div>
+                    </div>
+                    <div class="stage-desc">
+                        <p>Titik kritis. Tanpa sistem, chat mulai chaos dan salah kirim barang sering terjadi. Sistem
+                            menyelamatkan reputasi bisnis Anda di sini.</p>
+                    </div>
+                    <div class="comparison-box">
+                        <div class="comparison-row">
+                            <span class="comp-label">Manual:</span>
+                            <span class="comp-val-bad">Chaos / Lembur</span>
+                        </div>
+                        <div class="comparison-row">
+                            <span class="comp-label">Sistem:</span>
+                            <span class="comp-val-good">Terhandle Rapi</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Arrow -->
+                <i class="fa-solid fa-angle-right stage-arrow arrow-2"></i>
+                <!-- Stage 3 -->
+                <div class="stage-card stage-3">
+                    <div class="stage-header">
+                        <div class="stage-icon">
+                            <i class="fa-solid fa-rocket"></i>
+                        </div>
+                        <div class="stage-title">
+                            <h3>100+ Order</h3>
+                            <span class="badge-critical">MANDATORY</span>
+                        </div>
+                    </div>
+                    <div class="stage-desc">
+                        <p>Mustahil manual tanpa tim besar. Dengan sistem, 100+ order hanyalah angka. Proses fulfillment
+                            tetap lancar tanpa drama.</p>
+                    </div>
+                    <div class="comparison-box">
+                        <div class="comparison-row">
+                            <span class="comp-label">Manual:</span>
+                            <span class="comp-val-bad">Butuh 3-4 Admin</span>
+                        </div>
+                        <div class="comparison-row">
+                            <span class="comp-label">Sistem:</span>
+                            <span class="comp-val-good">Cukup 1-2 Orang</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Metrics Summary -->
+            <div class="metrics-bar">
+                <div class="metric-item">
+                    <div class="metric-value">0.1%</div>
+                    <div class="metric-info">
+                        <h4>Error Rate</h4>
+                        <p>Turun drastis dari 15% (manual)</p>
+                    </div>
+                </div>
+                <div class="metric-item">
+                    <div class="metric-value">100%</div>
+                    <div class="metric-info">
+                        <h4>Fokus Tim</h4>
+                        <p>Packing &amp; Fulfillment, bukan Chat</p>
+                    </div>
+                </div>
+                <div class="metric-item">
+                    <div class="metric-value">5x</div>
+                    <div class="metric-info">
+                        <h4>Scalability</h4>
+                        <p>Kapasitas handle order naik</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Page Number -->
+        <div class="page-number">24</div>
+        <!-- Speaker Notes -->
+        <div class="notes-container">
+            Kekuatan sistem terlihat saat volume order meningkat. Tanpa sistem, 100 order/hari butuh 3-4 admin full
+            time. Dengan sistem, 1-2 orang cukup karena semua sudah otomatis. Bisnis bisa scaling tanpa overhead team
+            yang besar.
+        </div>
+    </div>
+</body>
+
+</html>

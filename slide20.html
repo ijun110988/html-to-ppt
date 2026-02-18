@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+
+<html lang="id">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Sistem Konfirmasi Pembayaran</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap"
+        rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #0B0F19;
+            font-family: 'Inter', sans-serif;
+            overflow: hidden;
+        }
+
+        .slide-container {
+            width: 1280px;
+            height: 720px;
+            background-color: #0B0F19;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Background Graphics */
+        .bg-grid {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image:
+                linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+            background-size: 40px 40px;
+            z-index: 0;
+        }
+
+        .glow-effect {
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(212, 175, 55, 0.08) 0%, transparent 70%);
+            top: -200px;
+            right: -100px;
+            z-index: 0;
+        }
+
+        /* Header */
+        .header {
+            padding: 50px 80px 20px 80px;
+            z-index: 10;
+        }
+
+        .header h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 800;
+            font-size: 42px;
+            color: #FFFFFF;
+            margin-bottom: 10px;
+            letter-spacing: -0.02em;
+        }
+
+        .header p {
+            font-family: 'Inter', sans-serif;
+            font-size: 18px;
+            color: #9CA3AF;
+        }
+
+        .gold-line {
+            width: 100px;
+            height: 4px;
+            background-color: #D4AF37;
+            margin-top: 20px;
+        }
+
+        /* Main Flow Content */
+        .flow-container {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            padding: 20px 80px 40px 80px;
+            z-index: 10;
+            justify-content: center;
+        }
+
+        .process-steps {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            position: relative;
+            margin-bottom: 60px;
+        }
+
+        /* Connecting Line behind steps */
+        .process-line {
+            position: absolute;
+            top: 40px;
+            left: 50px;
+            right: 50px;
+            height: 2px;
+            background-color: #374151;
+            z-index: 0;
+        }
+
+        .step-card {
+            width: 200px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .step-icon-wrapper {
+            width: 80px;
+            height: 80px;
+            background-color: #1F2937;
+            border: 2px solid #374151;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+            transition: all 0.3s ease;
+        }
+
+        .step-card:hover .step-icon-wrapper {
+            border-color: #D4AF37;
+            transform: translateY(-5px);
+            box-shadow: 0 0 30px rgba(212, 175, 55, 0.2);
+        }
+
+        .step-icon {
+            font-size: 32px;
+            color: #9CA3AF;
+        }
+
+        .step-card:hover .step-icon {
+            color: #D4AF37;
+        }
+
+        /* Special styling for the final step */
+        .step-final .step-icon-wrapper {
+            background-color: rgba(16, 185, 129, 0.1);
+            border-color: #10B981;
+        }
+
+        .step-final .step-icon {
+            color: #10B981;
+        }
+
+        .step-number {
+            position: absolute;
+            top: 0;
+            right: 55px;
+            background-color: #D4AF37;
+            color: #000;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            font-size: 12px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid #0B0F19;
+        }
+
+        .step-title {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 16px;
+            color: #FFFFFF;
+            margin-bottom: 8px;
+        }
+
+        .step-desc {
+            font-family: 'Inter', sans-serif;
+            font-size: 13px;
+            color: #9CA3AF;
+            line-height: 1.4;
+        }
+
+        /* Gateway Alternative Section */
+        .gateway-section {
+            background: linear-gradient(90deg, rgba(31, 41, 55, 0.6) 0%, rgba(17, 24, 39, 0.9) 100%);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-left: 4px solid #3B82F6;
+            border-radius: 12px;
+            padding: 25px 30px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .gateway-info {
+            flex: 1;
+        }
+
+        .gateway-badge {
+            display: inline-block;
+            background-color: rgba(59, 130, 246, 0.2);
+            color: #60A5FA;
+            font-size: 12px;
+            font-weight: 600;
+            padding: 4px 10px;
+            border-radius: 4px;
+            margin-bottom: 10px;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .gateway-title {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 18px;
+            color: #FFFFFF;
+            margin-bottom: 5px;
+        }
+
+        .gateway-desc {
+            font-family: 'Inter', sans-serif;
+            font-size: 14px;
+            color: #D1D5DB;
+        }
+
+        .gateway-logos {
+            display: flex;
+            gap: 20px;
+            opacity: 0.8;
+        }
+
+        .gateway-logo-box {
+            background-color: #FFFFFF;
+            padding: 8px 15px;
+            border-radius: 6px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            color: #111827;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 14px;
+        }
+
+        /* Arrows between steps */
+        .flow-arrow {
+            position: absolute;
+            top: 30px;
+            color: #4B5563;
+            font-size: 18px;
+            z-index: 2;
+        }
+
+        /* Page Number */
+        .page-number {
+            position: absolute;
+            bottom: 30px;
+            right: 40px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            color: #4B5563;
+            font-size: 14px;
+        }
+
+        .notes-container {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="slide-container">
+        <!-- Background -->
+        <div class="bg-grid"></div>
+        <div class="glow-effect"></div>
+        <!-- Header -->
+        <div class="header">
+            <h1>Sistem Konfirmasi Pembayaran</h1>
+            <p>Mengubah transfer manual menjadi trigger otomatisasi workflow</p>
+            <div class="gold-line"></div>
+        </div>
+        <!-- Main Content -->
+        <div class="flow-container">
+            <!-- Manual Process Flow -->
+            <div class="process-steps">
+                <div class="process-line"></div>
+                <!-- Step 1 -->
+                <div class="step-card">
+                    <div class="step-icon-wrapper">
+                        <i class="fa-solid fa-money-bill-transfer step-icon"></i>
+                        <div class="step-number">1</div>
+                    </div>
+                    <div class="step-title">Customer Transfer</div>
+                    <div class="step-desc">Pembeli transfer ke rekening bank manual.</div>
+                </div>
+                <i class="fa-solid fa-chevron-right flow-arrow" style="left: 22%;"></i>
+                <!-- Step 2 -->
+                <div class="step-card">
+                    <div class="step-icon-wrapper">
+                        <i class="fa-solid fa-file-invoice step-icon"></i>
+                        <div class="step-number">2</div>
+                    </div>
+                    <div class="step-title">Upload Bukti</div>
+                    <div class="step-desc">Isi form konfirmasi atau kirim bukti via WA.</div>
+                </div>
+                <i class="fa-solid fa-chevron-right flow-arrow" style="left: 48%;"></i>
+                <!-- Step 3 -->
+                <div class="step-card">
+                    <div class="step-icon-wrapper">
+                        <i class="fa-solid fa-user-check step-icon"></i>
+                        <div class="step-number">3</div>
+                    </div>
+                    <div class="step-title">Admin Validasi</div>
+                    <div class="step-desc">Cek mutasi bank &amp; update status di Sheets.</div>
+                </div>
+                <i class="fa-solid fa-chevron-right flow-arrow" style="left: 74%;"></i>
+                <!-- Step 4 -->
+                <div class="step-card step-final">
+                    <div class="step-icon-wrapper">
+                        <i class="fa-solid fa-rocket step-icon"></i>
+                        <div class="step-number">4</div>
+                    </div>
+                    <div class="step-title">Auto Trigger</div>
+                    <div class="step-desc">Status 'PAID' memicu email invoice lunas &amp; notif packing.</div>
+                </div>
+            </div>
+            <!-- Alternative: Payment Gateway -->
+            <div class="gateway-section">
+                <div class="gateway-info">
+                    <span class="gateway-badge">LEVEL UP (ADVANCED)</span>
+                    <h3 class="gateway-title">Integrasi Payment Gateway Otomatis</h3>
+                    <p class="gateway-desc">Status terupdate realtime tanpa Admin cek mutasi manual. Gunakan Virtual
+                        Account &amp; QRIS.</p>
+                </div>
+                <div class="gateway-logos">
+                    <!-- Text representation of logos for cleaner code -->
+                    <div class="gateway-logo-box" style="color: #2563EB;">Xendit</div>
+                    <div class="gateway-logo-box" style="color: #0F3F7D;">Midtrans</div>
+                    <div class="gateway-logo-box" style="color: #F87171;">Duitku</div>
+                </div>
+            </div>
+        </div>
+        <!-- Page Number -->
+        <div class="page-number">20</div>
+        <!-- Speaker Notes -->
+        <div class="notes-container">
+            Setelah customer bayar, mereka konfirmasi via form atau kirim bukti. Admin tinggal update status di sheet
+            dari PENDING ke PAID. Untuk level advanced, bisa integrasi payment gateway agar status update otomatis
+            realtime tanpa admin cek manual.
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+
+<html lang="id">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Generate Invoice Otomatis</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&amp;family=Inter:wght@300;400;600&amp;display=swap"
+        rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #f3f4f6;
+            font-family: 'Inter', sans-serif;
+            overflow: hidden;
+        }
+
+        .slide-container {
+            width: 1280px;
+            height: 720px;
+            background-color: #FFFFFF;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+        }
+
+        /* Sidebar Left - Dark Theme */
+        .sidebar {
+            width: 400px;
+            background-color: #0B0F19;
+            height: 100%;
+            padding: 60px 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .decorative-pattern {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.05;
+            background-image: radial-gradient(#D4AF37 1px, transparent 1px);
+            background-size: 20px 20px;
+            z-index: -1;
+        }
+
+        .gold-line {
+            width: 60px;
+            height: 4px;
+            background-color: #D4AF37;
+            margin-bottom: 30px;
+        }
+
+        h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 800;
+            font-size: 42px;
+            line-height: 1.1;
+            color: #FFFFFF;
+            margin-bottom: 20px;
+        }
+
+        .subtitle {
+            font-family: 'Inter', sans-serif;
+            font-size: 18px;
+            color: #9CA3AF;
+            line-height: 1.6;
+        }
+
+        /* Main Content - Right Side */
+        .main-content {
+            flex: 1;
+            padding: 60px 80px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            background-color: #F9FAFB;
+        }
+
+        .list-container {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .list-item {
+            display: flex;
+            align-items: center;
+            background-color: #FFFFFF;
+            padding: 20px 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+            border-left: 4px solid #D4AF37;
+            /* Gold for Automation/Premium */
+            transition: transform 0.2s ease;
+        }
+
+        .list-item:hover {
+            transform: translateX(10px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+
+        .icon-box {
+            width: 50px;
+            height: 50px;
+            border-radius: 10px;
+            background-color: rgba(212, 175, 55, 0.1);
+            /* Light Gold */
+            color: #D4AF37;
+            /* Gold text */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            margin-right: 25px;
+            flex-shrink: 0;
+        }
+
+        .text-content h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 20px;
+            color: #1F2937;
+            margin: 0 0 4px 0;
+        }
+
+        .text-content p {
+            font-family: 'Inter', sans-serif;
+            font-size: 16px;
+            color: #6B7280;
+            margin: 0;
+        }
+
+        /* Bottom Decoration */
+        .page-number {
+            position: absolute;
+            bottom: 30px;
+            right: 40px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            color: #D1D5DB;
+            font-size: 14px;
+        }
+
+        /* Speaker Notes (Hidden in visual but structured for reference) */
+        .notes-container {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="slide-container">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="decorative-pattern"></div>
+            <div class="gold-line"></div>
+            <h1>GENERATE<br /><span style="color: #D4AF37;">INVOICE<br />OTOMATIS</span></h1>
+            <p class="subtitle">
+                Sistem bekerja 24 jam membuat tagihan profesional tanpa campur tangan admin secara manual.
+            </p>
+            <!-- Abstract Visual -->
+            <div style="margin-top: 60px; position: relative; height: 200px;">
+                <i class="fa-solid fa-file-invoice-dollar"
+                    style="font-size: 120px; color: rgba(255, 255, 255, 0.05); position: absolute; bottom: 0; left: 0;"></i>
+                <i class="fa-solid fa-robot"
+                    style="font-size: 60px; color: rgba(212, 175, 55, 0.2); position: absolute; top: 20px; right: 40px;"></i>
+            </div>
+        </div>
+        <!-- Main Content -->
+        <div class="main-content">
+            <div class="list-container">
+                <!-- Item 1 -->
+                <div class="list-item">
+                    <div class="icon-box">
+                        <i class="fa-solid fa-paper-plane"></i>
+                    </div>
+                    <div class="text-content">
+                        <h3>Kirim Otomatis via Email</h3>
+                        <p>Invoice langsung terkirim ke email customer detik setelah order masuk.</p>
+                    </div>
+                </div>
+                <!-- Item 2 -->
+                <div class="list-item">
+                    <div class="icon-box">
+                        <i class="fa-solid fa-arrow-up-1-9"></i>
+                    </div>
+                    <div class="text-content">
+                        <h3>Nomor Invoice Auto-Increment</h3>
+                        <p>Sistem mengurutkan nomor tagihan secara otomatis (INV/2026/001).</p>
+                    </div>
+                </div>
+                <!-- Item 3 -->
+                <div class="list-item">
+                    <div class="icon-box">
+                        <i class="fa-solid fa-list-check"></i>
+                    </div>
+                    <div class="text-content">
+                        <h3>Detail Lengkap &amp; Akurat</h3>
+                        <p>Rincian produk, harga, dan varian tercatat rapi tanpa salah input.</p>
+                    </div>
+                </div>
+                <!-- Item 4 -->
+                <div class="list-item">
+                    <div class="icon-box">
+                        <i class="fa-solid fa-award"></i>
+                    </div>
+                    <div class="text-content">
+                        <h3>Branding Profesional</h3>
+                        <p>Template invoice menggunakan logo dan identitas bisnis Anda.</p>
+                    </div>
+                </div>
+                <!-- Item 5 -->
+                <div class="list-item">
+                    <div class="icon-box">
+                        <i class="fa-solid fa-money-bill-transfer"></i>
+                    </div>
+                    <div class="text-content">
+                        <h3>Mudah untuk Customer</h3>
+                        <p>Informasi pembayaran jelas, customer tinggal transfer &amp; konfirmasi.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="page-number">09</div>
+    </div>
+    <div class="notes-container">
+        Setelah order masuk, sistem langsung generate invoice profesional dan kirim via email otomatis. Nomor invoice
+        terurut rapi, branding konsisten. Customer mendapat pengalaman yang profesional dan trust meningkat.
+    </div>
+</body>
+
+</html>
+Copy

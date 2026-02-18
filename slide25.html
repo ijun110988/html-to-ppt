@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+
+<html lang="id">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Closing &amp; Implementation Checklist</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap"
+        rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #0B0F19;
+            font-family: 'Inter', sans-serif;
+            overflow: hidden;
+        }
+
+        .slide-container {
+            width: 1280px;
+            height: 720px;
+            background-color: #0B0F19;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Background Graphics */
+        .bg-glow {
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            background-color: rgba(212, 175, 55, 0.05);
+            filter: blur(80px);
+            border-radius: 50%;
+            z-index: 0;
+        }
+
+        .glow-1 {
+            top: -200px;
+            right: -200px;
+        }
+
+        .glow-2 {
+            bottom: -200px;
+            left: -200px;
+        }
+
+        .grid-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
+            z-index: 0;
+        }
+
+        /* Header */
+        .header {
+            padding: 30px 80px 8px 80px;
+            z-index: 10;
+            position: relative;
+        }
+
+        .header h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 800;
+            font-size: 42px;
+            color: #FFFFFF;
+            margin-bottom: 10px;
+            letter-spacing: -0.02em;
+        }
+
+        .header p {
+            font-family: 'Inter', sans-serif;
+            font-size: 18px;
+            color: #9CA3AF;
+        }
+
+        .gold-line {
+            width: 100px;
+            height: 4px;
+            background-color: #D4AF37;
+            margin-top: 20px;
+        }
+
+        /* Main Content */
+        .content-wrapper {
+            flex: 1;
+            padding: 12px 80px 30px 80px;
+            display: flex;
+            gap: 60px;
+            z-index: 10;
+        }
+
+        /* Left Column: Timeline */
+        .timeline-section {
+            flex: 2;
+            padding-top: 10px;
+            position: relative;
+        }
+
+        .timeline-line {
+            position: absolute;
+            left: 24px;
+            top: 30px;
+            bottom: 30px;
+            width: 2px;
+            background-color: #374151;
+            z-index: 0;
+        }
+
+        .timeline-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 18px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .timeline-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .timeline-marker {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background-color: #1F2937;
+            border: 2px solid #374151;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #9CA3AF;
+            font-size: 18px;
+            flex-shrink: 0;
+            margin-right: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .timeline-item.active .timeline-marker {
+            background-color: rgba(212, 175, 55, 0.1);
+            border-color: #D4AF37;
+            color: #D4AF37;
+            box-shadow: 0 0 15px rgba(212, 175, 55, 0.3);
+        }
+
+        .timeline-content {
+            background-color: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            padding: 10px 18px;
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .timeline-item.active .timeline-content {
+            background-color: rgba(31, 41, 55, 0.8);
+            border-color: rgba(212, 175, 55, 0.3);
+        }
+
+        .task-info h4 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 15px;
+            color: #FFFFFF;
+            margin-bottom: 2px;
+        }
+
+        .task-info p {
+            font-size: 13px;
+            color: #9CA3AF;
+        }
+
+        .task-day {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 11px;
+            font-weight: 700;
+            background-color: #374151;
+            color: #D1D5DB;
+            padding: 4px 8px;
+            border-radius: 4px;
+        }
+
+        .timeline-item.active .task-day {
+            background-color: #D4AF37;
+            color: #000;
+        }
+
+        /* Right Column: Motivation & CTA */
+        .closing-section {
+            flex: 1.2;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 22px;
+        }
+
+        .quote-card {
+            background-color: #1F2937;
+            border-radius: 16px;
+            padding: 24px;
+            text-align: center;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .quote-bg-icon {
+            position: absolute;
+            font-size: 150px;
+            color: rgba(255, 255, 255, 0.03);
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 0;
+        }
+
+        .quote-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .quote-main {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 900;
+            font-size: 30px;
+            color: #FFFFFF;
+            margin-bottom: 10px;
+            line-height: 1.2;
+        }
+
+        .highlight {
+            color: #D4AF37;
+        }
+
+        .quote-sub {
+            font-family: 'Inter', sans-serif;
+            font-size: 14px;
+            color: #D1D5DB;
+            font-style: italic;
+        }
+
+        .cta-button {
+            background: linear-gradient(90deg, #D4AF37 0%, #F59E0B 100%);
+            color: #000;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 16px;
+            padding: 16px;
+            border-radius: 12px;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            text-decoration: none;
+            box-shadow: 0 10px 25px rgba(212, 175, 55, 0.3);
+            transition: transform 0.3s ease;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(212, 175, 55, 0.4);
+        }
+
+        .final-tips {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+        }
+
+        .tip-item {
+            text-align: center;
+            font-size: 12px;
+            color: #6B7280;
+        }
+
+        .tip-icon {
+            display: block;
+            margin: 0 auto 5px auto;
+            color: #4B5563;
+            font-size: 16px;
+        }
+
+        /* Page Number */
+        .page-number {
+            position: absolute;
+            bottom: 30px;
+            right: 40px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            color: #4B5563;
+            font-size: 14px;
+        }
+
+        .notes-container {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="slide-container">
+        <!-- Background -->
+        <div class="grid-overlay"></div>
+        <div class="bg-glow glow-1"></div>
+        <div class="bg-glow glow-2"></div>
+        <!-- Header -->
+        <div class="header">
+            <h1>Action Plan 7 Hari</h1>
+            <p>Peta jalan implementasi menuju kebebasan waktu</p>
+            <div class="gold-line"></div>
+        </div>
+        <!-- Content -->
+        <div class="content-wrapper">
+            <!-- Timeline Section -->
+            <div class="timeline-section">
+                <div class="timeline-line"></div>
+                <!-- Day 1-2 -->
+                <div class="timeline-item active">
+                    <div class="timeline-marker">
+                        <i class="fa-solid fa-layer-group"></i>
+                    </div>
+                    <div class="timeline-content">
+                        <div class="task-info">
+                            <h4>Setup Database &amp; Form</h4>
+                            <p>Siapkan Google Sheets &amp; Form Order</p>
+                        </div>
+                        <span class="task-day">HARI 1-2</span>
+                    </div>
+                </div>
+                <!-- Day 3 -->
+                <div class="timeline-item">
+                    <div class="timeline-marker">
+                        <i class="fa-solid fa-gears"></i>
+                    </div>
+                    <div class="timeline-content">
+                        <div class="task-info">
+                            <h4>Setup Invoice Automation</h4>
+                            <p>Copy-paste Apps Script template</p>
+                        </div>
+                        <span class="task-day">HARI 3</span>
+                    </div>
+                </div>
+                <!-- Day 4 -->
+                <div class="timeline-item">
+                    <div class="timeline-marker">
+                        <i class="fa-solid fa-vial"></i>
+                    </div>
+                    <div class="timeline-content">
+                        <div class="task-info">
+                            <h4>Testing End-to-End</h4>
+                            <p>Coba order sendiri &amp; cek email masuk</p>
+                        </div>
+                        <span class="task-day">HARI 4</span>
+                    </div>
+                </div>
+                <!-- Day 5 -->
+                <div class="timeline-item">
+                    <div class="timeline-marker">
+                        <i class="fa-brands fa-whatsapp"></i>
+                    </div>
+                    <div class="timeline-content">
+                        <div class="task-info">
+                            <h4>Connect WA Gateway</h4>
+                            <p>Setup pesan otomatis &amp; template</p>
+                        </div>
+                        <span class="task-day">HARI 5</span>
+                    </div>
+                </div>
+                <!-- Day 6 -->
+                <div class="timeline-item">
+                    <div class="timeline-marker">
+                        <i class="fa-solid fa-box-open"></i>
+                    </div>
+                    <div class="timeline-content">
+                        <div class="task-info">
+                            <h4>Simulasi Order Real</h4>
+                            <p>Test dengan 5-10 order contoh</p>
+                        </div>
+                        <span class="task-day">HARI 6</span>
+                    </div>
+                </div>
+                <!-- Day 7 -->
+                <div class="timeline-item active">
+                    <div class="timeline-marker"
+                        style="background-color: #10B981; border-color: #10B981; color: white;">
+                        <i class="fa-solid fa-rocket"></i>
+                    </div>
+                    <div class="timeline-content" style="border-color: #10B981;">
+                        <div class="task-info">
+                            <h4 style="color: #10B981;">FULL LAUNCHING</h4>
+                            <p>Ganti link bio dengan Form baru</p>
+                        </div>
+                        <span class="task-day" style="background-color: #10B981; color: white;">HARI 7</span>
+                    </div>
+                </div>
+            </div>
+            <!-- Closing Section -->
+            <div class="closing-section">
+                <div class="quote-card">
+                    <i class="fa-solid fa-crown quote-bg-icon"></i>
+                    <div class="quote-content">
+                        <div class="quote-main">
+                            SISTEM <span class="highlight">&gt;</span> HUSTLE
+                        </div>
+                        <p class="quote-sub">"Bangun sistemnya sekali (7 Hari), nikmati kebebasan waktunya selamanya."
+                        </p>
+                    </div>
+                </div>
+                <a class="cta-button" href="#">
+                    <span>MULAI SEKARANG</span>
+                    <i class="fa-solid fa-arrow-right"></i>
+                </a>
+                <div class="final-tips">
+                    <div class="tip-item">
+                        <i class="fa-solid fa-shield-halved tip-icon"></i>
+                        <p>Secure Data</p>
+                    </div>
+                    <div class="tip-item">
+                        <i class="fa-solid fa-chart-line tip-icon"></i>
+                        <p>Scalable</p>
+                    </div>
+                    <div class="tip-item">
+                        <i class="fa-solid fa-infinity tip-icon"></i>
+                        <p>Automated</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Page Number -->
+        <div class="page-number">25</div>
+        <!-- Speaker Notes -->
+        <div class="notes-container">
+            Implementasi sistem ini butuh komitmen 7 hari. Ikuti step by step, jangan skip. Setelah sistem jalan, bisnis
+            Anda akan transform total. Ingat: working hard itu penting, tapi working smart dengan sistem adalah kunci
+            scaling. Mulai hari ini, bangun sistem Anda!
+        </div>
+    </div>
+</body>
+
+</html>

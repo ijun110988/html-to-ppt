@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+
+<html lang="id">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Persiapan Sebelum Membangun Sistem</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&amp;family=Inter:wght@300;400;600&amp;display=swap"
+        rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #f3f4f6;
+            font-family: 'Inter', sans-serif;
+            overflow: hidden;
+        }
+
+        .slide-container {
+            width: 1280px;
+            height: 720px;
+            background-color: #0B0F19;
+            /* Navy/Black Theme */
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            color: white;
+        }
+
+        /* Left Side - Visual & Title */
+        .left-panel {
+            width: 480px;
+            background-color: #0B0F19;
+            padding: 60px 50px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+            z-index: 10;
+        }
+
+        .decorative-grid {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.1;
+            background-image: linear-gradient(#374151 1px, transparent 1px), linear-gradient(90deg, #374151 1px, transparent 1px);
+            background-size: 40px 40px;
+            z-index: -1;
+        }
+
+        .gold-accent {
+            width: 80px;
+            height: 6px;
+            background-color: #D4AF37;
+            margin-bottom: 40px;
+        }
+
+        h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 800;
+            font-size: 48px;
+            line-height: 1.2;
+            color: #FFFFFF;
+            margin-bottom: 24px;
+        }
+
+        .subtitle {
+            font-family: 'Inter', sans-serif;
+            font-size: 18px;
+            line-height: 1.6;
+            color: #9CA3AF;
+        }
+
+        .foundation-icon {
+            font-size: 120px;
+            color: rgba(212, 175, 55, 0.1);
+            position: absolute;
+            bottom: 40px;
+            right: 40px;
+            z-index: 0;
+        }
+
+        /* Right Side - Checklist */
+        .right-panel {
+            flex: 1;
+            background-color: #111827;
+            /* Slightly lighter than left */
+            padding: 60px 80px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+        }
+
+        .checklist-container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .checklist-item {
+            display: flex;
+            align-items: center;
+            background-color: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 16px 24px;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+        }
+
+        .checklist-item:hover {
+            background-color: rgba(255, 255, 255, 0.08);
+            border-color: rgba(212, 175, 55, 0.3);
+            transform: translateX(10px);
+        }
+
+        .checkbox {
+            width: 28px;
+            height: 28px;
+            border: 2px solid #D4AF37;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 20px;
+            flex-shrink: 0;
+        }
+
+        .check-mark {
+            color: #D4AF37;
+            font-size: 16px;
+        }
+
+        .item-text {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 500;
+            font-size: 18px;
+            color: #E5E7EB;
+        }
+
+        .item-subtext {
+            font-family: 'Inter', sans-serif;
+            font-size: 14px;
+            color: #9CA3AF;
+            margin-top: 4px;
+            display: block;
+        }
+
+        /* Decorative Elements */
+        .corner-accent {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 150px;
+            height: 150px;
+            border-top: 2px solid rgba(212, 175, 55, 0.2);
+            border-right: 2px solid rgba(212, 175, 55, 0.2);
+        }
+
+        .page-number {
+            position: absolute;
+            bottom: 40px;
+            right: 50px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            color: #4B5563;
+            font-size: 14px;
+        }
+
+        .notes-container {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="slide-container">
+        <!-- Left Panel -->
+        <div class="left-panel">
+            <div class="decorative-grid"></div>
+            <div class="gold-accent"></div>
+            <h1>PERSIAPAN<br /><span style="color: #D4AF37;">FONDASI</span><br />SISTEM</h1>
+            <p class="subtitle">
+                Sebelum memulai teknis automasi, pastikan 6 elemen fundamental ini sudah siap agar sistem berjalan
+                lancar tanpa hambatan.
+            </p>
+            <i class="fa-solid fa-layer-group foundation-icon"></i>
+        </div>
+        <!-- Right Panel -->
+        <div class="right-panel">
+            <div class="corner-accent"></div>
+            <div class="checklist-container">
+                <!-- Item 1 -->
+                <div class="checklist-item">
+                    <div class="checkbox">
+                        <i class="fa-solid fa-check check-mark"></i>
+                    </div>
+                    <div>
+                        <p class="item-text">Produk Margin ≥ 30%</p>
+                        <span class="item-subtext">Agar profit cukup menutup biaya operasional sistem</span>
+                    </div>
+                </div>
+                <!-- Item 2 -->
+                <div class="checklist-item">
+                    <div class="checkbox">
+                        <i class="fa-solid fa-check check-mark"></i>
+                    </div>
+                    <div>
+                        <p class="item-text">Payment Gateway / Bank Bisnis</p>
+                        <span class="item-subtext">Rekening khusus agar cashflow tidak tercampur pribadi</span>
+                    </div>
+                </div>
+                <!-- Item 3 -->
+                <div class="checklist-item">
+                    <div class="checkbox">
+                        <i class="fa-solid fa-check check-mark"></i>
+                    </div>
+                    <div>
+                        <p class="item-text">Google Account Khusus</p>
+                        <span class="item-subtext">Email GMail fresh untuk database &amp; drive sistem</span>
+                    </div>
+                </div>
+                <!-- Item 4 -->
+                <div class="checklist-item">
+                    <div class="checkbox">
+                        <i class="fa-solid fa-check check-mark"></i>
+                    </div>
+                    <div>
+                        <p class="item-text">Nomor WhatsApp Business</p>
+                        <span class="item-subtext">Nomor dedicated untuk notifikasi &amp; CS (bukan pribadi)</span>
+                    </div>
+                </div>
+                <!-- Item 5 -->
+                <div class="checklist-item">
+                    <div class="checkbox">
+                        <i class="fa-solid fa-check check-mark"></i>
+                    </div>
+                    <div>
+                        <p class="item-text">Brand Identity Jelas</p>
+                        <span class="item-subtext">Logo, warna brand, dan tone komunikasi sudah final</span>
+                    </div>
+                </div>
+                <!-- Item 6 -->
+                <div class="checklist-item">
+                    <div class="checkbox">
+                        <i class="fa-solid fa-check check-mark"></i>
+                    </div>
+                    <div>
+                        <p class="item-text">Mindset Investasi Waktu</p>
+                        <span class="item-subtext">Siapkan 7-14 hari untuk setup awal hingga running well</span>
+                    </div>
+                </div>
+            </div>
+            <div class="page-number">05</div>
+        </div>
+        <div class="notes-container">
+            Sebelum membangun sistem, pastikan fondasi bisnis kuat. Produk harus profitable, payment method jelas, dan
+            Anda siap investasi waktu 1-2 minggu untuk setup. Sistem ini sekali setup, bisa dipakai bertahun-tahun.
+        </div>
+    </div>
+</body>
+
+</html>

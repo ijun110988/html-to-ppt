@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+
+<html lang="id">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Alur Sistem Otomatis Lengkap</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&amp;family=Inter:wght@300;400;600&amp;display=swap"
+        rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #f3f4f6;
+            font-family: 'Inter', sans-serif;
+            overflow: hidden;
+        }
+
+        .slide-container {
+            width: 1280px;
+            height: 720px;
+            background-color: #FFFFFF;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Header */
+        .header {
+            padding: 40px 60px 0 60px;
+            z-index: 10;
+        }
+
+        h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 800;
+            font-size: 36px;
+            color: #111827;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            font-family: 'Inter', sans-serif;
+            font-size: 18px;
+            color: #6B7280;
+        }
+
+        .gold-line {
+            width: 100px;
+            height: 4px;
+            background-color: #D4AF37;
+            margin-top: 15px;
+        }
+
+        /* Flow Diagram Container */
+        .flow-container {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0 40px;
+            position: relative;
+        }
+
+        .flow-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            position: relative;
+            z-index: 5;
+            width: 100%;
+            justify-content: center;
+        }
+
+        /* Flow Step Cards */
+        .step-card {
+            width: 140px;
+            height: 180px;
+            background-color: #FFFFFF;
+            border: 1px solid #E5E7EB;
+            border-radius: 12px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 15px;
+            position: relative;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            z-index: 2;
+        }
+
+        .step-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            border-color: #D4AF37;
+        }
+
+        .step-icon {
+            width: 60px;
+            height: 60px;
+            background-color: #F3F4F6;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 15px;
+            font-size: 24px;
+            color: #374151;
+            transition: all 0.3s ease;
+        }
+
+        .step-card:hover .step-icon {
+            background-color: #0B0F19;
+            /* Navy */
+            color: #D4AF37;
+            /* Gold */
+        }
+
+        .step-title {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 14px;
+            text-align: center;
+            color: #1F2937;
+            line-height: 1.3;
+            margin-bottom: 5px;
+        }
+
+        .step-desc {
+            font-family: 'Inter', sans-serif;
+            font-size: 11px;
+            text-align: center;
+            color: #9CA3AF;
+            line-height: 1.2;
+        }
+
+        /* Arrows */
+        .arrow-connector {
+            flex: 1;
+            height: 2px;
+            background-color: #E5E7EB;
+            position: relative;
+            min-width: 20px;
+            max-width: 40px;
+        }
+
+        .arrow-connector::after {
+            content: '';
+            position: absolute;
+            right: -5px;
+            top: 50%;
+            transform: translateY(-50%);
+            border-width: 5px 0 5px 6px;
+            border-style: solid;
+            border-color: transparent transparent transparent #E5E7EB;
+        }
+
+        /* Number Badge */
+        .step-number {
+            position: absolute;
+            top: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 24px;
+            height: 24px;
+            background-color: #0B0F19;
+            color: #FFFFFF;
+            border-radius: 50%;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid #FFFFFF;
+        }
+
+        .step-card:hover .step-number {
+            background-color: #D4AF37;
+        }
+
+        /* Legend/Key at bottom */
+        .legend-bar {
+            background-color: #F9FAFB;
+            padding: 15px 60px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px solid #E5E7EB;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-family: 'Inter', sans-serif;
+            font-size: 13px;
+            color: #6B7280;
+        }
+
+        .dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+        }
+
+        .dot-input {
+            background-color: #3B82F6;
+        }
+
+        .dot-process {
+            background-color: #F59E0B;
+        }
+
+        .dot-output {
+            background-color: #10B981;
+        }
+
+        /* Background Decoration */
+        .bg-flow {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            width: 100%;
+            height: 150px;
+            background-color: #F8FAFC;
+            z-index: 0;
+            transform: translateY(-50%);
+        }
+
+        .page-number {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            color: #9CA3AF;
+            font-size: 14px;
+        }
+
+        /* Speaker Notes */
+        .notes-container {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="slide-container">
+        <!-- Header -->
+        <div class="header">
+            <h1>Alur Sistem Otomatis Lengkap</h1>
+            <p class="subtitle">Blueprint end-to-end dari order masuk hingga notifikasi pengiriman</p>
+            <div class="gold-line"></div>
+        </div>
+        <!-- Flow Content -->
+        <div class="flow-container">
+            <div class="bg-flow"></div>
+            <div class="flow-wrapper">
+                <!-- Step 1 -->
+                <div class="step-card">
+                    <div class="step-number">1</div>
+                    <div class="step-icon">
+                        <i class="fa-solid fa-pager"></i>
+                    </div>
+                    <p class="step-title">Landing Page</p>
+                    <p class="step-desc">Traffic Source</p>
+                </div>
+                <!-- Arrow -->
+                <div class="arrow-connector"></div>
+                <!-- Step 2 -->
+                <div class="step-card">
+                    <div class="step-number">2</div>
+                    <div class="step-icon">
+                        <i class="fa-brands fa-google"></i>
+                    </div>
+                    <p class="step-title">Google Form</p>
+                    <p class="step-desc">Order Capture</p>
+                </div>
+                <!-- Arrow -->
+                <div class="arrow-connector"></div>
+                <!-- Step 3 -->
+                <div class="step-card">
+                    <div class="step-number">3</div>
+                    <div class="step-icon">
+                        <i class="fa-solid fa-file-csv"></i>
+                    </div>
+                    <p class="step-title">Google Sheets</p>
+                    <p class="step-desc">Database Pusat</p>
+                </div>
+                <!-- Arrow -->
+                <div class="arrow-connector"></div>
+                <!-- Step 4 -->
+                <div class="step-card">
+                    <div class="step-number">4</div>
+                    <div class="step-icon">
+                        <i class="fa-solid fa-file-invoice-dollar"></i>
+                    </div>
+                    <p class="step-title">Auto Invoice</p>
+                    <p class="step-desc">Email Otomatis</p>
+                </div>
+                <!-- Arrow -->
+                <div class="arrow-connector"></div>
+                <!-- Step 5 -->
+                <div class="step-card">
+                    <div class="step-number">5</div>
+                    <div class="step-icon">
+                        <i class="fa-solid fa-money-bill-wave"></i>
+                    </div>
+                    <p class="step-title">Konfirmasi</p>
+                    <p class="step-desc">Cek Pembayaran</p>
+                </div>
+                <!-- Arrow -->
+                <div class="arrow-connector"></div>
+                <!-- Step 6 -->
+                <div class="step-card">
+                    <div class="step-number">6</div>
+                    <div class="step-icon">
+                        <i class="fa-solid fa-truck-fast"></i>
+                    </div>
+                    <p class="step-title">Input Resi</p>
+                    <p class="step-desc">Update Status</p>
+                </div>
+                <!-- Arrow -->
+                <div class="arrow-connector"></div>
+                <!-- Step 7 -->
+                <div class="step-card">
+                    <div class="step-number">7</div>
+                    <div class="step-icon">
+                        <i class="fa-brands fa-whatsapp"></i>
+                    </div>
+                    <p class="step-title">Auto Notif</p>
+                    <p class="step-desc">Kirim WA Resi</p>
+                </div>
+            </div>
+        </div>
+        <!-- Legend Bar -->
+        <div class="legend-bar">
+            <div style="display: flex; gap: 20px;">
+                <div class="legend-item">
+                    <div class="dot dot-input"></div>Input Customer
+                </div>
+                <div class="legend-item">
+                    <div class="dot dot-process"></div>Proses Sistem
+                </div>
+                <div class="legend-item">
+                    <div class="dot dot-output"></div>Output / Hasil
+                </div>
+            </div>
+            <div class="page-number">07</div>
+        </div>
+        <!-- Speaker Notes -->
+        <div class="notes-container">
+            Ini adalah blueprint sistem order otomatis. Customer order via form, data masuk database, invoice terkirim
+            otomatis, payment dikonfirmasi, resi dikirim otomatis via WA. Semua terjadi tanpa admin manual input
+            berulang kali.
+        </div>
+    </div>
+</body>
+
+</html>
+Copy

@@ -1,0 +1,12 @@
+{
+  "name": "presentasi-html-to-pptx",
+  "private": true,
+  "version": "1.0.0",
+  "scripts": {
+    "build:pptx": "node scripts/build-pptx.js"
+  },
+  "dependencies": {
+    "playwright": "^1.49.1",
+    "pptxgenjs": "^3.12.0"
+  }
+}

@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+
+<html lang="id">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Template Pesan Resi Otomatis</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&amp;family=Inter:wght@300;400;500;600;700&amp;family=JetBrains+Mono:wght@500&amp;display=swap"
+        rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #0B0F19;
+            font-family: 'Inter', sans-serif;
+            overflow: hidden;
+        }
+
+        .slide-container {
+            width: 1280px;
+            height: 720px;
+            background-color: #0B0F19;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Background Graphics */
+        .bg-blob {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            z-index: 0;
+        }
+
+        .blob-1 {
+            width: 500px;
+            height: 500px;
+            background-color: rgba(37, 211, 102, 0.05);
+            top: -100px;
+            right: -100px;
+        }
+
+        .blob-2 {
+            width: 400px;
+            height: 400px;
+            background-color: rgba(212, 175, 55, 0.05);
+            bottom: -100px;
+            left: -100px;
+        }
+
+        /* Header */
+        .header {
+            padding: 40px 80px 10px 80px;
+            z-index: 10;
+        }
+
+        .header h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 800;
+            font-size: 38px;
+            color: #FFFFFF;
+            margin-bottom: 8px;
+            letter-spacing: -0.02em;
+        }
+
+        .header p {
+            font-family: 'Inter', sans-serif;
+            font-size: 16px;
+            color: #9CA3AF;
+        }
+
+        .gold-line {
+            width: 100px;
+            height: 4px;
+            background-color: #D4AF37;
+            margin-top: 15px;
+        }
+
+        /* Content Layout */
+        .content-wrapper {
+            display: flex;
+            flex: 1;
+            padding: 20px 80px 50px 80px;
+            gap: 60px;
+            z-index: 10;
+            align-items: center;
+        }
+
+        /* Phone Mockup Section */
+        .phone-section {
+            flex: 0 0 40%;
+            display: flex;
+            justify-content: center;
+        }
+
+        .phone-mockup {
+            width: 320px;
+            height: 550px;
+            background-color: #111827;
+            border-radius: 40px;
+            border: 8px solid #374151;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Phone Screen */
+        .screen {
+            width: 100%;
+            height: 100%;
+            background-color: #efe7dd;
+            /* WA Default BG color equivalent */
+            background-image: url('data:image/svg+xml,%3Csvg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"%3E%3Cpath d="M50 50 L50 0 L0 0 L0 50 Z" fill="%23e5ddd5" fill-opacity="0.4"/%3E%3C/svg%3E');
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* WA Header */
+        .wa-header {
+            background-color: #075E54;
+            padding: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: white;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .wa-avatar {
+            width: 35px;
+            height: 35px;
+            background-color: #D4AF37;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            color: #000;
+        }
+
+        .wa-info h3 {
+            font-size: 14px;
+            font-weight: 600;
+            margin: 0;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .wa-info p {
+            font-size: 10px;
+            opacity: 0.8;
+            margin: 0;
+        }
+
+        /* Chat Area */
+        .chat-area {
+            flex: 1;
+            padding: 20px 15px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .message-bubble {
+            background-color: #FFFFFF;
+            padding: 12px 15px;
+            border-radius: 0 12px 12px 12px;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+            max-width: 95%;
+            position: relative;
+            font-size: 13px;
+            color: #111827;
+            line-height: 1.5;
+        }
+
+        .message-bubble::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -8px;
+            width: 0;
+            height: 0;
+            border-top: 10px solid #FFFFFF;
+            border-left: 10px solid transparent;
+        }
+
+        .variable {
+            background-color: rgba(212, 175, 55, 0.15);
+            color: #B45309;
+            padding: 0 4px;
+            border-radius: 3px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 12px;
+            font-weight: 600;
+            border: 1px dashed #D4AF37;
+        }
+
+        .wa-time {
+            text-align: right;
+            font-size: 10px;
+            color: #9CA3AF;
+            margin-top: 5px;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            gap: 4px;
+        }
+
+        /* Strategy Section */
+        .strategy-section {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+
+        .strategy-card {
+            background-color: #1F2937;
+            border-left: 4px solid #374151;
+            padding: 20px;
+            border-radius: 0 12px 12px 0;
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .strategy-card:hover {
+            transform: translateX(10px);
+            background-color: #262f3e;
+            border-left-color: #D4AF37;
+        }
+
+        .strategy-icon {
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #D4AF37;
+            font-size: 18px;
+            flex-shrink: 0;
+        }
+
+        .strategy-content h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 16px;
+            color: #FFFFFF;
+            margin-bottom: 6px;
+        }
+
+        .strategy-content p {
+            font-family: 'Inter', sans-serif;
+            font-size: 13px;
+            color: #9CA3AF;
+            line-height: 1.4;
+        }
+
+        /* Annotations */
+        .annotation-line {
+            position: absolute;
+            height: 1px;
+            background-color: #4B5563;
+            z-index: 5;
+            display: none;
+            /* Can be enabled for more complex diagrams */
+        }
+
+        /* Page Number */
+        .page-number {
+            position: absolute;
+            bottom: 30px;
+            right: 40px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            color: #4B5563;
+            font-size: 14px;
+        }
+
+        .notes-container {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="slide-container">
+        <!-- Background -->
+        <div class="bg-blob blob-1"></div>
+        <div class="bg-blob blob-2"></div>
+        <!-- Header -->
+        <div class="header">
+            <h1>Template Pesan Resi Otomatis</h1>
+            <p>Struktur pesan personal yang membangun kepercayaan dan mengurangi komplain</p>
+            <div class="gold-line"></div>
+        </div>
+        <!-- Main Content -->
+        <div class="content-wrapper">
+            <!-- Phone Mockup -->
+            <div class="phone-section">
+                <div class="phone-mockup">
+                    <!-- Status Bar Mock (Visual) -->
+                    <div style="height: 25px; background-color: #054c44; width: 100%;"></div>
+                    <div class="screen">
+                        <!-- WA Header -->
+                        <div class="wa-header">
+                            <div class="wa-avatar">
+                                <i class="fa-solid fa-store"></i>
+                            </div>
+                            <div class="wa-info">
+                                <h3>Official Store</h3>
+                                <p>Business Account</p>
+                            </div>
+                        </div>
+                        <!-- Chat Area -->
+                        <div class="chat-area">
+                            <div
+                                style="align-self: center; background-color: rgba(0,0,0,0.1); padding: 4px 10px; border-radius: 8px; font-size: 10px; color: #555; margin-bottom: 15px; font-weight: 600;">
+                                HARI INI
+                            </div>
+                            <div class="message-bubble">
+                                <p style="margin: 0 0 10px 0;">Halo <strong><span
+                                            class="variable">{{NamaCustomer}}</span></strong>,</p>
+                                <p style="margin: 0 0 10px 0;">Pesanan Anda telah kami kirim! 📦✨</p>
+                                <p style="margin: 0 0 10px 0;">
+                                    📄 No. Invoice: <strong><span class="variable">{{NoInv}}</span></strong><br />
+                                    🛍️ Produk: <span class="variable">{{Produk}}</span><br />
+                                    🚚 Ekspedisi: <span class="variable">{{Kurir}}</span>
+                                </p>
+                                <p
+                                    style="margin: 0 0 10px 0; background-color: #F3F4F6; padding: 8px; border-radius: 6px; border-left: 3px solid #25D366;">
+                                    No. Resi: <strong><span class="variable">{{NoResi}}</span></strong>
+                                </p>
+                                <p style="margin: 0 0 10px 0;">👇 Cek posisi paket Anda disini:<br />
+                                    <span
+                                        style="color: #3B82F6; text-decoration: underline;">https://cekresi.com/?no=<span
+                                            class="variable">{{NoResi}}</span></span>
+                                </p>
+                                <p style="margin: 0;">Terima kasih sudah berbelanja 🙏<br />
+                                    ~ <span class="variable">{{NamaBrand}}</span></p>
+                                <div class="wa-time">
+                                    14:30 <i class="fa-solid fa-check-double" style="color: #34B7F1;"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Strategy Breakdown -->
+            <div class="strategy-section">
+                <div class="strategy-card">
+                    <div class="strategy-icon">
+                        <i class="fa-solid fa-user-tag"></i>
+                    </div>
+                    <div class="strategy-content">
+                        <h3>Personalization (Sapaan Nama)</h3>
+                        <p>Menyebut nama customer di awal pesan meningkatkan engagement dan membuat mereka merasa
+                            dihargai, bukan sekadar broadcast spam.</p>
+                    </div>
+                </div>
+                <div class="strategy-card">
+                    <div class="strategy-icon">
+                        <i class="fa-solid fa-circle-info"></i>
+                    </div>
+                    <div class="strategy-content">
+                        <h3>Detail Lengkap &amp; Jelas</h3>
+                        <p>Sertakan invoice, produk, dan kurir. Ini menjawab 90% pertanyaan customer ("Barang apa?",
+                            "Dikirim pakai apa?") sebelum mereka bertanya.</p>
+                    </div>
+                </div>
+                <div class="strategy-card">
+                    <div class="strategy-icon">
+                        <i class="fa-solid fa-arrow-pointer"></i>
+                    </div>
+                    <div class="strategy-content">
+                        <h3>Actionable Tracking Link</h3>
+                        <p>Jangan hanya beri nomor resi. Berikan link yang bisa diklik langsung untuk tracking. Ini
+                            memudahkan customer dan mengurangi kerja CS.</p>
+                    </div>
+                </div>
+                <div class="strategy-card">
+                    <div class="strategy-icon">
+                        <i class="fa-solid fa-signature"></i>
+                    </div>
+                    <div class="strategy-content">
+                        <h3>Professional Branding</h3>
+                        <p>Tutup dengan nama brand dan emoji sopan. Konsistensi branding membangun memori jangka panjang
+                            di benak customer.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Page Number -->
+        <div class="page-number">23</div>
+        <!-- Speaker Notes -->
+        <div class="notes-container">
+            Template pesan harus personal, profesional, dan lengkap. Gunakan nama customer, detail pesanan, dan link
+            tracking. Pesan otomatis yang baik membuat customer merasa diperhatikan dan mengurangi pertanyaan 'pesanan
+            saya mana?' di chat.
+        </div>
+    </div>
+</body>
+
+</html>

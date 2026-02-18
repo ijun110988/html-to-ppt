@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+
+<html lang="id">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Sistem Kirim Resi Otomatis</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&amp;family=Inter:wght@300;400;600&amp;display=swap"
+        rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #f3f4f6;
+            font-family: 'Inter', sans-serif;
+            overflow: hidden;
+        }
+
+        .slide-container {
+            width: 1280px;
+            height: 720px;
+            background-color: #FFFFFF;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+        }
+
+        /* Sidebar Left - Dark Theme */
+        .sidebar {
+            width: 400px;
+            background-color: #0B0F19;
+            height: 100%;
+            padding: 60px 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .decorative-pattern {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.05;
+            background-image: radial-gradient(#D4AF37 1px, transparent 1px);
+            background-size: 20px 20px;
+            z-index: -1;
+        }
+
+        .gold-line {
+            width: 60px;
+            height: 4px;
+            background-color: #D4AF37;
+            margin-bottom: 30px;
+        }
+
+        h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 800;
+            font-size: 48px;
+            line-height: 1.1;
+            color: #FFFFFF;
+            margin-bottom: 20px;
+        }
+
+        .subtitle {
+            font-family: 'Inter', sans-serif;
+            font-size: 18px;
+            color: #9CA3AF;
+            line-height: 1.6;
+        }
+
+        /* Main Content - Right Side */
+        .main-content {
+            flex: 1;
+            padding: 60px 80px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            background-color: #F9FAFB;
+        }
+
+        .list-container {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .list-item {
+            display: flex;
+            align-items: center;
+            background-color: #FFFFFF;
+            padding: 20px 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+            border-left: 4px solid #D4AF37;
+            /* Gold for Solution/Premium */
+            transition: transform 0.2s ease;
+        }
+
+        .list-item:hover {
+            transform: translateX(10px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+
+        .icon-box {
+            width: 50px;
+            height: 50px;
+            border-radius: 10px;
+            background-color: rgba(212, 175, 55, 0.1);
+            /* Gold tint */
+            color: #D4AF37;
+            /* Gold color */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            margin-right: 25px;
+            flex-shrink: 0;
+        }
+
+        .text-content h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 20px;
+            color: #1F2937;
+            margin: 0 0 4px 0;
+        }
+
+        .text-content p {
+            font-family: 'Inter', sans-serif;
+            font-size: 16px;
+            color: #6B7280;
+            margin: 0;
+        }
+
+        /* Bottom Decoration */
+        .page-number {
+            position: absolute;
+            bottom: 30px;
+            right: 40px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            color: #D1D5DB;
+            font-size: 14px;
+        }
+
+        /* Speaker Notes */
+        .notes-container {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="slide-container">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="decorative-pattern"></div>
+            <div class="gold-line"></div>
+            <h1>KIRIM<br /><span style="color: #D4AF37;">RESI<br />OTOMATIS</span></h1>
+            <p class="subtitle">
+                Solusi cerdas mengirim notifikasi pengiriman ke ratusan customer tanpa ribet input manual satu per satu.
+            </p>
+            <!-- Abstract Visual -->
+            <div style="margin-top: 60px; position: relative; height: 200px;">
+                <i class="fa-solid fa-bell"
+                    style="font-size: 100px; color: rgba(212, 175, 55, 0.1); position: absolute; bottom: 10px; left: 10px;"></i>
+                <i class="fa-solid fa-paper-plane"
+                    style="font-size: 60px; color: rgba(255, 255, 255, 0.2); position: absolute; top: 20px; right: 40px;"></i>
+                <i class="fa-brands fa-whatsapp"
+                    style="font-size: 40px; color: rgba(212, 175, 55, 0.3); position: absolute; bottom: 80px; right: 20px;"></i>
+            </div>
+        </div>
+        <!-- Main Content -->
+        <div class="main-content">
+            <div class="list-container">
+                <!-- Item 1 -->
+                <div class="list-item">
+                    <div class="icon-box">
+                        <i class="fa-solid fa-table-list"></i>
+                    </div>
+                    <div class="text-content">
+                        <h3>Input Resi Sekali di Database</h3>
+                        <p>Admin cukup input nomor resi di Google Sheets, sistem bekerja otomatis.</p>
+                    </div>
+                </div>
+                <!-- Item 2 -->
+                <div class="list-item">
+                    <div class="icon-box">
+                        <i class="fa-brands fa-whatsapp"></i>
+                    </div>
+                    <div class="text-content">
+                        <h3>Trigger Otomatis Kirim WA</h3>
+                        <p>Notifikasi langsung terkirim ke WhatsApp customer detik itu juga.</p>
+                    </div>
+                </div>
+                <!-- Item 3 -->
+                <div class="list-item">
+                    <div class="icon-box">
+                        <i class="fa-solid fa-certificate"></i>
+                    </div>
+                    <div class="text-content">
+                        <h3>Template Pesan Profesional &amp; Branded</h3>
+                        <p>Menggunakan bahasa baku yang sopan dengan identitas brand Anda.</p>
+                    </div>
+                </div>
+                <!-- Item 4 -->
+                <div class="list-item">
+                    <div class="icon-box">
+                        <i class="fa-solid fa-link"></i>
+                    </div>
+                    <div class="text-content">
+                        <h3>Link Tracking Ekspedisi Otomatis</h3>
+                        <p>Customer tinggal klik link untuk melacak paket tanpa perlu tanya admin.</p>
+                    </div>
+                </div>
+                <!-- Item 5 -->
+                <div class="list-item">
+                    <div class="icon-box">
+                        <i class="fa-solid fa-heart"></i>
+                    </div>
+                    <div class="text-content">
+                        <h3>Customer Merasa Diperhatikan</h3>
+                        <p>Layanan cepat dan informatif meningkatkan trust dan kepuasan pembeli.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="page-number">10</div>
+    </div>
+    <div class="notes-container">
+        Bagian paling powerful: setelah admin input resi di sheet, sistem otomatis kirim notifikasi WA ke customer
+        dengan link tracking. Tidak perlu copy-paste manual satu per satu. Bisa handle 100+ order per hari dengan mudah.
+    </div>
+</body>
+
+</html>

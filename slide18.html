@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+
+<html lang="id">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Generate Nomor Invoice Profesional</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&amp;family=Inter:wght@300;400;500;600;700&amp;family=JetBrains+Mono:wght@500;700&amp;display=swap"
+        rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #0B0F19;
+            font-family: 'Inter', sans-serif;
+            overflow: hidden;
+        }
+
+        .slide-container {
+            width: 1280px;
+            height: 720px;
+            background-color: #0B0F19;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Background Graphics */
+        .bg-grid {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image:
+                linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+            background-size: 40px 40px;
+            z-index: 0;
+        }
+
+        .accent-glow {
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            background-color: rgba(212, 175, 55, 0.05);
+            filter: blur(100px);
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 0;
+        }
+
+        /* Header */
+        .header {
+            padding: 50px 80px 20px 80px;
+            z-index: 10;
+        }
+
+        .header h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 800;
+            font-size: 42px;
+            color: #FFFFFF;
+            margin-bottom: 10px;
+            letter-spacing: -0.02em;
+        }
+
+        .header p {
+            font-family: 'Inter', sans-serif;
+            font-size: 18px;
+            color: #9CA3AF;
+        }
+
+        .gold-line {
+            width: 100px;
+            height: 4px;
+            background-color: #D4AF37;
+            margin-top: 20px;
+        }
+
+        /* Content Layout */
+        .content-wrapper {
+            flex: 1;
+            padding: 20px 80px 60px 80px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 10;
+        }
+
+        /* Invoice Visual Breakdown */
+        .invoice-visual-container {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            margin-bottom: 50px;
+        }
+
+        .invoice-box {
+            background-color: #1F2937;
+            border: 1px solid #374151;
+            border-radius: 16px;
+            padding: 40px 60px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .invoice-number-display {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 56px;
+            font-weight: 700;
+            color: #FFFFFF;
+            letter-spacing: 0.05em;
+            display: flex;
+            gap: 10px;
+            align-items: baseline;
+        }
+
+        .part-prefix {
+            color: #9CA3AF;
+        }
+
+        .part-divider {
+            color: #4B5563;
+        }
+
+        .part-date {
+            color: #D4AF37;
+        }
+
+        .part-seq {
+            color: #10B981;
+            text-shadow: 0 0 20px rgba(16, 185, 129, 0.3);
+        }
+
+        /* Breakdown Lines */
+        .breakdown-container {
+            display: flex;
+            width: 100%;
+            justify-content: space-between;
+            margin-top: 20px;
+            position: relative;
+            gap: 20px;
+        }
+
+        .breakdown-item {
+            text-align: center;
+            position: relative;
+            padding-top: 30px;
+        }
+
+        .breakdown-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 1px;
+            height: 20px;
+            background-color: #4B5563;
+        }
+
+        .breakdown-item::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 6px;
+            height: 6px;
+            background-color: #4B5563;
+            border-radius: 50%;
+        }
+
+        .breakdown-label {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            font-size: 14px;
+            color: #D1D5DB;
+            text-transform: uppercase;
+            margin-bottom: 4px;
+        }
+
+        .breakdown-desc {
+            font-family: 'Inter', sans-serif;
+            font-size: 12px;
+            color: #6B7280;
+        }
+
+        /* Auto Increment Animation Concept */
+        .auto-increment-flow {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            background-color: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 12px;
+            padding: 20px 40px;
+        }
+
+        .flow-step {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            opacity: 0.5;
+        }
+
+        .flow-step.active {
+            opacity: 1;
+            transform: scale(1.05);
+        }
+
+        .step-num {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 18px;
+            color: #10B981;
+            margin-bottom: 8px;
+        }
+
+        .step-label {
+            font-size: 12px;
+            color: #9CA3AF;
+        }
+
+        .flow-arrow {
+            color: #D4AF37;
+            font-size: 16px;
+        }
+
+        /* Features Grid */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            width: 100%;
+            margin-top: 40px;
+        }
+
+        .feature-card {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+        }
+
+        .feature-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            background-color: rgba(212, 175, 55, 0.1);
+            color: #D4AF37;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .feature-content h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 16px;
+            color: #FFFFFF;
+            margin-bottom: 6px;
+        }
+
+        .feature-content p {
+            font-family: 'Inter', sans-serif;
+            font-size: 13px;
+            color: #9CA3AF;
+            line-height: 1.5;
+        }
+
+        /* Page Number */
+        .page-number {
+            position: absolute;
+            bottom: 30px;
+            right: 40px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            color: #4B5563;
+            font-size: 14px;
+        }
+
+        .notes-container {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="slide-container">
+        <!-- Background -->
+        <div class="bg-grid"></div>
+        <div class="accent-glow"></div>
+        <!-- Header -->
+        <div class="header">
+            <h1>Generate Nomor Invoice Profesional</h1>
+            <p>Identitas transaksi yang rapi, unik, dan terpercaya</p>
+            <div class="gold-line"></div>
+        </div>
+        <!-- Content -->
+        <div class="content-wrapper">
+            <!-- Main Visual: Invoice Number Breakdown -->
+            <div class="invoice-visual-container">
+                <div class="invoice-box">
+                    <div class="invoice-number-display">
+                        <span class="part-prefix">INV</span>
+                        <span class="part-divider">/</span>
+                        <span class="part-date">2026</span>
+                        <span class="part-divider">/</span>
+                        <span class="part-date">02</span>
+                        <span class="part-divider">/</span>
+                        <span class="part-seq">0001</span>
+                    </div>
+                    <div class="breakdown-container">
+                        <div class="breakdown-item" style="flex: 0 0 10%;">
+                            <div class="breakdown-label">Prefix</div>
+                            <div class="breakdown-desc">Kode Bisnis</div>
+                        </div>
+                        <div class="breakdown-item" style="flex: 0 0 25%;">
+                            <div class="breakdown-label">Tahun</div>
+                            <div class="breakdown-desc">Auto-Update</div>
+                        </div>
+                        <div class="breakdown-item" style="flex: 0 0 15%;">
+                            <div class="breakdown-label">Bulan</div>
+                            <div class="breakdown-desc">Auto-Update</div>
+                        </div>
+                        <div class="breakdown-item" style="flex: 0 0 25%;">
+                            <div class="breakdown-label">Sequence</div>
+                            <div class="breakdown-desc">Auto-Increment +1</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Secondary Visual: Flow Concept -->
+            <div class="auto-increment-flow">
+                <div class="flow-step">
+                    <div class="step-num">...0001</div>
+                    <div class="step-label">Order #1</div>
+                </div>
+                <i class="fa-solid fa-arrow-right flow-arrow"></i>
+                <div class="flow-step active">
+                    <div class="step-num">...0002</div>
+                    <div class="step-label">Order Baru Masuk</div>
+                </div>
+                <i class="fa-solid fa-arrow-right flow-arrow"></i>
+                <div class="flow-step">
+                    <div class="step-num">...0003</div>
+                    <div class="step-label">Order Selanjutnya</div>
+                </div>
+            </div>
+            <!-- Features Grid -->
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fa-solid fa-arrow-up-1-9"></i>
+                    </div>
+                    <div class="feature-content">
+                        <h3>Auto-Increment</h3>
+                        <p>Sistem otomatis mengecek nomor terakhir dan menambahkan +1. Tidak ada nomor ganda.</p>
+                    </div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fa-regular fa-calendar-check"></i>
+                    </div>
+                    <div class="feature-content">
+                        <h3>Format Dinamis</h3>
+                        <p>Kode tahun dan bulan berubah otomatis sesuai waktu transaksi. Memudahkan audit bulanan.</p>
+                    </div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fa-solid fa-fingerprint"></i>
+                    </div>
+                    <div class="feature-content">
+                        <h3>Unique ID</h3>
+                        <p>Setiap transaksi memiliki identitas unik untuk mencegah kebingungan saat klaim atau retur.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Page Number -->
+        <div class="page-number">18</div>
+        <!-- Speaker Notes -->
+        <div class="notes-container">
+            Nomor invoice profesional adalah identitas transaksi. Format terstruktur dengan tahun-bulan membuat tracking
+            mudah. Script otomatis generate nomor urut, tidak perlu manual input. Ini penting untuk legalitas dan
+            profesionalisme bisnis.
+        </div>
+    </div>
+</body>
+
+</html>
