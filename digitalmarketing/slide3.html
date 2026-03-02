@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+
+<html lang="id">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Marketing Offline vs Digital</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&amp;family=Inter:wght@300;400;500;600&amp;display=swap"
+        rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc;
+        }
+
+        .slide-container {
+            width: 1280px;
+            height: 720px;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            background-color: #f1f5f9;
+        }
+
+        .font-poppins {
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .card-offline {
+            background-color: #ffffff;
+            border-top: 6px solid #64748b;
+            /* Slate 500 */
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        .card-digital {
+            background-color: #ffffff;
+            border-top: 6px solid #0ea5e9;
+            /* Sky 500 */
+            box-shadow: 0 10px 15px -3px rgba(14, 165, 233, 0.15), 0 4px 6px -2px rgba(14, 165, 233, 0.1);
+        }
+
+        .comparison-row {
+            border-bottom: 1px solid #f1f5f9;
+        }
+
+        .comparison-row:last-child {
+            border-bottom: none;
+        }
+
+        .vs-badge {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 10;
+            background-color: #ffffff;
+            border: 4px solid #f1f5f9;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            color: #94a3b8;
+            font-family: 'Poppins', sans-serif;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+
+        .bg-pattern {
+            background-image: radial-gradient(#cbd5e1 1px, transparent 1px);
+            background-size: 24px 24px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="slide-container bg-pattern p-6">
+        <!-- Header -->
+        <div class="text-center mb-5">
+            <div
+                class="inline-block px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-xs font-bold uppercase tracking-wider mb-2">
+                Fundamental Digital Marketing</div>
+            <h1 class="text-4xl font-bold text-slate-900 font-poppins">Marketing Offline vs Digital</h1>
+            <p class="text-slate-500 mt-2 text-lg">Memahami perbedaan karakteristik untuk strategi yang lebih efektif
+            </p>
+        </div>
+        <!-- Main Comparison Section -->
+        <div class="flex-1 grid grid-cols-2 gap-6 px-8 relative">
+            <!-- VS Badge in Center -->
+            <div class="vs-badge">VS</div>
+            <!-- Offline Column -->
+            <div class="card-offline rounded-xl p-6 flex flex-col h-full relative">
+                <div class="flex items-center mb-6 pb-4 border-b border-slate-100">
+                    <div
+                        class="w-12 h-12 bg-slate-100 rounded-lg flex items-center justify-center mr-4 text-slate-500 text-2xl">
+                        <i class="fas fa-newspaper"></i>
+                    </div>
+                    <div>
+                        <h2 class="text-2xl font-bold text-slate-700 font-poppins">Traditional / Offline</h2>
+                        <p class="text-sm text-slate-400">Brosur, Baliho, Radio, TV</p>
+                    </div>
+                </div>
+                <div class="space-y-4 flex-1">
+                    <!-- Point 1 -->
+                    <div class="flex items-start">
+                        <div class="mt-1 mr-3 text-slate-400"><i class="fas fa-map-marker-alt"></i></div>
+                        <div>
+                            <p class="font-bold text-slate-700">Jangkauan Terbatas</p>
+                            <p class="text-sm text-slate-500">Lokal, geografis tertentu, sulit menembus batas wilayah.
+                            </p>
+                        </div>
+                    </div>
+                    <!-- Point 2 -->
+                    <div class="flex items-start">
+                        <div class="mt-1 mr-3 text-slate-400"><i class="fas fa-money-bill-wave"></i></div>
+                        <div>
+                            <p class="font-bold text-slate-700">Biaya Cenderung Tinggi</p>
+                            <p class="text-sm text-slate-500">Butuh modal besar di awal (cetak, sewa tempat).</p>
+                        </div>
+                    </div>
+                    <!-- Point 3 -->
+                    <div class="flex items-start">
+                        <div class="mt-1 mr-3 text-slate-400"><i class="fas fa-bullhorn"></i></div>
+                        <div>
+                            <p class="font-bold text-slate-700">Komunikasi Satu Arah</p>
+                            <p class="text-sm text-slate-500">Pelanggan hanya menerima informasi, tidak bisa langsung
+                                merespon.</p>
+                        </div>
+                    </div>
+                    <!-- Point 4 -->
+                    <div class="flex items-start">
+                        <div class="mt-1 mr-3 text-slate-400"><i class="fas fa-chart-pie"></i></div>
+                        <div>
+                            <p class="font-bold text-slate-700">Sulit Diukur</p>
+                            <p class="text-sm text-slate-500">Susah mengetahui berapa orang yang benar-benar melihat
+                                iklan.</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Example Box -->
+                <div class="mt-4 bg-slate-50 p-3 rounded-lg border border-slate-200">
+                    <p class="text-xs font-bold text-slate-500 uppercase mb-1">Contoh Kasus</p>
+                    <p class="text-sm text-slate-700">Pasang Baliho Rp 3.000.000, tidak tahu siapa yang lihat &amp;
+                        beli.</p>
+                </div>
+            </div>
+            <!-- Digital Column -->
+            <div
+                class="card-digital rounded-xl p-6 flex flex-col h-full relative transform scale-100 origin-center z-10">
+                <div
+                    class="absolute -top-3 right-6 bg-blue-500 text-white text-xs font-bold px-3 py-1 rounded-full shadow-md">
+                    RECOMMENDED</div>
+                <div class="flex items-center mb-6 pb-4 border-b border-blue-50">
+                    <div
+                        class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mr-4 text-blue-600 text-2xl">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
+                    <div>
+                        <h2 class="text-2xl font-bold text-slate-800 font-poppins">Digital Marketing</h2>
+                        <p class="text-sm text-blue-500">Social Media, Ads, Website, Email</p>
+                    </div>
+                </div>
+                <div class="space-y-4 flex-1">
+                    <!-- Point 1 -->
+                    <div class="flex items-start">
+                        <div class="mt-1 mr-3 text-blue-500"><i class="fas fa-globe"></i></div>
+                        <div>
+                            <p class="font-bold text-slate-800">Jangkauan Luas &amp; Global</p>
+                            <p class="text-sm text-slate-600">Bisa menjangkau siapa saja di mana saja dengan internet.
+                            </p>
+                        </div>
+                    </div>
+                    <!-- Point 2 -->
+                    <div class="flex items-start">
+                        <div class="mt-1 mr-3 text-blue-500"><i class="fas fa-hand-holding-usd"></i></div>
+                        <div>
+                            <p class="font-bold text-slate-800">Biaya Fleksibel</p>
+                            <p class="text-sm text-slate-600">Bisa mulai dari budget minim (Rp 20rb - 50rb).</p>
+                        </div>
+                    </div>
+                    <!-- Point 3 -->
+                    <div class="flex items-start">
+                        <div class="mt-1 mr-3 text-blue-500"><i class="fas fa-comments"></i></div>
+                        <div>
+                            <p class="font-bold text-slate-800">Interaksi Dua Arah</p>
+                            <p class="text-sm text-slate-600">Engagement langsung (komen, like, share, chat).</p>
+                        </div>
+                    </div>
+                    <!-- Point 4 -->
+                    <div class="flex items-start">
+                        <div class="mt-1 mr-3 text-blue-500"><i class="fas fa-chart-bar"></i></div>
+                        <div>
+                            <p class="font-bold text-slate-800">Terukur Real-time</p>
+                            <p class="text-sm text-slate-600">Data detail (impression, click, conversion) tersedia
+                                instan.</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Example Box -->
+                <div class="mt-4 bg-blue-50 p-3 rounded-lg border border-blue-100">
+                    <p class="text-xs font-bold text-blue-600 uppercase mb-1">Contoh Kasus</p>
+                    <p class="text-sm text-slate-800">Iklan IG Rp 300.000 menjangkau 50.000 orang tertarget spesifik.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <!-- Bottom Insight -->
+        <div
+            class="mt-3 mx-8 bg-white rounded-lg p-3 border-l-4 border-yellow-400 shadow-sm flex items-center justify-between">
+            <div class="flex items-center">
+                <div class="bg-yellow-100 p-2 rounded-full mr-4">
+                    <i class="fas fa-lightbulb text-yellow-600 text-xl"></i>
+                </div>
+                <div>
+                    <p class="font-bold text-slate-800 text-base">💡 Strategic Insight</p>
+                    <p class="text-slate-600">Jangan sekadar mengganti, tapi kombinasikan keduanya (Omnichannel) untuk
+                        hasil maksimal.</p>
+                </div>
+            </div>
+            <div class="text-right hidden md:block">
+                <p class="text-xs text-slate-400 font-bold uppercase">Page</p>
+                <p class="text-lg font-bold text-slate-300">03</p>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+
+<html lang="id">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Targeting: Demografi, Interest, Behavior</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&amp;family=Inter:wght@300;400;500;600&amp;display=swap"
+        rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc;
+        }
+
+        .slide-container {
+            width: 1280px;
+            height: 720px;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            background-color: #ffffff;
+            background-image: radial-gradient(#e2e8f0 1px, transparent 1px);
+            background-size: 24px 24px;
+        }
+
+        .font-poppins {
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .card-shadow {
+            box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.1);
+        }
+
+        .insight-box {
+            background-color: #f0fdfa;
+            border-left: 4px solid #0d9488;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="slide-container p-10">
+        <!-- Header Section -->
+        <div class="flex items-center justify-between mb-6">
+            <div>
+                <div class="flex items-center mb-2">
+                    <span
+                        class="bg-blue-100 text-blue-700 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">Modul
+                        4: Digital Ads</span>
+                    <div class="h-px w-12 bg-blue-200 ml-3"></div>
+                </div>
+                <h1 class="text-4xl font-bold text-slate-900 font-poppins">Targeting: Demografi, Interest, Behavior</h1>
+            </div>
+            <!-- Icon Placeholder -->
+            <div class="text-slate-300">
+                <i class="fas fa-bullseye text-3xl"></i>
+            </div>
+        </div>
+        <!-- Main Content Grid -->
+        <div class="grid grid-cols-12 gap-8 h-full">
+            <!-- Left Column: Content -->
+            <div class="col-span-7 flex flex-col justify-between">
+                <div>
+                    <!-- Intro -->
+                    <p class="text-lg text-slate-700 leading-relaxed mb-6 font-light">
+                        Kunci efisiensi iklan digital adalah <strong>menampilkan iklan hanya kepada orang yang
+                            relevan</strong>. Platform iklan membagi targeting menjadi tiga kategori utama:
+                    </p>
+                    <!-- Key Points List -->
+                    <div class="space-y-4 mb-6">
+                        <div class="flex items-start">
+                            <div
+                                class="flex-shrink-0 w-10 h-10 rounded-full bg-blue-50 flex items-center justify-center mt-1">
+                                <i class="fas fa-id-card text-blue-600"></i>
+                            </div>
+                            <div class="ml-4">
+                                <h3 class="text-lg font-bold text-slate-800 mb-0.5">Demografi (Siapa Mereka)</h3>
+                                <p class="text-slate-600 text-sm">Data faktual audiens: Usia, jenis kelamin, lokasi
+                                    tempat tinggal, pekerjaan, status pernikahan, hingga pendidikan.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div
+                                class="flex-shrink-0 w-10 h-10 rounded-full bg-pink-50 flex items-center justify-center mt-1">
+                                <i class="fas fa-heart text-pink-600"></i>
+                            </div>
+                            <div class="ml-4">
+                                <h3 class="text-lg font-bold text-slate-800 mb-0.5">Interest (Apa yang Disukai)</h3>
+                                <p class="text-slate-600 text-sm">Ketertarikan audiens: Hobi, tokoh publik yang diikuti,
+                                    brand kompetitor, jenis media yang dikonsumsi.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div
+                                class="flex-shrink-0 w-10 h-10 rounded-full bg-purple-50 flex items-center justify-center mt-1">
+                                <i class="fas fa-mobile-alt text-purple-600"></i>
+                            </div>
+                            <div class="ml-4">
+                                <h3 class="text-lg font-bold text-slate-800 mb-0.5">Behavior (Apa yang Dilakukan)</h3>
+                                <p class="text-slate-600 text-sm">Perilaku digital: Pembeli online aktif, pengguna
+                                    iPhone, traveler internasional, admin halaman Facebook.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start border-t border-dashed border-slate-200 pt-4 mt-2">
+                            <div
+                                class="flex-shrink-0 w-10 h-10 rounded-full bg-orange-50 flex items-center justify-center mt-1">
+                                <i class="fas fa-users-cog text-orange-600"></i>
+                            </div>
+                            <div class="ml-4">
+                                <h3 class="text-lg font-bold text-slate-800 mb-0.5">Custom &amp; Lookalike (Advanced)
+                                </h3>
+                                <p class="text-slate-600 text-sm">Target orang yang pernah interaksi (Custom) atau
+                                    mencari orang baru yang <strong>mirip</strong> dengan pelanggan terbaik Anda
+                                    (Lookalike).</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Insight Box -->
+                <div class="insight-box p-4 rounded-r-lg mt-auto">
+                    <div class="flex items-start">
+                        <i class="fas fa-lightbulb text-yellow-500 text-xl mr-3 mt-1"></i>
+                        <div>
+                            <p class="text-teal-800 font-bold text-xs uppercase mb-1 tracking-wide">Insight Praktis</p>
+                            <p class="text-slate-700 italic font-medium text-sm">"Semakin spesifik targeting Anda,
+                                semakin efisien budget iklan. Jangan 'membakar uang' dengan menargetkan semua orang
+                                (broad)."</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Right Column: Example Card -->
+            <div class="col-span-5 flex items-center">
+                <div
+                    class="bg-white rounded-2xl card-shadow w-full overflow-hidden border border-slate-100 transform rotate-1 hover:rotate-0 transition-transform duration-300">
+                    <!-- Card Header / Image -->
+                    <div class="h-44 bg-slate-800 relative">
+                        <img alt="Audience Targeting Analysis" class="w-full h-full object-cover opacity-80"
+                            src="https://page.gensparksite.com/slides_images/92f370b097c7f0af6cb463112781129d.webp" />
+                        <div
+                            class="absolute top-4 right-4 bg-orange-500 px-3 py-1 rounded-full text-xs font-bold text-white shadow-sm">
+                            <i class="fas fa-star mr-1"></i> Advanced Strategy
+                        </div>
+                    </div>
+                    <!-- Card Body -->
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-3">
+                            <div>
+                                <h3 class="text-xl font-bold text-slate-900 font-poppins">Power of Lookalike Audience
+                                </h3>
+                                <p class="text-slate-500 text-xs mt-1">Case: Brand Fashion Lokal</p>
+                            </div>
+                        </div>
+                        <div class="bg-slate-50 p-3 rounded-lg border border-slate-100 mb-4">
+                            <p class="text-xs text-slate-500 font-bold uppercase mb-1">Masalah</p>
+                            <p class="text-slate-700 text-sm">Iklan ke interest "Fashion" sudah jenuh, biaya mahal (CPR
+                                tinggi).</p>
+                        </div>
+                        <div class="mb-4">
+                            <p class="text-xs text-slate-500 font-bold uppercase mb-1">Strategi</p>
+                            <p class="text-slate-700 text-sm leading-snug">
+                                Mengunggah data email/HP <strong>pembeli dalam 90 hari terakhir</strong> ke Facebook
+                                Ads, lalu membuat <strong>Lookalike 1%</strong> (mencari 1% populasi yang paling mirip
+                                profilnya dengan pembeli tersebut).
+                            </p>
+                        </div>
+                        <!-- Stats Grid -->
+                        <div class="grid grid-cols-2 gap-3 mt-4 pt-4 border-t border-slate-100">
+                            <div class="text-center">
+                                <p class="text-slate-400 text-[10px] font-bold uppercase">ROAS (Return on Ad Spend)</p>
+                                <p class="text-green-600 font-bold text-xl">4.5x</p>
+                                <p class="text-slate-400 text-[10px]">(Before: 2.1x)</p>
+                            </div>
+                            <div class="text-center">
+                                <p class="text-slate-400 text-[10px] font-bold uppercase">Cost Per Purchase</p>
+                                <p class="text-blue-600 font-bold text-xl">-40%</p>
+                                <p class="text-slate-400 text-[10px]">(Lebih Murah)</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Footer Page Number -->
+        <div class="absolute bottom-6 right-12 text-slate-300 font-bold text-xl">
+            18
+        </div>
+    </div>
+</body>
+
+</html>

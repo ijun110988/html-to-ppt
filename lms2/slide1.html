@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+
+<html lang="id">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Cover Slide - LMS Proposal</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800&amp;family=Open+Sans:wght@400;600&amp;display=swap"
+        rel="stylesheet" />
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #f3f4f6;
+            font-family: 'Open Sans', sans-serif;
+        }
+
+        .slide-container {
+            width: 1280px;
+            height: 720px;
+            background-color: #1B2A4A;
+            /* Navy Blue */
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+        }
+
+        /* No gradients used as requested */
+        .bg-navy {
+            background-color: #1B2A4A;
+        }
+
+        .bg-accent {
+            background-color: #2196F3;
+        }
+
+        .text-accent {
+            color: #2196F3;
+        }
+
+        h1,
+        h2,
+        h3,
+        .font-montserrat {
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .decorative-circle {
+            position: absolute;
+            border-radius: 50%;
+        }
+
+        .grid-pattern {
+            background-image: radial-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+            background-size: 30px 30px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="slide-container">
+        <!-- Background Elements -->
+        <div class="absolute inset-0 grid-pattern opacity-20"></div>
+        <!-- Geometric Shapes -->
+        <div class="absolute top-0 right-0 w-1/2 h-full bg-blue-900 opacity-20 transform skew-x-12 translate-x-32">
+        </div>
+        <div class="decorative-circle w-96 h-96 bg-blue-500 opacity-5 -bottom-20 -left-20 filter blur-xl"></div>
+        <div class="absolute top-24 right-24 w-32 h-32 border-4 border-blue-400 opacity-20 rounded-full"></div>
+        <div class="absolute bottom-32 left-32 text-9xl text-white opacity-5">
+            <i class="fas fa-network-wired"></i>
+        </div>
+        <!-- Top Bar / Logo Area -->
+        <div class="absolute top-12 left-16 flex items-center space-x-4 z-20">
+            <div
+                class="w-12 h-12 bg-white rounded flex items-center justify-center text-blue-900 font-bold text-xl shadow-lg">
+                <i class="fas fa-cubes"></i>
+            </div>
+            <div class="flex flex-col">
+                <p class="text-xl font-bold tracking-widest uppercase text-white font-montserrat leading-none">Sinergi
+                </p>
+                <p class="text-sm font-medium tracking-wider uppercase text-blue-300 font-montserrat leading-none mt-1">
+                    TechForce</p>
+            </div>
+        </div>
+        <!-- Main Content -->
+        <div class="z-10 text-center max-w-5xl px-8 mt-8">
+            <div
+                class="mb-8 inline-block px-5 py-2 border border-blue-400 rounded-full text-blue-300 text-sm tracking-widest uppercase font-semibold bg-blue-900 bg-opacity-30">
+                Strategic Proposal 2026
+            </div>
+            <h1 class="text-6xl font-extrabold leading-tight mb-6 tracking-tight text-white drop-shadow-lg">
+                Proposal Implementasi<br />
+                <span class="text-accent">Learning Management System</span>
+            </h1>
+            <div class="w-32 h-2 bg-accent mx-auto my-10 rounded-full shadow-lg shadow-blue-500/50"></div>
+            <h2 class="text-4xl font-light text-white mb-3 tracking-wide">
+                PT YKKAP Indonesia
+            </h2>
+            <p class="text-xl text-gray-400 font-light mt-4">
+                Scalable Architecture • Centralized Governance • Data-Driven HR
+            </p>
+        </div>
+        <!-- Footer / Presenter Info -->
+        <div
+            class="absolute bottom-0 w-full h-24 bg-blue-900 bg-opacity-30 border-t border-gray-700 flex items-center justify-between px-16 backdrop-filter backdrop-blur-sm">
+            <div class="flex items-center space-x-4">
+                <div class="w-10 h-10 rounded-full bg-gray-700 flex items-center justify-center text-gray-300">
+                    <i class="fas fa-user-tie"></i>
+                </div>
+                <div class="text-left">
+                    <p class="text-xs text-blue-300 uppercase tracking-widest mb-0.5">Presented By</p>
+                    <p class="text-base font-semibold text-white">PT Mustika Sinergi Integrasi</p>
+                </div>
+            </div>
+            <div class="text-right">
+                <p class="text-xs text-gray-500 uppercase tracking-widest mb-0.5">Confidentiality</p>
+                <p class="text-sm text-gray-400">Strictly Confidential © 2026</p>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+
+<html lang="id">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Kesalahan Umum dalam Content Marketing</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&amp;family=Inter:wght@300;400;500;600&amp;display=swap"
+        rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc;
+            overflow: hidden;
+        }
+
+        .slide-container {
+            width: 1280px;
+            height: 720px;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            background-color: #f8fafc;
+            /* Simple dot pattern */
+            background-image: url('data:image/svg+xml;utf8,<svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><circle cx="2" cy="2" r="1" fill="%23cbd5e1"/></svg>');
+        }
+
+        .font-poppins {
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .mistake-item {
+            background-color: white;
+            transition: all 0.3s ease;
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .mistake-item:hover {
+            transform: translateY(-3px);
+            border-color: #ef4444;
+            /* Red 500 for mistakes context */
+            box-shadow: 0 10px 15px -3px rgba(239, 68, 68, 0.1), 0 4px 6px -2px rgba(239, 68, 68, 0.05);
+        }
+
+        .icon-box {
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 12px;
+            font-size: 1.25rem;
+            flex-shrink: 0;
+        }
+
+        .insight-card {
+            background-color: #1e293b;
+            /* Slate 800 */
+            color: white;
+            border-radius: 16px;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .number-badge {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            color: #cbd5e1;
+            font-size: 3rem;
+            line-height: 1;
+            opacity: 0.15;
+            position: absolute;
+            right: 15px;
+            top: 5px;
+        }
+
+        /* Warning accent line */
+        .mistake-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background-color: transparent;
+            transition: background-color 0.3s ease;
+        }
+
+        .mistake-item:hover::before {
+            background-color: #ef4444;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="slide-container p-12">
+        <!-- Header -->
+        <div class="flex justify-between items-end mb-8 border-b border-slate-200 pb-4">
+            <div>
+                <span
+                    class="bg-red-100 text-red-700 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider mb-2 inline-block">Modul
+                    2: Content &amp; Branding</span>
+                <h1 class="text-4xl font-bold text-slate-900 font-poppins">Kesalahan Umum Content Marketing</h1>
+            </div>
+            <div class="hidden md:block">
+                <p class="text-slate-500 text-sm font-medium italic">"Hindari lubang yang sama untuk tumbuh lebih cepat"
+                </p>
+            </div>
+        </div>
+        <!-- Main Content: Grid Layout -->
+        <div class="flex-grow grid grid-cols-2 gap-x-8 gap-y-5 px-2">
+            <!-- Left Column -->
+            <div class="space-y-0.5">
+                <!-- Point 1 -->
+                <div class="mistake-item p-4 rounded-xl flex items-start">
+                    <span class="number-badge">01</span>
+                    <div class="icon-box bg-red-50 text-red-600 mr-4 z-10">
+                        <i class="fas fa-bullhorn"></i>
+                    </div>
+                    <div class="z-10 pt-1">
+                        <h3 class="text-lg font-bold text-slate-800 mb-1 font-poppins">Terlalu Fokus Jualan</h3>
+                        <p class="text-slate-600 text-sm leading-snug">Audiens mencari value, bukan sekadar brosur.
+                            Gunakan prinsip 80% edukasi/hiburan, 20% jualan.</p>
+                    </div>
+                </div>
+                <!-- Point 2 -->
+                <div class="mistake-item p-4 rounded-xl flex items-start">
+                    <span class="number-badge">02</span>
+                    <div class="icon-box bg-orange-50 text-orange-600 mr-4 z-10">
+                        <i class="fas fa-calendar-times"></i>
+                    </div>
+                    <div class="z-10 pt-1">
+                        <h3 class="text-lg font-bold text-slate-800 mb-1 font-poppins">Tanpa Content Plan</h3>
+                        <p class="text-slate-600 text-sm leading-snug">Posting 'asal ada' membuat pesan tidak konsisten,
+                            sulit dievaluasi, dan brand identity menjadi kabur.</p>
+                    </div>
+                </div>
+                <!-- Point 3 -->
+                <div class="mistake-item p-4 rounded-xl flex items-start">
+                    <span class="number-badge">03</span>
+                    <div class="icon-box bg-yellow-50 text-yellow-600 mr-4 z-10">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <div class="z-10 pt-1">
+                        <h3 class="text-lg font-bold text-slate-800 mb-1 font-poppins">Salah Format Platform</h3>
+                        <p class="text-slate-600 text-sm leading-snug">Setiap medsos punya bahasa sendiri. Contoh:
+                            Jangan post video landscape panjang di TikTok/Reels.</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Right Column -->
+            <div class="space-y-0.5">
+                <!-- Point 4 -->
+                <div class="mistake-item p-4 rounded-xl flex items-start">
+                    <span class="number-badge">04</span>
+                    <div class="icon-box bg-pink-50 text-pink-600 mr-4 z-10">
+                        <i class="fas fa-comment-slash"></i>
+                    </div>
+                    <div class="z-10 pt-1">
+                        <h3 class="text-lg font-bold text-slate-800 mb-1 font-poppins">Mengabaikan Engagement</h3>
+                        <p class="text-slate-600 text-sm leading-snug">Medsos adalah komunikasi dua arah. Tidak membalas
+                            komentar = mengabaikan calon pelanggan.</p>
+                    </div>
+                </div>
+                <!-- Point 5 -->
+                <div class="mistake-item p-4 rounded-xl flex items-start">
+                    <span class="number-badge">05</span>
+                    <div class="icon-box bg-indigo-50 text-indigo-600 mr-4 z-10">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <div class="z-10 pt-1">
+                        <h3 class="text-lg font-bold text-slate-800 mb-1 font-poppins">Buta Data (No Analytics)</h3>
+                        <p class="text-slate-600 text-sm leading-snug">Tanpa melihat insight, Anda tidak tahu apa yang
+                            berhasil. Ini cara tercepat membuang waktu &amp; budget.</p>
+                    </div>
+                </div>
+                <!-- Visual Placeholder for Balance -->
+                <div
+                    class="h-full flex flex-col items-center justify-center opacity-40 border-2 border-dashed border-slate-300 rounded-xl bg-slate-50">
+                    <i class="fas fa-exclamation-triangle text-5xl text-red-300 mb-3"></i>
+                    <p class="text-xs text-slate-500 font-bold uppercase tracking-widest text-center px-8">Identifikasi
+                        &amp; Eliminasi Kesalahan</p>
+                </div>
+            </div>
+        </div>
+        <!-- Insight Footer -->
+        <div class="mt-auto pt-4">
+            <div
+                class="insight-card p-5 flex items-center shadow-lg transform hover:scale-[1.01] transition-transform duration-300">
+                <div class="bg-gradient-to-br from-green-400 to-green-600 p-3 rounded-xl mr-5 shadow-lg flex-shrink-0">
+                    <i class="fas fa-check-circle text-2xl text-white"></i>
+                </div>
+                <div class="flex-grow border-l border-slate-600 pl-5">
+                    <p class="text-green-400 text-xs font-bold uppercase tracking-widest mb-1">STRATEGI PERBAIKAN</p>
+                    <p class="text-lg text-white font-medium">"Jangan temukan roda baru. <span
+                            class="text-green-300 font-bold">Analisa konten Anda yang performanya paling bagus</span>,
+                        lalu duplikasi formulanya."</p>
+                </div>
+                <div class="ml-6 text-slate-600 font-bold text-5xl opacity-20 select-none">
+                    <i class="fas fa-chart-bar"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

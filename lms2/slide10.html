@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+
+<html lang="id">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Reporting &amp; Analytics Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&amp;family=Open+Sans:wght@400;600&amp;display=swap"
+        rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #f3f4f6;
+            font-family: 'Open Sans', sans-serif;
+        }
+
+        .slide-container {
+            width: 1280px;
+            height: 720px;
+            background-color: #ffffff;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Colors */
+        .bg-navy {
+            background-color: #1B2A4A;
+        }
+
+        .text-navy {
+            color: #1B2A4A;
+        }
+
+        .bg-accent {
+            background-color: #2196F3;
+        }
+
+        .text-accent {
+            color: #2196F3;
+        }
+
+        .bg-light-gray {
+            background-color: #F8F9FA;
+        }
+
+        /* Typography */
+        h1,
+        h2,
+        h3,
+        h4,
+        .font-montserrat {
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        /* Dashboard Specific Styles */
+        .kpi-card {
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            transition: transform 0.2s;
+            border: 1px solid #E5E7EB;
+        }
+
+        .kpi-icon-wrapper {
+            width: 48px;
+            height: 48px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+        }
+
+        .chart-container {
+            position: relative;
+            height: 100%;
+            width: 100%;
+        }
+
+        .dashboard-sidebar {
+            background-color: #F3F4F6;
+            border-right: 1px solid #E5E7EB;
+        }
+
+        .filter-badge {
+            font-size: 0.7rem;
+            padding: 2px 8px;
+            border-radius: 12px;
+            background-color: #E0E7FF;
+            color: #3730A3;
+            margin-right: 4px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="slide-container">
+        <!-- Header Section -->
+        <div class="bg-navy h-24 w-full flex items-center px-12 justify-between shrink-0 z-20 shadow-md">
+            <div class="flex items-center space-x-4">
+                <div class="w-10 h-10 bg-white rounded flex items-center justify-center text-navy font-bold shadow">
+                    <i class="fas fa-chart-pie"></i>
+                </div>
+                <h1 class="text-3xl font-bold text-white tracking-wide uppercase font-montserrat">Reporting &amp;
+                    Analytics</h1>
+            </div>
+            <div class="flex flex-col items-end">
+                <p class="text-xs text-blue-300 font-montserrat tracking-widest uppercase">Data-Driven Insights</p>
+                <p class="text-sm font-semibold text-white">PT YKKAP Indonesia</p>
+            </div>
+        </div>
+        <!-- Main Content Area -->
+        <div class="flex flex-1 w-full overflow-hidden bg-light-gray relative">
+            <!-- Sidebar / Controls -->
+            <div class="w-64 dashboard-sidebar p-6 flex flex-col justify-between shrink-0 z-10">
+                <div>
+                    <h3 class="text-xs font-bold text-gray-400 uppercase tracking-wider mb-4 font-montserrat">Dashboard
+                        Views</h3>
+                    <div class="space-y-2">
+                        <div
+                            class="flex items-center p-3 bg-white rounded-lg shadow-sm border-l-4 border-accent cursor-pointer">
+                            <i class="fas fa-users-cog text-accent mr-3"></i>
+                            <div>
+                                <p class="text-sm font-bold text-navy">HR Overview</p>
+                                <p class="text-xs text-gray-500">Compliance &amp; Status</p>
+                            </div>
+                        </div>
+                        <div
+                            class="flex items-center p-3 bg-transparent hover:bg-white rounded-lg cursor-pointer transition-colors opacity-60">
+                            <i class="fas fa-briefcase text-gray-600 mr-3"></i>
+                            <div>
+                                <p class="text-sm font-bold text-gray-700">Management</p>
+                                <p class="text-xs text-gray-500">ROI &amp; Performance</p>
+                            </div>
+                        </div>
+                    </div>
+                    <h3 class="text-xs font-bold text-gray-400 uppercase tracking-wider mb-4 mt-8 font-montserrat">
+                        Active Filters</h3>
+                    <div class="bg-white p-3 rounded-lg border border-gray-200">
+                        <div class="mb-2">
+                            <p class="text-xs text-gray-500 mb-1">Division</p>
+                            <p class="text-sm font-semibold text-navy">Manufacturing</p>
+                        </div>
+                        <div class="mb-2">
+                            <p class="text-xs text-gray-500 mb-1">Period</p>
+                            <p class="text-sm font-semibold text-navy">Q1 2026</p>
+                        </div>
+                        <div class="flex flex-wrap gap-1 mt-2">
+                            <span class="filter-badge">Compliance</span>
+                            <span class="filter-badge">Tech</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="pt-4 border-t border-gray-200">
+                    <p class="text-xs font-bold text-gray-400 uppercase tracking-wider mb-2 font-montserrat">Export
+                        Options</p>
+                    <div class="grid grid-cols-2 gap-2">
+                        <div
+                            class="bg-white border border-gray-300 rounded p-2 text-center text-gray-600 text-xs font-semibold cursor-pointer hover:bg-gray-50">
+                            <i class="fas fa-file-pdf text-red-500 mb-1 block text-lg"></i> PDF
+                        </div>
+                        <div
+                            class="bg-white border border-gray-300 rounded p-2 text-center text-gray-600 text-xs font-semibold cursor-pointer hover:bg-gray-50">
+                            <i class="fas fa-file-excel text-green-500 mb-1 block text-lg"></i> Excel
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Dashboard Content -->
+            <div class="flex-1 p-8 overflow-hidden flex flex-col">
+                <!-- KPI Cards Row -->
+                <div class="grid grid-cols-4 gap-6 mb-6">
+                    <!-- KPI 1 -->
+                    <div class="kpi-card p-4 flex items-center justify-between">
+                        <div>
+                            <p class="text-xs text-gray-500 uppercase font-semibold">Completion Rate</p>
+                            <p class="text-2xl font-bold text-navy mt-1">87.5%</p>
+                            <p class="text-xs text-green-500 mt-1"><i class="fas fa-arrow-up"></i> 5.2% vs last month
+                            </p>
+                        </div>
+                        <div class="kpi-icon-wrapper bg-blue-100 text-blue-600">
+                            <i class="fas fa-check-circle"></i>
+                        </div>
+                    </div>
+                    <!-- KPI 2 -->
+                    <div class="kpi-card p-4 flex items-center justify-between">
+                        <div>
+                            <p class="text-xs text-gray-500 uppercase font-semibold">Avg. Score</p>
+                            <p class="text-2xl font-bold text-navy mt-1">82/100</p>
+                            <p class="text-xs text-green-500 mt-1"><i class="fas fa-arrow-up"></i> 2.1 pts vs target</p>
+                        </div>
+                        <div class="kpi-icon-wrapper bg-purple-100 text-purple-600">
+                            <i class="fas fa-star-half-alt"></i>
+                        </div>
+                    </div>
+                    <!-- KPI 3 -->
+                    <div class="kpi-card p-4 flex items-center justify-between">
+                        <div>
+                            <p class="text-xs text-gray-500 uppercase font-semibold">Total Hours</p>
+                            <p class="text-2xl font-bold text-navy mt-1">1,240 h</p>
+                            <p class="text-xs text-gray-500 mt-1">Learning Time</p>
+                        </div>
+                        <div class="kpi-icon-wrapper bg-orange-100 text-orange-600">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                    </div>
+                    <!-- KPI 4 -->
+                    <div class="kpi-card p-4 flex items-center justify-between">
+                        <div>
+                            <p class="text-xs text-gray-500 uppercase font-semibold">Compliance</p>
+                            <p class="text-2xl font-bold text-navy mt-1">94%</p>
+                            <p class="text-xs text-red-500 mt-1"><i class="fas fa-exclamation-circle"></i> 6% Pending
+                            </p>
+                        </div>
+                        <div class="kpi-icon-wrapper bg-green-100 text-green-600">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                    </div>
+                </div>
+                <!-- Charts Row -->
+                <div class="grid grid-cols-2 gap-6 flex-1 min-h-0">
+                    <!-- Chart 1: Trend -->
+                    <div class="kpi-card p-5 flex flex-col">
+                        <div class="flex justify-between items-center mb-4">
+                            <h3 class="text-sm font-bold text-navy font-montserrat">Training Activity Trend</h3>
+                            <div class="text-xs text-gray-400 bg-gray-100 px-2 py-1 rounded">Last 6 Months</div>
+                        </div>
+                        <div class="flex-1 relative w-full h-full">
+                            <canvas id="trendChart"></canvas>
+                        </div>
+                    </div>
+                    <!-- Chart 2: Department Breakdown -->
+                    <div class="kpi-card p-5 flex flex-col">
+                        <div class="flex justify-between items-center mb-4">
+                            <h3 class="text-sm font-bold text-navy font-montserrat">Participation by Division</h3>
+                            <div class="text-xs text-gray-400 bg-gray-100 px-2 py-1 rounded">Q1 2026</div>
+                        </div>
+                        <div class="flex-1 relative w-full h-full flex items-center justify-center">
+                            <canvas id="divisionChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+                <!-- Bottom Metrics Strip -->
+                <div class="mt-6 bg-white rounded-lg p-3 border border-gray-200 flex justify-between items-center">
+                    <p class="text-xs text-gray-500"><i class="fas fa-info-circle text-accent mr-1"></i> Data updated:
+                        26 Feb 2026 09:00 AM</p>
+                    <div class="flex space-x-4">
+                        <div class="text-xs">
+                            <span class="text-gray-400">Active Learners:</span>
+                            <span class="font-bold text-navy">452</span>
+                        </div>
+                        <div class="text-xs">
+                            <span class="text-gray-400">Certificates Issued:</span>
+                            <span class="font-bold text-navy">328</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Footer Section -->
+        <div class="h-12 bg-white border-t border-gray-200 flex items-center justify-between px-12 shrink-0 z-20">
+            <p class="text-xs text-gray-400 font-semibold tracking-wide">Sinergi TechForce | PT Mustika Sinergi
+                Integrasi</p>
+            <div class="flex items-center space-x-4">
+                <p class="text-xs text-gray-300 uppercase tracking-widest">Confidential</p>
+                <div class="h-4 w-px bg-gray-300"></div>
+                <p class="text-xs text-navy font-bold">10</p>
+            </div>
+        </div>
+    </div>
+    <!-- Chart.js Initialization -->
+    <script>
+        // Trend Chart
+        const ctxTrend = document.getElementById('trendChart').getContext('2d');
+        const gradient = ctxTrend.createLinearGradient(0, 0, 0, 400);
+        gradient.addColorStop(0, 'rgba(33, 150, 243, 0.2)');
+        gradient.addColorStop(1, 'rgba(33, 150, 243, 0.0)');
+
+        new Chart(ctxTrend, {
+            type: 'line',
+            data: {
+                labels: ['Sep', 'Oct', 'Nov', 'Dec', 'Jan', 'Feb'],
+                datasets: [{
+                    label: 'Course Completions',
+                    data: [65, 78, 90, 85, 110, 125],
+                    borderColor: '#2196F3',
+                    backgroundColor: gradient,
+                    borderWidth: 2,
+                    tension: 0.4,
+                    fill: true,
+                    pointBackgroundColor: '#fff',
+                    pointBorderColor: '#2196F3',
+                    pointRadius: 4
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { display: false }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        grid: { borderDash: [2, 2], color: '#f3f4f6' },
+                        ticks: { font: { size: 10 } }
+                    },
+                    x: {
+                        grid: { display: false },
+                        ticks: { font: { size: 10 } }
+                    }
+                }
+            }
+        });
+
+        // Division Chart
+        const ctxDiv = document.getElementById('divisionChart').getContext('2d');
+        new Chart(ctxDiv, {
+            type: 'doughnut',
+            data: {
+                labels: ['Production', 'IT', 'HR', 'Sales', 'Finance'],
+                datasets: [{
+                    data: [45, 15, 10, 20, 10],
+                    backgroundColor: [
+                        '#1B2A4A', // Navy
+                        '#2196F3', // Accent Blue
+                        '#64B5F6', // Lighter Blue
+                        '#90CAF9', // Even Lighter
+                        '#E3F2FD'  // Lightest
+                    ],
+                    borderWidth: 0,
+                    hoverOffset: 4
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                cutout: '70%',
+                plugins: {
+                    legend: {
+                        position: 'right',
+                        labels: { boxWidth: 12, font: { size: 10 }, padding: 15 }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

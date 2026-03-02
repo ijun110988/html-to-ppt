@@ -5,264 +5,292 @@
 <head>
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <title>Persiapan Sebelum Membangun Sistem</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
-    <link
-        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&amp;family=Inter:wght@300;400;600&amp;display=swap"
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&amp;display=swap"
         rel="stylesheet" />
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" rel="stylesheet" />
     <style>
         body {
             margin: 0;
-            padding: 0;
-            background-color: #f3f4f6;
-            font-family: 'Inter', sans-serif;
-            overflow: hidden;
         }
 
-        .slide-container {
+        .slide {
             width: 1280px;
             height: 720px;
-            background-color: #0B0F19;
-            /* Navy/Black Theme */
+            display: flex;
+            background: #0E1A3A;
+            font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
             position: relative;
             overflow: hidden;
-            display: flex;
-            color: white;
         }
 
-        /* Left Side - Visual & Title */
-        .left-panel {
-            width: 480px;
-            background-color: #0B0F19;
-            padding: 60px 50px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            position: relative;
-            z-index: 10;
+        .gold {
+            color: #F5A623;
         }
 
-        .decorative-grid {
+        .gold-bg {
+            background: #F5A623;
+        }
+
+        .muted {
+            color: rgba(255, 255, 255, 0.78);
+        }
+
+        .muted2 {
+            color: rgba(255, 255, 255, 0.62);
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(245, 166, 35, 0.20);
+        }
+
+        .glow {
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            opacity: 0.1;
-            background-image: linear-gradient(#374151 1px, transparent 1px), linear-gradient(90deg, #374151 1px, transparent 1px);
-            background-size: 40px 40px;
-            z-index: -1;
+            inset: -45% -35% auto auto;
+            width: 860px;
+            height: 860px;
+            border-radius: 9999px;
+            background: radial-gradient(circle at 30% 30%, rgba(245, 166, 35, 0.14), rgba(14, 26, 58, 0) 60%);
+            pointer-events: none;
         }
 
-        .gold-accent {
-            width: 80px;
-            height: 6px;
-            background-color: #D4AF37;
-            margin-bottom: 40px;
-        }
-
-        h1 {
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 800;
-            font-size: 48px;
-            line-height: 1.2;
-            color: #FFFFFF;
-            margin-bottom: 24px;
-        }
-
-        .subtitle {
-            font-family: 'Inter', sans-serif;
-            font-size: 18px;
-            line-height: 1.6;
-            color: #9CA3AF;
-        }
-
-        .foundation-icon {
-            font-size: 120px;
-            color: rgba(212, 175, 55, 0.1);
-            position: absolute;
-            bottom: 40px;
-            right: 40px;
-            z-index: 0;
-        }
-
-        /* Right Side - Checklist */
-        .right-panel {
-            flex: 1;
-            background-color: #111827;
-            /* Slightly lighter than left */
-            padding: 60px 80px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            position: relative;
-        }
-
-        .checklist-container {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
-
-        .checklist-item {
-            display: flex;
-            align-items: center;
-            background-color: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            padding: 16px 24px;
-            border-radius: 12px;
-            transition: all 0.3s ease;
-        }
-
-        .checklist-item:hover {
-            background-color: rgba(255, 255, 255, 0.08);
-            border-color: rgba(212, 175, 55, 0.3);
-            transform: translateX(10px);
-        }
-
-        .checkbox {
-            width: 28px;
-            height: 28px;
-            border: 2px solid #D4AF37;
-            border-radius: 6px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-right: 20px;
-            flex-shrink: 0;
-        }
-
-        .check-mark {
-            color: #D4AF37;
-            font-size: 16px;
-        }
-
-        .item-text {
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 500;
-            font-size: 18px;
-            color: #E5E7EB;
-        }
-
-        .item-subtext {
-            font-family: 'Inter', sans-serif;
-            font-size: 14px;
-            color: #9CA3AF;
-            margin-top: 4px;
-            display: block;
-        }
-
-        /* Decorative Elements */
-        .corner-accent {
-            position: absolute;
-            top: 0;
-            right: 0;
-            width: 150px;
-            height: 150px;
-            border-top: 2px solid rgba(212, 175, 55, 0.2);
-            border-right: 2px solid rgba(212, 175, 55, 0.2);
-        }
-
-        .page-number {
-            position: absolute;
-            bottom: 40px;
-            right: 50px;
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 600;
-            color: #4B5563;
-            font-size: 14px;
-        }
-
-        .notes-container {
-            display: none;
+        .hairline {
+            border-color: rgba(245, 166, 35, 0.45);
         }
     </style>
 </head>
 
 <body>
-    <div class="slide-container">
-        <!-- Left Panel -->
-        <div class="left-panel">
-            <div class="decorative-grid"></div>
-            <div class="gold-accent"></div>
-            <h1>PERSIAPAN<br /><span style="color: #D4AF37;">FONDASI</span><br />SISTEM</h1>
-            <p class="subtitle">
-                Sebelum memulai teknis automasi, pastikan 6 elemen fundamental ini sudah siap agar sistem berjalan
-                lancar tanpa hambatan.
-            </p>
-            <i class="fa-solid fa-layer-group foundation-icon"></i>
+    <div class="slide">
+        <!-- Decorative geometry (no gradients) -->
+        <div class="absolute inset-0" style="pointer-events:none;">
+            <div class="glow"></div>
+            <div class="absolute"
+                style="left:-140px; top:-160px; width:560px; height:560px; border-radius:9999px; border:2px solid rgba(245,166,35,0.26);">
+            </div>
+            <div class="absolute"
+                style="left:86px; top:78px; width:190px; height:190px; border-radius:9999px; border:2px solid rgba(255,255,255,0.10);">
+            </div>
+            <div class="absolute"
+                style="right:-170px; bottom:-190px; width:650px; height:650px; border-radius:9999px; border:2px solid rgba(245,166,35,0.22);">
+            </div>
+            <div class="absolute"
+                style="right:120px; bottom:96px; width:230px; height:230px; border-radius:9999px; border:2px solid rgba(255,255,255,0.10);">
+            </div>
+            <!-- Left rail -->
+            <div class="absolute" style="left:0; top:0; width:100%; height:100%;">
+                <div class="absolute gold-bg" style="left:0; top:0; width:10px; height:100%; opacity:0.9;"></div>
+                <div class="absolute"
+                    style="left:18px; top:0; width:2px; height:100%; background: rgba(245,166,35,0.30);"></div>
+                <div class="absolute"
+                    style="left:0; top:66px; width:100%; height:1px; background: rgba(255,255,255,0.06);"></div>
+            </div>
         </div>
-        <!-- Right Panel -->
-        <div class="right-panel">
-            <div class="corner-accent"></div>
-            <div class="checklist-container">
-                <!-- Item 1 -->
-                <div class="checklist-item">
-                    <div class="checkbox">
-                        <i class="fa-solid fa-check check-mark"></i>
+        <!-- Main -->
+        <div class="relative flex-1 flex flex-col">
+            <!-- Header -->
+            <div class="w-full px-16 pt-8 flex items-center justify-between">
+                <div class="flex items-center space-x-3">
+                    <div class="card flex items-center justify-center" style="width:44px; height:44px; border-radius:10px;">
+                        <i class="fa-solid fa-building" style="color: rgba(255,255,255,0.82); font-size:15px;"></i>
                     </div>
-                    <div>
-                        <p class="item-text">Produk Margin ≥ 30%</p>
-                        <span class="item-subtext">Agar profit cukup menutup biaya operasional sistem</span>
-                    </div>
-                </div>
-                <!-- Item 2 -->
-                <div class="checklist-item">
-                    <div class="checkbox">
-                        <i class="fa-solid fa-check check-mark"></i>
-                    </div>
-                    <div>
-                        <p class="item-text">Payment Gateway / Bank Bisnis</p>
-                        <span class="item-subtext">Rekening khusus agar cashflow tidak tercampur pribadi</span>
+                    <div class="flex flex-col">
+                        <p class="muted2 text-xs tracking-widest font-semibold">UNTUK</p>
+                        <p class="text-white text-sm font-semibold tracking-wide">PT YKK AP Indonesia</p>
                     </div>
                 </div>
-                <!-- Item 3 -->
-                <div class="checklist-item">
-                    <div class="checkbox">
-                        <i class="fa-solid fa-check check-mark"></i>
-                    </div>
-                    <div>
-                        <p class="item-text">Google Account Khusus</p>
-                        <span class="item-subtext">Email GMail fresh untuk database &amp; drive sistem</span>
-                    </div>
-                </div>
-                <!-- Item 4 -->
-                <div class="checklist-item">
-                    <div class="checkbox">
-                        <i class="fa-solid fa-check check-mark"></i>
-                    </div>
-                    <div>
-                        <p class="item-text">Nomor WhatsApp Business</p>
-                        <span class="item-subtext">Nomor dedicated untuk notifikasi &amp; CS (bukan pribadi)</span>
-                    </div>
-                </div>
-                <!-- Item 5 -->
-                <div class="checklist-item">
-                    <div class="checkbox">
-                        <i class="fa-solid fa-check check-mark"></i>
-                    </div>
-                    <div>
-                        <p class="item-text">Brand Identity Jelas</p>
-                        <span class="item-subtext">Logo, warna brand, dan tone komunikasi sudah final</span>
-                    </div>
-                </div>
-                <!-- Item 6 -->
-                <div class="checklist-item">
-                    <div class="checkbox">
-                        <i class="fa-solid fa-check check-mark"></i>
-                    </div>
-                    <div>
-                        <p class="item-text">Mindset Investasi Waktu</p>
-                        <span class="item-subtext">Siapkan 7-14 hari untuk setup awal hingga running well</span>
+                <div class="flex items-center space-x-3">
+                    <div class="card px-4 py-2 rounded-full">
+                        <p class="text-white text-xs font-semibold tracking-widest">TAHUN <span class="gold">2026</span></p>
                     </div>
                 </div>
             </div>
-            <div class="page-number">05</div>
-        </div>
-        <div class="notes-container">
-            Sebelum membangun sistem, pastikan fondasi bisnis kuat. Produk harus profitable, payment method jelas, dan
-            Anda siap investasi waktu 1-2 minggu untuk setup. Sistem ini sekali setup, bisa dipakai bertahun-tahun.
+            <!-- Body -->
+            <div class="flex-1 px-14 pt-4 pb-4 flex">
+                <!-- Left: Title / context -->
+                <div class="flex flex-col" style="width: 430px;">
+                    <div class="flex items-center space-x-4 mb-6">
+                        <div class="gold-bg" style="width:64px; height:6px; border-radius:9999px;"></div>
+                        <div style="width:10px; height:10px; border-radius:9999px; background: rgba(245,166,35,0.85);">
+                        </div>
+                        <div style="width:10px; height:10px; border-radius:9999px; background: rgba(245,166,35,0.45);">
+                        </div>
+                    </div>
+                    <div class="mb-7">
+                        <p class="text-white font-extrabold leading-tight"
+                            style="font-size:40px; letter-spacing:-0.02em;">
+                            Dampak Operasional<br />
+                            <span class="gold">Tanpa</span> LMS
+                        </p>
+                    </div>
+                    <div class="mb-7">
+                        <p class="muted text-base leading-relaxed">
+                            Tanpa sistem terstruktur, pengelolaan pelatihan berisiko menimbulkan gap kompetensi, temuan
+                            audit,
+                            dan beban administrasi tinggi. Dampaknya terasa langsung pada kualitas operasional dan
+                            akuntabilitas HR.
+                        </p>
+                    </div>
+                    <div class="card rounded-2xl p-5">
+                        <div class="flex items-center space-x-3 mb-3">
+                            <div class="gold-bg"
+                                style="width:34px; height:34px; border-radius:10px; display:flex; align-items:center; justify-content:center;">
+                                <i class="fa-solid fa-triangle-exclamation" style="color:#0E1A3A; font-size:14px;"></i>
+                            </div>
+                            <div>
+                                <p class="text-white text-sm font-semibold">Mengapa ini krusial?</p>
+                                <p class="muted2 text-xs">Risiko bisnis &amp; kepatuhan meningkat</p>
+                            </div>
+                        </div>
+                        <div class="space-y-1">
+                            <div class="flex items-center space-x-3">
+                                <i class="fa-regular fa-circle-xmark"
+                                    style="color: rgba(245,166,35,0.95); font-size:14px;"></i>
+                                <p class="muted text-sm">Kualitas pelatihan sulit distandarkan</p>
+                            </div>
+                            <div class="flex items-center space-x-3">
+                                <i class="fa-regular fa-circle-xmark"
+                                    style="color: rgba(245,166,35,0.95); font-size:14px;"></i>
+                                <p class="muted text-sm">Pelaporan compliance tidak siap setiap saat</p>
+                            </div>
+                            <div class="flex items-center space-x-3">
+                                <i class="fa-regular fa-circle-xmark"
+                                    style="color: rgba(245,166,35,0.95); font-size:14px;"></i>
+                                <p class="muted text-sm">HR tersita untuk pekerjaan administratif berulang</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Right: Key points (ikon) -->
+                <div class="flex-1 pl-12 flex flex-col">
+                    <div class="card rounded-3xl p-6">
+                        <div class="flex items-center justify-between mb-3">
+                            <div class="flex items-center space-x-3">
+                                <div class="gold-bg"
+                                    style="width:36px; height:36px; border-radius:12px; display:flex; align-items:center; justify-content:center;">
+                                    <i class="fa-solid fa-shield-halved" style="color:#0E1A3A; font-size:16px;"></i>
+                                </div>
+                                <div>
+                                    <p class="text-white text-sm font-semibold">Risiko Bisnis Tanpa LMS</p>
+                                    <p class="muted2 text-xs">6 dampak operasional yang perlu dimitigasi</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center space-x-2">
+                                <div
+                                    style="width:10px; height:10px; border-radius:9999px; background: rgba(245,166,35,0.75);">
+                                </div>
+                                <div
+                                    style="width:10px; height:10px; border-radius:9999px; background: rgba(255,255,255,0.20);">
+                                </div>
+                                <div
+                                    style="width:10px; height:10px; border-radius:9999px; background: rgba(255,255,255,0.12);">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="space-y-1">
+                            <!-- Point 1 -->
+                            <div class="flex items-start space-x-3 p-2.5 rounded-xl"
+                                style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.07);">
+                                <div class="gold-bg flex items-center justify-center"
+                                    style="width:44px; height:44px; border-radius:14px; flex:0 0 auto;">
+                                    <i class="fa-solid fa-people-arrows" style="color:#0E1A3A; font-size:15px;"></i>
+                                </div>
+                                <div class="flex-1">
+                                    <p class="text-white text-sm font-semibold leading-tight">Standar kompetensi tidak konsisten
+                                        antar divisi</p>
+                                    <p class="muted2 text-[11px] leading-tight mt-0.5">Peran yang sama berpotensi memiliki kualitas output
+                                        yang berbeda karena pembinaan tidak seragam.</p>
+                                </div>
+                            </div>
+                            <!-- Point 2 -->
+                            <div class="flex items-start space-x-3 p-2.5 rounded-xl"
+                                style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.07);">
+                                <div class="gold-bg flex items-center justify-center"
+                                    style="width:44px; height:44px; border-radius:14px; flex:0 0 auto;">
+                                    <i class="fa-solid fa-clipboard-check" style="color:#0E1A3A; font-size:15px;"></i>
+                                </div>
+                                <div class="flex-1">
+                                    <p class="text-white text-sm font-semibold leading-tight">Risiko temuan audit &amp; compliance
+                                    </p>
+                                    <p class="muted2 text-[11px] leading-tight mt-0.5">Bukti training mandatory (mis. K3/ISO) sulit ditarik
+                                        cepat saat dibutuhkan.</p>
+                                </div>
+                            </div>
+                            <!-- Point 3 -->
+                            <div class="flex items-start space-x-3 p-2.5 rounded-xl"
+                                style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.07);">
+                                <div class="gold-bg flex items-center justify-center"
+                                    style="width:44px; height:44px; border-radius:14px; flex:0 0 auto;">
+                                    <i class="fa-solid fa-clock" style="color:#0E1A3A; font-size:15px;"></i>
+                                </div>
+                                <div class="flex-1">
+                                    <p class="text-white text-sm font-semibold leading-tight">Beban administrasi HR meningkat</p>
+                                    <p class="muted2 text-[11px] leading-tight mt-0.5">Input data manual, follow-up peserta, dan rekap
+                                        laporan menyita waktu tim.</p>
+                                </div>
+                            </div>
+                            <!-- Point 4 -->
+                            <div class="flex items-start space-x-3 p-2.5 rounded-xl"
+                                style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.07);">
+                                <div class="gold-bg flex items-center justify-center"
+                                    style="width:44px; height:44px; border-radius:14px; flex:0 0 auto;">
+                                    <i class="fa-solid fa-eye" style="color:#0E1A3A; font-size:15px;"></i>
+                                </div>
+                                <div class="flex-1">
+                                    <p class="text-white text-sm font-semibold leading-tight">Transparansi progres pelatihan rendah
+                                    </p>
+                                    <p class="muted2 text-[11px] leading-tight mt-0.5">Manajemen dan atasan sulit melihat status learning
+                                        per karyawan secara real-time.</p>
+                                </div>
+                            </div>
+                            <!-- Point 5 -->
+                            <div class="flex items-start space-x-3 p-2.5 rounded-xl"
+                                style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.07);">
+                                <div class="gold-bg flex items-center justify-center"
+                                    style="width:44px; height:44px; border-radius:14px; flex:0 0 auto;">
+                                    <i class="fa-solid fa-chart-pie" style="color:#0E1A3A; font-size:15px;"></i>
+                                </div>
+                                <div class="flex-1">
+                                    <p class="text-white text-sm font-semibold leading-tight">Efektivitas &amp; ROI training sulit
+                                        diukur</p>
+                                    <p class="muted2 text-[11px] leading-tight mt-0.5">Tanpa data terstruktur, evaluasi program menjadi
+                                        subjektif dan tidak konsisten.</p>
+                                </div>
+                            </div>
+                            <!-- Point 6 -->
+                            <div class="flex items-start space-x-3 p-2.5 rounded-xl"
+                                style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.07);">
+                                <div class="gold-bg flex items-center justify-center"
+                                    style="width:44px; height:44px; border-radius:14px; flex:0 0 auto;">
+                                    <i class="fa-solid fa-folder-open" style="color:#0E1A3A; font-size:15px;"></i>
+                                </div>
+                                <div class="flex-1">
+                                    <p class="text-white text-sm font-semibold leading-tight">Data training tersebar &amp; tidak
+                                        terintegrasi</p>
+                                    <p class="muted2 text-[11px] leading-tight mt-0.5">Rekap berada di banyak file/versi, meningkatkan
+                                        risiko inkonsistensi dan kehilangan data.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Small footer tag -->
+                    
+                </div>
+            </div>
+            <!-- Footer -->
+            <div class="w-full px-16 pb-8 flex items-center justify-between">
+                <div class="flex items-center space-x-3">
+                    <div style="width:8px; height:8px; border-radius:9999px; background:#F5A623;"></div>
+                    <p class="muted2 text-xs">Proposal Implementasi LMS • Dampak Operasional Tanpa LMS</p>
+                </div>
+                <div class="flex items-center space-x-3">
+                    <i class="fa-regular fa-calendar" style="color: rgba(255,255,255,0.70); font-size:12px;"></i>
+                    <p class="muted2 text-xs">2026</p>
+                </div>
+            </div>
         </div>
     </div>
 </body>

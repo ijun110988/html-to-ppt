@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+
+<html lang="id">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=1280, height=720" name="viewport" />
+    <title>Roadmap Pengembangan</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&amp;display=swap"
+        rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" rel="stylesheet" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            overflow: hidden;
+        }
+
+        .slide-container {
+            width: 1280px;
+            height: 720px;
+            display: flex;
+            flex-direction: column;
+            background-color: #FFFFFF;
+            position: relative;
+        }
+
+        .header {
+            padding: 30px 60px 18px 60px;
+            border-bottom: 3px solid #2563EB;
+        }
+
+        .header-title {
+            font-size: 34px;
+            font-weight: 700;
+            color: #1B3A6B;
+            letter-spacing: -0.5px;
+        }
+
+        .content-wrapper {
+            flex: 1;
+            padding: 18px 60px 16px 60px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            overflow: hidden;
+        }
+
+        .timeline-container {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            position: relative;
+        }
+
+        .phase-row {
+            display: flex;
+            align-items: stretch;
+            gap: 0;
+            position: relative;
+        }
+
+        .phase-number {
+            width: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #1B3A6B;
+            color: #FFFFFF;
+            flex-shrink: 0;
+            position: relative;
+        }
+
+        .phase-number-text {
+            font-size: 24px;
+            font-weight: 800;
+            z-index: 2;
+        }
+
+        .phase-content {
+            flex: 1;
+            background-color: #F8FAFC;
+            border: 2px solid #E5E7EB;
+            padding: 12px 16px;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            transition: all 0.3s ease;
+            border-left: none;
+        }
+
+        .phase-content:hover {
+            background-color: #EFF6FF;
+            border-color: #2563EB;
+            transform: translateX(3px);
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.15);
+        }
+
+        .phase-icon {
+            width: 44px;
+            height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #2563EB;
+            color: #FFFFFF;
+            font-size: 18px;
+            border-radius: 10px;
+            flex-shrink: 0;
+        }
+
+        .phase-info {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .phase-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .phase-name {
+            font-size: 18px;
+            font-weight: 700;
+            color: #1B3A6B;
+            line-height: 1.2;
+        }
+
+        .phase-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 3px 10px;
+            background-color: #DBEAFE;
+            color: #1E40AF;
+            font-size: 12px;
+            font-weight: 700;
+            border-radius: 5px;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 6px 14px;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+        }
+
+        .feature-icon {
+            width: 16px;
+            height: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #2563EB;
+            color: #FFFFFF;
+            font-size: 9px;
+            border-radius: 3px;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .feature-text {
+            font-size: 12px;
+            font-weight: 500;
+            color: #4B5563;
+            line-height: 1.4;
+        }
+
+        .connector-line {
+            position: absolute;
+            left: 34px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background-color: #CBD5E1;
+            z-index: 0;
+        }
+
+        .footer-summary {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
+            padding: 12px 24px;
+            background-color: #EFF6FF;
+            border: 2px solid #2563EB;
+            margin-top: 6px;
+        }
+
+        .summary-icon {
+            width: 34px;
+            height: 34px;
+            background-color: #2563EB;
+            color: #FFFFFF;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            border-radius: 8px;
+            flex-shrink: 0;
+        }
+
+        .summary-text {
+            flex: 1;
+            font-size: 12px;
+            font-weight: 500;
+            color: #1B3A6B;
+            line-height: 1.5;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="slide-container">
+        <div class="header">
+            <div class="header-title">
+                <p>Roadmap Pengembangan</p>
+            </div>
+        </div>
+        <div class="content-wrapper">
+            <div class="timeline-container">
+                <div class="connector-line"></div>
+                <div class="phase-row">
+                    <div class="phase-number">
+                        <p class="phase-number-text">1</p>
+                    </div>
+                    <div class="phase-content">
+                        <div class="phase-icon">
+                            <i class="fas fa-rocket"></i>
+                        </div>
+                        <div class="phase-info">
+                            <div class="phase-header">
+                                <div class="phase-name">
+                                    <p>Fase 1: Core LMS &amp; Compliance</p>
+                                </div>
+                                <div class="phase-tag">
+                                    <i class="fas fa-flag"></i>
+                                    <p>Foundation</p>
+                                </div>
+                            </div>
+                            <div class="features-grid">
+                                <div class="feature-item">
+                                    <div class="feature-icon">
+                                        <i class="fas fa-check"></i>
+                                    </div>
+                                    <div class="feature-text">
+                                        <p>Repository konten dan struktur pembelajaran</p>
+                                    </div>
+                                </div>
+                                <div class="feature-item">
+                                    <div class="feature-icon">
+                                        <i class="fas fa-check"></i>
+                                    </div>
+                                    <div class="feature-text">
+                                        <p>Assignment otomatis dan learning path</p>
+                                    </div>
+                                </div>
+                                <div class="feature-item">
+                                    <div class="feature-icon">
+                                        <i class="fas fa-check"></i>
+                                    </div>
+                                    <div class="feature-text">
+                                        <p>Sertifikasi dan compliance tracking</p>
+                                    </div>
+                                </div>
+                                <div class="feature-item">
+                                    <div class="feature-icon">
+                                        <i class="fas fa-check"></i>
+                                    </div>
+                                    <div class="feature-text">
+                                        <p>Dashboard dasar untuk monitoring</p>
+                                    </div>
+                                </div>
+                                <div class="feature-item">
+                                    <div class="feature-icon">
+                                        <i class="fas fa-check"></i>
+                                    </div>
+                                    <div class="feature-text">
+                                        <p>Integrasi HRIS dasar (sync data organisasi)</p>
+                                    </div>
+                                </div>
+                                <div class="feature-item">
+                                    <div class="feature-icon">
+                                        <i class="fas fa-check"></i>
+                                    </div>
+                                    <div class="feature-text">
+                                        <p>Role-based access control (RBAC)</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="phase-row">
+                    <div class="phase-number">
+                        <p class="phase-number-text">2</p>
+                    </div>
+                    <div class="phase-content">
+                        <div class="phase-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <div class="phase-info">
+                            <div class="phase-header">
+                                <div class="phase-name">
+                                    <p>Fase 2: Advanced Analytics &amp; OJT Digital</p>
+                                </div>
+                                <div class="phase-tag">
+                                    <i class="fas fa-layer-group"></i>
+                                    <p>Enhancement</p>
+                                </div>
+                            </div>
+                            <div class="features-grid">
+                                <div class="feature-item">
+                                    <div class="feature-icon">
+                                        <i class="fas fa-check"></i>
+                                    </div>
+                                    <div class="feature-text">
+                                        <p>Engagement analytics dan learning effectiveness</p>
+                                    </div>
+                                </div>
+                                <div class="feature-item">
+                                    <div class="feature-icon">
+                                        <i class="fas fa-check"></i>
+                                    </div>
+                                    <div class="feature-text">
+                                        <p>OJT validation workflow digital</p>
+                                    </div>
+                                </div>
+                                <div class="feature-item">
+                                    <div class="feature-icon">
+                                        <i class="fas fa-check"></i>
+                                    </div>
+                                    <div class="feature-text">
+                                        <p>Mobile enablement (iOS/Android apps)</p>
+                                    </div>
+                                </div>
+                                <div class="feature-item">
+                                    <div class="feature-icon">
+                                        <i class="fas fa-check"></i>
+                                    </div>
+                                    <div class="feature-text">
+                                        <p>Advanced reporting dan drill-down capabilities</p>
+                                    </div>
+                                </div>
+                                <div class="feature-item">
+                                    <div class="feature-icon">
+                                        <i class="fas fa-check"></i>
+                                    </div>
+                                    <div class="feature-text">
+                                        <p>Gamification elements (badges, leaderboard)</p>
+                                    </div>
+                                </div>
+                                <div class="feature-item">
+                                    <div class="feature-icon">
+                                        <i class="fas fa-check"></i>
+                                    </div>
+                                    <div class="feature-text">
+                                        <p>Automated escalation dan reminder engine</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="phase-row">
+                    <div class="phase-number">
+                        <p class="phase-number-text">3</p>
+                    </div>
+                    <div class="phase-content">
+                        <div class="phase-icon">
+                            <i class="fas fa-network-wired"></i>
+                        </div>
+                        <div class="phase-info">
+                            <div class="phase-header">
+                                <div class="phase-name">
+                                    <p>Fase 3: Ecosystem Integration</p>
+                                </div>
+                                <div class="phase-tag">
+                                    <i class="fas fa-infinity"></i>
+                                    <p>Transformation</p>
+                                </div>
+                            </div>
+                            <div class="features-grid">
+                                <div class="feature-item">
+                                    <div class="feature-icon">
+                                        <i class="fas fa-check"></i>
+                                    </div>
+                                    <div class="feature-text">
+                                        <p>Integrasi ERP/Attendance/Production systems</p>
+                                    </div>
+                                </div>
+                                <div class="feature-item">
+                                    <div class="feature-icon">
+                                        <i class="fas fa-check"></i>
+                                    </div>
+                                    <div class="feature-text">
+                                        <p>Skill matrix dan competency mapping</p>
+                                    </div>
+                                </div>
+                                <div class="feature-item">
+                                    <div class="feature-icon">
+                                        <i class="fas fa-check"></i>
+                                    </div>
+                                    <div class="feature-text">
+                                        <p>AI-powered learning recommendation</p>
+                                    </div>
+                                </div>
+                                <div class="feature-item">
+                                    <div class="feature-icon">
+                                        <i class="fas fa-check"></i>
+                                    </div>
+                                    <div class="feature-text">
+                                        <p>Advanced automation dan business rule triggers</p>
+                                    </div>
+                                </div>
+                                <div class="feature-item">
+                                    <div class="feature-icon">
+                                        <i class="fas fa-check"></i>
+                                    </div>
+                                    <div class="feature-text">
+                                        <p>Predictive analytics (skill gap, training forecast)</p>
+                                    </div>
+                                </div>
+                                <div class="feature-item">
+                                    <div class="feature-icon">
+                                        <i class="fas fa-check"></i>
+                                    </div>
+                                    <div class="feature-text">
+                                        <p>Workforce planning integration</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-summary">
+                <div class="summary-icon">
+                    <i class="fas fa-route"></i>
+                </div>
+                <div class="summary-text">
+                    <p>Roadmap bersifat modular dan dapat disesuaikan dengan prioritas bisnis PT YKK AP Indonesia.
+                        Setiap fase dirancang untuk memberikan value incremental dan memastikan adopsi bertahap yang
+                        sustainable oleh pengguna di seluruh plant dan region.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

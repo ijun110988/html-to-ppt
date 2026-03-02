@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+
+<html lang="id">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=1280, height=720" name="viewport" />
+    <title>Executive Summary</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&amp;display=swap"
+        rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" rel="stylesheet" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            overflow: hidden;
+        }
+
+        .slide-container {
+            width: 1280px;
+            height: 720px;
+            display: flex;
+            flex-direction: column;
+            background-color: #FFFFFF;
+            position: relative;
+        }
+
+        .header {
+            padding: 50px 60px 30px 60px;
+            border-bottom: 3px solid #2563EB;
+        }
+
+        .header-title {
+            font-size: 40px;
+            font-weight: 700;
+            color: #1B3A6B;
+            letter-spacing: -0.5px;
+        }
+
+        .content-wrapper {
+            flex: 1;
+            padding: 40px 60px 50px 60px;
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+        }
+
+        .key-point {
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+            padding: 18px 24px;
+            background-color: #F8FAFC;
+            border-left: 4px solid #2563EB;
+            transition: all 0.3s ease;
+        }
+
+        .key-point:hover {
+            background-color: #EFF6FF;
+            transform: translateX(5px);
+        }
+
+        .icon-wrapper {
+            width: 48px;
+            height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #2563EB;
+            color: #FFFFFF;
+            font-size: 22px;
+            flex-shrink: 0;
+            border-radius: 4px;
+        }
+
+        .point-text {
+            flex: 1;
+            padding-top: 4px;
+        }
+
+        .point-text p {
+            font-size: 17px;
+            font-weight: 400;
+            color: #1F2937;
+            line-height: 1.6;
+        }
+
+        .highlight {
+            font-weight: 600;
+            color: #1B3A6B;
+        }
+
+        .footer-note {
+            padding: 0 60px 20px 60px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .footer-note p {
+            font-size: 15px;
+            font-weight: 600;
+            color: #2563EB;
+            letter-spacing: 0.3px;
+        }
+
+        .footer-icon {
+            width: 32px;
+            height: 32px;
+            background-color: #2563EB;
+            color: #FFFFFF;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="slide-container">
+        <div class="header">
+            <div class="header-title">
+                <p>Executive Summary</p>
+            </div>
+        </div>
+        <div class="content-wrapper">
+            <div class="key-point">
+                <div class="icon-wrapper">
+                    <i class="fas fa-industry"></i>
+                </div>
+                <div class="point-text">
+                    <p>Manufaktur <span class="highlight">multi-plant &amp; regional</span> menuntut standarisasi
+                        kompetensi yang konsisten dan terukur di seluruh unit operasional</p>
+                </div>
+            </div>
+            <div class="key-point">
+                <div class="icon-wrapper">
+                    <i class="fas fa-shield-alt"></i>
+                </div>
+                <div class="point-text">
+                    <p>Kebutuhan <span class="highlight">kontrol terpadu</span> atas compliance training: SOP,
+                        keselamatan kerja, ISO, dan audit readiness sebagai fondasi operasional yang aman dan
+                        berkualitas</p>
+                </div>
+            </div>
+            <div class="key-point">
+                <div class="icon-wrapper">
+                    <i class="fas fa-certificate"></i>
+                </div>
+                <div class="point-text">
+                    <p>Monitoring sertifikasi teknis operator dan staf harus <span class="highlight">real-time dan
+                            akurat</span> untuk menjamin kompetensi tim produksi dan compliance</p>
+                </div>
+            </div>
+            <div class="key-point">
+                <div class="icon-wrapper">
+                    <i class="fas fa-network-wired"></i>
+                </div>
+                <div class="point-text">
+                    <p>Diperlukan <span class="highlight">platform pembelajaran terintegrasi, scalable, dan
+                            data-driven</span> untuk orkestrasi pelatihan lintas unit dengan efisiensi tinggi</p>
+                </div>
+            </div>
+            <div class="key-point">
+                <div class="icon-wrapper">
+                    <i class="fas fa-chart-line"></i>
+                </div>
+                <div class="point-text">
+                    <p><span class="highlight">Outcome:</span> Tata kelola pelatihan enterprise, visibilitas menyeluruh
+                        atas kompetensi SDM, serta percepatan pengembangan kapabilitas organisasi</p>
+                </div>
+            </div>
+        </div>
+        <div class="footer-note">
+            <div class="footer-icon">
+                <i class="fas fa-lightbulb"></i>
+            </div>
+            <p>Fondasi transformasi digital SDM untuk pertumbuhan berkelanjutan PT YKK AP Indonesia</p>
+        </div>
+    </div>
+</body>
+
+</html>

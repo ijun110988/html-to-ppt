@@ -5,362 +5,296 @@
 <head>
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <title>Alur Sistem Otomatis Lengkap</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
-    <link
-        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&amp;family=Inter:wght@300;400;600&amp;display=swap"
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&amp;display=swap"
         rel="stylesheet" />
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" rel="stylesheet" />
     <style>
         body {
             margin: 0;
-            padding: 0;
-            background-color: #f3f4f6;
-            font-family: 'Inter', sans-serif;
-            overflow: hidden;
         }
 
-        .slide-container {
+        .slide {
             width: 1280px;
             height: 720px;
-            background-color: #FFFFFF;
+            display: flex;
+            background: #0E1A3A;
+            font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
             position: relative;
             overflow: hidden;
-            display: flex;
-            flex-direction: column;
         }
 
-        /* Header */
-        .header {
-            padding: 40px 60px 0 60px;
-            z-index: 10;
+        .gold {
+            color: #F5A623;
         }
 
-        h1 {
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 800;
-            font-size: 36px;
-            color: #111827;
-            text-transform: uppercase;
-            margin-bottom: 10px;
+        .gold-bg {
+            background: #F5A623;
         }
 
-        .subtitle {
-            font-family: 'Inter', sans-serif;
-            font-size: 18px;
-            color: #6B7280;
+        .muted {
+            color: rgba(255, 255, 255, 0.78);
         }
 
-        .gold-line {
-            width: 100px;
-            height: 4px;
-            background-color: #D4AF37;
-            margin-top: 15px;
+        .muted2 {
+            color: rgba(255, 255, 255, 0.62);
         }
 
-        /* Flow Diagram Container */
-        .flow-container {
-            flex: 1;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 0 40px;
-            position: relative;
+        .card {
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(245, 166, 35, 0.20);
         }
 
-        .flow-wrapper {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            position: relative;
-            z-index: 5;
-            width: 100%;
-            justify-content: center;
-        }
-
-        /* Flow Step Cards */
-        .step-card {
-            width: 140px;
-            height: 180px;
-            background-color: #FFFFFF;
-            border: 1px solid #E5E7EB;
-            border-radius: 12px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            padding: 15px;
-            position: relative;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            z-index: 2;
-        }
-
-        .step-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-            border-color: #D4AF37;
-        }
-
-        .step-icon {
-            width: 60px;
-            height: 60px;
-            background-color: #F3F4F6;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 15px;
-            font-size: 24px;
-            color: #374151;
-            transition: all 0.3s ease;
-        }
-
-        .step-card:hover .step-icon {
-            background-color: #0B0F19;
-            /* Navy */
-            color: #D4AF37;
-            /* Gold */
-        }
-
-        .step-title {
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 700;
-            font-size: 14px;
-            text-align: center;
-            color: #1F2937;
-            line-height: 1.3;
-            margin-bottom: 5px;
-        }
-
-        .step-desc {
-            font-family: 'Inter', sans-serif;
-            font-size: 11px;
-            text-align: center;
-            color: #9CA3AF;
-            line-height: 1.2;
-        }
-
-        /* Arrows */
-        .arrow-connector {
-            flex: 1;
-            height: 2px;
-            background-color: #E5E7EB;
-            position: relative;
-            min-width: 20px;
-            max-width: 40px;
-        }
-
-        .arrow-connector::after {
-            content: '';
+        .glow {
             position: absolute;
-            right: -5px;
-            top: 50%;
-            transform: translateY(-50%);
-            border-width: 5px 0 5px 6px;
-            border-style: solid;
-            border-color: transparent transparent transparent #E5E7EB;
+            inset: -45% -35% auto auto;
+            width: 860px;
+            height: 860px;
+            border-radius: 9999px;
+            background: radial-gradient(circle at 30% 30%, rgba(245, 166, 35, 0.14), rgba(14, 26, 58, 0) 60%);
+            pointer-events: none;
         }
 
-        /* Number Badge */
-        .step-number {
-            position: absolute;
-            top: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 24px;
-            height: 24px;
-            background-color: #0B0F19;
-            color: #FFFFFF;
-            border-radius: 50%;
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 700;
-            font-size: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border: 2px solid #FFFFFF;
-        }
-
-        .step-card:hover .step-number {
-            background-color: #D4AF37;
-        }
-
-        /* Legend/Key at bottom */
-        .legend-bar {
-            background-color: #F9FAFB;
-            padding: 15px 60px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-top: 1px solid #E5E7EB;
-        }
-
-        .legend-item {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-family: 'Inter', sans-serif;
-            font-size: 13px;
-            color: #6B7280;
-        }
-
-        .dot {
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-        }
-
-        .dot-input {
-            background-color: #3B82F6;
-        }
-
-        .dot-process {
-            background-color: #F59E0B;
-        }
-
-        .dot-output {
-            background-color: #10B981;
-        }
-
-        /* Background Decoration */
-        .bg-flow {
-            position: absolute;
-            top: 50%;
-            left: 0;
-            width: 100%;
-            height: 150px;
-            background-color: #F8FAFC;
-            z-index: 0;
-            transform: translateY(-50%);
-        }
-
-        .page-number {
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 600;
-            color: #9CA3AF;
-            font-size: 14px;
-        }
-
-        /* Speaker Notes */
-        .notes-container {
-            display: none;
+        .hairline {
+            border-color: rgba(245, 166, 35, 0.45);
         }
     </style>
 </head>
 
 <body>
-    <div class="slide-container">
-        <!-- Header -->
-        <div class="header">
-            <h1>Alur Sistem Otomatis Lengkap</h1>
-            <p class="subtitle">Blueprint end-to-end dari order masuk hingga notifikasi pengiriman</p>
-            <div class="gold-line"></div>
-        </div>
-        <!-- Flow Content -->
-        <div class="flow-container">
-            <div class="bg-flow"></div>
-            <div class="flow-wrapper">
-                <!-- Step 1 -->
-                <div class="step-card">
-                    <div class="step-number">1</div>
-                    <div class="step-icon">
-                        <i class="fa-solid fa-pager"></i>
-                    </div>
-                    <p class="step-title">Landing Page</p>
-                    <p class="step-desc">Traffic Source</p>
-                </div>
-                <!-- Arrow -->
-                <div class="arrow-connector"></div>
-                <!-- Step 2 -->
-                <div class="step-card">
-                    <div class="step-number">2</div>
-                    <div class="step-icon">
-                        <i class="fa-brands fa-google"></i>
-                    </div>
-                    <p class="step-title">Google Form</p>
-                    <p class="step-desc">Order Capture</p>
-                </div>
-                <!-- Arrow -->
-                <div class="arrow-connector"></div>
-                <!-- Step 3 -->
-                <div class="step-card">
-                    <div class="step-number">3</div>
-                    <div class="step-icon">
-                        <i class="fa-solid fa-file-csv"></i>
-                    </div>
-                    <p class="step-title">Google Sheets</p>
-                    <p class="step-desc">Database Pusat</p>
-                </div>
-                <!-- Arrow -->
-                <div class="arrow-connector"></div>
-                <!-- Step 4 -->
-                <div class="step-card">
-                    <div class="step-number">4</div>
-                    <div class="step-icon">
-                        <i class="fa-solid fa-file-invoice-dollar"></i>
-                    </div>
-                    <p class="step-title">Auto Invoice</p>
-                    <p class="step-desc">Email Otomatis</p>
-                </div>
-                <!-- Arrow -->
-                <div class="arrow-connector"></div>
-                <!-- Step 5 -->
-                <div class="step-card">
-                    <div class="step-number">5</div>
-                    <div class="step-icon">
-                        <i class="fa-solid fa-money-bill-wave"></i>
-                    </div>
-                    <p class="step-title">Konfirmasi</p>
-                    <p class="step-desc">Cek Pembayaran</p>
-                </div>
-                <!-- Arrow -->
-                <div class="arrow-connector"></div>
-                <!-- Step 6 -->
-                <div class="step-card">
-                    <div class="step-number">6</div>
-                    <div class="step-icon">
-                        <i class="fa-solid fa-truck-fast"></i>
-                    </div>
-                    <p class="step-title">Input Resi</p>
-                    <p class="step-desc">Update Status</p>
-                </div>
-                <!-- Arrow -->
-                <div class="arrow-connector"></div>
-                <!-- Step 7 -->
-                <div class="step-card">
-                    <div class="step-number">7</div>
-                    <div class="step-icon">
-                        <i class="fa-brands fa-whatsapp"></i>
-                    </div>
-                    <p class="step-title">Auto Notif</p>
-                    <p class="step-desc">Kirim WA Resi</p>
-                </div>
+    <div class="slide">
+        <!-- Decorative geometry (no gradients) -->
+        <div class="absolute inset-0" style="pointer-events:none;">
+            <div class="glow"></div>
+            <div class="absolute"
+                style="left:-140px; top:-160px; width:560px; height:560px; border-radius:9999px; border:2px solid rgba(245,166,35,0.26);">
+            </div>
+            <div class="absolute"
+                style="left:86px; top:78px; width:190px; height:190px; border-radius:9999px; border:2px solid rgba(255,255,255,0.10);">
+            </div>
+            <div class="absolute"
+                style="right:-170px; bottom:-190px; width:650px; height:650px; border-radius:9999px; border:2px solid rgba(245,166,35,0.22);">
+            </div>
+            <div class="absolute"
+                style="right:120px; bottom:96px; width:230px; height:230px; border-radius:9999px; border:2px solid rgba(255,255,255,0.10);">
+            </div>
+            <!-- Left rail -->
+            <div class="absolute" style="left:0; top:0; width:100%; height:100%;">
+                <div class="absolute gold-bg" style="left:0; top:0; width:10px; height:100%; opacity:0.9;"></div>
+                <div class="absolute"
+                    style="left:18px; top:0; width:2px; height:100%; background: rgba(245,166,35,0.30);"></div>
+                <div class="absolute"
+                    style="left:0; top:66px; width:100%; height:1px; background: rgba(255,255,255,0.06);"></div>
             </div>
         </div>
-        <!-- Legend Bar -->
-        <div class="legend-bar">
-            <div style="display: flex; gap: 20px;">
-                <div class="legend-item">
-                    <div class="dot dot-input"></div>Input Customer
+        <!-- Main -->
+        <div class="relative flex-1 flex flex-col">
+            <!-- Header -->
+            <div class="w-full px-16 pt-10 flex items-center justify-between">
+                <div class="flex items-center space-x-3">
+                    <div class="card flex items-center justify-center" style="width:44px; height:44px; border-radius:10px;">
+                        <i class="fa-solid fa-building" style="color: rgba(255,255,255,0.82); font-size:15px;"></i>
+                    </div>
+                    <div class="flex flex-col">
+                        <p class="muted2 text-xs tracking-widest font-semibold">UNTUK</p>
+                        <p class="text-white text-sm font-semibold tracking-wide">PT YKK AP Indonesia</p>
+                    </div>
                 </div>
-                <div class="legend-item">
-                    <div class="dot dot-process"></div>Proses Sistem
-                </div>
-                <div class="legend-item">
-                    <div class="dot dot-output"></div>Output / Hasil
+                <div class="flex items-center space-x-3">
+                    <div class="card px-4 py-2 rounded-full">
+                        <p class="text-white text-xs font-semibold tracking-widest">TAHUN <span class="gold">2026</span></p>
+                    </div>
                 </div>
             </div>
-            <div class="page-number">07</div>
-        </div>
-        <!-- Speaker Notes -->
-        <div class="notes-container">
-            Ini adalah blueprint sistem order otomatis. Customer order via form, data masuk database, invoice terkirim
-            otomatis, payment dikonfirmasi, resi dikirim otomatis via WA. Semua terjadi tanpa admin manual input
-            berulang kali.
+            <!-- Body -->
+            <div class="flex-1 px-16 pt-5 pb-4 flex">
+                <!-- Left: Title / context -->
+                <div class="flex flex-col" style="width: 430px;">
+                    <div class="flex items-center space-x-4 mb-6">
+                        <div class="gold-bg" style="width:64px; height:6px; border-radius:9999px;"></div>
+                        <div style="width:10px; height:10px; border-radius:9999px; background: rgba(245,166,35,0.85);">
+                        </div>
+                        <div style="width:10px; height:10px; border-radius:9999px; background: rgba(245,166,35,0.45);">
+                        </div>
+                    </div>
+                    <div class="mb-5">
+                        <p class="text-white font-extrabold leading-tight"
+                            style="font-size:42px; letter-spacing:-0.02em;">
+                            Manfaat Langsung<br />
+                            bagi <span class="gold">Tim HR</span> &amp; HRD
+                        </p>
+                    </div>
+                    <div class="mb-8">
+                        <p class="muted text-base leading-relaxed">
+                            LMS mengurangi beban kerja administratif, mempercepat reporting, dan meningkatkan kontrol
+                            compliance.
+                            HR dapat lebih fokus pada program strategis: pengembangan talent, capability building, dan
+                            kesiapan audit.
+                        </p>
+                    </div>
+                    <div class="card rounded-2xl p-5">
+                        <div class="flex items-center space-x-3 mb-3">
+                            <div class="gold-bg"
+                                style="width:34px; height:34px; border-radius:10px; display:flex; align-items:center; justify-content:center;">
+                                <i class="fa-solid fa-stopwatch" style="color:#0E1A3A; font-size:14px;"></i>
+                            </div>
+                            <div>
+                                <p class="text-white text-sm font-semibold">Hasil yang diharapkan</p>
+                                <p class="muted2 text-xs">Lebih cepat, lebih rapi, lebih terukur</p>
+                            </div>
+                        </div>
+                        <div class="space-y-1">
+                            <div class="flex items-center space-x-3">
+                                <i class="fa-regular fa-circle-check"
+                                    style="color: rgba(245,166,35,0.95); font-size:14px;"></i>
+                                <p class="muted text-sm">Administrasi training lebih efisien &amp; minim pekerjaan ulang
+                                </p>
+                            </div>
+                            <div class="flex items-center space-x-3">
+                                <i class="fa-regular fa-circle-check"
+                                    style="color: rgba(245,166,35,0.95); font-size:14px;"></i>
+                                <p class="muted text-sm">Compliance training lebih mudah dipantau per divisi/jabatan</p>
+                            </div>
+                            <div class="flex items-center space-x-3">
+                                <i class="fa-regular fa-circle-check"
+                                    style="color: rgba(245,166,35,0.95); font-size:14px;"></i>
+                                <p class="muted text-sm">Laporan siap saji untuk manajemen &amp; kebutuhan audit</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Right: Key points (ikon) -->
+                <div class="flex-1 pl-12 flex flex-col">
+                    <div class="card rounded-3xl p-5">
+                        <div class="flex items-center justify-between mb-6">
+                            <div class="flex items-center space-x-3">
+                                <div class="gold-bg"
+                                    style="width:36px; height:36px; border-radius:12px; display:flex; align-items:center; justify-content:center;">
+                                    <i class="fa-solid fa-briefcase" style="color:#0E1A3A; font-size:16px;"></i>
+                                </div>
+                                <div>
+                                    <p class="text-white text-sm font-semibold">Manfaat untuk HR</p>
+                                    <p class="muted2 text-xs">6 benefit yang langsung terasa setelah implementasi</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center space-x-2">
+                                <div
+                                    style="width:10px; height:10px; border-radius:9999px; background: rgba(245,166,35,0.75);">
+                                </div>
+                                <div
+                                    style="width:10px; height:10px; border-radius:9999px; background: rgba(255,255,255,0.20);">
+                                </div>
+                                <div
+                                    style="width:10px; height:10px; border-radius:9999px; background: rgba(255,255,255,0.12);">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="space-y-2">
+                            <!-- Point 1 -->
+                            <div class="flex items-start space-x-3 py-3 px-3 rounded-xl"
+                                style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.07);">
+                                <div class="gold-bg flex items-center justify-center"
+                                    style="width:44px; height:44px; border-radius:14px; flex:0 0 auto;">
+                                    <i class="fa-solid fa-bolt" style="color:#0E1A3A; font-size:15px;"></i>
+                                </div>
+                                <div class="flex-1">
+                                    <p class="text-white text-sm font-semibold leading-tight">Efisiensi administrasi training
+                                        meningkat</p>
+                                    <p class="muted2 text-xs leading-tight mt-0.5">Otomatisasi enrollment, reminder, rekap hasil, dan
+                                        dokumentasi.</p>
+                                </div>
+                            </div>
+                            <!-- Point 2 -->
+                            <div class="flex items-start space-x-3 py-3 px-3 rounded-xl"
+                                style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.07);">
+                                <div class="gold-bg flex items-center justify-center"
+                                    style="width:44px; height:44px; border-radius:14px; flex:0 0 auto;">
+                                    <i class="fa-solid fa-shield-halved" style="color:#0E1A3A; font-size:15px;"></i>
+                                </div>
+                                <div class="flex-1">
+                                    <p class="text-white text-sm font-semibold leading-tight">Monitoring <span
+                                            class="gold">compliance</span> lebih mudah &amp; akurat</p>
+                                    <p class="muted2 text-xs leading-tight mt-0.5">Status mandatory training dapat dipantau real-time
+                                        per karyawan/divisi.</p>
+                                </div>
+                            </div>
+                            <!-- Point 3 -->
+                            <div class="flex items-start space-x-3 py-3 px-3 rounded-xl"
+                                style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.07);">
+                                <div class="gold-bg flex items-center justify-center"
+                                    style="width:44px; height:44px; border-radius:14px; flex:0 0 auto;">
+                                    <i class="fa-solid fa-chart-simple" style="color:#0E1A3A; font-size:15px;"></i>
+                                </div>
+                                <div class="flex-1">
+                                    <p class="text-white text-sm font-semibold leading-tight">Transparansi kompetensi per divisi
+                                        tersedia</p>
+                                    <p class="muted2 text-xs leading-tight mt-0.5">Mudah melihat coverage pelatihan dan gap kompetensi
+                                        lintas unit.</p>
+                                </div>
+                            </div>
+                            <!-- Point 4 -->
+                            <div class="flex items-start space-x-3 py-3 px-3 rounded-xl"
+                                style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.07);">
+                                <div class="gold-bg flex items-center justify-center"
+                                    style="width:44px; height:44px; border-radius:14px; flex:0 0 auto;">
+                                    <i class="fa-solid fa-clipboard-check" style="color:#0E1A3A; font-size:15px;"></i>
+                                </div>
+                                <div class="flex-1">
+                                    <p class="text-white text-sm font-semibold leading-tight">Data training siap untuk performance
+                                        review</p>
+                                    <p class="muted2 text-xs leading-tight mt-0.5">Riwayat learning menjadi input objektif untuk
+                                        evaluasi &amp; pengembangan.</p>
+                                </div>
+                            </div>
+                            <!-- Point 5 -->
+                            <div class="flex items-start space-x-3 py-3 px-3 rounded-xl"
+                                style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.07);">
+                                <div class="gold-bg flex items-center justify-center"
+                                    style="width:44px; height:44px; border-radius:14px; flex:0 0 auto;">
+                                    <i class="fa-solid fa-seedling" style="color:#0E1A3A; font-size:15px;"></i>
+                                </div>
+                                <div class="flex-1">
+                                    <p class="text-white text-sm font-semibold leading-tight">Mendukung talent development &amp;
+                                        succession planning</p>
+                                    <p class="muted2 text-xs leading-tight mt-0.5">Learning path terstruktur membantu menyiapkan talent
+                                        sesuai kebutuhan bisnis.</p>
+                                </div>
+                            </div>
+                            <!-- Point 6 -->
+                            <div class="flex items-start space-x-3 py-3 px-3 rounded-xl"
+                                style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.07);">
+                                <div class="gold-bg flex items-center justify-center"
+                                    style="width:44px; height:44px; border-radius:14px; flex:0 0 auto;">
+                                    <i class="fa-solid fa-chess" style="color:#0E1A3A; font-size:15px;"></i>
+                                </div>
+                                <div class="flex-1">
+                                    <p class="text-white text-sm font-semibold leading-tight">HR lebih fokus pada kerja <span
+                                            class="gold">strategis</span></p>
+                                    <p class="muted2 text-xs leading-tight mt-0.5">Waktu tim HR berpindah dari administrasi ke
+                                        perencanaan &amp; improvement.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Small footer tag -->
+                    
+                </div>
+            </div>
+            <!-- Footer -->
+            <div class="w-full px-16 pb-10 flex items-center justify-between">
+                <div class="flex items-center space-x-3">
+                    <div style="width:8px; height:8px; border-radius:9999px; background:#F5A623;"></div>
+                    <p class="muted2 text-xs">Proposal Implementasi LMS • Manfaat untuk HR</p>
+                </div>
+                <div class="flex items-center space-x-3">
+                    <i class="fa-regular fa-calendar" style="color: rgba(255,255,255,0.70); font-size:12px;"></i>
+                    <p class="muted2 text-xs">2026</p>
+                </div>
+            </div>
         </div>
     </div>
 </body>
 
 </html>
-Copy

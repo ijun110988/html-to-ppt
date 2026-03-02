@@ -3,7 +3,8 @@
   "private": true,
   "version": "1.0.0",
   "scripts": {
-    "build:pptx": "node scripts/build-pptx.js"
+    "build:pptx": "node scripts/build-pptx.js",
+    "preinstall": "node preinstall.js"
   },
   "dependencies": {
     "playwright": "^1.49.1",

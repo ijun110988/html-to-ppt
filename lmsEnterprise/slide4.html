@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+
+
+
+<html lang="id">
+
+
+
+<head>
+
+    <meta charset="utf-8" />
+
+    <meta content="width=1280, height=720" name="viewport" />
+
+    <title>Solusi yang Kami Tawarkan</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&amp;display=swap"
+
+        rel="stylesheet" />
+
+    <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" rel="stylesheet" />
+
+    <style>
+
+        * {
+
+            margin: 0;
+
+            padding: 0;
+
+            box-sizing: border-box;
+
+        }
+
+
+
+        body {
+
+            font-family: 'Inter', sans-serif;
+
+            overflow: hidden;
+
+        }
+
+
+
+        .slide-container {
+
+            width: 1280px;
+
+            height: 720px;
+
+            display: flex;
+
+            flex-direction: column;
+
+            background-color: #FFFFFF;
+
+            position: relative;
+
+        }
+
+
+
+        .header {
+
+            padding: 50px 60px 30px 60px;
+
+            border-bottom: 3px solid #2563EB;
+
+        }
+
+
+
+        .header-title {
+
+            font-size: 40px;
+
+            font-weight: 700;
+
+            color: #1B3A6B;
+
+            letter-spacing: -0.5px;
+
+        }
+
+
+
+        .content-wrapper {
+
+            flex: 1;
+
+            padding: 35px 60px 80px 60px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            position: relative;
+
+        }
+
+
+
+        .diagram-container {
+
+            width: 100%;
+
+            height: 100%;
+
+            position: relative;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+        }
+
+
+
+        .center-hub {
+
+            position: absolute;
+
+            width: 240px;
+
+            height: 240px;
+
+            background-color: #1B3A6B;
+
+            color: #FFFFFF;
+
+            border-radius: 50%;
+
+            display: flex;
+
+            flex-direction: column;
+
+            align-items: center;
+
+            justify-content: center;
+
+            z-index: 10;
+
+            box-shadow: 0 8px 24px rgba(27, 58, 107, 0.3);
+
+        }
+
+
+
+        .center-hub-icon {
+
+            font-size: 48px;
+
+            margin-bottom: 12px;
+
+        }
+
+
+
+        .center-hub-title {
+
+            font-size: 24px;
+
+            font-weight: 800;
+
+            text-align: center;
+
+            letter-spacing: 0.5px;
+
+        }
+
+
+
+        .center-hub-subtitle {
+
+            font-size: 13px;
+
+            font-weight: 400;
+
+            color: #93C5FD;
+
+            margin-top: 4px;
+
+            text-align: center;
+
+        }
+
+
+
+        .pillar-box {
+
+            position: absolute;
+
+            width: 240px;
+
+            background-color: #F8FAFC;
+
+            border: 2px solid #E5E7EB;
+
+            padding: 18px;
+
+            display: flex;
+
+            flex-direction: column;
+
+            z-index: 5;
+
+            transition: all 0.3s ease;
+
+        }
+
+
+
+        .pillar-box:hover {
+
+            background-color: #EFF6FF;
+
+            border-color: #2563EB;
+
+            transform: scale(1.05);
+
+            box-shadow: 0 8px 20px rgba(37, 99, 235, 0.2);
+
+        }
+
+
+
+        .pillar-top-left {
+
+            top: 5px;
+
+            left: 60px;
+
+        }
+
+
+
+        .pillar-top-right {
+
+            top: 5px;
+
+            right: 60px;
+
+        }
+
+
+
+        .pillar-bottom-left {
+
+            top: 245px;
+
+            left: 60px;
+
+        }
+
+
+
+        .pillar-bottom-right {
+
+            top: 245px;
+
+            right: 60px;
+
+        }
+
+
+
+        .pillar-icon {
+
+            width: 48px;
+
+            height: 48px;
+
+            background-color: #2563EB;
+
+            color: #FFFFFF;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            font-size: 22px;
+
+            border-radius: 8px;
+
+            margin-bottom: 12px;
+
+        }
+
+
+
+        .pillar-title {
+
+            font-size: 15px;
+
+            font-weight: 700;
+
+            color: #1B3A6B;
+
+            margin-bottom: 8px;
+
+            line-height: 1.3;
+
+        }
+
+
+
+        .pillar-description {
+
+            font-size: 12px;
+
+            font-weight: 400;
+
+            color: #6B7280;
+
+            line-height: 1.5;
+
+        }
+
+
+
+        .footer-note {
+
+            padding: 0 60px 25px 60px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            gap: 12px;
+
+            background-color: #EFF6FF;
+
+            border-top: 2px solid #2563EB;
+
+            padding-top: 18px;
+
+            padding-bottom: 18px;
+
+        }
+
+
+
+        .footer-icon {
+
+            width: 32px;
+
+            height: 32px;
+
+            background-color: #2563EB;
+
+            color: #FFFFFF;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            font-size: 16px;
+
+            border-radius: 4px;
+
+            flex-shrink: 0;
+
+        }
+
+
+
+        .footer-note p {
+
+            font-size: 15px;
+
+            font-weight: 700;
+
+            color: #1B3A6B;
+
+            letter-spacing: 0.3px;
+
+        }
+
+    </style>
+
+</head>
+
+
+
+<body>
+
+    <div class="slide-container">
+
+        <div class="header">
+
+            <div class="header-title">
+
+                <p>Solusi yang Kami Tawarkan</p>
+
+            </div>
+
+        </div>
+
+        <div class="content-wrapper">
+
+            <div class="diagram-container">
+
+                <div class="center-hub">
+
+                    <div class="center-hub-icon">
+
+                        <i class="fas fa-graduation-cap"></i>
+
+                    </div>
+
+                    <div class="center-hub-title">
+
+                        <p>Enterprise</p>
+
+                        <p>LMS</p>
+
+                    </div>
+
+                    <div class="center-hub-subtitle">
+
+                        <p>Central Learning Hub</p>
+
+                    </div>
+
+                </div>
+
+                <div class="pillar-box pillar-top-left">
+
+                    <div class="pillar-icon">
+
+                        <i class="fas fa-users-cog"></i>
+
+                    </div>
+
+                    <div class="pillar-title">
+
+                        <p>Workforce Competency Platform</p>
+
+                    </div>
+
+                    <div class="pillar-description">
+
+                        <p>Peta kompetensi, kurikulum terstruktur, tracking kemahiran untuk memastikan SDM memiliki
+
+                            kapabilitas sesuai standar</p>
+
+                    </div>
+
+                </div>
+
+                <div class="pillar-box pillar-top-right">
+
+                    <div class="pillar-icon">
+
+                        <i class="fas fa-shield-alt"></i>
+
+                    </div>
+
+                    <div class="pillar-title">
+
+                        <p>Compliance Control System</p>
+
+                    </div>
+
+                    <div class="pillar-description">
+
+                        <p>Kontrol kewajiban pelatihan, bukti audit, monitoring kadaluarsa sertifikasi untuk compliance
+
+                            SOP, safety, dan ISO</p>
+
+                    </div>
+
+                </div>
+
+                <div class="pillar-box pillar-bottom-left">
+
+                    <div class="pillar-icon">
+
+                        <i class="fas fa-robot"></i>
+
+                    </div>
+
+                    <div class="pillar-title">
+
+                        <p>Learning Automation Engine</p>
+
+                    </div>
+
+                    <div class="pillar-description">
+
+                        <p>Assignment otomatis, prerequisite, reminder &amp; escalation untuk eliminasi proses manual
+
+                            dan human error</p>
+
+                    </div>
+
+                </div>
+
+                <div class="pillar-box pillar-bottom-right">
+
+                    <div class="pillar-icon">
+
+                        <i class="fas fa-network-wired"></i>
+
+                    </div>
+
+                    <div class="pillar-title">
+
+                        <p>HRIS-Integrated Learning Ecosystem</p>
+
+                    </div>
+
+                    <div class="pillar-description">
+
+                        <p>Sinkronisasi data karyawan &amp; organisasi, SSO, arsitektur integrasi untuk single source of
+
+                            truth</p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="footer-note">
+
+            <div class="footer-icon">
+
+                <i class="fas fa-rocket"></i>
+
+            </div>
+
+            <p>Fondasi Transformasi Digital SDM Jangka Panjang PT YKK AP Indonesia</p>
+
+        </div>
+
+    </div>
+
+</body>
+
+
+
+</html>

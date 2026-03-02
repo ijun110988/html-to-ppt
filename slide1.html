@@ -5,269 +5,178 @@
 <head>
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <title>Automated Order System - Cover</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
-    <link
-        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800&amp;family=Inter:wght@300;400;600&amp;display=swap"
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&amp;display=swap"
         rel="stylesheet" />
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" rel="stylesheet" />
     <style>
         body {
             margin: 0;
-            padding: 0;
-            background-color: #f3f4f6;
-            font-family: 'Inter', sans-serif;
-            overflow: hidden;
         }
 
-        .slide-container {
+        .slide {
             width: 1280px;
             height: 720px;
-            background-color: #0B0F19;
-            /* Deep Navy/Black */
+            display: flex;
+            background: #0E1A3A;
+            /* navy solid (no gradient) */
+            font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
             position: relative;
             overflow: hidden;
-            display: flex;
-            flex-direction: row;
         }
 
-        .decorative-circle {
+        .gold {
+            color: #F5A623;
+        }
+
+        .gold-bg {
+            background: #F5A623;
+        }
+
+        .muted {
+            color: rgba(255, 255, 255, 0.78);
+        }
+
+        .muted2 {
+            color: rgba(255, 255, 255, 0.65);
+        }
+
+        .hairline {
+            border-color: rgba(245, 166, 35, 0.55);
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(245, 166, 35, 0.22);
+            backdrop-filter: blur(0px);
+        }
+
+        .glow {
             position: absolute;
-            border-radius: 50%;
-            z-index: 0;
-        }
-
-        .circle-1 {
-            width: 600px;
-            height: 600px;
-            border: 2px solid rgba(212, 175, 55, 0.1);
-            /* Gold low opacity */
-            top: -100px;
-            right: -100px;
-        }
-
-        .circle-2 {
-            width: 450px;
-            height: 450px;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            top: -25px;
-            right: -25px;
-        }
-
-        .circle-3 {
-            width: 800px;
-            height: 800px;
-            background-color: #111827;
-            border-radius: 50%;
-            top: 50%;
-            left: -200px;
-            transform: translateY(-50%);
-            z-index: 0;
-        }
-
-        .content-left {
-            flex: 1;
-            padding: 80px 60px;
-            z-index: 10;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-
-        .content-right {
-            flex: 1;
-            position: relative;
-            z-index: 10;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        h1 {
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 800;
-            line-height: 1.1;
-            letter-spacing: -0.02em;
-            color: #FFFFFF;
-            text-transform: uppercase;
-        }
-
-        .gold-text {
-            color: #D4AF37;
-            /* Gold */
-        }
-
-        .subtitle {
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 600;
-            letter-spacing: 0.05em;
-            color: #D4AF37;
-            text-transform: uppercase;
-        }
-
-        .tagline {
-            font-family: 'Inter', sans-serif;
-            font-weight: 300;
-            color: #9CA3AF;
-        }
-
-        .accent-line {
-            width: 80px;
-            height: 6px;
-            background-color: #D4AF37;
-            margin-bottom: 30px;
-        }
-
-        /* Tech Visuals on Right */
-        .tech-grid {
-            position: relative;
-            width: 400px;
-            height: 400px;
-        }
-
-        .icon-card {
-            position: absolute;
-            background-color: #1F2937;
-            border: 1px solid #374151;
-            border-radius: 16px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.5);
-        }
-
-        .center-card {
-            width: 140px;
-            height: 140px;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            z-index: 2;
-            border: 2px solid #D4AF37;
-        }
-
-        .orbit-card {
-            width: 80px;
-            height: 80px;
-            z-index: 1;
-        }
-
-        .card-1 {
-            top: 0;
-            left: 50%;
-            transform: translate(-50%, 0);
-        }
-
-        .card-2 {
-            bottom: 0;
-            left: 50%;
-            transform: translate(-50%, 0);
-        }
-
-        .card-3 {
-            top: 50%;
-            left: 0;
-            transform: translate(0, -50%);
-        }
-
-        .card-4 {
-            top: 50%;
-            right: 0;
-            transform: translate(0, -50%);
-        }
-
-        .connector {
-            position: absolute;
-            background-color: #374151;
-            z-index: 0;
-        }
-
-        .v-line {
-            width: 2px;
-            height: 100%;
-            left: 50%;
-            top: 0;
-            transform: translateX(-50%);
-        }
-
-        .h-line {
-            width: 100%;
-            height: 2px;
-            top: 50%;
-            left: 0;
-            transform: translateY(-50%);
-        }
-
-        .floating-badge {
-            position: absolute;
-            bottom: 40px;
-            right: 40px;
-            background-color: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            padding: 10px 20px;
-            border-radius: 50px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            color: white;
-            font-size: 14px;
-            font-family: 'Inter', sans-serif;
-            display: flex;
-            align-items: center;
-            gap: 10px;
+            inset: -40% -30% auto auto;
+            width: 820px;
+            height: 820px;
+            border-radius: 9999px;
+            background: radial-gradient(circle at 30% 30%, rgba(245, 166, 35, 0.14), rgba(14, 26, 58, 0) 60%);
+            pointer-events: none;
         }
     </style>
 </head>
 
 <body>
-    <div class="slide-container">
-        <!-- Background Elements -->
-        <div class="decorative-circle circle-1"></div>
-        <div class="decorative-circle circle-2"></div>
-        <div class="decorative-circle circle-3"></div>
-        <!-- Left Content: Text -->
-        <div class="content-left">
-            <div class="accent-line"></div>
-            <p class="subtitle text-xl mb-4">Training Premium Digital</p>
-            <h1 class="text-6xl mb-6">
-                AUTOMATED<br />
-                <span class="gold-text">ORDER SYSTEM</span>
-            </h1>
-            <p class="text-2xl text-white font-medium mb-2">
-                Membangun Sistem Jualan Otomatis <br />Tanpa Marketplace
-            </p>
-            <p class="tagline text-lg mt-6 max-w-lg leading-relaxed">
-                Sistem Bisnis Modern untuk UMKM, Reseller &amp; Online Seller.
-                Tingkatkan profit dan efisiensi dengan database sendiri.
-            </p>
-        </div>
-        <!-- Right Content: Visuals -->
-        <div class="content-right">
-            <div class="tech-grid">
-                <!-- Connectors -->
-                <div class="connector v-line"></div>
-                <div class="connector h-line"></div>
-                <!-- Center Hub -->
-                <div class="icon-card center-card">
-                    <i class="fa-solid fa-network-wired text-5xl text-white"></i>
-                </div>
-                <!-- Orbit Icons -->
-                <div class="icon-card orbit-card card-1">
-                    <i class="fa-brands fa-whatsapp text-3xl" style="color: #25D366;"></i>
-                </div>
-                <div class="icon-card orbit-card card-2">
-                    <i class="fa-solid fa-file-invoice-dollar text-3xl" style="color: #D4AF37;"></i>
-                </div>
-                <div class="icon-card orbit-card card-3">
-                    <i class="fa-solid fa-users text-3xl text-blue-400"></i>
-                </div>
-                <div class="icon-card orbit-card card-4">
-                    <i class="fa-solid fa-cart-shopping text-3xl text-purple-400"></i>
-                </div>
+    <div class="slide">
+        <!-- Decorative geometry (no gradients) -->
+        <div class="absolute inset-0" style="display:flex; pointer-events:none;">
+            <div class="glow"></div>
+            <div class="absolute"
+                style="left:-120px; top:-140px; width:520px; height:520px; border-radius:9999px; border: 2px solid rgba(245,166,35,0.35);">
+            </div>
+            <div class="absolute"
+                style="left:70px; top:60px; width:180px; height:180px; border-radius:9999px; border: 2px solid rgba(255,255,255,0.10);">
+            </div>
+            <div class="absolute"
+                style="right:-140px; bottom:-160px; width:620px; height:620px; border-radius:9999px; border: 2px solid rgba(245,166,35,0.28);">
+            </div>
+            <div class="absolute"
+                style="right:120px; bottom:110px; width:220px; height:220px; border-radius:9999px; border: 2px solid rgba(255,255,255,0.10);">
+            </div>
+            <div class="absolute" style="left:0; top:0; width:100%; height:100%;">
+                <div class="absolute gold-bg" style="left:0; top:0; width:10px; height:100%; opacity:0.9;"></div>
+                <div class="absolute"
+                    style="left:18px; top:0; width:2px; height:100%; background: rgba(245,166,35,0.35);"></div>
+                <div class="absolute"
+                    style="left:0; top:66px; width:100%; height:1px; background: rgba(255,255,255,0.06);"></div>
             </div>
         </div>
-        <!-- Badge -->
-        <div class="floating-badge">
-            <i class="fa-solid fa-rocket text-yellow-400"></i>
-            <span>Scale Up Your Business</span>
+        <!-- Main layout -->
+        <div class="relative flex-1 flex flex-col">
+            <!-- Header bar with s -->
+            <div class="w-full px-16 pt-10 flex items-center justify-between">
+                <div class="flex items-center space-x-3">
+                    <div class="card flex items-center justify-center" style="width:44px; height:44px; border-radius:10px;">
+                        <i class="fa-solid fa-building" style="color: rgba(255,255,255,0.82); font-size:18px;"></i>
+                    </div>
+                    <div class="flex flex-col">
+                        <p class="muted2 text-xs tracking-widest font-semibold">UNTUK</p>
+                        <p class="text-white text-sm font-semibold tracking-wide">PT YKK AP Indonesia</p>
+                    </div>
+                </div>
+                <div class="flex items-center space-x-3">
+                    <div class="card px-4 py-2 rounded-full">
+                        <p class="text-white text-xs font-semibold tracking-widest">TAHUN <span class="gold">2026</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <!-- Hero content -->
+            <div class="flex-1 px-16 flex items-center">
+                <div class="w-full flex items-center justify-between">
+                    <!-- Left: Title block -->
+                    <div class="flex flex-col" style="max-width: 760px;">
+                        <div class="flex items-center space-x-4 mb-6">
+                            <div class="gold-bg" style="width:76px; height:6px; border-radius:9999px;"></div>
+                            <div
+                                style="width:10px; height:10px; border-radius:9999px; background: rgba(245,166,35,0.85);">
+                            </div>
+                            <div
+                                style="width:10px; height:10px; border-radius:9999px; background: rgba(245,166,35,0.45);">
+                            </div>
+                        </div>
+                        <div class="mb-6">
+                            <p class="text-white font-extrabold leading-tight"
+                                style="font-size: 54px; letter-spacing: -0.02em;">
+                                Penawaran &amp; Rencana Implementasi<br />
+                                <span class="gold">Learning Management System (LMS)</span>
+                            </p>
+                        </div>
+                        <div class="mb-10">
+                            <p class="muted text-lg leading-relaxed" style="max-width: 640px;">
+                                Platform pelatihan terpusat untuk mendukung proses L&amp;D, compliance, dan pengembangan kompetensi
+                                berbasis data.
+                            </p>
+                        </div>
+                        <div class="flex items-center space-x-10">
+                            <div class="card rounded-2xl px-6 py-4">
+                                <p class="muted2 text-xs tracking-widest font-semibold">DIPRESENTASIKAN OLEH</p>
+                                <p class="text-white text-base font-semibold mt-1">Sinergi TechForce</p>
+                                <p class="muted2 text-xs mt-1">PT Mustika Sinergi Integrasi</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Right: Visual emblem -->
+                    <div class="flex flex-col items-end" style="width: 360px;">
+                        <div class="card rounded-3xl p-10" style="width: 320px;">
+                            <div class="flex flex-col items-center text-center">
+                                <div class="relative" style="width: 168px; height: 168px;">
+                                    <div class="absolute inset-0" style="border-radius:9999px; border: 2px solid rgba(245,166,35,0.40);"></div>
+                                    <div class="absolute" style="inset:14px; border-radius:9999px; border: 1px solid rgba(255,255,255,0.12);"></div>
+                                    <div class="absolute" style="inset:32px; border-radius:9999px; background: rgba(245,166,35,0.12);"></div>
+                                    <div class="absolute" style="inset:0; display:flex; align-items:center; justify-content:center;">
+                                        <i class="fa-solid fa-graduation-cap" style="color:#F5A623; font-size:44px;"></i>
+                                    </div>
+                                </div>
+                                <div class="mt-8">
+                                    <p class="muted2 text-xs tracking-widest font-semibold">PITCH DECK</p>
+                                    <p class="text-white text-base font-semibold mt-2">HR • L&amp;D • Compliance</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Footer -->
+            <div class="w-full px-16 pb-10 flex items-center justify-between">
+                <div class="flex items-center space-x-3">
+                    <div style="width:8px; height:8px; border-radius:9999px; background:#F5A623;"></div>
+                    <p class="muted2 text-xs">Proposal Implementasi LMS • PT YKK AP Indonesia</p>
+                </div>
+                <div class="flex items-center space-x-3">
+                    <i class="fa-regular fa-calendar" style="color: rgba(255,255,255,0.75); font-size:12px;"></i>
+                    <p class="muted2 text-xs">2026</p>
+                </div>
+            </div>
         </div>
     </div>
 </body>

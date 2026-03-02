@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+
+<html lang="id">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Workflow Status &amp; Monitoring</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&amp;family=Inter:wght@300;400;600;700&amp;display=swap"
+        rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #f3f4f6;
+            font-family: 'Inter', sans-serif;
+            overflow: hidden;
+        }
+
+        .slide-container {
+            width: 1280px;
+            height: 720px;
+            background-color: #FFFFFF;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Header */
+        .header {
+            padding: 40px 60px 20px 60px;
+            z-index: 10;
+        }
+
+        .header h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 800;
+            font-size: 36px;
+            color: #111827;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+
+        .header p {
+            font-family: 'Inter', sans-serif;
+            font-size: 18px;
+            color: #6B7280;
+            margin: 0;
+        }
+
+        .header-line {
+            width: 100px;
+            height: 4px;
+            background-color: #D4AF37;
+            margin-top: 15px;
+        }
+
+        /* Main Content */
+        .content-wrapper {
+            flex: 1;
+            padding: 20px 60px 40px 60px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 40px;
+        }
+
+        /* Flow Diagram Container */
+        .flow-diagram {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: relative;
+            padding: 0 20px;
+        }
+
+        /* Connecting Line Background */
+        .connecting-line {
+            position: absolute;
+            top: 50%;
+            left: 50px;
+            right: 50px;
+            height: 4px;
+            background-color: #E5E7EB;
+            transform: translateY(-50%);
+            z-index: 0;
+        }
+
+        /* Status Cards */
+        .status-card {
+            width: 220px;
+            height: 280px;
+            background-color: #FFFFFF;
+            border-radius: 16px;
+            position: relative;
+            z-index: 10;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 25px 20px;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+            border-top: 6px solid transparent;
+        }
+
+        .status-card:hover {
+            transform: translateY(-10px);
+        }
+
+        /* Status Specific Styles */
+        .status-pending {
+            border-color: #F59E0B;
+        }
+
+        .status-paid {
+            border-color: #10B981;
+        }
+
+        .status-shipped {
+            border-color: #3B82F6;
+        }
+
+        .status-done {
+            border-color: #111827;
+        }
+
+        .icon-circle {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            margin-bottom: 20px;
+            background-color: #F3F4F6;
+        }
+
+        .status-pending .icon-circle {
+            background-color: #FEF3C7;
+            color: #D97706;
+        }
+
+        .status-paid .icon-circle {
+            background-color: #D1FAE5;
+            color: #059669;
+        }
+
+        .status-shipped .icon-circle {
+            background-color: #DBEAFE;
+            color: #2563EB;
+        }
+
+        .status-done .icon-circle {
+            background-color: #F3F4F6;
+            color: #1F2937;
+        }
+
+        .status-title {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 18px;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+
+        .status-pending .status-title {
+            color: #D97706;
+        }
+
+        .status-paid .status-title {
+            color: #059669;
+        }
+
+        .status-shipped .status-title {
+            color: #2563EB;
+        }
+
+        .status-done .status-title {
+            color: #1F2937;
+        }
+
+        .status-desc {
+            font-family: 'Inter', sans-serif;
+            font-size: 13px;
+            color: #6B7280;
+            text-align: center;
+            line-height: 1.5;
+        }
+
+        /* Arrow between cards */
+        .flow-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #9CA3AF;
+            font-size: 20px;
+            z-index: 5;
+        }
+
+        /* Dashboard Snippet */
+        .dashboard-snippet {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 10px;
+        }
+
+        .snippet-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background-color: #F9FAFB;
+            padding: 10px 20px;
+            border-radius: 8px;
+            border: 1px solid #E5E7EB;
+        }
+
+        .snippet-icon {
+            color: #D4AF37;
+        }
+
+        .snippet-text {
+            font-family: 'Inter', sans-serif;
+            font-size: 14px;
+            font-weight: 600;
+            color: #374151;
+        }
+
+        /* Page Number */
+        .page-number {
+            position: absolute;
+            bottom: 30px;
+            right: 40px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            color: #9CA3AF;
+            font-size: 14px;
+        }
+
+        .notes-container {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="slide-container">
+        <!-- Header -->
+        <div class="header">
+            <h1>Workflow Status &amp; Monitoring</h1>
+            <p>Sistem tracking order visual untuk prioritas kerja tim fulfillment</p>
+            <div class="header-line"></div>
+        </div>
+        <!-- Content -->
+        <div class="content-wrapper">
+            <!-- Flow Diagram -->
+            <div class="flow-diagram">
+                <div class="connecting-line"></div>
+                <!-- Card 1: Pending -->
+                <div class="status-card status-pending">
+                    <div class="icon-circle">
+                        <i class="fa-regular fa-clock"></i>
+                    </div>
+                    <div class="status-title">Pending</div>
+                    <div class="status-desc">
+                        <p>Order baru masuk via Google Form. Menunggu pembayaran dari customer.</p>
+                    </div>
+                </div>
+                <i class="fa-solid fa-chevron-right flow-arrow" style="left: 24%;"></i>
+                <!-- Card 2: Paid -->
+                <div class="status-card status-paid">
+                    <div class="icon-circle">
+                        <i class="fa-solid fa-check-double"></i>
+                    </div>
+                    <div class="status-title">Paid</div>
+                    <div class="status-desc">
+                        <p>Pembayaran dikonfirmasi. Admin update status ini untuk trigger proses packing.</p>
+                    </div>
+                </div>
+                <i class="fa-solid fa-chevron-right flow-arrow" style="left: 50%;"></i>
+                <!-- Card 3: Shipped -->
+                <div class="status-card status-shipped">
+                    <div class="icon-circle">
+                        <i class="fa-solid fa-truck-fast"></i>
+                    </div>
+                    <div class="status-title">Shipped</div>
+                    <div class="status-desc">
+                        <p>Barang dikirim &amp; resi diinput. Sistem otomatis kirim notifikasi WA.</p>
+                    </div>
+                </div>
+                <i class="fa-solid fa-chevron-right flow-arrow" style="left: 76%;"></i>
+                <!-- Card 4: Done -->
+                <div class="status-card status-done">
+                    <div class="icon-circle">
+                        <i class="fa-solid fa-flag-checkered"></i>
+                    </div>
+                    <div class="status-title">Done</div>
+                    <div class="status-desc">
+                        <p>Paket diterima customer. Order selesai dan masuk rekap omzet bulanan.</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Bottom Info -->
+            <div class="dashboard-snippet">
+                <div class="snippet-item">
+                    <i class="fa-solid fa-filter snippet-icon"></i>
+                    <span class="snippet-text">Gunakan "Filter View" di Google Sheets untuk sort order per status</span>
+                </div>
+                <div class="snippet-item">
+                    <i class="fa-solid fa-eye snippet-icon"></i>
+                    <span class="snippet-text">Color Coding memudahkan monitoring ribuan data</span>
+                </div>
+            </div>
+        </div>
+        <div class="page-number">15</div>
+        <div class="notes-container">
+            Dengan status workflow, Anda dan tim bisa langsung tahu prioritas. Filter status PAID untuk lihat order yang
+            harus diproses hari ini. Filter SHIPPED untuk monitor yang perlu follow up. Sistem ini membuat monitoring
+            jadi sangat mudah.
+        </div>
+    </div>
+</body>
+
+</html>

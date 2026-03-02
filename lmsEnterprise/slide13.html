@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+
+<html lang="id">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=1280, height=720" name="viewport" />
+    <title>Dampak &amp; Manfaat Strategis</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&amp;display=swap"
+        rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" rel="stylesheet" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            overflow: hidden;
+        }
+
+        .slide-container {
+            width: 1280px;
+            height: 720px;
+            display: flex;
+            flex-direction: column;
+            background-color: #FFFFFF;
+            position: relative;
+        }
+
+        .header {
+            padding: 45px 60px 25px 60px;
+            border-bottom: 3px solid #2563EB;
+        }
+
+        .header-title {
+            font-size: 40px;
+            font-weight: 700;
+            color: #1B3A6B;
+            letter-spacing: -0.5px;
+        }
+
+        .content-wrapper {
+            flex: 1;
+            padding: 30px 60px 30px 60px;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-template-rows: repeat(2, 1fr);
+            gap: 20px;
+            flex: 1;
+        }
+
+        .benefit-card {
+            background-color: #F8FAFC;
+            border: 2px solid #E5E7EB;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            gap: 12px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .benefit-card:hover {
+            background-color: #EFF6FF;
+            border-color: #2563EB;
+            transform: translateY(-4px);
+            box-shadow: 0 8px 20px rgba(37, 99, 235, 0.15);
+        }
+
+        .benefit-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background-color: #2563EB;
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .benefit-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .benefit-icon-wrapper {
+            width: 64px;
+            height: 64px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #2563EB;
+            color: #FFFFFF;
+            font-size: 28px;
+            border-radius: 50%;
+            flex-shrink: 0;
+            transition: all 0.3s ease;
+        }
+
+        .benefit-card:hover .benefit-icon-wrapper {
+            background-color: #1B3A6B;
+            transform: scale(1.1);
+        }
+
+        .benefit-title {
+            font-size: 16px;
+            font-weight: 700;
+            color: #1B3A6B;
+            line-height: 1.3;
+            letter-spacing: -0.2px;
+        }
+
+        .benefit-description {
+            font-size: 12px;
+            font-weight: 400;
+            color: #4B5563;
+            line-height: 1.5;
+            flex: 1;
+            display: flex;
+            align-items: center;
+        }
+
+        .footer-note {
+            padding: 0 60px 20px 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+        }
+
+        .footer-icon {
+            width: 32px;
+            height: 32px;
+            background-color: #2563EB;
+            color: #FFFFFF;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            border-radius: 4px;
+            flex-shrink: 0;
+        }
+
+        .footer-note p {
+            font-size: 14px;
+            font-weight: 600;
+            color: #6B7280;
+            letter-spacing: 0.3px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="slide-container">
+        <div class="header">
+            <div class="header-title">
+                <p>Dampak &amp; Manfaat Strategis</p>
+            </div>
+        </div>
+        <div class="content-wrapper">
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <div class="benefit-icon-wrapper">
+                        <i class="fas fa-balance-scale"></i>
+                    </div>
+                    <div class="benefit-title">
+                        <p>Standarisasi Kompetensi Nasional</p>
+                    </div>
+                    <div class="benefit-description">
+                        <p>Konsistensi kurikulum dan standar pelatihan lintas plant &amp; region untuk memastikan
+                            kualitas SDM yang seragam</p>
+                    </div>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon-wrapper">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <div class="benefit-title">
+                        <p>Kontrol Penuh Compliance Training</p>
+                    </div>
+                    <div class="benefit-description">
+                        <p>Monitoring real-time kewajiban pelatihan SOP, safety, ISO, dan regulatory untuk memastikan
+                            100% compliance</p>
+                    </div>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon-wrapper">
+                        <i class="fas fa-tasks"></i>
+                    </div>
+                    <div class="benefit-title">
+                        <p>Pengurangan Beban Administratif</p>
+                    </div>
+                    <div class="benefit-description">
+                        <p>Automasi assignment, reminder, dan reporting mengurangi beban kerja HR &amp; L&amp;D hingga
+                            70%</p>
+                    </div>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon-wrapper">
+                        <i class="fas fa-eye"></i>
+                    </div>
+                    <div class="benefit-title">
+                        <p>Transparansi Data Pelatihan</p>
+                    </div>
+                    <div class="benefit-description">
+                        <p>Visibilitas menyeluruh progres pelatihan dari level individu hingga enterprise untuk semua
+                            stakeholder</p>
+                    </div>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon-wrapper">
+                        <i class="fas fa-clipboard-check"></i>
+                    </div>
+                    <div class="benefit-title">
+                        <p>Audit Readiness</p>
+                    </div>
+                    <div class="benefit-description">
+                        <p>Dokumentasi lengkap, audit trail, dan laporan compliance siap untuk audit internal maupun
+                            eksternal</p>
+                    </div>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon-wrapper">
+                        <i class="fas fa-certificate"></i>
+                    </div>
+                    <div class="benefit-title">
+                        <p>Monitoring Sertifikasi Teknis</p>
+                    </div>
+                    <div class="benefit-description">
+                        <p>Tracking proaktif status sertifikasi karyawan, notifikasi expiry, dan renewal planning untuk
+                            mitigasi risiko</p>
+                    </div>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon-wrapper">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <div class="benefit-title">
+                        <p>Data-Driven Decision Making</p>
+                    </div>
+                    <div class="benefit-description">
+                        <p>Learning analytics dan capability insights untuk strategic workforce planning dan skill gap
+                            analysis</p>
+                    </div>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon-wrapper">
+                        <i class="fas fa-rocket"></i>
+                    </div>
+                    <div class="benefit-title">
+                        <p>Fondasi Transformasi Digital SDM</p>
+                    </div>
+                    <div class="benefit-description">
+                        <p>Infrastruktur pembelajaran digital yang scalable dan future-ready untuk mendukung inovasi
+                            jangka panjang</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-note">
+            <div class="footer-icon">
+                <i class="fas fa-trophy"></i>
+            </div>
+            <p>Investasi strategis untuk penguatan kapabilitas SDM dan keunggulan operasional berkelanjutan PT YKK AP
+                Indonesia</p>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+
+<html lang="id">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=1280, height=720" name="viewport" />
+    <title>Ruang Lingkup H — Security &amp; Scalability</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&amp;display=swap"
+        rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" rel="stylesheet" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            overflow: hidden;
+        }
+
+        .slide-container {
+            width: 1280px;
+            height: 720px;
+            display: flex;
+            flex-direction: column;
+            background-color: #FFFFFF;
+            position: relative;
+        }
+
+        .header {
+            padding: 45px 60px 25px 60px;
+            border-bottom: 3px solid #2563EB;
+        }
+
+        .header-title {
+            font-size: 40px;
+            font-weight: 700;
+            color: #1B3A6B;
+            letter-spacing: -0.5px;
+        }
+
+        .content-wrapper {
+            flex: 1;
+            padding: 35px 60px 35px 60px;
+            display: flex;
+            gap: 50px;
+        }
+
+        .column {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-bottom: 8px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid #E5E7EB;
+        }
+
+        .section-icon-wrapper {
+            width: 48px;
+            height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #2563EB;
+            color: #FFFFFF;
+            font-size: 22px;
+            border-radius: 8px;
+            flex-shrink: 0;
+        }
+
+        .section-title {
+            font-size: 24px;
+            font-weight: 700;
+            color: #1B3A6B;
+            letter-spacing: -0.3px;
+        }
+
+        .checklist-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 14px;
+            padding: 14px 18px;
+            background-color: #F8FAFC;
+            border: 2px solid #E5E7EB;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .checklist-item:hover {
+            background-color: #EFF6FF;
+            border-color: #2563EB;
+            transform: translateX(4px);
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.12);
+        }
+
+        .checklist-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background-color: #2563EB;
+            transform: scaleY(0);
+            transition: transform 0.3s ease;
+        }
+
+        .checklist-item:hover::before {
+            transform: scaleY(1);
+        }
+
+        .check-icon-wrapper {
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #2563EB;
+            color: #FFFFFF;
+            font-size: 14px;
+            border-radius: 50%;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .item-content {
+            flex: 1;
+        }
+
+        .item-title {
+            font-size: 16px;
+            font-weight: 700;
+            color: #1B3A6B;
+            margin-bottom: 5px;
+            line-height: 1.3;
+        }
+
+        .item-description {
+            font-size: 13px;
+            font-weight: 400;
+            color: #4B5563;
+            line-height: 1.5;
+        }
+
+        .visual-separator {
+            width: 2px;
+            background-color: #CBD5E1;
+            margin: 10px 0;
+            position: relative;
+        }
+
+        .visual-separator::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 40px;
+            height: 40px;
+            background-color: #2563EB;
+            border-radius: 50%;
+            border: 3px solid #FFFFFF;
+            box-shadow: 0 2px 8px rgba(37, 99, 235, 0.3);
+        }
+
+        .visual-separator::after {
+            content: '\f30b';
+            font-family: 'Font Awesome 5 Free';
+            font-weight: 900;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #FFFFFF;
+            font-size: 16px;
+            z-index: 1;
+        }
+
+        .footer-note {
+            padding: 0 60px 20px 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+        }
+
+        .footer-icon {
+            width: 32px;
+            height: 32px;
+            background-color: #2563EB;
+            color: #FFFFFF;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            border-radius: 4px;
+            flex-shrink: 0;
+        }
+
+        .footer-note p {
+            font-size: 14px;
+            font-weight: 600;
+            color: #6B7280;
+            letter-spacing: 0.3px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="slide-container">
+        <div class="header">
+            <div class="header-title">
+                <p>Ruang Lingkup H — Security, Scalability &amp; Architecture</p>
+            </div>
+        </div>
+        <div class="content-wrapper">
+            <div class="column">
+                <div class="section-header">
+                    <div class="section-icon-wrapper">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <div class="section-title">
+                        <p>Security &amp; Compliance</p>
+                    </div>
+                </div>
+                <div class="checklist-item">
+                    <div class="check-icon-wrapper">
+                        <i class="fas fa-check"></i>
+                    </div>
+                    <div class="item-content">
+                        <div class="item-title">
+                            <p>Role-Based Access Control (RBAC)</p>
+                        </div>
+                        <div class="item-description">
+                            <p>Kontrol akses berbasis peran dengan granular permission untuk memastikan setiap user
+                                hanya mengakses data dan fitur sesuai kewenangannya</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="checklist-item">
+                    <div class="check-icon-wrapper">
+                        <i class="fas fa-check"></i>
+                    </div>
+                    <div class="item-content">
+                        <div class="item-title">
+                            <p>Single Sign-On (SSO) &amp; Multi-Factor Authentication</p>
+                        </div>
+                        <div class="item-description">
+                            <p>Integrasi SSO dengan Active Directory/LDAP dan opsi MFA untuk keamanan autentikasi
+                                tingkat enterprise</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="checklist-item">
+                    <div class="check-icon-wrapper">
+                        <i class="fas fa-check"></i>
+                    </div>
+                    <div class="item-content">
+                        <div class="item-title">
+                            <p>Data Encryption &amp; Secure Storage</p>
+                        </div>
+                        <div class="item-description">
+                            <p>Enkripsi data at-rest dan in-transit dengan standar industri untuk melindungi informasi
+                                sensitif karyawan dan konten pembelajaran</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="checklist-item">
+                    <div class="check-icon-wrapper">
+                        <i class="fas fa-check"></i>
+                    </div>
+                    <div class="item-content">
+                        <div class="item-title">
+                            <p>Comprehensive Audit Log</p>
+                        </div>
+                        <div class="item-description">
+                            <p>Pencatatan menyeluruh atas semua aktivitas user, perubahan data, dan akses sistem untuk
+                                compliance tracking dan investigasi</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="visual-separator"></div>
+            <div class="column">
+                <div class="section-header">
+                    <div class="section-icon-wrapper">
+                        <i class="fas fa-expand-arrows-alt"></i>
+                    </div>
+                    <div class="section-title">
+                        <p>Scalability &amp; Architecture</p>
+                    </div>
+                </div>
+                <div class="checklist-item">
+                    <div class="check-icon-wrapper">
+                        <i class="fas fa-check"></i>
+                    </div>
+                    <div class="item-content">
+                        <div class="item-title">
+                            <p>Support 1,000+ Active Users Concurrent</p>
+                        </div>
+                        <div class="item-description">
+                            <p>Arsitektur yang dioptimalkan untuk menangani ribuan pengguna aktif secara bersamaan
+                                dengan performa stabil dan response time cepat</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="checklist-item">
+                    <div class="check-icon-wrapper">
+                        <i class="fas fa-check"></i>
+                    </div>
+                    <div class="item-content">
+                        <div class="item-title">
+                            <p>Mobile Optimized (Android / iOS)</p>
+                        </div>
+                        <div class="item-description">
+                            <p>Responsive design dan akses mobile-friendly untuk pembelajaran fleksibel, mendukung akses
+                                dari plant floor maupun remote location</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="checklist-item">
+                    <div class="check-icon-wrapper">
+                        <i class="fas fa-check"></i>
+                    </div>
+                    <div class="item-content">
+                        <div class="item-title">
+                            <p>On-Premise Ready &amp; Hybrid Deployment</p>
+                        </div>
+                        <div class="item-description">
+                            <p>Fleksibilitas deployment: on-premise, cloud, atau hybrid sesuai kebijakan IT dan regulasi
+                                data perusahaan</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="checklist-item">
+                    <div class="check-icon-wrapper">
+                        <i class="fas fa-check"></i>
+                    </div>
+                    <div class="item-content">
+                        <div class="item-title">
+                            <p>Modular Architecture for Future Integration</p>
+                        </div>
+                        <div class="item-description">
+                            <p>API terbuka dan arsitektur modular untuk integrasi dengan ERP, Attendance System,
+                                Compliance Tools, dan solusi enterprise lainnya</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-note">
+            <div class="footer-icon">
+                <i class="fas fa-lock"></i>
+            </div>
+            <p>Enterprise-grade security dengan skalabilitas tinggi untuk mendukung pertumbuhan organisasi PT YKK AP
+                Indonesia</p>
+        </div>
+    </div>
+</body>
+
+</html>

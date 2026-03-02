@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+
+<html lang="id">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=1280, height=720" name="viewport" />
+    <title>Proposal Enterprise LMS - Cover</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&amp;display=swap"
+        rel="stylesheet" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            overflow: hidden;
+        }
+
+        .slide-container {
+            width: 1280px;
+            height: 720px;
+            display: flex;
+            position: relative;
+            background-color: #1B3A6B;
+            overflow: hidden;
+        }
+
+        .content-wrapper {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+            padding: 80px 100px;
+        }
+
+        .logo-area {
+            position: absolute;
+            width: 140px;
+            height: 60px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 11px;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .logo-left {
+            top: 40px;
+            left: 50px;
+        }
+
+        .logo-right {
+            top: 40px;
+            right: 50px;
+        }
+
+        .geometric-pattern {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.15;
+            z-index: 1;
+        }
+
+        .main-title {
+            font-size: 52px;
+            font-weight: 800;
+            color: #FFFFFF;
+            text-align: center;
+            line-height: 1.2;
+            margin-bottom: 24px;
+            letter-spacing: -0.5px;
+        }
+
+        .subtitle {
+            font-size: 28px;
+            font-weight: 300;
+            color: #E0E7FF;
+            text-align: center;
+            margin-bottom: 60px;
+            letter-spacing: 0.5px;
+        }
+
+        .divider {
+            width: 120px;
+            height: 3px;
+            background-color: #2563EB;
+            margin: 0 auto 50px;
+        }
+
+        .info-section {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .info-label {
+            font-size: 13px;
+            font-weight: 600;
+            color: #93C5FD;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 8px;
+        }
+
+        .info-value {
+            font-size: 20px;
+            font-weight: 600;
+            color: #FFFFFF;
+            letter-spacing: 0.3px;
+        }
+
+        .date-badge {
+            position: absolute;
+            bottom: 40px;
+            right: 50px;
+            background-color: #2563EB;
+            color: #FFFFFF;
+            padding: 10px 28px;
+            font-size: 16px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            z-index: 2;
+        }
+
+        .accent-line {
+            position: absolute;
+            height: 4px;
+            background-color: #2563EB;
+            z-index: 1;
+        }
+
+        .accent-line-1 {
+            top: 0;
+            left: 0;
+            width: 300px;
+        }
+
+        .accent-line-2 {
+            bottom: 0;
+            right: 0;
+            width: 400px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="slide-container">
+        <svg class="geometric-pattern" preserveaspectratio="xMidYMid slice" viewbox="0 0 1280 720">
+            <defs>
+                <pattern height="80" id="grid" patternunits="userSpaceOnUse" width="80">
+                    <path d="M 80 0 L 0 0 0 80" fill="none" stroke="white" stroke-width="1"></path>
+                </pattern>
+            </defs>
+            <rect fill="url(#grid)" height="720" width="1280"></rect>
+            <circle cx="1100" cy="150" fill="none" opacity="0.4" r="200" stroke="white" stroke-width="2"></circle>
+            <circle cx="200" cy="600" fill="none" opacity="0.3" r="150" stroke="white" stroke-width="2"></circle>
+            <polygon fill="none" opacity="0.3" points="900,500 1000,650 800,650" stroke="white" stroke-width="2">
+            </polygon>
+        </svg>
+        <div class="accent-line accent-line-1"></div>
+        <div class="accent-line accent-line-2"></div>
+        
+        <div class="content-wrapper">
+            <div class="main-title">
+                <p>Proposal Enterprise</p>
+                <p>Learning Management System</p>
+            </div>
+            <div class="subtitle">
+                <p>Strategic Workforce Learning Platform</p>
+            </div>
+            <div class="divider"></div>
+            <div class="info-section">
+                <div class="info-label">
+                    <p>Ditujukan untuk</p>
+                </div>
+                <div class="info-value">
+                    <p>PT YKK AP Indonesia</p>
+                </div>
+            </div>
+            <div class="info-section" style="margin-top: 35px;">
+                <div class="info-label">
+                    <p>Disusun oleh</p>
+                </div>
+                <div class="info-value">
+                    <p>PT Mustika Sinergi Integrasi</p>
+                    <p style="font-size: 17px; font-weight: 500; margin-top: 4px; color: #93C5FD;">(Sinergi TechForce)
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="date-badge">
+            <p>2026</p>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+
+<html lang="id">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Field Wajib di Order Form</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&amp;family=Inter:wght@300;400;600&amp;display=swap"
+        rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #0B0F19;
+            font-family: 'Inter', sans-serif;
+            overflow: hidden;
+        }
+
+        .slide-container {
+            width: 1280px;
+            height: 720px;
+            background-color: #0B0F19;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Background Pattern */
+        .bg-pattern {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image:
+                linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+            background-size: 40px 40px;
+            z-index: 0;
+        }
+
+        .glow-effect {
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(212, 175, 55, 0.08) 0%, transparent 70%);
+            top: -200px;
+            right: -200px;
+            z-index: 0;
+        }
+
+        /* Header */
+        .header {
+            padding: 50px 80px 20px 80px;
+            z-index: 10;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+        }
+
+        .title-group h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 800;
+            font-size: 42px;
+            color: #FFFFFF;
+            margin-bottom: 10px;
+            letter-spacing: -0.02em;
+        }
+
+        .title-group .subtitle {
+            font-family: 'Inter', sans-serif;
+            font-size: 18px;
+            color: #9CA3AF;
+        }
+
+        .header-icon {
+            font-size: 40px;
+            color: #D4AF37;
+            background: rgba(212, 175, 55, 0.1);
+            width: 80px;
+            height: 80px;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+        }
+
+        /* Grid Content */
+        .grid-container {
+            flex: 1;
+            padding: 20px 80px 50px 80px;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-template-rows: repeat(4, 1fr);
+            gap: 20px;
+            z-index: 10;
+        }
+
+        .field-card {
+            background-color: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 12px;
+            padding: 0 25px;
+            display: flex;
+            align-items: center;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .field-card:hover {
+            background-color: rgba(255, 255, 255, 0.06);
+            border-color: rgba(212, 175, 55, 0.4);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .field-card::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background-color: #D4AF37;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .field-card:hover::before {
+            opacity: 1;
+        }
+
+        .icon-wrapper {
+            width: 48px;
+            height: 48px;
+            border-radius: 10px;
+            background-color: rgba(11, 15, 25, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 20px;
+            color: #D4AF37;
+            font-size: 20px;
+            flex-shrink: 0;
+        }
+
+        .card-content {
+            flex: 1;
+        }
+
+        .card-title {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            font-size: 18px;
+            color: #F3F4F6;
+            margin-bottom: 4px;
+        }
+
+        .card-desc {
+            font-family: 'Inter', sans-serif;
+            font-size: 13px;
+            color: #9CA3AF;
+        }
+
+        .check-badge {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background-color: rgba(16, 185, 129, 0.2);
+            color: #10B981;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            margin-left: 15px;
+        }
+
+        /* Decorative Line */
+        .bottom-line {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, #0B0F19 0%, #D4AF37 50%, #0B0F19 100%);
+        }
+
+        .page-number {
+            position: absolute;
+            bottom: 30px;
+            right: 40px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            color: #4B5563;
+            font-size: 14px;
+            z-index: 20;
+        }
+
+        .notes-container {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="slide-container">
+        <!-- Background -->
+        <div class="bg-pattern"></div>
+        <div class="glow-effect"></div>
+        <!-- Header -->
+        <div class="header">
+            <div class="title-group">
+                <h1>Field Wajib di Order Form</h1>
+                <p class="subtitle">Struktur data standar untuk menjamin automasi berjalan 100% akurat</p>
+            </div>
+            <div class="header-icon">
+                <i class="fa-solid fa-list-check"></i>
+            </div>
+        </div>
+        <!-- Content Grid -->
+        <div class="grid-container">
+            <!-- Item 1 -->
+            <div class="field-card">
+                <div class="icon-wrapper">
+                    <i class="fa-solid fa-user"></i>
+                </div>
+                <div class="card-content">
+                    <div class="card-title">Nama Lengkap Customer</div>
+                    <div class="card-desc">Sesuai KTP/Penerima untuk label pengiriman</div>
+                </div>
+                <div class="check-badge"><i class="fa-solid fa-check"></i></div>
+            </div>
+            <!-- Item 2 -->
+            <div class="field-card">
+                <div class="icon-wrapper">
+                    <i class="fa-brands fa-whatsapp"></i>
+                </div>
+                <div class="card-content">
+                    <div class="card-title">No. WhatsApp</div>
+                    <div class="card-desc">Wajib validasi angka (08/62) untuk notifikasi otomatis</div>
+                </div>
+                <div class="check-badge"><i class="fa-solid fa-check"></i></div>
+            </div>
+            <!-- Item 3 -->
+            <div class="field-card">
+                <div class="icon-wrapper">
+                    <i class="fa-solid fa-envelope"></i>
+                </div>
+                <div class="card-content">
+                    <div class="card-title">Alamat Email</div>
+                    <div class="card-desc">Destinasi pengiriman invoice digital (profesional)</div>
+                </div>
+                <div class="check-badge"><i class="fa-solid fa-check"></i></div>
+            </div>
+            <!-- Item 4 -->
+            <div class="field-card">
+                <div class="icon-wrapper">
+                    <i class="fa-solid fa-location-dot"></i>
+                </div>
+                <div class="card-content">
+                    <div class="card-title">Alamat Lengkap + Kode Pos</div>
+                    <div class="card-desc">Kecamatan &amp; Kota wajib untuk hitung ongkir</div>
+                </div>
+                <div class="check-badge"><i class="fa-solid fa-check"></i></div>
+            </div>
+            <!-- Item 5 -->
+            <div class="field-card">
+                <div class="icon-wrapper">
+                    <i class="fa-solid fa-box-open"></i>
+                </div>
+                <div class="card-content">
+                    <div class="card-title">Produk &amp; Varian</div>
+                    <div class="card-desc">Gunakan Dropdown/Pilihan Ganda (Bukan isian teks)</div>
+                </div>
+                <div class="check-badge"><i class="fa-solid fa-check"></i></div>
+            </div>
+            <!-- Item 6 -->
+            <div class="field-card">
+                <div class="icon-wrapper">
+                    <i class="fa-solid fa-arrow-down-1-9"></i>
+                </div>
+                <div class="card-content">
+                    <div class="card-title">Jumlah / Quantity</div>
+                    <div class="card-desc">Validasi angka min/max order per transaksi</div>
+                </div>
+                <div class="check-badge"><i class="fa-solid fa-check"></i></div>
+            </div>
+            <!-- Item 7 -->
+            <div class="field-card">
+                <div class="icon-wrapper">
+                    <i class="fa-solid fa-credit-card"></i>
+                </div>
+                <div class="card-content">
+                    <div class="card-title">Metode Pembayaran</div>
+                    <div class="card-desc">Transfer Bank / E-Wallet / QRIS / COD</div>
+                </div>
+                <div class="check-badge"><i class="fa-solid fa-check"></i></div>
+            </div>
+            <!-- Item 8 -->
+            <div class="field-card">
+                <div class="icon-wrapper">
+                    <i class="fa-solid fa-note-sticky"></i>
+                </div>
+                <div class="card-content">
+                    <div class="card-title">Catatan / Request</div>
+                    <div class="card-desc">Opsional (Contoh: "Tolong tulis ucapan ultah")</div>
+                </div>
+                <div class="check-badge"><i class="fa-solid fa-check"></i></div>
+            </div>
+        </div>
+        <div class="bottom-line"></div>
+        <div class="page-number">12</div>
+        <div class="notes-container">
+            Form order harus capture semua data yang dibutuhkan untuk proses fulfillment. Gunakan dropdown untuk produk
+            agar konsisten, validasi format HP dan email, dan pastikan alamat lengkap. Data bersih dari awal = proses
+            lancar.
+        </div>
+    </div>
+</body>
+
+</html>

@@ -5,398 +5,261 @@
 <head>
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <title>Generate Nomor Invoice Profesional</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
-    <link
-        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&amp;family=Inter:wght@300;400;500;600;700&amp;family=JetBrains+Mono:wght@500;700&amp;display=swap"
-        rel="stylesheet" />
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&amp;display=swap" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" rel="stylesheet" />
     <style>
         body {
             margin: 0;
-            padding: 0;
-            background-color: #0B0F19;
-            font-family: 'Inter', sans-serif;
-            overflow: hidden;
         }
 
-        .slide-container {
+        .slide {
             width: 1280px;
             height: 720px;
-            background-color: #0B0F19;
+            display: flex;
+            background: #FFFFFF;
+            font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+            font-size: 14px;
             position: relative;
             overflow: hidden;
-            display: flex;
-            flex-direction: column;
         }
 
-        /* Background Graphics */
-        .bg-grid {
+        .slide .p-6 {
+            padding: 1.25rem !important;
+        }
+
+        .slide .p-5 {
+            padding: 1rem !important;
+        }
+
+        .slide .p-4 {
+            padding: 0.85rem !important;
+        }
+
+        .slide .mt-8 {
+            margin-top: 1.25rem !important;
+        }
+
+        .slide .mt-6 {
+            margin-top: 1rem !important;
+        }
+
+        .slide .mt-5 {
+            margin-top: 0.85rem !important;
+        }
+
+        .slide .mt-3 {
+            margin-top: 0.5rem !important;
+        }
+
+        .slide .space-y-4> :not([hidden])~ :not([hidden]) {
+            margin-top: 0.65rem !important;
+        }
+
+        .slide .space-y-3> :not([hidden])~ :not([hidden]) {
+            margin-top: 0.55rem !important;
+        }
+
+        .gold {
+            color: #F5A623;
+        }
+
+        .gold-bg {
+            background: #F5A623;
+        }
+
+        .muted2 {
+            color: rgba(14, 26, 58, 0.70);
+        }
+
+        .card {
+            background: rgba(14, 26, 58, 0.04);
+            border: 1px solid rgba(245, 166, 35, 0.26);
+        }
+
+        .soft-border {
+            border: 1px solid rgba(14, 26, 58, 0.10);
+        }
+
+        .glow {
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image:
-                linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
-            background-size: 40px 40px;
-            z-index: 0;
-        }
-
-        .accent-glow {
-            position: absolute;
-            width: 500px;
-            height: 500px;
-            background-color: rgba(212, 175, 55, 0.05);
-            filter: blur(100px);
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            z-index: 0;
-        }
-
-        /* Header */
-        .header {
-            padding: 50px 80px 20px 80px;
-            z-index: 10;
-        }
-
-        .header h1 {
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 800;
-            font-size: 42px;
-            color: #FFFFFF;
-            margin-bottom: 10px;
-            letter-spacing: -0.02em;
-        }
-
-        .header p {
-            font-family: 'Inter', sans-serif;
-            font-size: 18px;
-            color: #9CA3AF;
-        }
-
-        .gold-line {
-            width: 100px;
-            height: 4px;
-            background-color: #D4AF37;
-            margin-top: 20px;
-        }
-
-        /* Content Layout */
-        .content-wrapper {
-            flex: 1;
-            padding: 20px 80px 60px 80px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            z-index: 10;
-        }
-
-        /* Invoice Visual Breakdown */
-        .invoice-visual-container {
-            width: 100%;
-            display: flex;
-            justify-content: center;
-            margin-bottom: 50px;
-        }
-
-        .invoice-box {
-            background-color: #1F2937;
-            border: 1px solid #374151;
-            border-radius: 16px;
-            padding: 40px 60px;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-            position: relative;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .invoice-number-display {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 56px;
-            font-weight: 700;
-            color: #FFFFFF;
-            letter-spacing: 0.05em;
-            display: flex;
-            gap: 10px;
-            align-items: baseline;
-        }
-
-        .part-prefix {
-            color: #9CA3AF;
-        }
-
-        .part-divider {
-            color: #4B5563;
-        }
-
-        .part-date {
-            color: #D4AF37;
-        }
-
-        .part-seq {
-            color: #10B981;
-            text-shadow: 0 0 20px rgba(16, 185, 129, 0.3);
-        }
-
-        /* Breakdown Lines */
-        .breakdown-container {
-            display: flex;
-            width: 100%;
-            justify-content: space-between;
-            margin-top: 20px;
-            position: relative;
-            gap: 20px;
-        }
-
-        .breakdown-item {
-            text-align: center;
-            position: relative;
-            padding-top: 30px;
-        }
-
-        .breakdown-item::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 1px;
-            height: 20px;
-            background-color: #4B5563;
-        }
-
-        .breakdown-item::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 6px;
-            height: 6px;
-            background-color: #4B5563;
-            border-radius: 50%;
-        }
-
-        .breakdown-label {
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 600;
-            font-size: 14px;
-            color: #D1D5DB;
-            text-transform: uppercase;
-            margin-bottom: 4px;
-        }
-
-        .breakdown-desc {
-            font-family: 'Inter', sans-serif;
-            font-size: 12px;
-            color: #6B7280;
-        }
-
-        /* Auto Increment Animation Concept */
-        .auto-increment-flow {
-            display: flex;
-            align-items: center;
-            gap: 30px;
-            background-color: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 12px;
-            padding: 20px 40px;
-        }
-
-        .flow-step {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            opacity: 0.5;
-        }
-
-        .flow-step.active {
-            opacity: 1;
-            transform: scale(1.05);
-        }
-
-        .step-num {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 18px;
-            color: #10B981;
-            margin-bottom: 8px;
-        }
-
-        .step-label {
-            font-size: 12px;
-            color: #9CA3AF;
-        }
-
-        .flow-arrow {
-            color: #D4AF37;
-            font-size: 16px;
-        }
-
-        /* Features Grid */
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 30px;
-            width: 100%;
-            margin-top: 40px;
-        }
-
-        .feature-card {
-            display: flex;
-            align-items: flex-start;
-            gap: 15px;
-        }
-
-        .feature-icon {
-            width: 40px;
-            height: 40px;
-            border-radius: 8px;
-            background-color: rgba(212, 175, 55, 0.1);
-            color: #D4AF37;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
-        }
-
-        .feature-content h3 {
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 700;
-            font-size: 16px;
-            color: #FFFFFF;
-            margin-bottom: 6px;
-        }
-
-        .feature-content p {
-            font-family: 'Inter', sans-serif;
-            font-size: 13px;
-            color: #9CA3AF;
-            line-height: 1.5;
-        }
-
-        /* Page Number */
-        .page-number {
-            position: absolute;
-            bottom: 30px;
-            right: 40px;
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 600;
-            color: #4B5563;
-            font-size: 14px;
-        }
-
-        .notes-container {
-            display: none;
+            inset: -45% -35% auto auto;
+            width: 860px;
+            height: 860px;
+            border-radius: 9999px;
+            background: radial-gradient(circle at 30% 30%, rgba(245, 166, 35, 0.18), rgba(255, 255, 255, 0) 60%);
+            pointer-events: none;
         }
     </style>
 </head>
 
 <body>
-    <div class="slide-container">
-        <!-- Background -->
-        <div class="bg-grid"></div>
-        <div class="accent-glow"></div>
-        <!-- Header -->
-        <div class="header">
-            <h1>Generate Nomor Invoice Profesional</h1>
-            <p>Identitas transaksi yang rapi, unik, dan terpercaya</p>
-            <div class="gold-line"></div>
+    <div class="slide">
+        <div class="absolute inset-0" style="pointer-events:none;">
+            <div class="glow"></div>
+            <div class="absolute"
+                style="left:-140px; top:-160px; width:560px; height:560px; border-radius:9999px; border:2px solid rgba(245,166,35,0.18);">
+            </div>
+            <div class="absolute"
+                style="left:86px; top:78px; width:190px; height:190px; border-radius:9999px; border:2px solid rgba(14,26,58,0.08);">
+            </div>
+            <div class="absolute"
+                style="right:-170px; bottom:-190px; width:650px; height:650px; border-radius:9999px; border:2px solid rgba(245,166,35,0.16);">
+            </div>
+            <div class="absolute"
+                style="right:120px; bottom:96px; width:230px; height:230px; border-radius:9999px; border:2px solid rgba(14,26,58,0.08);">
+            </div>
+            <div class="absolute" style="left:0; top:0; width:100%; height:100%;">
+                <div class="absolute gold-bg" style="left:0; top:0; width:10px; height:100%; opacity:0.95;"></div>
+                <div class="absolute" style="left:18px; top:0; width:2px; height:100%; background: rgba(245,166,35,0.35);"></div>
+                <div class="absolute" style="left:0; top:66px; width:100%; height:1px; background: rgba(14,26,58,0.06);"></div>
+            </div>
         </div>
-        <!-- Content -->
-        <div class="content-wrapper">
-            <!-- Main Visual: Invoice Number Breakdown -->
-            <div class="invoice-visual-container">
-                <div class="invoice-box">
-                    <div class="invoice-number-display">
-                        <span class="part-prefix">INV</span>
-                        <span class="part-divider">/</span>
-                        <span class="part-date">2026</span>
-                        <span class="part-divider">/</span>
-                        <span class="part-date">02</span>
-                        <span class="part-divider">/</span>
-                        <span class="part-seq">0001</span>
+
+        <div class="relative flex-1 flex flex-col">
+            <div class="w-full px-16 pt-8 flex items-center justify-between">
+                <div class="flex items-center space-x-3">
+                    <div class="card flex items-center justify-center" style="width:44px; height:44px; border-radius:10px;">
+                        <i class="fa-solid fa-building" style="color: rgba(14,26,58,0.82); font-size:18px;"></i>
                     </div>
-                    <div class="breakdown-container">
-                        <div class="breakdown-item" style="flex: 0 0 10%;">
-                            <div class="breakdown-label">Prefix</div>
-                            <div class="breakdown-desc">Kode Bisnis</div>
-                        </div>
-                        <div class="breakdown-item" style="flex: 0 0 25%;">
-                            <div class="breakdown-label">Tahun</div>
-                            <div class="breakdown-desc">Auto-Update</div>
-                        </div>
-                        <div class="breakdown-item" style="flex: 0 0 15%;">
-                            <div class="breakdown-label">Bulan</div>
-                            <div class="breakdown-desc">Auto-Update</div>
-                        </div>
-                        <div class="breakdown-item" style="flex: 0 0 25%;">
-                            <div class="breakdown-label">Sequence</div>
-                            <div class="breakdown-desc">Auto-Increment +1</div>
-                        </div>
+                    <div class="flex flex-col">
+                        <p class="muted2 text-xs tracking-widest font-semibold">UNTUK</p>
+                        <p class="text-gray-900 text-sm font-semibold tracking-wide">PT YKK AP Indonesia</p>
+                    </div>
+                </div>
+                <div class="flex items-center space-x-3">
+                    <div class="card px-4 py-2 rounded-full">
+                        <p class="text-gray-900 text-xs font-semibold tracking-widest">TAHUN <span class="gold">2026</span></p>
                     </div>
                 </div>
             </div>
-            <!-- Secondary Visual: Flow Concept -->
-            <div class="auto-increment-flow">
-                <div class="flow-step">
-                    <div class="step-num">...0001</div>
-                    <div class="step-label">Order #1</div>
-                </div>
-                <i class="fa-solid fa-arrow-right flow-arrow"></i>
-                <div class="flow-step active">
-                    <div class="step-num">...0002</div>
-                    <div class="step-label">Order Baru Masuk</div>
-                </div>
-                <i class="fa-solid fa-arrow-right flow-arrow"></i>
-                <div class="flow-step">
-                    <div class="step-num">...0003</div>
-                    <div class="step-label">Order Selanjutnya</div>
-                </div>
-            </div>
-            <!-- Features Grid -->
-            <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fa-solid fa-arrow-up-1-9"></i>
-                    </div>
-                    <div class="feature-content">
-                        <h3>Auto-Increment</h3>
-                        <p>Sistem otomatis mengecek nomor terakhir dan menambahkan +1. Tidak ada nomor ganda.</p>
-                    </div>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fa-regular fa-calendar-check"></i>
-                    </div>
-                    <div class="feature-content">
-                        <h3>Format Dinamis</h3>
-                        <p>Kode tahun dan bulan berubah otomatis sesuai waktu transaksi. Memudahkan audit bulanan.</p>
-                    </div>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fa-solid fa-fingerprint"></i>
-                    </div>
-                    <div class="feature-content">
-                        <h3>Unique ID</h3>
-                        <p>Setiap transaksi memiliki identitas unik untuk mencegah kebingungan saat klaim atau retur.
+
+            <div class="flex-1 px-16 pt-7">
+                <div class="flex items-start justify-between">
+                    <div class="max-w-3xl">
+                        <p class="text-xs tracking-widest font-semibold muted2">PROBLEM STATEMENT</p>
+                        <h1 class="text-3xl font-extrabold text-gray-900 mt-2 leading-tight">
+                            Tantangan Organisasi Saat Ini
+                        </h1>
+                        <p class="text-sm muted2 mt-3">
+                            Sebelum membahas solusi, perlu ada gambaran jelas tentang pain points yang membuat LMS menjadi kebutuhan.
                         </p>
                     </div>
+                    <div class="card px-4 py-3 rounded-xl" style="min-width: 320px;">
+                        <p class="text-sm font-semibold text-gray-900">Kenapa ini penting?</p>
+                        <p class="text-sm muted2 mt-1">Tanpa sistem yang terukur, pembelajaran sulit dikaitkan dengan produktivitas dan kesiapan kompetensi.</p>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-2 gap-5 mt-8">
+                    <div class="soft-border rounded-2xl p-5 bg-white" style="box-shadow: 0 10px 26px rgba(14,26,58,0.06);">
+                        <div class="flex items-center justify-between">
+                            <p class="text-lg font-extrabold text-gray-900">Tantangan HR & L&D</p>
+                            <div class="flex items-center space-x-2">
+                                <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold" style="background: rgba(245,166,35,0.14); color:#0E1A3A;">Urgent</span>
+                            </div>
+                        </div>
+
+                        <div class="mt-4 space-y-2">
+                            <div class="flex items-start space-x-3">
+                                <div style="width:10px; height:10px; border-radius:9999px; background:#E53E3E; margin-top:6px;"></div>
+                                <div>
+                                    <p class="text-sm font-semibold text-gray-900">Learning tidak terukur</p>
+                                    <p class="text-sm muted2 mt-1">Sulit mengetahui siapa belajar apa, progress, dan bukti kompetensi.</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start space-x-3">
+                                <div style="width:10px; height:10px; border-radius:9999px; background:#E53E3E; margin-top:6px;"></div>
+                                <div>
+                                    <p class="text-sm font-semibold text-gray-900">Training tidak berdampak ke performance</p>
+                                    <p class="text-sm muted2 mt-1">Materi berjalan, namun outcome ke KPI/skill gap tidak terlihat jelas.</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start space-x-3">
+                                <div style="width:10px; height:10px; border-radius:9999px; background:#E53E3E; margin-top:6px;"></div>
+                                <div>
+                                    <p class="text-sm font-semibold text-gray-900">Knowledge tidak terdokumentasi</p>
+                                    <p class="text-sm muted2 mt-1">Informasi kritikal tersebar, tidak reusable, dan rawan hilang saat turnover.</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start space-x-3">
+                                <div style="width:10px; height:10px; border-radius:9999px; background:#E53E3E; margin-top:6px;"></div>
+                                <div>
+                                    <p class="text-sm font-semibold text-gray-900">Employee engagement rendah</p>
+                                    <p class="text-sm muted2 mt-1">Learning experience tidak menarik, partisipasi rendah, sulit membangun budaya belajar.</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start space-x-3">
+                                <div style="width:10px; height:10px; border-radius:9999px; background:#E53E3E; margin-top:6px;"></div>
+                                <div>
+                                    <p class="text-sm font-semibold text-gray-900">Digital adoption lambat</p>
+                                    <p class="text-sm muted2 mt-1">Perubahan tools/proses tidak diiringi enablement yang cepat dan terstruktur.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="soft-border rounded-2xl p-5 bg-white" style="box-shadow: 0 10px 26px rgba(14,26,58,0.06);">
+                        <p class="text-lg font-extrabold text-gray-900">Dampak yang sering terjadi</p>
+                        <div class="mt-4 space-y-3">
+                            <div class="flex items-start space-x-3">
+                                <div class="card flex items-center justify-center" style="width:34px; height:34px; border-radius:10px;">
+                                    <i class="fa-solid fa-clock" style="color: rgba(14,26,58,0.78); font-size:14px;"></i>
+                                </div>
+                                <div>
+                                    <p class="text-sm font-semibold text-gray-900">Waktu onboarding lebih lama</p>
+                                    <p class="text-sm muted2 mt-1">Karyawan baru butuh waktu lebih panjang untuk produktif.</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start space-x-3">
+                                <div class="card flex items-center justify-center" style="width:34px; height:34px; border-radius:10px;">
+                                    <i class="fa-solid fa-chart-line" style="color: rgba(14,26,58,0.78); font-size:14px;"></i>
+                                </div>
+                                <div>
+                                    <p class="text-sm font-semibold text-gray-900">Return training sulit diukur</p>
+                                    <p class="text-sm muted2 mt-1">Anggaran training besar, tetapi bukti dampak masih lemah.</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start space-x-3">
+                                <div class="card flex items-center justify-center" style="width:34px; height:34px; border-radius:10px;">
+                                    <i class="fa-solid fa-shield-halved" style="color: rgba(14,26,58,0.78); font-size:14px;"></i>
+                                </div>
+                                <div>
+                                    <p class="text-sm font-semibold text-gray-900">Risiko compliance meningkat</p>
+                                    <p class="text-sm muted2 mt-1">Dokumentasi training dan sertifikasi tidak rapi, audit lebih sulit.</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start space-x-3">
+                                <div class="card flex items-center justify-center" style="width:34px; height:34px; border-radius:10px;">
+                                    <i class="fa-solid fa-people-group" style="color: rgba(14,26,58,0.78); font-size:14px;"></i>
+                                </div>
+                                <div>
+                                    <p class="text-sm font-semibold text-gray-900">Knowledge tidak scalable</p>
+                                    <p class="text-sm muted2 mt-1">Best practice sulit disebarkan lintas unit dan lokasi.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mt-4 card rounded-xl p-4">
+                            <p class="text-sm font-semibold text-gray-900">Kesimpulan</p>
+                            <p class="text-sm muted2 mt-1">Dibutuhkan platform yang memudahkan learning terstruktur, terukur, terdokumentasi, dan mudah diadopsi.</p>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-        <!-- Page Number -->
-        <div class="page-number">18</div>
-        <!-- Speaker Notes -->
-        <div class="notes-container">
-            Nomor invoice profesional adalah identitas transaksi. Format terstruktur dengan tahun-bulan membuat tracking
-            mudah. Script otomatis generate nomor urut, tidak perlu manual input. Ini penting untuk legalitas dan
-            profesionalisme bisnis.
+
+            <div class="w-full px-16 pb-9 flex items-center justify-between">
+                <div class="flex items-center space-x-3">
+                    <div style="width:8px; height:8px; border-radius:9999px; background:#F5A623;"></div>
+                    <p class="muted2 text-xs">Proposal Implementasi LMS</p>
+                </div>
+                <div class="flex items-center space-x-3">
+                    <i class="fa-regular fa-calendar" style="color: rgba(14,26,58,0.70); font-size:12px;"></i>
+                    <p class="muted2 text-xs">2026</p>
+                </div>
+            </div>
         </div>
     </div>
 </body>

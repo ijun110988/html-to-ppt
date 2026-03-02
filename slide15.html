@@ -5,323 +5,465 @@
 <head>
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <title>Workflow Status &amp; Monitoring</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
-    <link
-        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&amp;family=Inter:wght@300;400;600;700&amp;display=swap"
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&amp;display=swap"
         rel="stylesheet" />
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" rel="stylesheet" />
     <style>
+        html,
+        body {
+            height: 100%;
+        }
+
         body {
             margin: 0;
-            padding: 0;
-            background-color: #f3f4f6;
-            font-family: 'Inter', sans-serif;
+            overflow: hidden;
+            min-height: 100dvh;
+        }
+
+        .slide {
+            width: 100vw;
+            height: 100vh;
+            height: 100dvh;
+            display: flex;
+            background: #0E1A3A;
+            font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+            font-size: 14px;
+            position: relative;
             overflow: hidden;
         }
 
-        .slide-container {
-            width: 1280px;
-            height: 720px;
-            background-color: #FFFFFF;
-            position: relative;
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
+        .slide .p-8 {
+            padding: 1.5rem !important;
         }
 
-        /* Header */
-        .header {
-            padding: 40px 60px 20px 60px;
-            z-index: 10;
+        .slide .p-5 {
+            padding: 1rem !important;
         }
 
-        .header h1 {
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 800;
-            font-size: 36px;
-            color: #111827;
-            text-transform: uppercase;
-            margin-bottom: 8px;
+        .slide .p-4 {
+            padding: 0.85rem !important;
         }
 
-        .header p {
-            font-family: 'Inter', sans-serif;
-            font-size: 18px;
-            color: #6B7280;
-            margin: 0;
+        .slide .gap-4 {
+            gap: 0.75rem !important;
         }
 
-        .header-line {
-            width: 100px;
-            height: 4px;
-            background-color: #D4AF37;
-            margin-top: 15px;
+        .slide .space-y-2> :not([hidden])~ :not([hidden]) {
+            margin-top: 0.35rem !important;
         }
 
-        /* Main Content */
-        .content-wrapper {
-            flex: 1;
-            padding: 20px 60px 40px 60px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            gap: 40px;
+        .slide .mt-5 {
+            margin-top: 0.75rem !important;
         }
 
-        /* Flow Diagram Container */
-        .flow-diagram {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            position: relative;
-            padding: 0 20px;
+        .slide .mt-4 {
+            margin-top: 0.6rem !important;
         }
 
-        /* Connecting Line Background */
-        .connecting-line {
+        .slide .mt-3 {
+            margin-top: 0.5rem !important;
+        }
+
+        .slide .mb-8 {
+            margin-bottom: 1.25rem !important;
+        }
+
+        .slide .mb-6 {
+            margin-bottom: 1rem !important;
+        }
+
+        .slide .mb-5 {
+            margin-bottom: 0.85rem !important;
+        }
+
+        .gold {
+            color: #F5A623;
+        }
+
+        .gold-bg {
+            background: #F5A623;
+        }
+
+        .muted {
+            color: rgba(255, 255, 255, 0.78);
+        }
+
+        .muted2 {
+            color: rgba(255, 255, 255, 0.62);
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(245, 166, 35, 0.20);
+        }
+
+        .hairline {
+            border-color: rgba(245, 166, 35, 0.45);
+        }
+
+        .tag {
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.10);
+        }
+
+        .step {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .step-strong {
+            background: rgba(245, 166, 35, 0.10);
+            border: 1px solid rgba(245, 166, 35, 0.26);
+        }
+
+        .cta {
+            background: rgba(245, 166, 35, 0.14);
+            border: 1px solid rgba(245, 166, 35, 0.30);
+        }
+
+        .input {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.10);
+        }
+
+        .glow {
             position: absolute;
-            top: 50%;
-            left: 50px;
-            right: 50px;
-            height: 4px;
-            background-color: #E5E7EB;
-            transform: translateY(-50%);
-            z-index: 0;
-        }
-
-        /* Status Cards */
-        .status-card {
-            width: 220px;
-            height: 280px;
-            background-color: #FFFFFF;
-            border-radius: 16px;
-            position: relative;
-            z-index: 10;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 25px 20px;
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease;
-            border-top: 6px solid transparent;
-        }
-
-        .status-card:hover {
-            transform: translateY(-10px);
-        }
-
-        /* Status Specific Styles */
-        .status-pending {
-            border-color: #F59E0B;
-        }
-
-        .status-paid {
-            border-color: #10B981;
-        }
-
-        .status-shipped {
-            border-color: #3B82F6;
-        }
-
-        .status-done {
-            border-color: #111827;
-        }
-
-        .icon-circle {
-            width: 70px;
-            height: 70px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 28px;
-            margin-bottom: 20px;
-            background-color: #F3F4F6;
-        }
-
-        .status-pending .icon-circle {
-            background-color: #FEF3C7;
-            color: #D97706;
-        }
-
-        .status-paid .icon-circle {
-            background-color: #D1FAE5;
-            color: #059669;
-        }
-
-        .status-shipped .icon-circle {
-            background-color: #DBEAFE;
-            color: #2563EB;
-        }
-
-        .status-done .icon-circle {
-            background-color: #F3F4F6;
-            color: #1F2937;
-        }
-
-        .status-title {
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 700;
-            font-size: 18px;
-            margin-bottom: 10px;
-            text-transform: uppercase;
-        }
-
-        .status-pending .status-title {
-            color: #D97706;
-        }
-
-        .status-paid .status-title {
-            color: #059669;
-        }
-
-        .status-shipped .status-title {
-            color: #2563EB;
-        }
-
-        .status-done .status-title {
-            color: #1F2937;
-        }
-
-        .status-desc {
-            font-family: 'Inter', sans-serif;
-            font-size: 13px;
-            color: #6B7280;
-            text-align: center;
-            line-height: 1.5;
-        }
-
-        /* Arrow between cards */
-        .flow-arrow {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            color: #9CA3AF;
-            font-size: 20px;
-            z-index: 5;
-        }
-
-        /* Dashboard Snippet */
-        .dashboard-snippet {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            margin-top: 10px;
-        }
-
-        .snippet-item {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            background-color: #F9FAFB;
-            padding: 10px 20px;
-            border-radius: 8px;
-            border: 1px solid #E5E7EB;
-        }
-
-        .snippet-icon {
-            color: #D4AF37;
-        }
-
-        .snippet-text {
-            font-family: 'Inter', sans-serif;
-            font-size: 14px;
-            font-weight: 600;
-            color: #374151;
-        }
-
-        /* Page Number */
-        .page-number {
-            position: absolute;
-            bottom: 30px;
-            right: 40px;
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 600;
-            color: #9CA3AF;
-            font-size: 14px;
-        }
-
-        .notes-container {
-            display: none;
+            inset: -45% -35% auto auto;
+            width: 860px;
+            height: 860px;
+            border-radius: 9999px;
+            background: radial-gradient(circle at 30% 30%, rgba(245, 166, 35, 0.14), rgba(14, 26, 58, 0) 60%);
+            pointer-events: none;
         }
     </style>
 </head>
 
 <body>
-    <div class="slide-container">
-        <!-- Header -->
-        <div class="header">
-            <h1>Workflow Status &amp; Monitoring</h1>
-            <p>Sistem tracking order visual untuk prioritas kerja tim fulfillment</p>
-            <div class="header-line"></div>
+    <div class="slide">
+        <!-- Decorative geometry (no gradients) -->
+        <div class="absolute inset-0" style="pointer-events:none;">
+            <div class="glow"></div>
+            <div class="absolute"
+                style="left:-140px; top:-160px; width:560px; height:560px; border-radius:9999px; border:2px solid rgba(245,166,35,0.22);">
+            </div>
+            <div class="absolute"
+                style="left:86px; top:78px; width:190px; height:190px; border-radius:9999px; border:2px solid rgba(255,255,255,0.10);">
+            </div>
+            <div class="absolute"
+                style="right:-170px; bottom:-190px; width:650px; height:650px; border-radius:9999px; border:2px solid rgba(245,166,35,0.18);">
+            </div>
+            <div class="absolute"
+                style="right:120px; bottom:96px; width:230px; height:230px; border-radius:9999px; border:2px solid rgba(255,255,255,0.10);">
+            </div>
+            <!-- Left rail -->
+            <div class="absolute" style="left:0; top:0; width:100%; height:100%;">
+                <div class="absolute gold-bg" style="left:0; top:0; width:10px; height:100%; opacity:0.9;"></div>
+                <div class="absolute"
+                    style="left:18px; top:0; width:2px; height:100%; background: rgba(245,166,35,0.30);"></div>
+                <div class="absolute"
+                    style="left:0; top:66px; width:100%; height:1px; background: rgba(255,255,255,0.06);"></div>
+            </div>
         </div>
-        <!-- Content -->
-        <div class="content-wrapper">
-            <!-- Flow Diagram -->
-            <div class="flow-diagram">
-                <div class="connecting-line"></div>
-                <!-- Card 1: Pending -->
-                <div class="status-card status-pending">
-                    <div class="icon-circle">
-                        <i class="fa-regular fa-clock"></i>
+        <!-- Main -->
+        <div class="relative flex-1 flex flex-col">
+            <!-- Header -->
+            <div class="w-full px-16 pt-10 flex items-center justify-between">
+                <div class="flex items-center space-x-3">
+                    <div class="card flex items-center justify-center" style="width:44px; height:44px; border-radius:10px;">
+                        <i class="fa-solid fa-building" style="color: rgba(255,255,255,0.82); font-size:18px;"></i>
                     </div>
-                    <div class="status-title">Pending</div>
-                    <div class="status-desc">
-                        <p>Order baru masuk via Google Form. Menunggu pembayaran dari customer.</p>
+                    <div class="flex flex-col">
+                        <p class="muted2 text-xs tracking-widest font-semibold">UNTUK</p>
+                        <p class="text-white text-sm font-semibold tracking-wide">PT YKK AP Indonesia</p>
                     </div>
                 </div>
-                <i class="fa-solid fa-chevron-right flow-arrow" style="left: 24%;"></i>
-                <!-- Card 2: Paid -->
-                <div class="status-card status-paid">
-                    <div class="icon-circle">
-                        <i class="fa-solid fa-check-double"></i>
-                    </div>
-                    <div class="status-title">Paid</div>
-                    <div class="status-desc">
-                        <p>Pembayaran dikonfirmasi. Admin update status ini untuk trigger proses packing.</p>
-                    </div>
-                </div>
-                <i class="fa-solid fa-chevron-right flow-arrow" style="left: 50%;"></i>
-                <!-- Card 3: Shipped -->
-                <div class="status-card status-shipped">
-                    <div class="icon-circle">
-                        <i class="fa-solid fa-truck-fast"></i>
-                    </div>
-                    <div class="status-title">Shipped</div>
-                    <div class="status-desc">
-                        <p>Barang dikirim &amp; resi diinput. Sistem otomatis kirim notifikasi WA.</p>
-                    </div>
-                </div>
-                <i class="fa-solid fa-chevron-right flow-arrow" style="left: 76%;"></i>
-                <!-- Card 4: Done -->
-                <div class="status-card status-done">
-                    <div class="icon-circle">
-                        <i class="fa-solid fa-flag-checkered"></i>
-                    </div>
-                    <div class="status-title">Done</div>
-                    <div class="status-desc">
-                        <p>Paket diterima customer. Order selesai dan masuk rekap omzet bulanan.</p>
+                <div class="flex items-center space-x-3">
+                    <div class="card px-4 py-2 rounded-full">
+                        <p class="text-white text-xs font-semibold tracking-widest">TAHUN <span class="gold">2026</span></p>
                     </div>
                 </div>
             </div>
-            <!-- Bottom Info -->
-            <div class="dashboard-snippet">
-                <div class="snippet-item">
-                    <i class="fa-solid fa-filter snippet-icon"></i>
-                    <span class="snippet-text">Gunakan "Filter View" di Google Sheets untuk sort order per status</span>
+            <!-- Body -->
+            <div class="flex-1 px-16 pt-10 pb-6 flex">
+                <!-- Left: framing -->
+                <div class="flex flex-col" style="width: 430px;">
+                    <div class="flex items-center space-x-4 mb-6">
+                        <div class="gold-bg" style="width:64px; height:6px; border-radius:9999px;"></div>
+                        <div style="width:10px; height:10px; border-radius:9999px; background: rgba(245,166,35,0.85);">
+                        </div>
+                        <div style="width:10px; height:10px; border-radius:9999px; background: rgba(245,166,35,0.45);">
+                        </div>
+                    </div>
+                    <div class="mb-5">
+                        <p class="text-white font-extrabold leading-tight"
+                            style="font-size:42px; letter-spacing:-0.02em;">
+                            Langkah <span class="gold">Selanjutnya</span><br />Mari Mulai Bersama
+                        </p>
+                    </div>
+                    <div class="mb-8">
+                        <p class="muted text-base leading-relaxed">
+                            Kami mengusulkan langkah yang jelas dan praktis agar tim HR YKK AP dapat segera memvalidasi
+                            kebutuhan,
+                            menyepakati scope, dan memulai implementasi LMS dengan risiko minimal serta value yang
+                            terukur.
+                        </p>
+                    </div>
+                    
+                    <div class="mt-5 flex items-center space-x-3">
+                        <div class="tag px-3 py-2 rounded-full flex items-center space-x-2">
+                            <i class="fa-solid fa-handshake" style="color: rgba(255,255,255,0.75); font-size:12px;"></i>
+                            <p class="muted2 text-xs">Call-to-action: sepakati jadwal workshop kebutuhan</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="snippet-item">
-                    <i class="fa-solid fa-eye snippet-icon"></i>
-                    <span class="snippet-text">Color Coding memudahkan monitoring ribuan data</span>
+                <!-- Right: steps + contact -->
+                <div class="flex-1 pl-12 flex flex-col">
+                    <div class="card rounded-3xl p-8 flex flex-col" style="height:100%; margin-top:-20px;">
+                        <!-- Header -->
+                        <div class="flex items-center justify-between mb-6">
+                            <div class="flex items-center space-x-3">
+                                <div class="gold-bg"
+                                    style="width:36px; height:36px; border-radius:12px; display:flex; align-items:center; justify-content:center;">
+                                    <i class="fa-solid fa-list-check" style="color:#0E1A3A; font-size:16px;"></i>
+                                </div>
+                                <div>
+                                    <p class="text-white text-sm font-semibold">5 Langkah Aksi</p>
+                                    <p class="muted2 text-xs">Struktur ringkas untuk memulai proyek dengan cepat</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center space-x-2">
+                                <div
+                                    style="width:10px; height:10px; border-radius:9999px; background: rgba(245,166,35,0.75);">
+                                </div>
+                                <div
+                                    style="width:10px; height:10px; border-radius:9999px; background: rgba(255,255,255,0.20);">
+                                </div>
+                                <div
+                                    style="width:10px; height:10px; border-radius:9999px; background: rgba(255,255,255,0.12);">
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Steps -->
+                        <div class="grid grid-cols-2 gap-4" style="flex:1;">
+                            <!-- Step 1 -->
+                            <div class="step rounded-3xl p-5">
+                                <div class="flex items-start justify-between">
+                                    <div class="flex items-start space-x-4">
+                                        <div class="card flex items-center justify-center"
+                                            style="width:46px; height:46px; border-radius:14px; border:1px solid rgba(255,255,255,0.10); background: rgba(255,255,255,0.05);">
+                                            <p class="text-sm font-extrabold"
+                                                style="color:#F5A623; letter-spacing:0.06em;">1</p>
+                                        </div>
+                                        <div>
+                                            <p class="text-white text-sm font-extrabold">Diskusi kebutuhan detail HR</p>
+                                            <p class="muted2 text-xs mt-1">Validasi proses training saat ini &amp;
+                                                target perbaikan.</p>
+                                        </div>
+                                    </div>
+                                    <div class="tag px-3 py-2 rounded-full">
+                                        <p class="muted2 text-xs">Workshop</p>
+                                    </div>
+                                </div>
+                                <div class="mt-4">
+                                    <p class="muted text-xs font-semibold">Output:</p>
+                                    <p class="muted2 text-xs mt-1">Daftar kebutuhan prioritas + ruang lingkup awal.</p>
+                                </div>
+                            </div>
+                            <!-- Step 2 -->
+                            <div class="step rounded-3xl p-5">
+                                <div class="flex items-start justify-between">
+                                    <div class="flex items-start space-x-4">
+                                        <div class="card flex items-center justify-center"
+                                            style="width:46px; height:46px; border-radius:14px; border:1px solid rgba(255,255,255,0.10); background: rgba(255,255,255,0.05);">
+                                            <p class="text-sm font-extrabold"
+                                                style="color:#F5A623; letter-spacing:0.06em;">2</p>
+                                        </div>
+                                        <div>
+                                            <p class="text-white text-sm font-extrabold">Mapping kompetensi &amp;
+                                                training</p>
+                                            <p class="muted2 text-xs mt-1">Pemetaan jabatan, learning path, dan
+                                                mandatory training.</p>
+                                        </div>
+                                    </div>
+                                    <div class="tag px-3 py-2 rounded-full">
+                                        <p class="muted2 text-xs">Design</p>
+                                    </div>
+                                </div>
+                                <div class="mt-4">
+                                    <p class="muted text-xs font-semibold">Output:</p>
+                                    <p class="muted2 text-xs mt-1">Kerangka kurikulum + struktur course per role/divisi.
+                                    </p>
+                                </div>
+                            </div>
+                            <!-- Step 3 -->
+                            <div class="step rounded-3xl p-5">
+                                <div class="flex items-start justify-between">
+                                    <div class="flex items-start space-x-4">
+                                        <div class="card flex items-center justify-center"
+                                            style="width:46px; height:46px; border-radius:14px; border:1px solid rgba(255,255,255,0.10); background: rgba(255,255,255,0.05);">
+                                            <p class="text-sm font-extrabold"
+                                                style="color:#F5A623; letter-spacing:0.06em;">3</p>
+                                        </div>
+                                        <div>
+                                            <p class="text-white text-sm font-extrabold">Finalisasi scope implementasi
+                                            </p>
+                                            <p class="muted2 text-xs mt-1">Kesepakatan modul, integrasi, dan rencana
+                                                rollout.</p>
+                                        </div>
+                                    </div>
+                                    <div class="tag px-3 py-2 rounded-full">
+                                        <p class="muted2 text-xs">Scope</p>
+                                    </div>
+                                </div>
+                                <div class="mt-4">
+                                    <p class="muted text-xs font-semibold">Output:</p>
+                                    <p class="muted2 text-xs mt-1">Dokumen scope + timeline + KPI keberhasilan.</p>
+                                </div>
+                            </div>
+                            <!-- Step 4 -->
+                            <div class="step rounded-3xl p-5">
+                                <div class="flex items-start justify-between">
+                                    <div class="flex items-start space-x-4">
+                                        <div class="card flex items-center justify-center"
+                                            style="width:46px; height:46px; border-radius:14px; border:1px solid rgba(255,255,255,0.10); background: rgba(255,255,255,0.05);">
+                                            <p class="text-sm font-extrabold"
+                                                style="color:#F5A623; letter-spacing:0.06em;">4</p>
+                                        </div>
+                                        <div>
+                                            <p class="text-white text-sm font-extrabold">Penandatanganan kontrak &amp;
+                                                kickoff</p>
+                                            <p class="muted2 text-xs mt-1">Pembentukan tim proyek dan mekanisme
+                                                governance.</p>
+                                        </div>
+                                    </div>
+                                    <div class="tag px-3 py-2 rounded-full">
+                                        <p class="muted2 text-xs">Kickoff</p>
+                                    </div>
+                                </div>
+                                <div class="mt-4">
+                                    <p class="muted text-xs font-semibold">Output:</p>
+                                    <p class="muted2 text-xs mt-1">Rencana kerja disepakati + jadwal UAT &amp; training
+                                        admin.</p>
+                                </div>
+                            </div>
+                            <!-- Step 5 + CTA -->
+                            <div class="cta rounded-3xl p-5 col-span-2">
+                                <div class="flex items-start justify-between">
+                                    <div class="flex items-start space-x-4">
+                                        <div class="gold-bg flex items-center justify-center"
+                                            style="width:46px; height:46px; border-radius:14px; flex:0 0 auto;">
+                                            <p class="text-sm font-extrabold"
+                                                style="color:#0E1A3A; letter-spacing:0.06em;">5</p>
+                                        </div>
+                                        <div>
+                                            <p class="text-white text-sm font-extrabold">Mulai transformasi digital HR
+                                                melalui LMS</p>
+                                            <p class="muted2 text-xs mt-1">Implementasi terarah, adopsi terukur, dan
+                                                compliance lebih siap audit.</p>
+                                        </div>
+                                    </div>
+                                    <div class="tag px-3 py-2 rounded-full"
+                                        style="border: 1px solid rgba(245,166,35,0.24);">
+                                        <p class="muted2 text-xs">Go</p>
+                                    </div>
+                                </div>
+                                <div class="mt-4 grid grid-cols-3 gap-3">
+                                    <div class="tag rounded-2xl p-3 flex items-center space-x-3">
+                                        <i class="fa-solid fa-gauge-high"
+                                            style="color: rgba(245,166,35,0.95); font-size:14px;"></i>
+                                        <div>
+                                            <p class="text-white text-xs font-semibold">Adopsi</p>
+                                            <p class="muted2 text-xs mt-1">Dipantau &amp; didampingi</p>
+                                        </div>
+                                    </div>
+                                    <div class="tag rounded-2xl p-3 flex items-center space-x-3">
+                                        <i class="fa-solid fa-shield-halved"
+                                            style="color: rgba(245,166,35,0.95); font-size:14px;"></i>
+                                        <div>
+                                            <p class="text-white text-xs font-semibold">Compliance</p>
+                                            <p class="muted2 text-xs mt-1">Audit-ready</p>
+                                        </div>
+                                    </div>
+                                    <div class="tag rounded-2xl p-3 flex items-center space-x-3">
+                                        <i class="fa-solid fa-chart-line"
+                                            style="color: rgba(245,166,35,0.95); font-size:14px;"></i>
+                                        <div>
+                                            <p class="text-white text-xs font-semibold">Impact</p>
+                                            <p class="muted2 text-xs mt-1">Data-driven</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Contact strip
+                        <div class="mt-3 pt-3 flex items-center justify-between"
+                            style="border-top: 1px solid rgba(255,255,255,0.10);">
+                            <div class="flex items-center space-x-3">
+                                <i class="fa-solid fa-address-card"
+                                    style="color: rgba(255,255,255,0.70); font-size:12px;"></i>
+                                <p class="muted2 text-xs">Kontak untuk penjadwalan workshop &amp; finalisasi scope</p>
+                            </div>
+                            <div class="flex items-center space-x-3">
+                                <div class="hairline"
+                                    style="width:10px; height:10px; border-radius:3px; border:1px solid rgba(245,166,35,0.70);">
+                                </div>
+                                <p class="muted2 text-xs">Target: kickoff setelah scope disepakati</p>
+                            </div>
+                        </div>
+                        <div class="mt-4 grid grid-cols-3 gap-4">
+                            <div class="input rounded-2xl p-4 flex items-center space-x-3">
+                                <div class="gold-bg"
+                                    style="width:34px; height:34px; border-radius:12px; display:flex; align-items:center; justify-content:center;">
+                                    <i class="fa-solid fa-envelope" style="color:#0E1A3A; font-size:14px;"></i>
+                                </div>
+                                <div>
+                                    <p class="text-white text-xs font-semibold">Email</p>
+                                    <p class="muted2 text-xs mt-1">[email]</p>
+                                </div>
+                            </div>
+                            <div class="input rounded-2xl p-4 flex items-center space-x-3">
+                                <div class="gold-bg"
+                                    style="width:34px; height:34px; border-radius:12px; display:flex; align-items:center; justify-content:center;">
+                                    <i class="fa-solid fa-phone" style="color:#0E1A3A; font-size:14px;"></i>
+                                </div>
+                                <div>
+                                    <p class="text-white text-xs font-semibold">Telepon</p>
+                                    <p class="muted2 text-xs mt-1">[phone]</p>
+                                </div>
+                            </div>
+                            <div class="input rounded-2xl p-4 flex items-center space-x-3">
+                                <div class="gold-bg"
+                                    style="width:34px; height:34px; border-radius:12px; display:flex; align-items:center; justify-content:center;">
+                                    <i class="fa-solid fa-globe" style="color:#0E1A3A; font-size:14px;"></i>
+                                </div>
+                                <div>
+                                    <p class="text-white text-xs font-semibold">Website</p>
+                                    <p class="muted2 text-xs mt-1">[website]</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mt-4 flex items-center space-x-3">
+                            <i class="fa-regular fa-circle-check" style="color: rgba(245,166,35,0.9);"></i>
+                            <p class="muted2 text-xs">Sinergi TechForce — PT Mustika Sinergi Integrasi • siap
+                                mendampingi end-to-end</p>
+                        </div> -->
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="page-number">15</div>
-        <div class="notes-container">
-            Dengan status workflow, Anda dan tim bisa langsung tahu prioritas. Filter status PAID untuk lihat order yang
-            harus diproses hari ini. Filter SHIPPED untuk monitor yang perlu follow up. Sistem ini membuat monitoring
-            jadi sangat mudah.
+            <!-- Footer -->
+            <div class="w-full px-16 pb-10 flex items-center justify-between">
+                <div class="flex items-center space-x-3">
+                    <div style="width:8px; height:8px; border-radius:9999px; background:#F5A623;"></div>
+                    <p class="muted2 text-xs">Proposal Implementasi LMS • Next Step (CTA)</p>
+                </div>
+                <div class="flex items-center space-x-3">
+                    <i class="fa-regular fa-calendar" style="color: rgba(255,255,255,0.70); font-size:12px;"></i>
+                    <p class="muted2 text-xs">2026</p>
+                </div>
+            </div>
         </div>
     </div>
 </body>

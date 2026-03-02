@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+
+<html lang="id">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Deployment Strategy</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&amp;family=Open+Sans:wght@400;600&amp;display=swap"
+        rel="stylesheet" />
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #f3f4f6;
+            font-family: 'Open Sans', sans-serif;
+        }
+
+        .slide-container {
+            width: 1280px;
+            height: 720px;
+            background-color: #ffffff;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Colors */
+        .bg-navy {
+            background-color: #1B2A4A;
+        }
+
+        .text-navy {
+            color: #1B2A4A;
+        }
+
+        .bg-accent {
+            background-color: #2196F3;
+        }
+
+        .text-accent {
+            color: #2196F3;
+        }
+
+        .border-accent {
+            border-color: #2196F3;
+        }
+
+        .bg-light-gray {
+            background-color: #F8F9FA;
+        }
+
+        /* Typography */
+        h1,
+        h2,
+        h3,
+        .font-montserrat {
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        /* Custom Bullet Styling */
+        .bullet-item {
+            position: relative;
+            padding-left: 20px;
+            margin-bottom: 24px;
+            transition: transform 0.2s ease;
+        }
+
+        .bullet-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 44px;
+            height: 44px;
+            border-radius: 10px;
+            background-color: rgba(33, 150, 243, 0.1);
+            /* Accent with opacity */
+            color: #2196F3;
+            font-size: 1.25rem;
+            flex-shrink: 0;
+        }
+
+        .decorative-dots {
+            background-image: radial-gradient(#2196F3 2px, transparent 2px);
+            background-size: 20px 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="slide-container">
+        <!-- Header Section -->
+        <div class="bg-navy h-16 w-full flex items-center px-12 justify-between shrink-0 z-20 shadow-md">
+            <div class="flex items-center space-x-4">
+                <div class="w-10 h-10 bg-white rounded flex items-center justify-center text-navy font-bold shadow">
+                    <i class="fas fa-server"></i>
+                </div>
+                <h1 class="text-3xl font-bold text-white tracking-wide uppercase font-montserrat">Deployment Strategy
+                </h1>
+            </div>
+            <div class="flex flex-col items-end">
+                <p class="text-xs text-blue-300 font-montserrat tracking-widest uppercase">Proposal 2026</p>
+                <p class="text-sm font-semibold text-white">PT YKKAP Indonesia</p>
+            </div>
+        </div>
+        <!-- Main Content Area -->
+        <div class="flex flex-1 w-full overflow-hidden bg-white relative">
+            <!-- Decorative Elements -->
+            <div class="absolute top-0 right-0 w-1/3 h-full bg-light-gray -skew-x-12 transform origin-top-right z-0">
+            </div>
+            <div class="absolute bottom-10 right-10 w-32 h-32 decorative-dots opacity-20 z-0"></div>
+            <!-- Content Grid -->
+            <div class="flex w-full h-full z-10 px-16 pt-6 pb-5">
+                <!-- Left Column: Bullet Points -->
+                <div class="w-2/3 pr-12 flex flex-col justify-center">
+                    <div class="mb-4">
+                        <p class="text-accent font-bold uppercase tracking-wider text-sm mb-2 font-montserrat">Go-Live
+                            Plan</p>
+                        <h2 class="text-2xl font-extrabold text-navy mb-3 leading-tight font-montserrat">
+                            Strategi Deployment &amp;<br />Transisi Sistem
+                        </h2>
+                        <div class="w-20 h-1.5 bg-accent rounded-full mb-5"></div>
+                    </div>
+                    <div class="space-y-3">
+                        <!-- Point 1 -->
+                        <div class="flex items-start space-x-4">
+                            <div class="bullet-icon shadow-sm">
+                                <i class="fas fa-network-wired"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-base font-bold text-navy font-montserrat">Setup Environment Produksi</h3>
+                                <p class="text-gray-600 leading-relaxed mt-1 text-xs">
+                                    Persiapan infrastruktur server internal (Linux/Windows Server) sesuai spesifikasi
+                                    teknis yang disepakati untuk performa optimal.
+                                </p>
+                            </div>
+                        </div>
+                        <!-- Point 2 -->
+                        <div class="flex items-start space-x-4">
+                            <div class="bullet-icon shadow-sm">
+                                <i class="fas fa-cogs"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-base font-bold text-navy font-montserrat">Konfigurasi Server &amp;
+                                    Aplikasi</h3>
+                                <p class="text-gray-600 leading-relaxed mt-1 text-xs">
+                                    Instalasi dan tuning web server (Nginx/Apache), database, serta deployment source
+                                    code aplikasi LMS yang aman.
+                                </p>
+                            </div>
+                        </div>
+                        <!-- Point 3 -->
+                        <div class="flex items-start space-x-4">
+                            <div class="bullet-icon shadow-sm">
+                                <i class="fas fa-database"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-base font-bold text-navy font-montserrat">Data Migration</h3>
+                                <p class="text-gray-600 leading-relaxed mt-1 text-xs">
+                                    Proses migrasi data historis pelatihan dan profil karyawan dari sistem lama (jika
+                                    ada) dengan validasi integritas data.
+                                </p>
+                            </div>
+                        </div>
+                        <!-- Point 4 -->
+                        <div class="flex items-start space-x-4">
+                            <div class="bullet-icon shadow-sm">
+                                <i class="fas fa-clipboard-check"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-base font-bold text-navy font-montserrat">Go-Live Checklist</h3>
+                                <p class="text-gray-600 leading-relaxed mt-1 text-xs">
+                                    Rangkaian final testing, backup pre-launch, dan monitoring intensif saat aktivasi
+                                    sistem ke seluruh user.
+                                </p>
+                            </div>
+                        </div>
+                        <!-- Point 5 -->
+                        <div class="flex items-start space-x-4">
+                            <div class="bullet-icon shadow-sm">
+                                <i class="fas fa-headset"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-base font-bold text-navy font-montserrat">Hypercare Period</h3>
+                                <p class="text-gray-600 leading-relaxed mt-1 text-xs">
+                                    Periode pendampingan intensif selama 30 hari pasca go-live untuk memastikan
+                                    stabilitas operasional dan penanganan isu cepat.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Right Column: Visual/Illustration -->
+                <div class="w-1/3 flex flex-col items-center justify-center relative pl-8">
+                    <!-- Stylized Graphic Container -->
+                    <div class="relative w-full aspect-square max-w-xs">
+                        <!-- Back Shape -->
+                        <div
+                            class="absolute inset-0 bg-white border-2 border-gray-100 rounded-3xl transform rotate-3 shadow-lg z-10">
+                        </div>
+                        <div class="absolute inset-0 bg-navy rounded-3xl transform -rotate-3 z-0 opacity-10"></div>
+                        <!-- Inner Content of Graphic -->
+                        <div class="absolute inset-0 z-20 flex flex-col items-center justify-center p-6 text-center">
+                            <div
+                                class="w-20 h-20 bg-blue-50 rounded-full flex items-center justify-center mb-5 text-accent text-4xl shadow-inner">
+                                <i class="fas fa-rocket"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-navy mb-2 font-montserrat">Smooth Transition</h3>
+                            <p class="text-sm text-gray-500">Memastikan transisi sistem berjalan mulus dengan gangguan
+                                minimal pada operasional.</p>
+                            <!-- Mini Stat -->
+                            <div class="mt-6 grid grid-cols-2 gap-3 w-full">
+                                <div class="bg-gray-50 p-3 rounded-lg text-center">
+                                    <p class="text-xs text-gray-400 uppercase">Downtime</p>
+                                    <p class="text-lg font-bold text-green-500">Minimal</p>
+                                </div>
+                                <div class="bg-gray-50 p-3 rounded-lg text-center">
+                                    <p class="text-xs text-gray-400 uppercase">Support</p>
+                                    <p class="text-lg font-bold text-accent">Intensive</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Footer Section -->
+        <div class="h-9 bg-white border-t border-gray-200 flex items-center justify-between px-12 shrink-0 z-20">
+            <p class="text-xs text-gray-400 font-semibold tracking-wide">Sinergi TechForce | PT Mustika Sinergi
+                Integrasi</p>
+            <div class="flex items-center space-x-4">
+                <p class="text-xs text-gray-300 uppercase tracking-widest">Confidential</p>
+                <div class="h-4 w-px bg-gray-300"></div>
+                <p class="text-xs text-navy font-bold">14</p>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

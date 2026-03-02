@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+
+<html lang="id">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Chaos Sistem Manual</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&amp;family=Inter:wght@300;400;600&amp;display=swap"
+        rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #f3f4f6;
+            font-family: 'Inter', sans-serif;
+            overflow: hidden;
+        }
+
+        .slide-container {
+            width: 1280px;
+            height: 720px;
+            background-color: #FFFFFF;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+        }
+
+        /* Sidebar Left - Dark Theme */
+        .sidebar {
+            width: 400px;
+            background-color: #0B0F19;
+            height: 100%;
+            padding: 60px 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .decorative-pattern {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.05;
+            background-image: radial-gradient(#D4AF37 1px, transparent 1px);
+            background-size: 20px 20px;
+            z-index: -1;
+        }
+
+        .gold-line {
+            width: 60px;
+            height: 4px;
+            background-color: #D4AF37;
+            margin-bottom: 30px;
+        }
+
+        h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 800;
+            font-size: 48px;
+            line-height: 1.1;
+            color: #FFFFFF;
+            margin-bottom: 20px;
+        }
+
+        .subtitle {
+            font-family: 'Inter', sans-serif;
+            font-size: 18px;
+            color: #9CA3AF;
+            line-height: 1.6;
+        }
+
+        /* Main Content - Right Side */
+        .main-content {
+            flex: 1;
+            padding: 60px 80px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            background-color: #F9FAFB;
+        }
+
+        .list-container {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .list-item {
+            display: flex;
+            align-items: center;
+            background-color: #FFFFFF;
+            padding: 20px 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+            border-left: 4px solid #EF4444;
+            /* Red for alert/problem */
+            transition: transform 0.2s ease;
+        }
+
+        .list-item:hover {
+            transform: translateX(10px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+
+        .icon-box {
+            width: 50px;
+            height: 50px;
+            border-radius: 10px;
+            background-color: #FEF2F2;
+            color: #EF4444;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            margin-right: 25px;
+            flex-shrink: 0;
+        }
+
+        .text-content h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 20px;
+            color: #1F2937;
+            margin: 0 0 4px 0;
+        }
+
+        .text-content p {
+            font-family: 'Inter', sans-serif;
+            font-size: 16px;
+            color: #6B7280;
+            margin: 0;
+        }
+
+        /* Bottom Decoration */
+        .page-number {
+            position: absolute;
+            bottom: 30px;
+            right: 40px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            color: #D1D5DB;
+            font-size: 14px;
+        }
+
+        /* Speaker Notes (Hidden in visual but structured for reference) */
+        .notes-container {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="slide-container">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="decorative-pattern"></div>
+            <div class="gold-line"></div>
+            <h1>CHAOS<br /><span style="color: #EF4444;">SISTEM<br />MANUAL</span></h1>
+            <p class="subtitle">
+                Masalah utama yang menghambat pertumbuhan bisnis UMKM saat masih mengandalkan cara manual.
+            </p>
+            <!-- Abstract Visual -->
+            <div style="margin-top: 60px; position: relative; height: 200px;">
+                <i class="fa-solid fa-triangle-exclamation"
+                    style="font-size: 120px; color: rgba(239, 68, 68, 0.1); position: absolute; bottom: 0; left: 0;"></i>
+                <i class="fa-solid fa-bomb"
+                    style="font-size: 60px; color: rgba(212, 175, 55, 0.2); position: absolute; top: 20px; right: 40px;"></i>
+            </div>
+        </div>
+        <!-- Main Content -->
+        <div class="main-content">
+            <div class="list-container">
+                <!-- Item 1 -->
+                <div class="list-item">
+                    <div class="icon-box">
+                        <i class="fa-solid fa-comments"></i>
+                    </div>
+                    <div class="text-content">
+                        <h3>Chat Menumpuk &amp; Pesanan Terlewat</h3>
+                        <p>Admin kewalahan membalas ratusan chat, order fix tenggelam.</p>
+                    </div>
+                </div>
+                <!-- Item 2 -->
+                <div class="list-item">
+                    <div class="icon-box">
+                        <i class="fa-solid fa-circle-xmark"></i>
+                    </div>
+                    <div class="text-content">
+                        <h3>Salah Input Data &amp; Varian</h3>
+                        <p>Human error tinggi saat rekap manual alamat dan varian produk.</p>
+                    </div>
+                </div>
+                <!-- Item 3 -->
+                <div class="list-item">
+                    <div class="icon-box">
+                        <i class="fa-solid fa-database"></i>
+                    </div>
+                    <div class="text-content">
+                        <h3>Data Customer Hilang</h3>
+                        <p>Tidak ada database terpusat, history order hilang saat ganti HP.</p>
+                    </div>
+                </div>
+                <!-- Item 4 -->
+                <div class="list-item">
+                    <div class="icon-box">
+                        <i class="fa-solid fa-file-invoice"></i>
+                    </div>
+                    <div class="text-content">
+                        <h3>Invoice Manual Memakan Waktu</h3>
+                        <p>Habis waktu 3-5 menit hanya untuk ketik totalan satu customer.</p>
+                    </div>
+                </div>
+                <!-- Item 5 -->
+                <div class="list-item">
+                    <div class="icon-box">
+                        <i class="fa-solid fa-truck-fast"></i>
+                    </div>
+                    <div class="text-content">
+                        <h3>Resi Dikirim Satu per Satu</h3>
+                        <p>Proses copy-paste nomor resi ke chat yang sangat melelahkan.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="page-number">02</div>
+    </div>
+    <div class="notes-container">
+        Mayoritas UMKM masih menggunakan sistem manual via chat WA. Ini menyebabkan banyak human error, pesanan
+        terlewat, dan customer experience buruk. Sistem manual tidak scalable untuk pertumbuhan bisnis.
+    </div>
+</body>
+
+</html>

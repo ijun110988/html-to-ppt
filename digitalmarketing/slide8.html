@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+
+<html lang="id">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Jenis Konten Utama</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&amp;family=Inter:wght@300;400;500;600&amp;display=swap"
+        rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc;
+        }
+
+        .slide-container {
+            width: 1280px;
+            height: 720px;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            background-color: #f8fafc;
+            background-image: url('data:image/svg+xml;utf8,<svg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><circle cx="2" cy="2" r="1" fill="%23e2e8f0"/></svg>');
+        }
+
+        .font-poppins {
+            font-family: 'Poppins', sans-serif;
+        }
+
+        /* Card Styles */
+        .content-card {
+            background: white;
+            border-radius: 16px;
+            padding: 24px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+            border: 1px solid #e2e8f0;
+            transition: all 0.3s ease;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .content-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+
+        /* Category Specific Styles */
+        .card-edu {
+            border-top: 5px solid #3b82f6;
+        }
+
+        .card-edu .icon-box {
+            background-color: #eff6ff;
+            color: #3b82f6;
+        }
+
+        .card-fun {
+            border-top: 5px solid #f59e0b;
+        }
+
+        .card-fun .icon-box {
+            background-color: #fef3c7;
+            color: #f59e0b;
+        }
+
+        .card-insp {
+            border-top: 5px solid #8b5cf6;
+        }
+
+        .card-insp .icon-box {
+            background-color: #f3e8ff;
+            color: #8b5cf6;
+        }
+
+        .card-promo {
+            border-top: 5px solid #ef4444;
+        }
+
+        .card-promo .icon-box {
+            background-color: #fee2e2;
+            color: #ef4444;
+        }
+
+        .icon-box {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+            margin-bottom: 16px;
+        }
+
+        /* 80/20 Rule Sidebar */
+        .sidebar-rule {
+            background: linear-gradient(180deg, #1e293b 0%, #0f172a 100%);
+            /* Solid fallback mostly */
+            background-color: #1e293b;
+            border-radius: 20px;
+            color: white;
+        }
+
+        .bar-container {
+            width: 60px;
+            height: 200px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 30px;
+            position: relative;
+            overflow: hidden;
+            margin: 0 auto;
+        }
+
+        .bar-fill-value {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 80%;
+            background-color: #10b981;
+            /* Emerald 500 */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .bar-fill-promo {
+            position: absolute;
+            top: 0;
+            width: 100%;
+            height: 20%;
+            background-color: #ef4444;
+            /* Red 500 */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .insight-box {
+            background-color: #fffbeb;
+            border-left: 4px solid #fbbf24;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="slide-container p-10">
+        <!-- Header -->
+        <div class="flex justify-between items-center mb-8">
+            <div>
+                <span
+                    class="bg-blue-100 text-blue-700 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider mb-2 inline-block">Modul
+                    2: Content Marketing &amp; Branding</span>
+                <h1 class="text-4xl font-bold text-slate-900 font-poppins">Jenis Konten Utama</h1>
+            </div>
+            <!-- Decorative Element -->
+            <div class="flex items-center space-x-2">
+                <div class="h-2 w-2 rounded-full bg-blue-500"></div>
+                <div class="h-2 w-2 rounded-full bg-yellow-500"></div>
+                <div class="h-2 w-2 rounded-full bg-purple-500"></div>
+                <div class="h-2 w-2 rounded-full bg-red-500"></div>
+            </div>
+        </div>
+        <div class="flex flex-row gap-8 h-full pb-6">
+            <!-- Left Side: 2x2 Grid (70% width) -->
+            <div class="w-3/4 grid grid-cols-2 grid-rows-2 gap-6">
+                <!-- 1. Edukasi -->
+                <div class="content-card card-edu">
+                    <div class="flex justify-between items-start">
+                        <div class="icon-box">
+                            <i class="fas fa-book-open"></i>
+                        </div>
+                        <span class="text-xs font-bold text-blue-500 bg-blue-50 px-2 py-1 rounded">Dominan
+                            (Trust)</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-800 font-poppins mb-2">Edukasi</h3>
+                    <p class="text-sm text-slate-600 mb-4 flex-grow">Memberikan nilai tambah, tips, atau solusi masalah
+                        audiens. Membangun otoritas brand.</p>
+                    <div class="mt-auto pt-3 border-t border-slate-100">
+                        <p class="text-xs font-bold text-slate-400 uppercase mb-1">Contoh</p>
+                        <p class="text-xs text-slate-800 font-medium">"Cara Memilih Skincare", "Tips Hemat Listrik"</p>
+                    </div>
+                </div>
+                <!-- 2. Hiburan -->
+                <div class="content-card card-fun">
+                    <div class="flex justify-between items-start">
+                        <div class="icon-box">
+                            <i class="fas fa-laugh-beam"></i>
+                        </div>
+                        <span class="text-xs font-bold text-yellow-600 bg-yellow-50 px-2 py-1 rounded">Viral
+                            Potential</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-800 font-poppins mb-2">Hiburan</h3>
+                    <p class="text-sm text-slate-600 mb-4 flex-grow">Konten ringan yang menghibur, lucu, atau relatable
+                        untuk menarik perhatian luas.</p>
+                    <div class="mt-auto pt-3 border-t border-slate-100">
+                        <p class="text-xs font-bold text-slate-400 uppercase mb-1">Contoh</p>
+                        <p class="text-xs text-slate-800 font-medium">Meme Industri, Behind The Scene, Challenge</p>
+                    </div>
+                </div>
+                <!-- 3. Inspirasi -->
+                <div class="content-card card-insp">
+                    <div class="flex justify-between items-start">
+                        <div class="icon-box">
+                            <i class="fas fa-magic"></i>
+                        </div>
+                        <span class="text-xs font-bold text-purple-600 bg-purple-50 px-2 py-1 rounded">Emotional</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-800 font-poppins mb-2">Inspirasi</h3>
+                    <p class="text-sm text-slate-600 mb-4 flex-grow">Menyentuh emosi audiens lewat cerita sukses atau
+                        motivasi yang relevan dengan brand.</p>
+                    <div class="mt-auto pt-3 border-t border-slate-100">
+                        <p class="text-xs font-bold text-slate-400 uppercase mb-1">Contoh</p>
+                        <p class="text-xs text-slate-800 font-medium">Kisah Founder, Testimoni Pelanggan, Quote</p>
+                    </div>
+                </div>
+                <!-- 4. Promosi -->
+                <div class="content-card card-promo">
+                    <div class="flex justify-between items-start">
+                        <div class="icon-box">
+                            <i class="fas fa-tags"></i>
+                        </div>
+                        <span class="text-xs font-bold text-red-600 bg-red-50 px-2 py-1 rounded">Sales (Limit)</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-800 font-poppins mb-2">Promosi</h3>
+                    <p class="text-sm text-slate-600 mb-4 flex-grow">Penawaran langsung produk atau jasa. Hard selling
+                        untuk konversi.</p>
+                    <div class="mt-auto pt-3 border-t border-slate-100">
+                        <p class="text-xs font-bold text-slate-400 uppercase mb-1">Contoh</p>
+                        <p class="text-xs text-slate-800 font-medium">Diskon 50%, Launching Produk, Bundle Deal</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Right Side: The 80/20 Rule & Insight (25% width) -->
+            <div class="w-1/4 flex flex-col gap-6">
+                <!-- 80/20 Rule Visualization -->
+                <div class="sidebar-rule p-6 flex flex-col items-center justify-center flex-grow shadow-xl">
+                    <h3 class="text-xl font-bold font-poppins text-center mb-1">The Golden Rule</h3>
+                    <p class="text-xs text-slate-400 mb-6 uppercase tracking-widest font-bold">Pareto Principle</p>
+                    <div class="flex flex-row items-center justify-center w-full gap-4">
+                        <!-- Visual Bar -->
+                        <div class="bar-container shadow-inner">
+                            <div class="bar-fill-promo">
+                                <span class="text-white font-bold text-xs">20%</span>
+                            </div>
+                            <div class="bar-fill-value">
+                                <span class="text-white font-bold text-lg">80%</span>
+                            </div>
+                        </div>
+                        <!-- Legend -->
+                        <div class="flex flex-col gap-2 text-left">
+                            <div>
+                                <p class="text-xs text-red-400 font-bold">PROMOSI</p>
+                                <p class="text-xs text-slate-400">Jualan</p>
+                            </div>
+                            <div class="mt-8">
+                                <p class="text-xs text-green-400 font-bold">VALUE</p>
+                                <p class="text-xs text-slate-400">Edukasi<br />Hiburan<br />Inspirasi</p>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-center text-xs text-slate-300 mt-6 leading-relaxed">
+                        Berikan <span class="text-green-400 font-bold">Value</span> dulu, baru <span
+                            class="text-red-400 font-bold">Jualan</span>.
+                    </p>
+                </div>
+                <!-- Insight Box -->
+                <div class="insight-box p-4 rounded-lg shadow-sm">
+                    <div class="flex items-start">
+                        <i class="fas fa-lightbulb text-yellow-600 text-lg mr-2 mt-1"></i>
+                        <div>
+                            <p class="text-yellow-800 font-bold text-xs uppercase mb-1">Insight</p>
+                            <p class="text-slate-700 text-xs italic font-medium">"Audience tidak buka sosmed untuk lihat
+                                iklan, tapi untuk dapat manfaat/hiburan. Be useful first!"</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Page Number -->
+                <div class="text-right mt-2">
+                    <span class="text-slate-300 font-bold text-xl">08</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

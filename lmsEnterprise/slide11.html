@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+
+<html lang="id">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=1280, height=720" name="viewport" />
+    <title>Arsitektur Sistem &amp; Integrasi</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&amp;display=swap"
+        rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" rel="stylesheet" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            overflow: hidden;
+        }
+
+        .slide-container {
+            width: 1280px;
+            height: 720px;
+            display: flex;
+            flex-direction: column;
+            background-color: #FFFFFF;
+            position: relative;
+        }
+
+        .header {
+            padding: 45px 60px 25px 60px;
+            border-bottom: 3px solid #2563EB;
+        }
+
+        .header-title {
+            font-size: 40px;
+            font-weight: 700;
+            color: #1B3A6B;
+            letter-spacing: -0.5px;
+        }
+
+        .content-wrapper {
+            flex: 1;
+            padding: 30px 60px 30px 60px;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+
+        .architecture-diagram {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            position: relative;
+        }
+
+        .layer {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            position: relative;
+        }
+
+        .layer-access {
+            flex: 0 0 auto;
+            height: 90px;
+        }
+
+        .layer-hub {
+            flex: 1;
+            min-height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 24px;
+        }
+
+        .layer-infrastructure {
+            flex: 0 0 auto;
+            height: 90px;
+        }
+
+        .layer-label {
+            position: absolute;
+            left: -50px;
+            top: 50%;
+            transform: translateY(-50%) rotate(-90deg);
+            font-size: 11px;
+            font-weight: 700;
+            color: #2563EB;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            white-space: nowrap;
+        }
+
+        .access-box {
+            width: 180px;
+            height: 75px;
+            background-color: #EFF6FF;
+            border: 2px solid #2563EB;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            transition: all 0.3s ease;
+        }
+
+        .access-box:hover {
+            background-color: #DBEAFE;
+            transform: translateY(-3px);
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2);
+        }
+
+        .access-icon {
+            width: 32px;
+            height: 32px;
+            background-color: #2563EB;
+            color: #FFFFFF;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            border-radius: 4px;
+        }
+
+        .access-label {
+            font-size: 13px;
+            font-weight: 700;
+            color: #1B3A6B;
+        }
+
+        .hub-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 24px;
+            width: 100%;
+        }
+
+        .integration-side {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            flex: 0 0 240px;
+        }
+
+        .integration-box {
+            height: 70px;
+            background-color: #F8FAFC;
+            border: 2px solid #CBD5E1;
+            padding: 12px 16px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            transition: all 0.3s ease;
+        }
+
+        .integration-box:hover {
+            background-color: #FEF3C7;
+            border-color: #F59E0B;
+            transform: translateX(-3px);
+        }
+
+        .integration-box.right:hover {
+            transform: translateX(3px);
+        }
+
+        .integration-icon {
+            width: 40px;
+            height: 40px;
+            background-color: #6B7280;
+            color: #FFFFFF;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            border-radius: 6px;
+            flex-shrink: 0;
+        }
+
+        .integration-text {
+            flex: 1;
+        }
+
+        .integration-title {
+            font-size: 14px;
+            font-weight: 700;
+            color: #1B3A6B;
+            line-height: 1.2;
+        }
+
+        .integration-subtitle {
+            font-size: 11px;
+            font-weight: 400;
+            color: #6B7280;
+            line-height: 1.3;
+            margin-top: 2px;
+        }
+
+        .central-hub {
+            width: 280px;
+            height: 280px;
+            background-color: #1B3A6B;
+            color: #FFFFFF;
+            border: 4px solid #2563EB;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            box-shadow: 0 8px 24px rgba(27, 58, 107, 0.3);
+        }
+
+        .hub-icon {
+            width: 80px;
+            height: 80px;
+            background-color: #2563EB;
+            color: #FFFFFF;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 40px;
+            border-radius: 50%;
+            margin-bottom: 16px;
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.4);
+        }
+
+        .hub-title {
+            font-size: 28px;
+            font-weight: 800;
+            text-align: center;
+            letter-spacing: 0.5px;
+            margin-bottom: 8px;
+        }
+
+        .hub-subtitle {
+            font-size: 14px;
+            font-weight: 400;
+            color: #93C5FD;
+            text-align: center;
+            line-height: 1.3;
+        }
+
+        .connector-dot {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            background-color: #2563EB;
+            border-radius: 50%;
+        }
+
+        .dot-top {
+            top: -4px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .dot-left {
+            left: -4px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .dot-right {
+            right: -4px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .dot-bottom {
+            bottom: -4px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .infrastructure-box {
+            width: 180px;
+            height: 75px;
+            background-color: #F8FAFC;
+            border: 2px solid #6B7280;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            transition: all 0.3s ease;
+        }
+
+        .infrastructure-box:hover {
+            background-color: #E5E7EB;
+            transform: translateY(3px);
+            box-shadow: 0 4px 12px rgba(107, 114, 128, 0.2);
+        }
+
+        .infra-icon {
+            width: 32px;
+            height: 32px;
+            background-color: #6B7280;
+            color: #FFFFFF;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            border-radius: 4px;
+        }
+
+        .infra-label {
+            font-size: 13px;
+            font-weight: 700;
+            color: #1B3A6B;
+        }
+
+        .vertical-line {
+            width: 2px;
+            height: 16px;
+            background-color: #CBD5E1;
+            margin: 0 auto;
+        }
+
+        .horizontal-line {
+            height: 2px;
+            background-color: #CBD5E1;
+            width: 24px;
+        }
+
+        .footer-note {
+            padding: 0 60px 20px 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .footer-icon {
+            width: 28px;
+            height: 28px;
+            background-color: #2563EB;
+            color: #FFFFFF;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            border-radius: 4px;
+        }
+
+        .footer-note p {
+            font-size: 13px;
+            font-weight: 600;
+            color: #6B7280;
+            letter-spacing: 0.3px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="slide-container">
+        <div class="header">
+            <div class="header-title">
+                <p>Arsitektur Sistem &amp; Integrasi</p>
+            </div>
+        </div>
+        <div class="content-wrapper">
+            <div class="architecture-diagram">
+                <div class="layer layer-access">
+                    <div class="access-box">
+                        <div class="access-icon">
+                            <i class="fas fa-desktop"></i>
+                        </div>
+                        <div class="access-label">
+                            <p>Web Portal</p>
+                        </div>
+                    </div>
+                    <div class="access-box">
+                        <div class="access-icon">
+                            <i class="fas fa-mobile-alt"></i>
+                        </div>
+                        <div class="access-label">
+                            <p>Mobile App</p>
+                        </div>
+                    </div>
+                    <div class="access-box">
+                        <div class="access-icon">
+                            <i class="fas fa-tv"></i>
+                        </div>
+                        <div class="access-label">
+                            <p>Kiosk Terminal</p>
+                        </div>
+                    </div>
+                    <div class="access-box">
+                        <div class="access-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <div class="access-label">
+                            <p>Analytics Dashboard</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="vertical-line"></div>
+                <div class="layer layer-hub">
+                    <div class="integration-side">
+                        <div class="integration-box">
+                            <div class="integration-icon">
+                                <i class="fas fa-users"></i>
+                            </div>
+                            <div class="integration-text">
+                                <div class="integration-title">
+                                    <p>HRIS System</p>
+                                </div>
+                                <div class="integration-subtitle">
+                                    <p>Employee &amp; org data sync</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="integration-box">
+                            <div class="integration-icon">
+                                <i class="fas fa-key"></i>
+                            </div>
+                            <div class="integration-text">
+                                <div class="integration-title">
+                                    <p>SSO / Active Directory</p>
+                                </div>
+                                <div class="integration-subtitle">
+                                    <p>Authentication &amp; identity</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="integration-box">
+                            <div class="integration-icon">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <div class="integration-text">
+                                <div class="integration-title">
+                                    <p>Attendance System</p>
+                                </div>
+                                <div class="integration-subtitle">
+                                    <p>Presence &amp; shift data</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="horizontal-line"></div>
+                    <div class="central-hub">
+                        <div class="connector-dot dot-top"></div>
+                        <div class="connector-dot dot-left"></div>
+                        <div class="connector-dot dot-right"></div>
+                        <div class="connector-dot dot-bottom"></div>
+                        <div class="hub-icon">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <div class="hub-title">
+                            <p>LMS Hub</p>
+                        </div>
+                        <div class="hub-subtitle">
+                            <p>Centralized Learning<br />Management Platform</p>
+                        </div>
+                    </div>
+                    <div class="horizontal-line"></div>
+                    <div class="integration-side">
+                        <div class="integration-box right">
+                            <div class="integration-icon">
+                                <i class="fas fa-cogs"></i>
+                            </div>
+                            <div class="integration-text">
+                                <div class="integration-title">
+                                    <p>ERP System</p>
+                                </div>
+                                <div class="integration-subtitle">
+                                    <p>Job &amp; cost center data</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="integration-box right">
+                            <div class="integration-icon">
+                                <i class="fas fa-clipboard-list"></i>
+                            </div>
+                            <div class="integration-text">
+                                <div class="integration-title">
+                                    <p>Compliance Tools</p>
+                                </div>
+                                <div class="integration-subtitle">
+                                    <p>Audit &amp; regulatory tracking</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="integration-box right">
+                            <div class="integration-icon">
+                                <i class="fas fa-file-alt"></i>
+                            </div>
+                            <div class="integration-text">
+                                <div class="integration-title">
+                                    <p>Content Sources</p>
+                                </div>
+                                <div class="integration-subtitle">
+                                    <p>SOP, videos, documents</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="vertical-line"></div>
+                <div class="layer layer-infrastructure">
+                    <div class="infrastructure-box">
+                        <div class="infra-icon">
+                            <i class="fas fa-server"></i>
+                        </div>
+                        <div class="infra-label">
+                            <p>On-Premise / Cloud</p>
+                        </div>
+                    </div>
+                    <div class="infrastructure-box">
+                        <div class="infra-icon">
+                            <i class="fas fa-lock"></i>
+                        </div>
+                        <div class="infra-label">
+                            <p>Security Layer</p>
+                        </div>
+                    </div>
+                    <div class="infrastructure-box">
+                        <div class="infra-icon">
+                            <i class="fas fa-database"></i>
+                        </div>
+                        <div class="infra-label">
+                            <p>Data Storage</p>
+                        </div>
+                    </div>
+                    <div class="infrastructure-box">
+                        <div class="infra-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <div class="infra-label">
+                            <p>Backup &amp; DR</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-note">
+            <div class="footer-icon">
+                <i class="fas fa-sitemap"></i>
+            </div>
+            <p>Arsitektur modular dengan API terbuka, siap untuk integrasi sistem enterprise dan pengembangan
+                future-ready</p>
+        </div>
+    </div>
+</body>
+
+</html>

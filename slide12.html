@@ -5,323 +5,444 @@
 <head>
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <title>Field Wajib di Order Form</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
-    <link
-        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&amp;family=Inter:wght@300;400;600&amp;display=swap"
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&amp;display=swap"
         rel="stylesheet" />
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" rel="stylesheet" />
     <style>
         body {
             margin: 0;
-            padding: 0;
-            background-color: #0B0F19;
-            font-family: 'Inter', sans-serif;
-            overflow: hidden;
         }
 
-        .slide-container {
-            width: 1280px;
-            height: 720px;
-            background-color: #0B0F19;
+        .slide {
+            width: 1440px;
+            height: 810px;
+            display: flex;
+            background: #0E1A3A;
+            font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
             position: relative;
             overflow: hidden;
-            display: flex;
-            flex-direction: column;
         }
 
-        /* Background Pattern */
-        .bg-pattern {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image:
-                linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
-            background-size: 40px 40px;
-            z-index: 0;
+        .gold {
+            color: #F5A623;
         }
 
-        .glow-effect {
-            position: absolute;
-            width: 600px;
-            height: 600px;
-            background: radial-gradient(circle, rgba(212, 175, 55, 0.08) 0%, transparent 70%);
-            top: -200px;
-            right: -200px;
-            z-index: 0;
+        .gold-bg {
+            background: #F5A623;
         }
 
-        /* Header */
-        .header {
-            padding: 50px 80px 20px 80px;
-            z-index: 10;
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-end;
+        .muted {
+            color: rgba(255, 255, 255, 0.78);
         }
 
-        .title-group h1 {
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 800;
-            font-size: 42px;
-            color: #FFFFFF;
-            margin-bottom: 10px;
-            letter-spacing: -0.02em;
+        .muted2 {
+            color: rgba(255, 255, 255, 0.62);
         }
 
-        .title-group .subtitle {
-            font-family: 'Inter', sans-serif;
-            font-size: 18px;
-            color: #9CA3AF;
+        .card {
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(245, 166, 35, 0.20);
         }
 
-        .header-icon {
-            font-size: 40px;
-            color: #D4AF37;
-            background: rgba(212, 175, 55, 0.1);
-            width: 80px;
-            height: 80px;
-            border-radius: 16px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border: 1px solid rgba(212, 175, 55, 0.3);
+        .hairline {
+            border-color: rgba(245, 166, 35, 0.45);
         }
 
-        /* Grid Content */
-        .grid-container {
-            flex: 1;
-            padding: 20px 80px 50px 80px;
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            grid-template-rows: repeat(4, 1fr);
-            gap: 20px;
-            z-index: 10;
-        }
-
-        .field-card {
-            background-color: rgba(255, 255, 255, 0.03);
+        .panel {
+            background: rgba(255, 255, 255, 0.04);
             border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 12px;
-            padding: 0 25px;
-            display: flex;
-            align-items: center;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
         }
 
-        .field-card:hover {
-            background-color: rgba(255, 255, 255, 0.06);
-            border-color: rgba(212, 175, 55, 0.4);
-            transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        .pill {
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.12);
         }
 
-        .field-card::before {
-            content: '';
+        .danger {
+            background: rgba(239, 68, 68, 0.14);
+            border: 1px solid rgba(239, 68, 68, 0.25);
+        }
+
+        .success {
+            background: rgba(34, 197, 94, 0.14);
+            border: 1px solid rgba(34, 197, 94, 0.25);
+        }
+
+        .item {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.07);
+        }
+
+        .glow {
             position: absolute;
-            left: 0;
-            top: 0;
-            bottom: 0;
-            width: 4px;
-            background-color: #D4AF37;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .field-card:hover::before {
-            opacity: 1;
-        }
-
-        .icon-wrapper {
-            width: 48px;
-            height: 48px;
-            border-radius: 10px;
-            background-color: rgba(11, 15, 25, 0.6);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-right: 20px;
-            color: #D4AF37;
-            font-size: 20px;
-            flex-shrink: 0;
-        }
-
-        .card-content {
-            flex: 1;
-        }
-
-        .card-title {
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 600;
-            font-size: 18px;
-            color: #F3F4F6;
-            margin-bottom: 4px;
-        }
-
-        .card-desc {
-            font-family: 'Inter', sans-serif;
-            font-size: 13px;
-            color: #9CA3AF;
-        }
-
-        .check-badge {
-            width: 24px;
-            height: 24px;
-            border-radius: 50%;
-            background-color: rgba(16, 185, 129, 0.2);
-            color: #10B981;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 12px;
-            margin-left: 15px;
-        }
-
-        /* Decorative Line */
-        .bottom-line {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 4px;
-            background: linear-gradient(90deg, #0B0F19 0%, #D4AF37 50%, #0B0F19 100%);
-        }
-
-        .page-number {
-            position: absolute;
-            bottom: 30px;
-            right: 40px;
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 600;
-            color: #4B5563;
-            font-size: 14px;
-            z-index: 20;
-        }
-
-        .notes-container {
-            display: none;
+            inset: -45% -35% auto auto;
+            width: 860px;
+            height: 860px;
+            border-radius: 9999px;
+            background: radial-gradient(circle at 30% 30%, rgba(245, 166, 35, 0.14), rgba(14, 26, 58, 0) 60%);
+            pointer-events: none;
         }
     </style>
 </head>
 
 <body>
-    <div class="slide-container">
-        <!-- Background -->
-        <div class="bg-pattern"></div>
-        <div class="glow-effect"></div>
-        <!-- Header -->
-        <div class="header">
-            <div class="title-group">
-                <h1>Field Wajib di Order Form</h1>
-                <p class="subtitle">Struktur data standar untuk menjamin automasi berjalan 100% akurat</p>
+    <div class="slide">
+        <!-- Decorative geometry (no gradients) -->
+        <div class="absolute inset-0" style="pointer-events:none;">
+            <div class="glow"></div>
+            <div class="absolute"
+                style="left:-140px; top:-160px; width:560px; height:560px; border-radius:9999px; border:2px solid rgba(245,166,35,0.22);">
             </div>
-            <div class="header-icon">
-                <i class="fa-solid fa-list-check"></i>
+            <div class="absolute"
+                style="left:86px; top:78px; width:190px; height:190px; border-radius:9999px; border:2px solid rgba(255,255,255,0.10);">
             </div>
-        </div>
-        <!-- Content Grid -->
-        <div class="grid-container">
-            <!-- Item 1 -->
-            <div class="field-card">
-                <div class="icon-wrapper">
-                    <i class="fa-solid fa-user"></i>
-                </div>
-                <div class="card-content">
-                    <div class="card-title">Nama Lengkap Customer</div>
-                    <div class="card-desc">Sesuai KTP/Penerima untuk label pengiriman</div>
-                </div>
-                <div class="check-badge"><i class="fa-solid fa-check"></i></div>
+            <div class="absolute"
+                style="right:-170px; bottom:-190px; width:650px; height:650px; border-radius:9999px; border:2px solid rgba(245,166,35,0.18);">
             </div>
-            <!-- Item 2 -->
-            <div class="field-card">
-                <div class="icon-wrapper">
-                    <i class="fa-brands fa-whatsapp"></i>
-                </div>
-                <div class="card-content">
-                    <div class="card-title">No. WhatsApp</div>
-                    <div class="card-desc">Wajib validasi angka (08/62) untuk notifikasi otomatis</div>
-                </div>
-                <div class="check-badge"><i class="fa-solid fa-check"></i></div>
+            <div class="absolute"
+                style="right:120px; bottom:96px; width:230px; height:230px; border-radius:9999px; border:2px solid rgba(255,255,255,0.10);">
             </div>
-            <!-- Item 3 -->
-            <div class="field-card">
-                <div class="icon-wrapper">
-                    <i class="fa-solid fa-envelope"></i>
-                </div>
-                <div class="card-content">
-                    <div class="card-title">Alamat Email</div>
-                    <div class="card-desc">Destinasi pengiriman invoice digital (profesional)</div>
-                </div>
-                <div class="check-badge"><i class="fa-solid fa-check"></i></div>
-            </div>
-            <!-- Item 4 -->
-            <div class="field-card">
-                <div class="icon-wrapper">
-                    <i class="fa-solid fa-location-dot"></i>
-                </div>
-                <div class="card-content">
-                    <div class="card-title">Alamat Lengkap + Kode Pos</div>
-                    <div class="card-desc">Kecamatan &amp; Kota wajib untuk hitung ongkir</div>
-                </div>
-                <div class="check-badge"><i class="fa-solid fa-check"></i></div>
-            </div>
-            <!-- Item 5 -->
-            <div class="field-card">
-                <div class="icon-wrapper">
-                    <i class="fa-solid fa-box-open"></i>
-                </div>
-                <div class="card-content">
-                    <div class="card-title">Produk &amp; Varian</div>
-                    <div class="card-desc">Gunakan Dropdown/Pilihan Ganda (Bukan isian teks)</div>
-                </div>
-                <div class="check-badge"><i class="fa-solid fa-check"></i></div>
-            </div>
-            <!-- Item 6 -->
-            <div class="field-card">
-                <div class="icon-wrapper">
-                    <i class="fa-solid fa-arrow-down-1-9"></i>
-                </div>
-                <div class="card-content">
-                    <div class="card-title">Jumlah / Quantity</div>
-                    <div class="card-desc">Validasi angka min/max order per transaksi</div>
-                </div>
-                <div class="check-badge"><i class="fa-solid fa-check"></i></div>
-            </div>
-            <!-- Item 7 -->
-            <div class="field-card">
-                <div class="icon-wrapper">
-                    <i class="fa-solid fa-credit-card"></i>
-                </div>
-                <div class="card-content">
-                    <div class="card-title">Metode Pembayaran</div>
-                    <div class="card-desc">Transfer Bank / E-Wallet / QRIS / COD</div>
-                </div>
-                <div class="check-badge"><i class="fa-solid fa-check"></i></div>
-            </div>
-            <!-- Item 8 -->
-            <div class="field-card">
-                <div class="icon-wrapper">
-                    <i class="fa-solid fa-note-sticky"></i>
-                </div>
-                <div class="card-content">
-                    <div class="card-title">Catatan / Request</div>
-                    <div class="card-desc">Opsional (Contoh: "Tolong tulis ucapan ultah")</div>
-                </div>
-                <div class="check-badge"><i class="fa-solid fa-check"></i></div>
+            <!-- Left rail -->
+            <div class="absolute" style="left:0; top:0; width:100%; height:100%;">
+                <div class="absolute gold-bg" style="left:0; top:0; width:10px; height:100%; opacity:0.9;"></div>
+                <div class="absolute"
+                    style="left:18px; top:0; width:2px; height:100%; background: rgba(245,166,35,0.30);"></div>
+                <div class="absolute"
+                    style="left:0; top:66px; width:100%; height:1px; background: rgba(255,255,255,0.06);"></div>
             </div>
         </div>
-        <div class="bottom-line"></div>
-        <div class="page-number">12</div>
-        <div class="notes-container">
-            Form order harus capture semua data yang dibutuhkan untuk proses fulfillment. Gunakan dropdown untuk produk
-            agar konsisten, validasi format HP dan email, dan pastikan alamat lengkap. Data bersih dari awal = proses
-            lancar.
+        <!-- Main -->
+        <div class="relative flex-1 flex flex-col">
+            <!-- Header -->
+            <div class="w-full px-16 pt-10 flex items-center justify-between">
+                <div class="flex items-center space-x-3">
+                    <div class="card flex items-center justify-center" style="width:44px; height:44px; border-radius:10px;">
+                        <i class="fa-solid fa-building" style="color: rgba(255,255,255,0.82); font-size:18px;"></i>
+                    </div>
+                    <div class="flex flex-col">
+                        <p class="muted2 text-xs tracking-widest font-semibold">UNTUK</p>
+                        <p class="text-white text-sm font-semibold tracking-wide">PT YKK AP Indonesia</p>
+                    </div>
+                </div>
+                <div class="flex items-center space-x-3">
+                    <div class="card px-4 py-2 rounded-full">
+                        <p class="text-white text-xs font-semibold tracking-widest">TAHUN <span class="gold">2026</span></p>
+                    </div>
+                </div>
+            </div>
+            <!-- Body -->
+            <div class="flex-1 px-16 pt-0 pb-4 flex items-start">
+                <!-- Left: framing -->
+                <div class="flex flex-col" style="width: 430px;">
+                    <div class="flex items-center space-x-4 mb-4">
+                        <div class="gold-bg" style="width:64px; height:6px; border-radius:9999px;"></div>
+                        <div style="width:10px; height:10px; border-radius:9999px; background: rgba(245,166,35,0.85);">
+                        </div>
+                        <div style="width:10px; height:10px; border-radius:9999px; background: rgba(245,166,35,0.45);">
+                        </div>
+                    </div>
+                    <div class="mb-4">
+                        <p class="text-white font-extrabold leading-tight"
+                            style="font-size:34px; letter-spacing:-0.01em;">
+                            Transformasi Nyata:<br />
+                            <span class="gold">Sebelum</span> vs <span class="gold">Sesudah</span> LMS
+                        </p>
+                    </div>
+                    <div class="mb-5">
+                        <p class="muted text-base leading-relaxed">
+                            Perbandingan berikut menggambarkan perubahan cara kerja HR &amp; L&amp;D saat proses
+                            training berpindah
+                            dari manual menuju sistem terpusat yang <span class="gold">real-time</span> dan <span
+                                class="gold">audit-ready</span>.
+                        </p>
+                    </div>
+                    <div class="card rounded-2xl p-5">
+                        <div class="flex items-center space-x-3 mb-3">
+                            <div class="gold-bg"
+                                style="width:28px; height:28px; border-radius:10px; display:flex; align-items:center; justify-content:center;">
+                                <i class="fa-solid fa-arrows-rotate" style="color:#0E1A3A; font-size:14px;"></i>
+                            </div>
+                            <div>
+                                <p class="text-white text-[13px] font-semibold leading-tight">Inti perubahan</p>
+                                <p class="muted2 text-xs">Dari aktivitas administratif → keputusan berbasis data</p>
+                            </div>
+                        </div>
+                        <div class="space-y-2">
+                            <div class="flex items-start space-x-3">
+                                <i class="fa-regular fa-circle-check"
+                                    style="color: rgba(245,166,35,0.95); font-size:14px; margin-top:2px;"></i>
+                                <p class="muted text-sm">Kontrol compliance &amp; sertifikasi lebih rapi dan
+                                    terdokumentasi</p>
+                            </div>
+                            <div class="flex items-start space-x-3">
+                                <i class="fa-regular fa-circle-check"
+                                    style="color: rgba(245,166,35,0.95); font-size:14px; margin-top:2px;"></i>
+                                <p class="muted text-sm">Pelaporan lebih cepat untuk kebutuhan manajemen &amp; audit</p>
+                            </div>
+                            <div class="flex items-start space-x-3">
+                                <i class="fa-regular fa-circle-check"
+                                    style="color: rgba(245,166,35,0.95); font-size:14px; margin-top:2px;"></i>
+                                <p class="muted text-sm">Evaluasi training lebih objektif untuk perbaikan program</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-5 flex items-center space-x-3">
+                        <div class="pill px-3 py-1.5 rounded-full flex items-center space-x-2">
+                            <i class="fa-solid fa-chart-simple"
+                                style="color: rgba(255,255,255,0.75); font-size:12px;"></i>
+                            <p class="muted2 text-xs">Impact: efisiensi • transparansi • compliance</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Right: two-column comparison -->
+                <div class="flex-1 pl-10 flex flex-col justify-center">
+                    <div class="card rounded-3xl p-3 mt-10">
+                        <div class="flex items-center justify-between mb-3">
+                            <div class="flex items-center space-x-3">
+                                <div class="gold-bg"
+                                    style="width:36px; height:36px; border-radius:12px; display:flex; align-items:center; justify-content:center;">
+                                    <i class="fa-solid fa-columns" style="color:#0E1A3A; font-size:16px;"></i>
+                                </div>
+                                <div>
+                                    <p class="text-white text-[13px] font-semibold leading-tight">Before vs After</p>
+                                    <p class="muted2 text-xs">6 area perubahan • ringkas • mudah dipresentasikan</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center space-x-2">
+                                <div
+                                    style="width:10px; height:10px; border-radius:9999px; background: rgba(245,166,35,0.75);">
+                                </div>
+                                <div
+                                    style="width:10px; height:10px; border-radius:9999px; background: rgba(255,255,255,0.20);">
+                                </div>
+                                <div
+                                    style="width:10px; height:10px; border-radius:9999px; background: rgba(255,255,255,0.12);">
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Column headers -->
+                        <div class="grid grid-cols-2 gap-3 mb-2">
+                            <div class="danger rounded-2xl px-4 py-3 flex items-center justify-between">
+                                <div class="flex items-center space-x-3">
+                                    <div
+                                        style="width:28px; height:28px; border-radius:12px; background: rgba(239,68,68,0.22); display:flex; align-items:center; justify-content:center; border: 1px solid rgba(239,68,68,0.30);">
+                                        <i class="fa-solid fa-triangle-exclamation"
+                                            style="color: rgba(255,255,255,0.86); font-size:14px;"></i>
+                                    </div>
+                                    <div>
+                                        <p class="text-white text-sm font-extrabold">SEBELUM LMS <span
+                                                style="opacity:0.9;">❌</span></p>
+                                        <p class="muted2 text-xs">Manual • tersebar • sulit diaudit</p>
+                                    </div>
+                                </div>
+                                <div class="pill px-3 py-1 rounded-full">
+                                    <p class="muted2 text-xs">Risiko tinggi</p>
+                                </div>
+                            </div>
+                            <div class="success rounded-2xl px-4 py-3 flex items-center justify-between">
+                                <div class="flex items-center space-x-3">
+                                    <div
+                                        style="width:28px; height:28px; border-radius:12px; background: rgba(34,197,94,0.22); display:flex; align-items:center; justify-content:center; border: 1px solid rgba(34,197,94,0.30);">
+                                        <i class="fa-solid fa-circle-check"
+                                            style="color: rgba(255,255,255,0.90); font-size:14px;"></i>
+                                    </div>
+                                    <div>
+                                        <p class="text-white text-sm font-extrabold">SESUDAH LMS <span
+                                                style="opacity:0.95;">✅</span></p>
+                                        <p class="muted2 text-xs">Terpusat • real-time • audit-ready</p>
+                                    </div>
+                                </div>
+                                <div class="pill px-3 py-1 rounded-full">
+                                    <p class="muted2 text-xs">Kontrol kuat</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Comparison rows -->
+                        <div class="grid grid-cols-2 gap-4">
+                            <!-- BEFORE items -->
+                            <div class="panel rounded-2xl p-3">
+                                <div class="space-y-1">
+                                    <div class="item rounded-xl py-1 px-3 flex items-start space-x-3">
+                                        <div
+                                            style="width:26px; height:26px; border-radius:8px; background: rgba(239,68,68,0.18); border: 1px solid rgba(239,68,68,0.25); display:flex; align-items:center; justify-content:center; flex:0 0 auto;">
+                                            <i class="fa-solid fa-clipboard-list"
+                                                style="color: rgba(255,255,255,0.85); font-size:11px;"></i>
+                                        </div>
+                                        <div>
+                                            <p class="text-white text-[12px] font-semibold leading-tight">Pengelolaan manual &amp; tidak
+                                                efisien</p>
+                                            <p class="muted2 text-[10px] leading-tight mt-0.5">Banyak aktivitas administratif berulang.</p>
+                                        </div>
+                                    </div>
+                                    <div class="item rounded-xl py-1 px-3 flex items-start space-x-3">
+                                        <div
+                                            style="width:26px; height:26px; border-radius:8px; background: rgba(239,68,68,0.18); border: 1px solid rgba(239,68,68,0.25); display:flex; align-items:center; justify-content:center; flex:0 0 auto;">
+                                            <i class="fa-solid fa-folder-open"
+                                                style="color: rgba(255,255,255,0.85); font-size:11px;"></i>
+                                        </div>
+                                        <div>
+                                            <p class="text-white text-[12px] font-semibold leading-tight">Data training tersebar &amp;
+                                                tidak terintegrasi</p>
+                                            <p class="muted2 text-[10px] leading-tight mt-0.5">Sulit menyatukan data lintas program/divisi.
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="item rounded-xl py-1 px-3 flex items-start space-x-3">
+                                        <div
+                                            style="width:26px; height:26px; border-radius:8px; background: rgba(239,68,68,0.18); border: 1px solid rgba(239,68,68,0.25); display:flex; align-items:center; justify-content:center; flex:0 0 auto;">
+                                            <i class="fa-solid fa-stopwatch"
+                                                style="color: rgba(255,255,255,0.85); font-size:11px;"></i>
+                                        </div>
+                                        <div>
+                                            <p class="text-white text-[12px] font-semibold leading-tight">Reporting lambat &amp; menyita
+                                                waktu HR</p>
+                                            <p class="muted2 text-[10px] leading-tight mt-0.5">Butuh rekap manual untuk manajemen/audit.</p>
+                                        </div>
+                                    </div>
+                                    <div class="item rounded-xl py-1 px-3 flex items-start space-x-3">
+                                        <div
+                                            style="width:26px; height:26px; border-radius:8px; background: rgba(239,68,68,0.18); border: 1px solid rgba(239,68,68,0.25); display:flex; align-items:center; justify-content:center; flex:0 0 auto;">
+                                            <i class="fa-solid fa-chart-pie"
+                                                style="color: rgba(255,255,255,0.85); font-size:11px;"></i>
+                                        </div>
+                                        <div>
+                                            <p class="text-white text-[12px] font-semibold leading-tight">Evaluasi training tidak terukur
+                                            </p>
+                                            <p class="muted2 text-[10px] leading-tight mt-0.5">Sulit mengukur efektivitas dan perbaikan.</p>
+                                        </div>
+                                    </div>
+                                    <div class="item rounded-xl py-1 px-3 flex items-start space-x-3">
+                                        <div
+                                            style="width:26px; height:26px; border-radius:8px; background: rgba(239,68,68,0.18); border: 1px solid rgba(239,68,68,0.25); display:flex; align-items:center; justify-content:center; flex:0 0 auto;">
+                                            <i class="fa-solid fa-clipboard-check"
+                                                style="color: rgba(255,255,255,0.85); font-size:11px;"></i>
+                                        </div>
+                                        <div>
+                                            <p class="text-white text-[12px] font-semibold leading-tight">Compliance sulit dipantau</p>
+                                            <p class="muted2 text-[10px] leading-tight mt-0.5">Tidak ada dashboard status mandatory
+                                                training.</p>
+                                        </div>
+                                    </div>
+                                    <div class="item rounded-xl py-1 px-3 flex items-start space-x-3">
+                                        <div
+                                            style="width:26px; height:26px; border-radius:8px; background: rgba(239,68,68,0.18); border: 1px solid rgba(239,68,68,0.25); display:flex; align-items:center; justify-content:center; flex:0 0 auto;">
+                                            <i class="fa-solid fa-certificate"
+                                                style="color: rgba(255,255,255,0.85); font-size:11px;"></i>
+                                        </div>
+                                        <div>
+                                            <p class="text-white text-[12px] font-semibold leading-tight">Sertifikat mudah hilang / tidak
+                                                terarsip</p>
+                                            <p class="muted2 text-[10px] leading-tight mt-0.5">Pencarian dokumen memakan waktu.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- AFTER items -->
+                            <div class="panel rounded-2xl p-3"
+                                style="border: 1px solid rgba(245,166,35,0.22); background: rgba(245,166,35,0.06);">
+                                <div class="space-y-1">
+                                    <div class="item rounded-2xl p-2 flex items-start space-x-3"
+                                        style="border: 1px solid rgba(245,166,35,0.18);">
+                                        <div class="gold-bg"
+                                            style="width:26px; height:26px; border-radius:8px; display:flex; align-items:center; justify-content:center; flex:0 0 auto;">
+                                            <i class="fa-solid fa-gear" style="color:#0E1A3A; font-size:11px;"></i>
+                                        </div>
+                                        <div>
+                                            <p class="text-white text-[12px] font-semibold leading-tight">Sistem terpusat &amp; lebih
+                                                otomatis</p>
+                                            <p class="muted2 text-[10px] leading-tight mt-0.5">Proses training lebih rapi dan konsisten.</p>
+                                        </div>
+                                    </div>
+                                    <div class="item rounded-2xl p-2 flex items-start space-x-3"
+                                        style="border: 1px solid rgba(245,166,35,0.18);">
+                                        <div class="gold-bg"
+                                            style="width:26px; height:26px; border-radius:8px; display:flex; align-items:center; justify-content:center; flex:0 0 auto;">
+                                            <i class="fa-solid fa-database" style="color:#0E1A3A; font-size:11px;"></i>
+                                        </div>
+                                        <div>
+                                            <p class="text-white text-[12px] font-semibold leading-tight">Satu sumber data (single source
+                                                of truth)</p>
+                                            <p class="muted2 text-[10px] leading-tight mt-0.5">Data training terkonsolidasi per
+                                                karyawan/divisi.</p>
+                                        </div>
+                                    </div>
+                                    <div class="item rounded-2xl p-2 flex items-start space-x-3"
+                                        style="border: 1px solid rgba(245,166,35,0.18);">
+                                        <div class="gold-bg"
+                                            style="width:26px; height:26px; border-radius:8px; display:flex; align-items:center; justify-content:center; flex:0 0 auto;">
+                                            <i class="fa-solid fa-gauge-high"
+                                                style="color:#0E1A3A; font-size:11px;"></i>
+                                        </div>
+                                        <div>
+                                            <p class="text-white text-[12px] font-semibold leading-tight">Real-time dashboard &amp;
+                                                monitoring</p>
+                                            <p class="muted2 text-[10px] leading-tight mt-0.5">Status pelatihan bisa dipantau kapan saja.
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="item rounded-2xl p-2 flex items-start space-x-3"
+                                        style="border: 1px solid rgba(245,166,35,0.18);">
+                                        <div class="gold-bg"
+                                            style="width:26px; height:26px; border-radius:8px; display:flex; align-items:center; justify-content:center; flex:0 0 auto;">
+                                            <i class="fa-solid fa-chart-line"
+                                                style="color:#0E1A3A; font-size:11px;"></i>
+                                        </div>
+                                        <div>
+                                            <p class="text-white text-[12px] font-semibold leading-tight">Keputusan berbasis data
+                                                (data-driven)</p>
+                                            <p class="muted2 text-[10px] leading-tight mt-0.5">Evaluasi objektif untuk peningkatan program.
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="item rounded-2xl p-2 flex items-start space-x-3"
+                                        style="border: 1px solid rgba(245,166,35,0.18);">
+                                        <div class="gold-bg"
+                                            style="width:26px; height:26px; border-radius:8px; display:flex; align-items:center; justify-content:center; flex:0 0 auto;">
+                                            <i class="fa-solid fa-shield-halved"
+                                                style="color:#0E1A3A; font-size:11px;"></i>
+                                        </div>
+                                        <div>
+                                            <p class="text-white text-[12px] font-semibold leading-tight">Compliance terkontrol &amp;
+                                                terdokumentasi</p>
+                                            <p class="muted2 text-[10px] leading-tight mt-0.5">Audit lebih siap, bukti training lebih rapi.
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="item rounded-2xl p-2 flex items-start space-x-3"
+                                        style="border: 1px solid rgba(245,166,35,0.18);">
+                                        <div class="gold-bg"
+                                            style="width:26px; height:26px; border-radius:8px; display:flex; align-items:center; justify-content:center; flex:0 0 auto;">
+                                            <i class="fa-solid fa-award" style="color:#0E1A3A; font-size:11px;"></i>
+                                        </div>
+                                        <div>
+                                            <p class="text-white text-[12px] font-semibold leading-tight">Sertifikat digital tersimpan
+                                                permanen</p>
+                                            <p class="muted2 text-[10px] leading-tight mt-0.5">Mudah dicari, aman, dan konsisten formatnya.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Bottom note -->
+                    </div>
+                    <!-- Small footer tag -->
+                </div>
+            </div>
+            <!-- Footer -->
+            <div class="w-full px-16 pb-8 flex items-center justify-between">
+                <div class="flex items-center space-x-3">
+                    <div style="width:8px; height:8px; border-radius:9999px; background:#F5A623;"></div>
+                    <p class="muted2 text-xs">Proposal Implementasi LMS • Studi Dampak (Before vs After)</p>
+                </div>
+                <div class="flex items-center space-x-3">
+                    <i class="fa-regular fa-calendar" style="color: rgba(255,255,255,0.70); font-size:12px;"></i>
+                    <p class="muted2 text-xs">2026</p>
+                </div>
+            </div>
         </div>
     </div>
 </body>

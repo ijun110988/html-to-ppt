@@ -5,364 +5,108 @@
 <head>
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <title>Engine Otomasi: Apps Script</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
-    <link
-        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&amp;family=Inter:wght@300;400;500;600&amp;display=swap"
-        rel="stylesheet" />
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&amp;display=swap" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" rel="stylesheet" />
     <style>
         body {
             margin: 0;
-            padding: 0;
-            background-color: #0B0F19;
-            font-family: 'Inter', sans-serif;
-            overflow: hidden;
         }
 
-        .slide-container {
+        .slide {
             width: 1280px;
             height: 720px;
-            background-color: #0B0F19;
+            display: flex;
+            background: #FFFFFF;
+            font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
             position: relative;
             overflow: hidden;
-            display: flex;
-            flex-direction: column;
         }
 
-        /* Background Elements */
-        .bg-circle {
+        .gold {
+            color: #F5A623;
+        }
+
+        .gold-bg {
+            background: #F5A623;
+        }
+
+        .muted2 {
+            color: rgba(14, 26, 58, 0.70);
+        }
+
+        .card {
+            background: rgba(14, 26, 58, 0.04);
+            border: 1px solid rgba(245, 166, 35, 0.26);
+        }
+
+        .glow {
             position: absolute;
-            border-radius: 50%;
-            background-color: rgba(212, 175, 55, 0.03);
-            z-index: 0;
-        }
-
-        .c1 {
-            width: 800px;
-            height: 800px;
-            top: -200px;
-            right: -200px;
-        }
-
-        .c2 {
-            width: 600px;
-            height: 600px;
-            bottom: -200px;
-            left: -100px;
-            background-color: rgba(66, 133, 244, 0.03);
-        }
-
-        /* Header */
-        .header {
-            padding: 50px 80px 20px 80px;
-            z-index: 10;
-        }
-
-        .header h1 {
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 800;
-            font-size: 42px;
-            color: #FFFFFF;
-            margin-bottom: 10px;
-            letter-spacing: -0.02em;
-        }
-
-        .header p {
-            font-family: 'Inter', sans-serif;
-            font-size: 18px;
-            color: #9CA3AF;
-        }
-
-        .gold-line {
-            width: 100px;
-            height: 4px;
-            background-color: #D4AF37;
-            margin-top: 20px;
-        }
-
-        /* Main Content */
-        .content-wrapper {
-            display: flex;
-            flex: 1;
-            padding: 20px 80px 50px 80px;
-            gap: 60px;
-            z-index: 10;
-        }
-
-        /* Left Side: Visual Engine */
-        .visual-engine {
-            flex: 0 0 40%;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-        }
-
-        .engine-container {
-            position: relative;
-            width: 100%;
-            height: 400px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-        /* Connecting Lines */
-        .line-vertical {
-            position: absolute;
-            left: 50%;
-            top: 40px;
-            bottom: 40px;
-            width: 2px;
-            background-color: #374151;
-            transform: translateX(-50%);
-            z-index: 0;
-        }
-
-        /* Nodes */
-        .node {
-            width: 280px;
-            background-color: #1F2937;
-            border: 1px solid #374151;
-            border-radius: 12px;
-            padding: 15px 20px;
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            z-index: 1;
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
-            position: relative;
-        }
-
-        .node-icon {
-            width: 40px;
-            height: 40px;
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 18px;
-            flex-shrink: 0;
-        }
-
-        .node-content h3 {
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 700;
-            font-size: 14px;
-            color: #F3F4F6;
-        }
-
-        .node-content p {
-            font-family: 'Inter', sans-serif;
-            font-size: 11px;
-            color: #9CA3AF;
-        }
-
-        /* Specific Node Styles */
-        .node-trigger {
-            border-color: rgba(66, 133, 244, 0.3);
-        }
-
-        .node-trigger .node-icon {
-            background-color: rgba(66, 133, 244, 0.1);
-            color: #4285F4;
-        }
-
-        .node-engine {
-            border-color: #D4AF37;
-            background-color: #1a1a2e;
-            /* Darker Navy */
-            transform: scale(1.1);
-            box-shadow: 0 0 20px rgba(212, 175, 55, 0.15);
-        }
-
-        .node-engine .node-icon {
-            background-color: rgba(212, 175, 55, 0.1);
-            color: #D4AF37;
-        }
-
-        .node-action {
-            border-color: rgba(16, 185, 129, 0.3);
-        }
-
-        .node-action .node-icon {
-            background-color: rgba(16, 185, 129, 0.1);
-            color: #10B981;
-        }
-
-        /* Floating labels */
-        .label-arrow {
-            position: absolute;
-            left: -100px;
-            top: 50%;
-            transform: translateY(-50%);
-            font-size: 12px;
-            color: #6B7280;
-            text-align: right;
-            width: 80px;
-        }
-
-        /* Right Side: Benefits Grid */
-        .benefits-grid {
-            flex: 1;
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 25px;
-            align-content: center;
-        }
-
-        .benefit-card {
-            background-color: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 16px;
-            padding: 25px;
-            transition: all 0.3s ease;
-        }
-
-        .benefit-card:hover {
-            background-color: rgba(255, 255, 255, 0.06);
-            border-color: rgba(212, 175, 55, 0.3);
-            transform: translateY(-5px);
-        }
-
-        .card-icon {
-            font-size: 28px;
-            margin-bottom: 15px;
-            color: #D4AF37;
-        }
-
-        .card-title {
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 700;
-            font-size: 16px;
-            color: #FFFFFF;
-            margin-bottom: 8px;
-        }
-
-        .card-desc {
-            font-family: 'Inter', sans-serif;
-            font-size: 13px;
-            color: #9CA3AF;
-            line-height: 1.6;
-        }
-
-        /* Page Number */
-        .page-number {
-            position: absolute;
-            bottom: 30px;
-            right: 40px;
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 600;
-            color: #4B5563;
-            font-size: 14px;
-        }
-
-        .notes-container {
-            display: none;
+            inset: -45% -35% auto auto;
+            width: 860px;
+            height: 860px;
+            border-radius: 9999px;
+            background: radial-gradient(circle at 30% 30%, rgba(245, 166, 35, 0.18), rgba(255, 255, 255, 0) 60%);
+            pointer-events: none;
         }
     </style>
 </head>
 
 <body>
-    <div class="slide-container">
-        <!-- Background -->
-        <div class="bg-circle c1"></div>
-        <div class="bg-circle c2"></div>
-        <!-- Header -->
-        <div class="header">
-            <h1>Engine Otomasi: Apps Script</h1>
-            <p>Robot pintar yang bekerja 24 jam di balik layar sistem Anda</p>
-            <div class="gold-line"></div>
+    <div class="slide">
+        <div class="absolute inset-0" style="pointer-events:none;">
+            <div class="glow"></div>
+            <div class="absolute"
+                style="left:-140px; top:-160px; width:560px; height:560px; border-radius:9999px; border:2px solid rgba(245,166,35,0.18);">
+            </div>
+            <div class="absolute"
+                style="left:86px; top:78px; width:190px; height:190px; border-radius:9999px; border:2px solid rgba(14,26,58,0.08);">
+            </div>
+            <div class="absolute"
+                style="right:-170px; bottom:-190px; width:650px; height:650px; border-radius:9999px; border:2px solid rgba(245,166,35,0.16);">
+            </div>
+            <div class="absolute"
+                style="right:120px; bottom:96px; width:230px; height:230px; border-radius:9999px; border:2px solid rgba(14,26,58,0.08);">
+            </div>
+            <div class="absolute" style="left:0; top:0; width:100%; height:100%;">
+                <div class="absolute gold-bg" style="left:0; top:0; width:10px; height:100%; opacity:0.95;"></div>
+                <div class="absolute" style="left:18px; top:0; width:2px; height:100%; background: rgba(245,166,35,0.35);"></div>
+                <div class="absolute" style="left:0; top:66px; width:100%; height:1px; background: rgba(14,26,58,0.06);"></div>
+            </div>
         </div>
-        <!-- Content -->
-        <div class="content-wrapper">
-            <!-- Visual Engine (Left) -->
-            <div class="visual-engine">
-                <div class="engine-container">
-                    <div class="line-vertical"></div>
-                    <!-- Step 1 -->
-                    <div class="node node-trigger">
-                        <div class="node-icon">
-                            <i class="fa-solid fa-bolt"></i>
-                        </div>
-                        <div class="node-content">
-                            <h3>TRIGGER</h3>
-                            <p>Saat Customer Submit Form</p>
-                        </div>
+
+        <div class="relative flex-1 flex flex-col">
+            <div class="w-full px-16 pt-10 flex items-center justify-between">
+                <div class="flex items-center space-x-3">
+                    <div class="card flex items-center justify-center" style="width:44px; height:44px; border-radius:10px;">
+                        <i class="fa-solid fa-building" style="color: rgba(14,26,58,0.82); font-size:18px;"></i>
                     </div>
-                    <!-- Step 2 -->
-                    <div class="node node-engine">
-                        <div class="node-icon">
-                            <i class="fa-solid fa-gears"></i>
-                        </div>
-                        <div class="node-content">
-                            <h3>APPS SCRIPT</h3>
-                            <p>Robot Memproses Data</p>
-                        </div>
-                        <div class="label-arrow">Auto Run</div>
+                    <div class="flex flex-col">
+                        <p class="muted2 text-xs tracking-widest font-semibold">UNTUK</p>
+                        <p class="text-gray-900 text-sm font-semibold tracking-wide">PT YKK AP Indonesia</p>
                     </div>
-                    <!-- Step 3 -->
-                    <div class="node node-action">
-                        <div class="node-icon">
-                            <i class="fa-solid fa-paper-plane"></i>
-                        </div>
-                        <div class="node-content">
-                            <h3>ACTION</h3>
-                            <p>Kirim Email &amp; Update Status</p>
-                        </div>
+                </div>
+                <div class="flex items-center space-x-3">
+                    <div class="card px-4 py-2 rounded-full">
+                        <p class="text-gray-900 text-xs font-semibold tracking-widest">TAHUN <span class="gold">2026</span></p>
                     </div>
                 </div>
             </div>
-            <!-- Benefits Grid (Right) -->
-            <div class="benefits-grid">
-                <!-- Card 1 -->
-                <div class="benefit-card">
-                    <div class="card-icon">
-                        <i class="fa-solid fa-robot"></i>
-                    </div>
-                    <h3 class="card-title">Robot Pribadi 24/7</h3>
-                    <p class="card-desc">Sistem tidak pernah tidur, tidak pernah lelah, dan tidak pernah salah ketik.
-                        Order jam 3 pagi tetap terlayani instan.</p>
+
+            <div class="flex-1"></div>
+
+            <div class="w-full px-16 pb-10 flex items-center justify-between">
+                <div class="flex items-center space-x-3">
+                    <div style="width:8px; height:8px; border-radius:9999px; background:#F5A623;"></div>
+                    <p class="muted2 text-xs">Proposal Implementasi LMS</p>
                 </div>
-                <!-- Card 2 -->
-                <div class="benefit-card">
-                    <div class="card-icon">
-                        <i class="fa-solid fa-code"></i>
-                    </div>
-                    <h3 class="card-title">Tidak Perlu Jago Coding</h3>
-                    <p class="card-desc">Anda tidak perlu menulis kode dari nol. Cukup copy-paste template script yang
-                        kami sediakan.</p>
-                </div>
-                <!-- Card 3 -->
-                <div class="benefit-card">
-                    <div class="card-icon">
-                        <i class="fa-solid fa-puzzle-piece"></i>
-                    </div>
-                    <h3 class="card-title">Integrasi Penuh</h3>
-                    <p class="card-desc">Menghubungkan Google Form, Sheets, Docs (untuk Invoice), Gmail, dan WhatsApp
-                        dalam satu ekosistem.</p>
-                </div>
-                <!-- Card 4 -->
-                <div class="benefit-card">
-                    <div class="card-icon">
-                        <i class="fa-solid fa-wallet"></i>
-                    </div>
-                    <h3 class="card-title">100% Gratis &amp; Powerful</h3>
-                    <p class="card-desc">Apps Script adalah fitur gratis dari Google. Kapasitasnya cukup untuk handle
-                        ribuan transaksi UMKM.</p>
+                <div class="flex items-center space-x-3">
+                    <i class="fa-regular fa-calendar" style="color: rgba(14,26,58,0.70); font-size:12px;"></i>
+                    <p class="muted2 text-xs">2026</p>
                 </div>
             </div>
-        </div>
-        <!-- Page Number -->
-        <div class="page-number">17</div>
-        <!-- Speaker Notes -->
-        <div class="notes-container">
-            Apps Script adalah automation engine gratis dari Google. Bayangkan seperti robot yang bekerja 24/7. Setiap
-            ada form submit atau perubahan data, script langsung jalan otomatis. Anda tidak perlu jadi programmer, cukup
-            pakai template yang sudah ada.
         </div>
     </div>
 </body>

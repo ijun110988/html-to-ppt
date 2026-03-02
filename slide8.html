@@ -5,237 +5,293 @@
 <head>
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <title>Order Capture System</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
-    <link
-        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&amp;family=Inter:wght@300;400;600&amp;display=swap"
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&amp;display=swap"
         rel="stylesheet" />
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" rel="stylesheet" />
     <style>
         body {
             margin: 0;
-            padding: 0;
-            background-color: #f3f4f6;
-            font-family: 'Inter', sans-serif;
-            overflow: hidden;
         }
 
-        .slide-container {
+        .slide {
             width: 1280px;
             height: 720px;
-            background-color: #FFFFFF;
+            display: flex;
+            background: #0E1A3A;
+            font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
             position: relative;
             overflow: hidden;
-            display: flex;
         }
 
-        /* Sidebar Left - Dark Theme */
-        .sidebar {
-            width: 400px;
-            background-color: #0B0F19;
-            height: 100%;
-            padding: 60px 40px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            position: relative;
-            z-index: 2;
+        .gold {
+            color: #F5A623;
         }
 
-        .decorative-pattern {
+        .gold-bg {
+            background: #F5A623;
+        }
+
+        .muted {
+            color: rgba(255, 255, 255, 0.78);
+        }
+
+        .muted2 {
+            color: rgba(255, 255, 255, 0.62);
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(245, 166, 35, 0.20);
+        }
+
+        .glow {
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            opacity: 0.05;
-            background-image: radial-gradient(#D4AF37 1px, transparent 1px);
-            background-size: 20px 20px;
-            z-index: -1;
+            inset: -45% -35% auto auto;
+            width: 860px;
+            height: 860px;
+            border-radius: 9999px;
+            background: radial-gradient(circle at 30% 30%, rgba(245, 166, 35, 0.14), rgba(14, 26, 58, 0) 60%);
+            pointer-events: none;
         }
 
-        .gold-line {
-            width: 60px;
-            height: 4px;
-            background-color: #D4AF37;
-            margin-bottom: 30px;
-        }
-
-        h1 {
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 800;
-            font-size: 42px;
-            line-height: 1.1;
-            color: #FFFFFF;
-            margin-bottom: 20px;
-        }
-
-        .subtitle {
-            font-family: 'Inter', sans-serif;
-            font-size: 18px;
-            color: #9CA3AF;
-            line-height: 1.6;
-        }
-
-        /* Main Content - Right Side */
-        .main-content {
-            flex: 1;
-            padding: 60px 80px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            background-color: #F9FAFB;
-        }
-
-        .list-container {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
-
-        .list-item {
-            display: flex;
-            align-items: center;
-            background-color: #FFFFFF;
-            padding: 18px 30px;
-            border-radius: 12px;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
-            border-left: 4px solid #10B981;
-            /* Green/Teal for Solution/System */
-            transition: transform 0.2s ease;
-        }
-
-        .list-item:hover {
-            transform: translateX(10px);
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-        }
-
-        .icon-box {
-            width: 48px;
-            height: 48px;
-            border-radius: 10px;
-            background-color: #ECFDF5;
-            color: #10B981;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 22px;
-            margin-right: 25px;
-            flex-shrink: 0;
-        }
-
-        .text-content h3 {
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 700;
-            font-size: 18px;
-            color: #1F2937;
-            margin: 0 0 4px 0;
-        }
-
-        .text-content p {
-            font-family: 'Inter', sans-serif;
-            font-size: 15px;
-            color: #6B7280;
-            margin: 0;
-        }
-
-        /* Bottom Decoration */
-        .page-number {
-            position: absolute;
-            bottom: 30px;
-            right: 40px;
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 600;
-            color: #D1D5DB;
-            font-size: 14px;
-        }
-
-        /* Speaker Notes (Hidden in visual but structured for reference) */
-        .notes-container {
-            display: none;
+        .hairline {
+            border-color: rgba(245, 166, 35, 0.45);
         }
     </style>
 </head>
 
 <body>
-    <div class="slide-container">
-        <!-- Sidebar -->
-        <div class="sidebar">
-            <div class="decorative-pattern"></div>
-            <div class="gold-line"></div>
-            <h1>ORDER<br /><span style="color: #10B981;">CAPTURE<br />SYSTEM</span></h1>
-            <p class="subtitle">
-                Strategi menangkap pesanan pelanggan secara otomatis, terstruktur, dan tanpa perlu balas chat manual.
-            </p>
-            <!-- Abstract Visual -->
-            <div style="margin-top: 60px; position: relative; height: 200px;">
-                <i class="fa-solid fa-magnet"
-                    style="font-size: 120px; color: rgba(16, 185, 129, 0.1); position: absolute; bottom: 0; left: 0;"></i>
-                <i class="fa-solid fa-filter"
-                    style="font-size: 60px; color: rgba(212, 175, 55, 0.2); position: absolute; top: 20px; right: 40px;"></i>
+    <div class="slide">
+        <!-- Decorative geometry (no gradients) -->
+        <div class="absolute inset-0" style="pointer-events:none;">
+            <div class="glow"></div>
+            <div class="absolute"
+                style="left:-140px; top:-160px; width:560px; height:560px; border-radius:9999px; border:2px solid rgba(245,166,35,0.26);">
+            </div>
+            <div class="absolute"
+                style="left:86px; top:78px; width:190px; height:190px; border-radius:9999px; border:2px solid rgba(255,255,255,0.10);">
+            </div>
+            <div class="absolute"
+                style="right:-170px; bottom:-190px; width:650px; height:650px; border-radius:9999px; border:2px solid rgba(245,166,35,0.22);">
+            </div>
+            <div class="absolute"
+                style="right:120px; bottom:96px; width:230px; height:230px; border-radius:9999px; border:2px solid rgba(255,255,255,0.10);">
+            </div>
+            <!-- Left rail -->
+            <div class="absolute" style="left:0; top:0; width:100%; height:100%;">
+                <div class="absolute gold-bg" style="left:0; top:0; width:10px; height:100%; opacity:0.9;"></div>
+                <div class="absolute"
+                    style="left:18px; top:0; width:2px; height:100%; background: rgba(245,166,35,0.30);"></div>
+                <div class="absolute"
+                    style="left:0; top:66px; width:100%; height:1px; background: rgba(255,255,255,0.06);"></div>
             </div>
         </div>
-        <!-- Main Content -->
-        <div class="main-content">
-            <div class="list-container">
-                <!-- Item 1 -->
-                <div class="list-item">
-                    <div class="icon-box">
-                        <i class="fa-solid fa-laptop-code"></i>
+        <!-- Main -->
+        <div class="relative flex-1 flex flex-col">
+            <!-- Header -->
+            <div class="w-full px-16 pt-10 flex items-center justify-between">
+                <div class="flex items-center space-x-3">
+                    <div class="card flex items-center justify-center" style="width:44px; height:44px; border-radius:10px;">
+                        <i class="fa-solid fa-building" style="color: rgba(255,255,255,0.82); font-size:18px;"></i>
                     </div>
-                    <div class="text-content">
-                        <h3>Landing Page Simple</h3>
-                        <p>Halaman penawaran ringkas dengan tombol beli (CTA) yang sangat jelas.</p>
-                    </div>
-                </div>
-                <!-- Item 2 -->
-                <div class="list-item">
-                    <div class="icon-box">
-                        <i class="fa-brands fa-google"></i>
-                    </div>
-                    <div class="text-content">
-                        <h3>Google Form Profesional</h3>
-                        <p>Formulir order terstruktur sebagai pengganti chat manual yang berantakan.</p>
+                    <div class="flex flex-col">
+                        <p class="muted2 text-xs tracking-widest font-semibold">UNTUK</p>
+                        <p class="text-white text-sm font-semibold tracking-wide">PT YKK AP Indonesia</p>
                     </div>
                 </div>
-                <!-- Item 3 -->
-                <div class="list-item">
-                    <div class="icon-box">
-                        <i class="fa-solid fa-link"></i>
-                    </div>
-                    <div class="text-content">
-                        <h3>Pre-filled Link System</h3>
-                        <p>Link cerdas yang otomatis memilih varian produk, mengurangi salah order.</p>
-                    </div>
-                </div>
-                <!-- Item 4 -->
-                <div class="list-item">
-                    <div class="icon-box">
-                        <i class="fa-solid fa-check-double"></i>
-                    </div>
-                    <div class="text-content">
-                        <h3>Validasi Data Otomatis</h3>
-                        <p>Mencegah kesalahan input nomor HP dan alamat tidak lengkap sejak awal.</p>
-                    </div>
-                </div>
-                <!-- Item 5 -->
-                <div class="list-item">
-                    <div class="icon-box">
-                        <i class="fa-solid fa-server"></i>
-                    </div>
-                    <div class="text-content">
-                        <h3>Database Realtime</h3>
-                        <p>Data pesanan langsung masuk sistem spreadsheet tanpa perlu admin mengetik ulang.</p>
+                <div class="flex items-center space-x-3">
+                    <div class="card px-4 py-2 rounded-full">
+                        <p class="text-white text-xs font-semibold tracking-widest">TAHUN <span class="gold">2026</span></p>
                     </div>
                 </div>
             </div>
-            <div class="page-number">08</div>
+            <!-- Body -->
+            <div class="flex-1 px-16 pt-5 pb-4 flex">
+                <!-- Left: Title / context -->
+                <div class="flex flex-col" style="width: 430px;">
+                    <div class="flex items-center space-x-4 mb-6">
+                        <div class="gold-bg" style="width:64px; height:6px; border-radius:9999px;"></div>
+                        <div style="width:10px; height:10px; border-radius:9999px; background: rgba(245,166,35,0.85);">
+                        </div>
+                        <div style="width:10px; height:10px; border-radius:9999px; background: rgba(245,166,35,0.45);">
+                        </div>
+                    </div>
+                    <div class="mb-5">
+                        <p class="text-white font-extrabold leading-tight"
+                            style="font-size:42px; letter-spacing:-0.02em;">
+                            Pengalaman Belajar<br />
+                            yang <span class="gold">Lebih Baik</span><br />
+                            untuk Karyawan
+                        </p>
+                    </div>
+                    <div class="mb-8">
+                        <p class="muted text-base leading-relaxed">
+                            LMS memberi akses belajar yang fleksibel, terarah, dan transparan—sehingga karyawan lebih
+                            mudah
+                            mengembangkan kompetensi sesuai peran, target, dan kebutuhan operasional.
+                        </p>
+                    </div>
+                    <div class="card rounded-2xl p-5">
+                        <div class="flex items-center space-x-3 mb-3">
+                            <div class="gold-bg"
+                                style="width:34px; height:34px; border-radius:10px; display:flex; align-items:center; justify-content:center;">
+                                <i class="fa-solid fa-user-graduate" style="color:#0E1A3A; font-size:14px;"></i>
+                            </div>
+                            <div>
+                                <p class="text-white text-sm font-semibold">Nilai untuk karyawan</p>
+                                <p class="muted2 text-xs">Akses, motivasi, dan pengembangan karier</p>
+                            </div>
+                        </div>
+                        <div class="space-y-2">
+                            <div class="flex items-center space-x-3">
+                                <i class="fa-regular fa-circle-check"
+                                    style="color: rgba(245,166,35,0.95); font-size:14px;"></i>
+                                <p class="muted text-sm">Belajar mandiri tanpa mengganggu jam operasional</p>
+                            </div>
+                            <div class="flex items-center space-x-3">
+                                <i class="fa-regular fa-circle-check"
+                                    style="color: rgba(245,166,35,0.95); font-size:14px;"></i>
+                                <p class="muted text-sm">Akses materi terstandar dari satu platform</p>
+                            </div>
+                            <div class="flex items-center space-x-3">
+                                <i class="fa-regular fa-circle-check"
+                                    style="color: rgba(245,166,35,0.95); font-size:14px;"></i>
+                                <p class="muted text-sm">Pencapaian kompetensi terdokumentasi rapi</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Right: Key points -->
+                <div class="flex-1 pl-12 flex flex-col">
+                    <div class="card rounded-3xl p-5">
+                        <div class="flex items-center justify-between mb-6">
+                            <div class="flex items-center space-x-3">
+                                <div class="gold-bg"
+                                    style="width:36px; height:36px; border-radius:12px; display:flex; align-items:center; justify-content:center;">
+                                    <i class="fa-solid fa-wand-magic-sparkles"
+                                        style="color:#0E1A3A; font-size:16px;"></i>
+                                </div>
+                                <div>
+                                    <p class="text-white text-sm font-semibold">Manfaat untuk Karyawan</p>
+                                    <p class="muted2 text-xs">6 benefit yang terasa langsung</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center space-x-2">
+                                <div
+                                    style="width:10px; height:10px; border-radius:9999px; background: rgba(245,166,35,0.75);">
+                                </div>
+                                <div
+                                    style="width:10px; height:10px; border-radius:9999px; background: rgba(255,255,255,0.20);">
+                                </div>
+                                <div
+                                    style="width:10px; height:10px; border-radius:9999px; background: rgba(255,255,255,0.12);">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="space-y-0.5">
+                            <!-- 1 -->
+                            <div class="flex items-start space-x-3 py-3 px-3 rounded-xl"
+                                style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.07);">
+                                <div class="gold-bg flex items-center justify-center"
+                                    style="width:44px; height:44px; border-radius:14px; flex:0 0 auto;">
+                                    <i class="fa-solid fa-globe" style="color:#0E1A3A; font-size:18px;"></i>
+                                </div>
+                                <div class="flex-1">
+                                    <p class="text-white text-sm font-semibold leading-tight">Akses training <span
+                                            class="gold">fleksibel</span> (web-based)</p>
+                                    <p class="muted2 text-xs leading-tight mt-0.5">Belajar kapan saja &amp; di mana saja sesuai
+                                        kebutuhan dan jadwal kerja.</p>
+                                </div>
+                            </div>
+                            <!-- 2 -->
+                            <div class="flex items-start space-x-3 py-3 px-3 rounded-xl"
+                                style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.07);">
+                                <div class="gold-bg flex items-center justify-center"
+                                    style="width:44px; height:44px; border-radius:14px; flex:0 0 auto;">
+                                    <i class="fa-solid fa-person-running" style="color:#0E1A3A; font-size:18px;"></i>
+                                </div>
+                                <div class="flex-1">
+                                    <p class="text-white text-sm font-semibold leading-tight">Self-paced learning</p>
+                                    <p class="muted2 text-xs leading-tight mt-0.5">Karyawan belajar sesuai kecepatan masing-masing tanpa
+                                        tekanan administratif.</p>
+                                </div>
+                            </div>
+                            <!-- 3 -->
+                            <div class="flex items-start space-x-3 py-3 px-3 rounded-xl"
+                                style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.07);">
+                                <div class="gold-bg flex items-center justify-center"
+                                    style="width:44px; height:44px; border-radius:14px; flex:0 0 auto;">
+                                    <i class="fa-solid fa-route" style="color:#0E1A3A; font-size:18px;"></i>
+                                </div>
+                                <div class="flex-1">
+                                    <p class="text-white text-sm font-semibold leading-tight">Learning path sesuai <span
+                                            class="gold">jabatan</span></p>
+                                    <p class="muted2 text-xs leading-tight mt-0.5">Materi terarah berdasarkan peran, level, dan
+                                        kebutuhan kompetensi.</p>
+                                </div>
+                            </div>
+                            <!-- 4 -->
+                            <div class="flex items-start space-x-3 py-3 px-3 rounded-xl"
+                                style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.07);">
+                                <div class="gold-bg flex items-center justify-center"
+                                    style="width:44px; height:44px; border-radius:14px; flex:0 0 auto;">
+                                    <i class="fa-solid fa-chart-simple" style="color:#0E1A3A; font-size:18px;"></i>
+                                </div>
+                                <div class="flex-1">
+                                    <p class="text-white text-sm font-semibold leading-tight">Progres belajar <span
+                                            class="gold">terlihat jelas</span></p>
+                                    <p class="muted2 text-xs leading-tight mt-0.5">Transparansi status training membantu fokus dan
+                                        meningkatkan motivasi.</p>
+                                </div>
+                            </div>
+                            <!-- 5 -->
+                            <div class="flex items-start space-x-3 py-3 px-3 rounded-xl"
+                                style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.07);">
+                                <div class="gold-bg flex items-center justify-center"
+                                    style="width:44px; height:44px; border-radius:14px; flex:0 0 auto;">
+                                    <i class="fa-solid fa-award" style="color:#0E1A3A; font-size:18px;"></i>
+                                </div>
+                                <div class="flex-1">
+                                    <p class="text-white text-sm font-semibold leading-tight">Sertifikat <span
+                                            class="gold">digital</span> tersimpan rapi</p>
+                                    <p class="muted2 text-xs leading-tight mt-0.5">Bukti pencapaian kompetensi mudah diakses untuk
+                                        kebutuhan internal.</p>
+                                </div>
+                            </div>
+                            <!-- 6 -->
+                            <div class="flex items-start space-x-3 py-3 px-3 rounded-xl"
+                                style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.07);">
+                                <div class="gold-bg flex items-center justify-center"
+                                    style="width:44px; height:44px; border-radius:14px; flex:0 0 auto;">
+                                    <i class="fa-solid fa-people-group" style="color:#0E1A3A; font-size:18px;"></i>
+                                </div>
+                                <div class="flex-1">
+                                    <p class="text-white text-sm font-semibold leading-tight">Meningkatkan engagement &amp; budaya
+                                        belajar</p>
+                                    <p class="muted2 text-xs leading-tight mt-0.5">Akses yang mudah mendorong kebiasaan upskilling dan
+                                        reskilling yang konsisten.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Small footer tag -->
+                </div>
+            </div>
+            <!-- Footer -->
+            <div class="w-full px-16 pb-10 flex items-center justify-between">
+                <div class="flex items-center space-x-3">
+                    <div style="width:8px; height:8px; border-radius:9999px; background:#F5A623;"></div>
+                    <p class="muted2 text-xs">Proposal Implementasi LMS • Dampak Positif untuk Karyawan</p>
+                </div>
+                <div class="flex items-center space-x-3">
+                    <i class="fa-regular fa-calendar" style="color: rgba(255,255,255,0.70); font-size:12px;"></i>
+                    <p class="muted2 text-xs">2026</p>
+                </div>
+            </div>
         </div>
-    </div>
-    <div class="notes-container">
-        Sistem dimulai dari order capture. Customer tidak perlu chat panjang lebar. Mereka isi form yang sudah
-        terstruktur, data langsung masuk database, dan validasi otomatis mengurangi error. Ini menghemat 70% waktu
-        admin.
     </div>
 </body>
 

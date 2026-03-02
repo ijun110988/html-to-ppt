@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+
+<html lang="id">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Metodologi Pengembangan – Agile Framework</title>
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"/>
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&amp;family=Open+Sans:wght@400;600&amp;display=swap" rel="stylesheet"/>
+<style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #f3f4f6;
+            font-family: 'Open Sans', sans-serif;
+        }
+        .slide-container {
+            width: 1280px;
+            height: 720px;
+            background-color: #ffffff;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        /* Colors */
+        .bg-navy { background-color: #1B2A4A; }
+        .text-navy { color: #1B2A4A; }
+        .bg-accent { background-color: #2196F3; }
+        .text-accent { color: #2196F3; }
+        .border-accent { border-color: #2196F3; }
+        .bg-light-gray { background-color: #F8F9FA; }
+        
+        /* Typography */
+        h1, h2, h3, .font-montserrat {
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        /* Custom Bullet Styling */
+        .bullet-item {
+            position: relative;
+            padding-left: 20px;
+            margin-bottom: 24px;
+            transition: transform 0.2s ease;
+        }
+        
+        .bullet-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            background-color: rgba(33, 150, 243, 0.1); /* Accent with opacity */
+            color: #2196F3;
+            font-size: 1.25rem;
+            flex-shrink: 0;
+        }
+
+        .decorative-dots {
+            background-image: radial-gradient(#2196F3 2px, transparent 2px);
+            background-size: 20px 20px;
+        }
+
+        /* Agile Loop Animation Concept (Static for PDF) */
+        .agile-circle {
+            border: 4px dashed #e2e8f0;
+            border-radius: 50%;
+        }
+    </style>
+</head>
+<body>
+<div class="slide-container">
+<!-- Header Section -->
+<div class="bg-navy h-20 w-full flex items-center px-12 justify-between shrink-0 z-20 shadow-md">
+<div class="flex items-center space-x-4">
+<div class="w-10 h-10 bg-white rounded flex items-center justify-center text-navy font-bold shadow">
+<i class="fas fa-sync-alt"></i>
+</div>
+<h1 class="text-3xl font-bold text-white tracking-wide uppercase font-montserrat">Metodologi Pengembangan – Agile</h1>
+</div>
+<div class="flex flex-col items-end">
+<p class="text-xs text-blue-300 font-montserrat tracking-widest uppercase">Proposal 2026</p>
+<p class="text-sm font-semibold text-white">PT YKKAP Indonesia</p>
+</div>
+</div>
+<!-- Main Content Area -->
+<div class="flex flex-1 w-full overflow-hidden bg-white relative">
+<!-- Decorative Elements -->
+<div class="absolute top-0 right-0 w-1/3 h-full bg-light-gray -skew-x-12 transform origin-top-right z-0"></div>
+<div class="absolute bottom-10 right-10 w-32 h-32 decorative-dots opacity-20 z-0"></div>
+<!-- Content Grid -->
+<div class="flex w-full h-full z-10 px-16 pt-8 pb-6">
+<!-- Left Column: Bullet Points -->
+<div class="w-2/3 pr-12 flex flex-col justify-center">
+<div class="mb-4">
+<p class="text-accent font-bold uppercase tracking-wider text-sm mb-2 font-montserrat">Development Approach</p>
+<h2 class="text-3xl font-extrabold text-navy mb-3 leading-tight font-montserrat">
+                            Iterative &amp; Collaborative<br/>Process
+                        </h2>
+<div class="w-20 h-1.5 bg-accent rounded-full mb-6"></div>
+</div>
+<div class="space-y-0.5">
+<!-- Phase 1 -->
+<div class="flex items-start space-x-5">
+<div class="bullet-icon shadow-sm bg-blue-50 text-blue-600">
+<span class="font-bold font-montserrat text-lg">01</span>
+</div>
+<div>
+<h3 class="text-lg font-bold text-navy font-montserrat">Requirement Gathering</h3>
+<p class="text-gray-600 leading-snug mt-1 text-sm">
+                                    Penyusunan dokumen teknis komprehensif meliputi BRD (Business Requirement Document) &amp; FSD (Functional Specification Document) sebagai acuan dasar.
+                                </p>
+</div>
+</div>
+<!-- Phase 2 -->
+<div class="flex items-start space-x-5">
+<div class="bullet-icon shadow-sm bg-indigo-50 text-indigo-600">
+<span class="font-bold font-montserrat text-lg">02</span>
+</div>
+<div>
+<h3 class="text-lg font-bold text-navy font-montserrat">System Design</h3>
+<p class="text-gray-600 leading-snug mt-1 text-sm">
+                                    Perancangan arsitektur visual dan teknis, mencakup UI/UX prototype interaktif, skema database relasional, dan arsitektur teknis server.
+                                </p>
+</div>
+</div>
+<!-- Phase 3 -->
+<div class="flex items-start space-x-5">
+<div class="bullet-icon shadow-sm bg-purple-50 text-purple-600">
+<span class="font-bold font-montserrat text-lg">03</span>
+</div>
+<div>
+<h3 class="text-lg font-bold text-navy font-montserrat">Sprint Development</h3>
+<p class="text-gray-600 leading-snug mt-1 text-sm">
+                                    Pengembangan berbasis iterasi (sprint) durasi 2 minggu dengan sesi demo progress rutin di akhir setiap sprint untuk feedback cepat.
+                                </p>
+</div>
+</div>
+<!-- Phase 4 -->
+<div class="flex items-start space-x-5">
+<div class="bullet-icon shadow-sm bg-pink-50 text-pink-600">
+<span class="font-bold font-montserrat text-lg">04</span>
+</div>
+<div>
+<h3 class="text-lg font-bold text-navy font-montserrat">QA &amp; Testing</h3>
+<p class="text-gray-600 leading-snug mt-1 text-sm">
+                                    Pengujian bertingkat mulai dari Unit Testing, Integration Testing, hingga User Acceptance Testing (UAT) bersama user YKKAP.
+                                </p>
+</div>
+</div>
+<!-- Phase 5 -->
+<div class="flex items-start space-x-5">
+<div class="bullet-icon shadow-sm bg-green-50 text-green-600">
+<span class="font-bold font-montserrat text-lg">05</span>
+</div>
+<div>
+<h3 class="text-lg font-bold text-navy font-montserrat">Deployment &amp; Transfer</h3>
+<p class="text-gray-600 leading-snug mt-1 text-sm">
+                                    Proses Go-live ke server produksi, diikuti sesi training admin/user, dan serah terima dokumentasi sistem lengkap.
+                                </p>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Column: Visual/Illustration -->
+<div class="w-1/3 flex flex-col items-center justify-center relative pl-4">
+<!-- Visualizing Agile Cycle -->
+<div class="relative w-full aspect-square max-w-sm flex items-center justify-center">
+<!-- Central Content -->
+<div class="absolute inset-0 flex items-center justify-center z-10">
+<div class="bg-white p-5 rounded-full shadow-xl border-4 border-gray-100 flex flex-col items-center justify-center w-44 h-44 z-20">
+<i class="fas fa-project-diagram text-4xl text-accent mb-2"></i>
+<h4 class="font-bold text-navy text-lg font-montserrat">AGILE</h4>
+<p class="text-xs text-gray-400 font-semibold uppercase tracking-wider">Methodology</p>
+</div>
+</div>
+<!-- Circular Elements indicating Cycle -->
+<div class="absolute w-64 h-64 border-4 border-dashed border-blue-200 rounded-full animate-spin-slow" style="animation-duration: 20s;"></div>
+<!-- Orbiting Nodes -->
+<div class="absolute w-72 h-72 rounded-full">
+<div class="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-navy text-white w-10 h-10 rounded-full flex items-center justify-center shadow-lg text-xs font-bold">Plan</div>
+<div class="absolute bottom-0 left-1/2 transform -translate-x-1/2 translate-y-1/2 bg-accent text-white w-10 h-10 rounded-full flex items-center justify-center shadow-lg text-xs font-bold">Test</div>
+<div class="absolute left-0 top-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-accent text-white w-10 h-10 rounded-full flex items-center justify-center shadow-lg text-xs font-bold">Code</div>
+<div class="absolute right-0 top-1/2 transform translate-x-1/2 -translate-y-1/2 bg-navy text-white w-10 h-10 rounded-full flex items-center justify-center shadow-lg text-xs font-bold">Deploy</div>
+</div>
+</div>
+<!-- Stat Box -->
+<div class="mt-6 bg-white p-4 rounded-xl shadow-lg border-l-4 border-accent w-full max-w-xs relative z-20">
+<div class="flex justify-between items-center mb-1">
+<p class="text-xs text-gray-500 font-bold uppercase">Sprint Duration</p>
+<i class="fas fa-clock text-accent opacity-50"></i>
+</div>
+<p class="text-2xl font-bold text-navy font-montserrat">2 Weeks</p>
+<p class="text-xs text-gray-400 mt-1">Faster feedback loop &amp; adaptation</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Footer Section -->
+<div class="h-10 bg-white border-t border-gray-200 flex items-center justify-between px-12 shrink-0 z-20">
+<p class="text-xs text-gray-400 font-semibold tracking-wide">Sinergi TechForce | PT Mustika Sinergi Integrasi</p>
+<div class="flex items-center space-x-4">
+<p class="text-xs text-gray-300 uppercase tracking-widest">Confidential</p>
+<div class="h-4 w-px bg-gray-300"></div>
+<p class="text-xs text-navy font-bold">13</p>
+</div>
+</div>
+</div>
+</body>
+</html>

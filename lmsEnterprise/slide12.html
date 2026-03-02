@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+
+<html lang="id">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=1280, height=720" name="viewport" />
+    <title>Metodologi Implementasi</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&amp;display=swap"
+        rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" rel="stylesheet" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            overflow: hidden;
+        }
+
+        .slide-container {
+            width: 1280px;
+            height: 720px;
+            display: flex;
+            flex-direction: column;
+            background-color: #FFFFFF;
+            position: relative;
+        }
+
+        .header {
+            padding: 30px 60px 18px 60px;
+            border-bottom: 3px solid #2563EB;
+        }
+
+        .header-title {
+            font-size: 34px;
+            font-weight: 700;
+            color: #1B3A6B;
+            letter-spacing: -0.5px;
+        }
+
+        .content-wrapper {
+            flex: 1;
+            padding: 18px 60px 16px 60px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            overflow: hidden;
+        }
+
+        .timeline-container {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            position: relative;
+        }
+
+        .phase-row {
+            display: flex;
+            align-items: stretch;
+            gap: 0;
+            position: relative;
+        }
+
+        .phase-number {
+            width: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #1B3A6B;
+            color: #FFFFFF;
+            flex-shrink: 0;
+            position: relative;
+        }
+
+        .phase-number-text {
+            font-size: 24px;
+            font-weight: 800;
+            z-index: 2;
+        }
+
+        .phase-content {
+            flex: 1;
+            background-color: #F8FAFC;
+            border: 2px solid #E5E7EB;
+            padding: 10px 16px;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            transition: all 0.3s ease;
+            border-left: none;
+        }
+
+        .phase-content:hover {
+            background-color: #EFF6FF;
+            border-color: #2563EB;
+            transform: translateX(3px);
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.15);
+        }
+
+        .phase-icon {
+            width: 44px;
+            height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #2563EB;
+            color: #FFFFFF;
+            font-size: 18px;
+            border-radius: 8px;
+            flex-shrink: 0;
+        }
+
+        .phase-info {
+            flex: 1;
+            display: flex;
+            gap: 14px;
+        }
+
+        .phase-main {
+            flex: 0 0 240px;
+        }
+
+        .phase-name {
+            font-size: 16px;
+            font-weight: 700;
+            color: #1B3A6B;
+            margin-bottom: 4px;
+            line-height: 1.3;
+        }
+
+        .phase-duration {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 3px 9px;
+            background-color: #DBEAFE;
+            color: #1E40AF;
+            font-size: 12px;
+            font-weight: 700;
+            border-radius: 4px;
+        }
+
+        .phase-divider {
+            width: 2px;
+            background-color: #CBD5E1;
+            align-self: stretch;
+        }
+
+        .phase-deliverables {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 3px;
+        }
+
+        .deliverable-label {
+            font-size: 10px;
+            font-weight: 700;
+            color: #6B7280;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 3px;
+        }
+
+        .deliverable-text {
+            font-size: 12px;
+            font-weight: 400;
+            color: #4B5563;
+            line-height: 1.4;
+        }
+
+        .connector-line {
+            position: absolute;
+            left: 39px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background-color: #CBD5E1;
+            z-index: 0;
+        }
+
+        .footer-summary {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
+            padding: 12px 24px;
+            background-color: #EFF6FF;
+            border: 2px solid #2563EB;
+            margin-top: 6px;
+        }
+
+        .summary-icon {
+            width: 34px;
+            height: 34px;
+            background-color: #2563EB;
+            color: #FFFFFF;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            border-radius: 6px;
+            flex-shrink: 0;
+        }
+
+        .summary-text {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .summary-label {
+            font-size: 12px;
+            font-weight: 600;
+            color: #6B7280;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .summary-value {
+            font-size: 18px;
+            font-weight: 800;
+            color: #1B3A6B;
+            letter-spacing: -0.3px;
+        }
+
+        .summary-divider {
+            width: 2px;
+            height: 42px;
+            background-color: #CBD5E1;
+        }
+
+        .summary-note {
+            flex: 1;
+            font-size: 12px;
+            font-weight: 400;
+            color: #4B5563;
+            line-height: 1.4;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="slide-container">
+        <div class="header">
+            <div class="header-title">
+                <p>Metodologi Implementasi (Agile / Iterative)</p>
+            </div>
+        </div>
+        <div class="content-wrapper">
+            <div class="timeline-container">
+                <div class="connector-line"></div>
+                <div class="phase-row">
+                    <div class="phase-number">
+                        <p class="phase-number-text">1</p>
+                    </div>
+                    <div class="phase-content">
+                        <div class="phase-icon">
+                            <i class="fas fa-clipboard-list"></i>
+                        </div>
+                        <div class="phase-info">
+                            <div class="phase-main">
+                                <div class="phase-name">
+                                    <p>Requirement Gathering</p>
+                                </div>
+                                <div class="phase-duration">
+                                    <i class="fas fa-clock"></i>
+                                    <p>2–3 minggu</p>
+                                </div>
+                            </div>
+                            <div class="phase-divider"></div>
+                            <div class="phase-deliverables">
+                                <div class="deliverable-label">
+                                    <p>Key Deliverables</p>
+                                </div>
+                                <div class="deliverable-text">
+                                    <p>Discovery workshop, pemetaan proses learning existing, identifikasi gap,
+                                        requirement document, dan use case definition</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="phase-row">
+                    <div class="phase-number">
+                        <p class="phase-number-text">2</p>
+                    </div>
+                    <div class="phase-content">
+                        <div class="phase-icon">
+                            <i class="fas fa-drafting-compass"></i>
+                        </div>
+                        <div class="phase-info">
+                            <div class="phase-main">
+                                <div class="phase-name">
+                                    <p>System Design</p>
+                                </div>
+                                <div class="phase-duration">
+                                    <i class="fas fa-clock"></i>
+                                    <p>2 minggu</p>
+                                </div>
+                            </div>
+                            <div class="phase-divider"></div>
+                            <div class="phase-deliverables">
+                                <div class="deliverable-label">
+                                    <p>Key Deliverables</p>
+                                </div>
+                                <div class="deliverable-text">
+                                    <p>Architecture blueprint, data model design, integration design (HRIS API),
+                                        security framework, dan UI/UX mockup approval</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="phase-row">
+                    <div class="phase-number">
+                        <p class="phase-number-text">3</p>
+                    </div>
+                    <div class="phase-content">
+                        <div class="phase-icon">
+                            <i class="fas fa-code"></i>
+                        </div>
+                        <div class="phase-info">
+                            <div class="phase-main">
+                                <div class="phase-name">
+                                    <p>Development per Sprint</p>
+                                </div>
+                                <div class="phase-duration">
+                                    <i class="fas fa-clock"></i>
+                                    <p>8–10 minggu</p>
+                                </div>
+                            </div>
+                            <div class="phase-divider"></div>
+                            <div class="phase-deliverables">
+                                <div class="deliverable-label">
+                                    <p>Key Deliverables</p>
+                                </div>
+                                <div class="deliverable-text">
+                                    <p>Core modules (content mgmt, learning path, compliance), HRIS integration,
+                                        role-based dashboard, sprint demo setiap 2 minggu</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="phase-row">
+                    <div class="phase-number">
+                        <p class="phase-number-text">4</p>
+                    </div>
+                    <div class="phase-content">
+                        <div class="phase-icon">
+                            <i class="fas fa-vial"></i>
+                        </div>
+                        <div class="phase-info">
+                            <div class="phase-main">
+                                <div class="phase-name">
+                                    <p>Testing &amp; UAT</p>
+                                </div>
+                                <div class="phase-duration">
+                                    <i class="fas fa-clock"></i>
+                                    <p>3–4 minggu</p>
+                                </div>
+                            </div>
+                            <div class="phase-divider"></div>
+                            <div class="phase-deliverables">
+                                <div class="deliverable-label">
+                                    <p>Key Deliverables</p>
+                                </div>
+                                <div class="deliverable-text">
+                                    <p>Skenario compliance testing, validasi data HRIS, UAT bersama key user, bug
+                                        fixing, dan acceptance sign-off</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="phase-row">
+                    <div class="phase-number">
+                        <p class="phase-number-text">5</p>
+                    </div>
+                    <div class="phase-content">
+                        <div class="phase-icon">
+                            <i class="fas fa-chalkboard-teacher"></i>
+                        </div>
+                        <div class="phase-info">
+                            <div class="phase-main">
+                                <div class="phase-name">
+                                    <p>Training &amp; Knowledge Transfer</p>
+                                </div>
+                                <div class="phase-duration">
+                                    <i class="fas fa-clock"></i>
+                                    <p>1–2 minggu</p>
+                                </div>
+                            </div>
+                            <div class="phase-divider"></div>
+                            <div class="phase-deliverables">
+                                <div class="deliverable-label">
+                                    <p>Key Deliverables</p>
+                                </div>
+                                <div class="deliverable-text">
+                                    <p>Admin training, L&amp;D trainer training, champion user enablement, user
+                                        documentation, dan video tutorial</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="phase-row">
+                    <div class="phase-number">
+                        <p class="phase-number-text">6</p>
+                    </div>
+                    <div class="phase-content">
+                        <div class="phase-icon">
+                            <i class="fas fa-rocket"></i>
+                        </div>
+                        <div class="phase-info">
+                            <div class="phase-main">
+                                <div class="phase-name">
+                                    <p>Deployment &amp; Go-Live</p>
+                                </div>
+                                <div class="phase-duration">
+                                    <i class="fas fa-clock"></i>
+                                    <p>1 minggu</p>
+                                </div>
+                            </div>
+                            <div class="phase-divider"></div>
+                            <div class="phase-deliverables">
+                                <div class="deliverable-label">
+                                    <p>Key Deliverables</p>
+                                </div>
+                                <div class="deliverable-text">
+                                    <p>Production deployment, data migration, go-live checklist, hypercare support 24/7
+                                        selama 1 minggu pertama</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="phase-row">
+                    <div class="phase-number">
+                        <p class="phase-number-text">7</p>
+                    </div>
+                    <div class="phase-content">
+                        <div class="phase-icon">
+                            <i class="fas fa-tools"></i>
+                        </div>
+                        <div class="phase-info">
+                            <div class="phase-main">
+                                <div class="phase-name">
+                                    <p>Maintenance &amp; Support</p>
+                                </div>
+                                <div class="phase-duration">
+                                    <i class="fas fa-clock"></i>
+                                    <p>Berjalan</p>
+                                </div>
+                            </div>
+                            <div class="phase-divider"></div>
+                            <div class="phase-deliverables">
+                                <div class="deliverable-label">
+                                    <p>Key Deliverables</p>
+                                </div>
+                                <div class="deliverable-text">
+                                    <p>SLA-based support, bug fixing, minor enhancements, system monitoring, dan
+                                        quarterly review untuk continuous improvement</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-summary">
+                <div class="summary-icon">
+                    <i class="fas fa-calendar-alt"></i>
+                </div>
+                <div class="summary-text">
+                    <div class="summary-label">
+                        <p>Estimasi Durasi Total</p>
+                    </div>
+                    <div class="summary-value">
+                        <p>5–6 Bulan</p>
+                    </div>
+                </div>
+                <div class="summary-divider"></div>
+                <div class="summary-note">
+                    <p>Pendekatan kolaboratif dan iterative bersama tim PT YKK AP Indonesia untuk memastikan alignment
+                        dengan kebutuhan bisnis dan operasional di setiap fase</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

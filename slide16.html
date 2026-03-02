@@ -5,202 +5,107 @@
 <head>
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <title>Automation &amp; Invoice System</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
-    <link
-        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&amp;family=Inter:wght@300;400;600&amp;display=swap"
-        rel="stylesheet" />
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&amp;display=swap" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" rel="stylesheet" />
     <style>
         body {
             margin: 0;
-            padding: 0;
-            background-color: #f3f4f6;
-            font-family: 'Inter', sans-serif;
-            overflow: hidden;
         }
 
-        .slide-container {
+        .slide {
             width: 1280px;
             height: 720px;
-            background-color: #FFFFFF;
+            display: flex;
+            background: #0E1A3A;
+            font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
             position: relative;
             overflow: hidden;
-            display: flex;
-            align-items: center;
-            justify-content: center;
         }
 
-        /* Abstract Background Elements */
-        .bg-element {
+        .gold {
+            color: #F5A623;
+        }
+
+        .gold-bg {
+            background: #F5A623;
+        }
+
+        .muted2 {
+            color: rgba(255, 255, 255, 0.62);
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(245, 166, 35, 0.20);
+        }
+
+        .glow {
             position: absolute;
-            z-index: 0;
-        }
-
-        .bg-line-1 {
-            width: 100%;
-            height: 1px;
-            background-color: #E5E7EB;
-            top: 50%;
-            left: 0;
-            transform: translateY(-50%);
-        }
-
-        .bg-circle-left {
-            width: 500px;
-            height: 500px;
-            border: 1px solid #F3F4F6;
-            border-radius: 50%;
-            top: 50%;
-            left: -150px;
-            transform: translateY(-50%);
-        }
-
-        .bg-circle-right {
-            width: 400px;
-            height: 400px;
-            border: 1px solid #F3F4F6;
-            border-radius: 50%;
-            top: 50%;
-            right: -100px;
-            transform: translateY(-50%);
-        }
-
-        .accent-box {
-            position: absolute;
-            width: 120px;
-            height: 120px;
-            background-color: #FAFAFA;
-            top: 60px;
-            right: 80px;
-            z-index: 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .accent-box i {
-            font-size: 60px;
-            color: #E5E7EB;
-        }
-
-        /* Central Content Box */
-        .content-box {
-            position: relative;
-            z-index: 10;
-            text-align: center;
-            background-color: #FFFFFF;
-            padding: 60px 80px;
-            max-width: 1000px;
-        }
-
-        .section-label {
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 700;
-            font-size: 16px;
-            letter-spacing: 0.2em;
-            color: #9CA3AF;
-            text-transform: uppercase;
-            margin-bottom: 20px;
-            display: block;
-        }
-
-        h1 {
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 800;
-            font-size: 64px;
-            line-height: 1.1;
-            color: #111827;
-            margin: 0;
-            text-transform: uppercase;
-        }
-
-        .divider-line {
-            width: 120px;
-            height: 6px;
-            background-color: #D4AF37;
-            /* Gold */
-            margin: 30px auto;
-        }
-
-        .subtitle {
-            font-family: 'Inter', sans-serif;
-            font-weight: 300;
-            font-size: 24px;
-            color: #4B5563;
-            line-height: 1.5;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        /* Numbering */
-        .section-number {
-            position: absolute;
-            top: 50%;
-            left: 60px;
-            transform: translateY(-50%);
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 800;
-            font-size: 180px;
-            color: #F9FAFB;
-            z-index: 1;
-            line-height: 1;
-        }
-
-        /* Bottom Pattern */
-        .bottom-pattern {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 10px;
-            background-color: #0B0F19;
-            /* Navy/Black */
-        }
-
-        .gold-tip {
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 200px;
-            height: 10px;
-            background-color: #D4AF37;
-        }
-
-        /* Speaker Notes */
-        .notes-container {
-            display: none;
+            inset: -45% -35% auto auto;
+            width: 860px;
+            height: 860px;
+            border-radius: 9999px;
+            background: radial-gradient(circle at 30% 30%, rgba(245, 166, 35, 0.14), rgba(14, 26, 58, 0) 60%);
+            pointer-events: none;
         }
     </style>
 </head>
 
 <body>
-    <div class="slide-container">
-        <!-- Background Elements -->
-        <div class="bg-element bg-line-1"></div>
-        <div class="bg-element bg-circle-left"></div>
-        <div class="bg-element bg-circle-right"></div>
-        <div class="section-number">04</div>
-        <div class="accent-box">
-            <i class="fa-solid fa-robot"></i>
+    <div class="slide">
+        <div class="absolute inset-0" style="pointer-events:none;">
+            <div class="glow"></div>
+            <div class="absolute"
+                style="left:-140px; top:-160px; width:560px; height:560px; border-radius:9999px; border:2px solid rgba(245,166,35,0.22);">
+            </div>
+            <div class="absolute"
+                style="left:86px; top:78px; width:190px; height:190px; border-radius:9999px; border:2px solid rgba(255,255,255,0.10);">
+            </div>
+            <div class="absolute"
+                style="right:-170px; bottom:-190px; width:650px; height:650px; border-radius:9999px; border:2px solid rgba(245,166,35,0.18);">
+            </div>
+            <div class="absolute"
+                style="right:120px; bottom:96px; width:230px; height:230px; border-radius:9999px; border:2px solid rgba(255,255,255,0.10);">
+            </div>
+            <div class="absolute" style="left:0; top:0; width:100%; height:100%;">
+                <div class="absolute gold-bg" style="left:0; top:0; width:10px; height:100%; opacity:0.9;"></div>
+                <div class="absolute" style="left:18px; top:0; width:2px; height:100%; background: rgba(245,166,35,0.30);"></div>
+                <div class="absolute" style="left:0; top:66px; width:100%; height:1px; background: rgba(255,255,255,0.06);"></div>
+            </div>
         </div>
-        <!-- Main Content -->
-        <div class="content-box">
-            <span class="section-label">Section 4</span>
-            <h1>AUTOMATION &amp;<br />INVOICE SYSTEM</h1>
-            <div class="divider-line"></div>
-            <p class="subtitle">
-                Otomasi dengan Apps Script
-            </p>
-        </div>
-        <!-- Footer Elements -->
-        <div class="bottom-pattern"></div>
-        <div class="gold-tip"></div>
-        <!-- Speaker Notes -->
-        <div class="notes-container">
-            Sekarang masuk ke bagian otomasi menggunakan Google Apps Script. Ini yang membuat sistem benar-benar
-            hands-free dan scalable.
+        <div class="relative flex-1 flex flex-col">
+            <div class="w-full px-16 pt-10 flex items-center justify-between">
+                <div class="flex items-center space-x-3">
+                    <div class="card flex items-center justify-center" style="width:44px; height:44px; border-radius:10px;">
+                        <i class="fa-solid fa-building" style="color: rgba(255,255,255,0.82); font-size:18px;"></i>
+                    </div>
+                    <div class="flex flex-col">
+                        <p class="muted2 text-xs tracking-widest font-semibold">UNTUK</p>
+                        <p class="text-white text-sm font-semibold tracking-wide">PT YKK AP Indonesia</p>
+                    </div>
+                </div>
+                <div class="flex items-center space-x-3">
+                    <div class="card px-4 py-2 rounded-full">
+                        <p class="text-white text-xs font-semibold tracking-widest">TAHUN <span class="gold">2026</span></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex-1"></div>
+
+            <div class="w-full px-16 pb-10 flex items-center justify-between">
+                <div class="flex items-center space-x-3">
+                    <div style="width:8px; height:8px; border-radius:9999px; background:#F5A623;"></div>
+                    <p class="muted2 text-xs">Proposal Implementasi LMS</p>
+                </div>
+                <div class="flex items-center space-x-3">
+                    <i class="fa-regular fa-calendar" style="color: rgba(255,255,255,0.70); font-size:12px;"></i>
+                    <p class="muted2 text-xs">2026</p>
+                </div>
+            </div>
         </div>
     </div>
 </body>

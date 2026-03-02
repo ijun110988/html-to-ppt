@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+
+<html lang="id">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Formula Konten yang Menjual</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&amp;family=Inter:wght@300;400;500;600&amp;display=swap"
+        rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc;
+        }
+
+        .slide-container {
+            width: 1280px;
+            height: 720px;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            background-color: #f8fafc;
+            background-image: radial-gradient(#e2e8f0 1px, transparent 1px);
+            background-size: 24px 24px;
+        }
+
+        .font-poppins {
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .process-card {
+            background: white;
+            transition: all 0.3s ease;
+            position: relative;
+            height: 100%;
+            border: 1px solid #e2e8f0;
+        }
+
+        .process-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+            border-color: #cbd5e1;
+            z-index: 10;
+        }
+
+        .step-number {
+            position: absolute;
+            top: -15px;
+            left: 20px;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-family: 'Poppins', sans-serif;
+            border: 4px solid #f8fafc;
+            z-index: 20;
+        }
+
+        .arrow-connector {
+            position: absolute;
+            top: 50%;
+            right: -25px;
+            transform: translateY(-50%);
+            z-index: 5;
+            color: #cbd5e1;
+            font-size: 1.5rem;
+        }
+
+        /* Hide arrow on last child */
+        .step-wrapper:last-child .arrow-connector {
+            display: none;
+        }
+
+        /* Color themes for steps */
+        /* Step 1: Hook - Rose (Attention) */
+        .theme-rose .step-number {
+            background-color: #e11d48;
+            color: white;
+        }
+
+        .theme-rose .icon-box {
+            background-color: #fff1f2;
+            color: #e11d48;
+        }
+
+        .theme-rose {
+            border-top: 4px solid #e11d48;
+        }
+
+        /* Step 2: Problem - Amber (Warning/Pain) */
+        .theme-amber .step-number {
+            background-color: #d97706;
+            color: white;
+        }
+
+        .theme-amber .icon-box {
+            background-color: #fffbeb;
+            color: #d97706;
+        }
+
+        .theme-amber {
+            border-top: 4px solid #d97706;
+        }
+
+        /* Step 3: Solution - Blue (Trust) */
+        .theme-blue .step-number {
+            background-color: #2563eb;
+            color: white;
+        }
+
+        .theme-blue .icon-box {
+            background-color: #eff6ff;
+            color: #2563eb;
+        }
+
+        .theme-blue {
+            border-top: 4px solid #2563eb;
+        }
+
+        /* Step 4: CTA - Emerald (Action/Go) */
+        .theme-emerald .step-number {
+            background-color: #10b981;
+            color: white;
+        }
+
+        .theme-emerald .icon-box {
+            background-color: #ecfdf5;
+            color: #10b981;
+        }
+
+        .theme-emerald {
+            border-top: 4px solid #10b981;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="slide-container p-8">
+        <!-- Header -->
+        <div class="mb-6 text-center">
+            <span
+                class="bg-blue-100 text-blue-700 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider mb-2 inline-block">Modul
+                2: Content Marketing &amp; Branding</span>
+            <h1 class="text-4xl font-bold text-slate-900 font-poppins">Formula Konten yang Menjual</h1>
+            <p class="text-slate-500 mt-2 text-lg max-w-2xl mx-auto">Struktur copywriting yang terbukti efektif mengubah
+                audiens menjadi pembeli dalam 4 langkah strategis.</p>
+        </div>
+        <!-- Main Process Flow -->
+        <div class="flex-1 grid grid-cols-4 gap-6 px-4 mb-4">
+            <!-- Step 1: Hook -->
+            <div class="step-wrapper relative">
+                <div class="process-card theme-rose rounded-xl p-6 pt-10 shadow-sm flex flex-col">
+                    <div class="step-number shadow-lg">1</div>
+                    <div
+                        class="icon-box w-14 h-14 rounded-lg flex items-center justify-center text-2xl mb-4 self-center">
+                        <i class="fas fa-magnet"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-800 text-center font-poppins mb-2">Hook</h3>
+                    <p class="text-sm text-slate-600 text-center mb-4 flex-grow">
+                        3 detik pertama wajib mencolok &amp; relevan untuk menghentikan scroll audiens.
+                    </p>
+                    <div class="bg-slate-50 p-3 rounded-lg border border-slate-100">
+                        <p class="text-xs font-bold text-rose-500 uppercase mb-1">Elemen Kunci</p>
+                        <p class="text-xs text-slate-700">Headline Kuat, Visual Menarik</p>
+                    </div>
+                    <div class="mt-3 pt-3 border-t border-slate-100">
+                        <p class="text-xs font-bold text-slate-400 uppercase mb-1">Contoh</p>
+                        <p class="text-xs text-slate-800 font-medium">"Stop! Jangan scroll dulu..."</p>
+                    </div>
+                </div>
+                <div class="arrow-connector"><i class="fas fa-chevron-right"></i></div>
+            </div>
+            <!-- Step 2: Problem -->
+            <div class="step-wrapper relative">
+                <div class="process-card theme-amber rounded-xl p-6 pt-10 shadow-sm flex flex-col">
+                    <div class="step-number shadow-lg">2</div>
+                    <div
+                        class="icon-box w-14 h-14 rounded-lg flex items-center justify-center text-2xl mb-4 self-center">
+                        <i class="fas fa-exclamation-triangle"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-800 text-center font-poppins mb-2">Problem</h3>
+                    <p class="text-sm text-slate-600 text-center mb-4 flex-grow">
+                        Sentuh pain point atau masalah spesifik yang dirasakan audiens agar mereka merasa <i>relate</i>.
+                    </p>
+                    <div class="bg-slate-50 p-3 rounded-lg border border-slate-100">
+                        <p class="text-xs font-bold text-amber-500 uppercase mb-1">Elemen Kunci</p>
+                        <p class="text-xs text-slate-700">Empati, Validasi Masalah</p>
+                    </div>
+                    <div class="mt-3 pt-3 border-t border-slate-100">
+                        <p class="text-xs font-bold text-slate-400 uppercase mb-1">Contoh</p>
+                        <p class="text-xs text-slate-800 font-medium">"Sering boncos saat ngiklan?"</p>
+                    </div>
+                </div>
+                <div class="arrow-connector"><i class="fas fa-chevron-right"></i></div>
+            </div>
+            <!-- Step 3: Solution -->
+            <div class="step-wrapper relative">
+                <div class="process-card theme-blue rounded-xl p-6 pt-10 shadow-sm flex flex-col">
+                    <div class="step-number shadow-lg">3</div>
+                    <div
+                        class="icon-box w-14 h-14 rounded-lg flex items-center justify-center text-2xl mb-4 self-center">
+                        <i class="fas fa-magic"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-800 text-center font-poppins mb-2">Solution</h3>
+                    <p class="text-sm text-slate-600 text-center mb-4 flex-grow">
+                        Perkenalkan produk atau jasa Anda sebagai solusi terbaik untuk masalah tersebut.
+                    </p>
+                    <div class="bg-slate-50 p-3 rounded-lg border border-slate-100">
+                        <p class="text-xs font-bold text-blue-500 uppercase mb-1">Elemen Kunci</p>
+                        <p class="text-xs text-slate-700">Benefit, Bukti/Testimoni</p>
+                    </div>
+                    <div class="mt-3 pt-3 border-t border-slate-100">
+                        <p class="text-xs font-bold text-slate-400 uppercase mb-1">Contoh</p>
+                        <p class="text-xs text-slate-800 font-medium">"Gunakan strategi praktis ini..."</p>
+                    </div>
+                </div>
+                <div class="arrow-connector"><i class="fas fa-chevron-right"></i></div>
+            </div>
+            <!-- Step 4: CTA -->
+            <div class="step-wrapper relative">
+                <div class="process-card theme-emerald rounded-xl p-6 pt-10 shadow-sm flex flex-col">
+                    <div class="step-number shadow-lg">4</div>
+                    <div
+                        class="icon-box w-14 h-14 rounded-lg flex items-center justify-center text-2xl mb-4 self-center">
+                        <i class="fas fa-mouse-pointer"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-800 text-center font-poppins mb-2">CTA</h3>
+                    <p class="text-sm text-slate-600 text-center mb-4 flex-grow">
+                        Ajakan bertindak (Call to Action) yang jelas, spesifik, dan mudah dilakukan sekarang juga.
+                    </p>
+                    <div class="bg-slate-50 p-3 rounded-lg border border-slate-100">
+                        <p class="text-xs font-bold text-emerald-500 uppercase mb-1">Elemen Kunci</p>
+                        <p class="text-xs text-slate-700">Perintah Jelas, Urgency</p>
+                    </div>
+                    <div class="mt-3 pt-3 border-t border-slate-100">
+                        <p class="text-xs font-bold text-slate-400 uppercase mb-1">Contoh</p>
+                        <p class="text-xs text-slate-800 font-medium">"Klik link di bio sekarang!"</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Insight Footer -->
+        <div class="mt-auto">
+            <div class="bg-white rounded-xl p-4 border-l-4 border-yellow-400 shadow-sm flex items-start gap-4">
+                <div class="bg-yellow-100 p-3 rounded-full flex-shrink-0">
+                    <i class="fas fa-lightbulb text-yellow-600 text-xl"></i>
+                </div>
+                <div>
+                    <h4 class="text-slate-800 font-bold text-lg mb-1">Tips Eksekusi</h4>
+                    <p class="text-slate-600 text-base">
+                        CTA yang spesifik (contoh: <span class="font-bold text-slate-800">"DM saya untuk info"</span> vs
+                        "Tanya-tanya") dapat meningkatkan konversi hingga <span class="font-bold text-slate-800">3x
+                            lipat</span>. Jangan biarkan audiens bingung harus melakukan apa!
+                    </p>
+                </div>
+                <div class="ml-auto flex flex-col justify-end h-full">
+                    <span class="text-4xl font-bold text-slate-200">09</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

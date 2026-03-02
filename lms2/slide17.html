@@ -1,0 +1,264 @@
+Preview
+Code
+Thinking
+Copy
+<!DOCTYPE html>
+
+<html lang="id">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Next Steps</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&amp;family=Open+Sans:wght@400;600&amp;display=swap"
+        rel="stylesheet" />
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #f3f4f6;
+            font-family: 'Open Sans', sans-serif;
+        }
+
+        .slide-container {
+            width: 1280px;
+            height: 720px;
+            background-color: #ffffff;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Colors */
+        .bg-navy {
+            background-color: #1B2A4A;
+        }
+
+        .text-navy {
+            color: #1B2A4A;
+        }
+
+        .bg-accent {
+            background-color: #2196F3;
+        }
+
+        .text-accent {
+            color: #2196F3;
+        }
+
+        .border-accent {
+            border-color: #2196F3;
+        }
+
+        /* Typography */
+        h1,
+        h2,
+        h3,
+        h4,
+        .font-montserrat {
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        /* Step Styles */
+        .step-card {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            z-index: 10;
+            padding: 0 10px;
+        }
+
+        .step-icon-circle {
+            width: 80px;
+            height: 80px;
+            background-color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border: 3px solid #E5E7EB;
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+            position: relative;
+            z-index: 20;
+        }
+
+        .step-card:hover .step-icon-circle {
+            border-color: #2196F3;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px rgba(33, 150, 243, 0.2);
+        }
+
+        .step-card:hover .step-icon {
+            color: #2196F3;
+        }
+
+        .step-number {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            width: 30px;
+            height: 30px;
+            background-color: #1B2A4A;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 14px;
+            border: 2px solid white;
+        }
+
+        .connector-line {
+            position: absolute;
+            top: 40px;
+            /* Center of circle */
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background-color: #E5E7EB;
+            z-index: 0;
+        }
+
+        /* CTA Box */
+        .cta-box {
+            background: linear-gradient(135deg, #1B2A4A 0%, #2c3e66 100%);
+            border-radius: 12px;
+            color: white;
+            box-shadow: 0 10px 25px -5px rgba(27, 42, 74, 0.3);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="slide-container">
+        <!-- Header -->
+        <div class="bg-navy h-24 w-full flex items-center px-12 justify-between shrink-0 z-20 shadow-md">
+            <div class="flex items-center space-x-4">
+                <div class="w-10 h-10 bg-white rounded flex items-center justify-center text-navy font-bold shadow">
+                    <i class="fas fa-flag-checkered"></i>
+                </div>
+                <h1 class="text-3xl font-bold text-white tracking-wide uppercase font-montserrat">Next Steps</h1>
+            </div>
+            <div class="flex flex-col items-end">
+                <p class="text-xs text-blue-300 font-montserrat tracking-widest uppercase">Menuju Implementasi</p>
+                <p class="text-sm font-semibold text-white">Roadmap to Success</p>
+            </div>
+        </div>
+        <!-- Main Content -->
+        <div class="flex flex-1 w-full flex-col justify-center items-center relative p-12 bg-gray-50">
+            <!-- Background Decoration -->
+            <div class="absolute top-0 left-0 w-full h-full overflow-hidden z-0">
+                <svg height="100%" width="100%" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="5%" cy="90%" fill="#E3F2FD" opacity="0.5" r="150"></circle>
+                    <circle cx="95%" cy="10%" fill="#E3F2FD" opacity="0.5" r="100"></circle>
+                </svg>
+            </div>
+            <!-- Steps Container -->
+            <div class="w-full max-w-6xl relative z-10 mb-12">
+                <!-- Connector Line Base -->
+                <div class="connector-line"></div>
+                <div class="flex justify-between items-start w-full">
+                    <!-- Step 1 -->
+                    <div class="step-card group">
+                        <div class="step-icon-circle group-hover:bg-blue-50">
+                            <i
+                                class="fas fa-comments text-3xl text-gray-400 step-icon group-hover:text-accent transition-colors"></i>
+                            <div class="step-number">1</div>
+                        </div>
+                        <h3
+                            class="text-lg font-bold text-navy font-montserrat mb-2 group-hover:text-accent transition-colors">
+                            Diskusi Teknis</h3>
+                        <p class="text-sm text-gray-600 px-4">Review arsitektur &amp; integrasi dengan tim IT YKKAP</p>
+                    </div>
+                    <!-- Step 2 -->
+                    <div class="step-card group">
+                        <div class="step-icon-circle group-hover:bg-blue-50">
+                            <i
+                                class="fas fa-file-contract text-3xl text-gray-400 step-icon group-hover:text-accent transition-colors"></i>
+                            <div class="step-number">2</div>
+                        </div>
+                        <h3
+                            class="text-lg font-bold text-navy font-montserrat mb-2 group-hover:text-accent transition-colors">
+                            Finalisasi Requirement</h3>
+                        <p class="text-sm text-gray-600 px-4">Workshop BRD detail bersama stakeholder</p>
+                    </div>
+                    <!-- Step 3 -->
+                    <div class="step-card group">
+                        <div class="step-icon-circle group-hover:bg-blue-50">
+                            <i
+                                class="fas fa-file-invoice-dollar text-3xl text-gray-400 step-icon group-hover:text-accent transition-colors"></i>
+                            <div class="step-number">3</div>
+                        </div>
+                        <h3
+                            class="text-lg font-bold text-navy font-montserrat mb-2 group-hover:text-accent transition-colors">
+                            Proposal Komersial</h3>
+                        <p class="text-sm text-gray-600 px-4">Submission scope, timeline &amp; investment</p>
+                    </div>
+                    <!-- Step 4 -->
+                    <div class="step-card group">
+                        <div class="step-icon-circle group-hover:bg-blue-50">
+                            <i
+                                class="fas fa-signature text-3xl text-gray-400 step-icon group-hover:text-accent transition-colors"></i>
+                            <div class="step-number">4</div>
+                        </div>
+                        <h3
+                            class="text-lg font-bold text-navy font-montserrat mb-2 group-hover:text-accent transition-colors">
+                            Review &amp; Approval</h3>
+                        <p class="text-sm text-gray-600 px-4">Internal review &amp; decision making</p>
+                    </div>
+                    <!-- Step 5 -->
+                    <div class="step-card group">
+                        <div class="step-icon-circle bg-blue-50 border-accent">
+                            <i class="fas fa-rocket text-3xl text-accent step-icon"></i>
+                            <div class="step-number bg-accent">5</div>
+                        </div>
+                        <h3 class="text-lg font-bold text-navy font-montserrat mb-2 text-accent">Project Kickoff</h3>
+                        <p class="text-sm text-gray-600 px-4">Mulai Phase 1: Requirement Gathering</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Closing CTA / Contact -->
+            <div class="w-full max-w-4xl cta-box p-8 flex justify-between items-center relative z-10">
+                <div>
+                    <h2 class="text-2xl font-bold font-montserrat mb-2">Siap untuk Transformasi Training?</h2>
+                    <p class="text-blue-200 text-sm">Mari jadwalkan sesi diskusi teknis mendalam minggu ini.</p>
+                </div>
+                <div class="flex flex-col items-end text-right">
+                    <p class="font-bold text-lg">Sinergi TechForce</p>
+                    <div class="flex items-center mt-1 text-sm text-blue-200">
+                        <i class="fas fa-envelope mr-2"></i> hello@sinergitech.id
+                    </div>
+                    <div class="flex items-center mt-1 text-sm text-blue-200">
+                        <i class="fas fa-phone mr-2"></i> +62 21 555 1234
+                    </div>
+                </div>
+            </div>
+            <!-- Decorative Thank You -->
+            <div class="mt-8 text-center z-10">
+                <p class="text-gray-400 font-montserrat font-bold text-xl tracking-widest uppercase">Terima Kasih</p>
+            </div>
+        </div>
+        <!-- Footer -->
+        <div class="h-12 bg-white border-t border-gray-200 flex items-center justify-between px-12 shrink-0 z-20">
+            <p class="text-xs text-gray-400 font-semibold tracking-wide">Sinergi TechForce | PT Mustika Sinergi
+                Integrasi</p>
+            <div class="flex items-center space-x-4">
+                <p class="text-xs text-gray-300 uppercase tracking-widest">Confidential</p>
+                <div class="h-4 w-px bg-gray-300"></div>
+                <p class="text-xs text-navy font-bold">17</p>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

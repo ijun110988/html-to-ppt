@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+
+<html lang="id">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Email Invoice yang Meningkatkan Trust</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&amp;family=Inter:wght@300;400;500;600;700&amp;family=Libre+Baskerville:ital@0;1&amp;display=swap"
+        rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #F3F4F6;
+            font-family: 'Inter', sans-serif;
+            overflow: hidden;
+        }
+
+        .slide-container {
+            width: 1280px;
+            height: 720px;
+            background-color: #FFFFFF;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Background Graphics */
+        .bg-pattern {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 50%;
+            height: 100%;
+            background-color: #F9FAFB;
+            z-index: 0;
+            clip-path: polygon(20% 0, 100% 0, 100% 100%, 0% 100%);
+        }
+
+        .accent-shape {
+            position: absolute;
+            bottom: -50px;
+            left: -50px;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background-color: rgba(212, 175, 55, 0.05);
+            z-index: 0;
+        }
+
+        /* Header */
+        .header {
+            padding: 40px 60px 20px 60px;
+            z-index: 10;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+        }
+
+        .header-content h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 800;
+            font-size: 36px;
+            color: #111827;
+            text-transform: uppercase;
+            letter-spacing: -0.02em;
+            margin-bottom: 8px;
+        }
+
+        .header-content p {
+            font-family: 'Inter', sans-serif;
+            font-size: 18px;
+            color: #6B7280;
+            font-weight: 400;
+        }
+
+        .header-line {
+            width: 80px;
+            height: 4px;
+            background-color: #D4AF37;
+            margin-top: 15px;
+        }
+
+        /* Main Content Layout */
+        .content-grid {
+            display: flex;
+            flex: 1;
+            padding: 20px 60px 40px 60px;
+            gap: 50px;
+            z-index: 10;
+        }
+
+        /* Left Side: Mockup */
+        .mockup-container {
+            flex: 0 0 45%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            perspective: 1000px;
+        }
+
+        .email-card {
+            width: 100%;
+            background-color: #FFFFFF;
+            border-radius: 12px;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            overflow: hidden;
+            border: 1px solid #E5E7EB;
+            transform: rotateY(-5deg) rotateX(2deg);
+            transition: transform 0.3s ease;
+        }
+
+        .email-card:hover {
+            transform: rotateY(0) rotateX(0);
+        }
+
+        /* Email Content Styling */
+        .email-header {
+            background-color: #111827;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: white;
+        }
+
+        .brand-logo {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 16px;
+            color: #D4AF37;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .email-body {
+            padding: 25px;
+        }
+
+        .greeting {
+            font-size: 14px;
+            color: #374151;
+            margin-bottom: 15px;
+            font-weight: 500;
+        }
+
+        .invoice-details {
+            background-color: #F9FAFB;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 15px;
+            border: 1px solid #E5E7EB;
+        }
+
+        .detail-row {
+            display: flex;
+            justify-content: space-between;
+            font-size: 12px;
+            margin-bottom: 8px;
+            color: #4B5563;
+        }
+
+        .detail-row:last-child {
+            margin-bottom: 0;
+        }
+
+        .detail-label {
+            font-weight: 600;
+        }
+
+        .product-table {
+            width: 100%;
+            margin-bottom: 15px;
+            border-collapse: collapse;
+        }
+
+        .product-table th {
+            text-align: left;
+            font-size: 11px;
+            color: #6B7280;
+            border-bottom: 1px solid #E5E7EB;
+            padding-bottom: 5px;
+            text-transform: uppercase;
+        }
+
+        .product-table td {
+            font-size: 12px;
+            color: #374151;
+            padding: 8px 0;
+            border-bottom: 1px solid #F3F4F6;
+        }
+
+        .total-section {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 10px;
+            border-top: 2px solid #E5E7EB;
+            margin-bottom: 20px;
+        }
+
+        .total-label {
+            font-size: 14px;
+            font-weight: 700;
+            color: #111827;
+        }
+
+        .total-amount {
+            font-size: 16px;
+            font-weight: 800;
+            color: #D4AF37;
+        }
+
+        .cta-button {
+            display: block;
+            width: 100%;
+            background-color: #111827;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            border-radius: 6px;
+            font-size: 13px;
+            font-weight: 600;
+            text-decoration: none;
+            margin-bottom: 15px;
+        }
+
+        .email-footer {
+            text-align: center;
+            font-size: 10px;
+            color: #9CA3AF;
+            border-top: 1px solid #E5E7EB;
+            padding-top: 15px;
+        }
+
+        /* Right Side: Explanations */
+        .explanation-container {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 25px;
+        }
+
+        .explanation-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+        }
+
+        .exp-number {
+            width: 32px;
+            height: 32px;
+            background-color: #111827;
+            color: #D4AF37;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-family: 'Montserrat', sans-serif;
+            flex-shrink: 0;
+            font-size: 14px;
+        }
+
+        .exp-content h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 16px;
+            color: #111827;
+            margin-bottom: 5px;
+        }
+
+        .exp-content p {
+            font-family: 'Inter', sans-serif;
+            font-size: 14px;
+            color: #4B5563;
+            line-height: 1.5;
+        }
+
+        /* Connecting Lines (Visual Only) */
+        .connection-line {
+            height: 1px;
+            background-color: #D1D5DB;
+            width: 50px;
+            margin-top: 15px;
+            display: none;
+            /* Hidden for cleaner look, can be enabled */
+        }
+
+        /* Page Number */
+        .page-number {
+            position: absolute;
+            bottom: 30px;
+            right: 40px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            color: #9CA3AF;
+            font-size: 14px;
+        }
+
+        .notes-container {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="slide-container">
+        <!-- Backgrounds -->
+        <div class="bg-pattern"></div>
+        <div class="accent-shape"></div>
+        <!-- Header -->
+        <div class="header">
+            <div class="header-content">
+                <h1>Email Invoice yang Meningkatkan Trust</h1>
+                <p>Bangun kredibilitas dengan tampilan profesional di inbox customer</p>
+                <div class="header-line"></div>
+            </div>
+        </div>
+        <!-- Content -->
+        <div class="content-grid">
+            <!-- Left: Email Mockup -->
+            <div class="mockup-container">
+                <div class="email-card">
+                    <div class="email-header">
+                        <div class="brand-logo">
+                            <i class="fa-solid fa-gem"></i> YOUR BRAND
+                        </div>
+                        <div style="font-size: 12px; opacity: 0.8;">INVOICE #20260201</div>
+                    </div>
+                    <div class="email-body">
+                        <p class="greeting">Halo <strong>Budi Santoso</strong>,</p>
+                        <p style="font-size: 12px; color: #4B5563; margin-bottom: 15px;">Terima kasih atas pesanan Anda.
+                            Berikut adalah detail tagihan:</p>
+                        <div class="invoice-details">
+                            <div class="detail-row">
+                                <span class="detail-label">Tanggal:</span>
+                                <span>18 Feb 2026</span>
+                            </div>
+                            <div class="detail-row">
+                                <span class="detail-label">Jatuh Tempo:</span>
+                                <span>19 Feb 2026</span>
+                            </div>
+                            <div class="detail-row">
+                                <span class="detail-label">Status:</span>
+                                <span style="color: #D97706; font-weight: 700;">UNPAID</span>
+                            </div>
+                        </div>
+                        <table class="product-table">
+                            <thead>
+                                <tr>
+                                    <th>PRODUK</th>
+                                    <th style="text-align: right;">QTY</th>
+                                    <th style="text-align: right;">HARGA</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Paket Sultan Premium</td>
+                                    <td style="text-align: right;">1</td>
+                                    <td style="text-align: right;">Rp 350.000</td>
+                                </tr>
+                                <tr>
+                                    <td>Ongkos Kirim (JNE)</td>
+                                    <td style="text-align: right;">-</td>
+                                    <td style="text-align: right;">Rp 15.000</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div class="total-section">
+                            <span class="total-label">TOTAL TAGIHAN</span>
+                            <span class="total-amount">Rp 365.000</span>
+                        </div>
+                        <a class="cta-button" href="#">KONFIRMASI PEMBAYARAN</a>
+                        <div class="email-footer">
+                            <p>Butuh bantuan? Balas email ini atau hubungi WA Admin.</p>
+                            <p style="margin-top: 5px;">© 2026 Your Brand Name. All rights reserved.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Right: Explanations -->
+            <div class="explanation-container">
+                <div class="explanation-item">
+                    <div class="exp-number">1</div>
+                    <div class="exp-content">
+                        <h3>Branding Header &amp; Logo</h3>
+                        <p>Pastikan logo bisnis terlihat jelas di bagian atas. Ini membedakan bisnis profesional dari
+                            sekadar "pedagang online" biasa.</p>
+                    </div>
+                </div>
+                <div class="explanation-item">
+                    <div class="exp-number">2</div>
+                    <div class="exp-content">
+                        <h3>Detail Transaksi Lengkap</h3>
+                        <p>Cantumkan nomor invoice, tanggal, dan rincian produk secara transparan untuk menghindari
+                            keraguan customer.</p>
+                    </div>
+                </div>
+                <div class="explanation-item">
+                    <div class="exp-number">3</div>
+                    <div class="exp-content">
+                        <h3>Clear Call-to-Action (CTA)</h3>
+                        <p>Tombol "Konfirmasi Pembayaran" yang menonjol memudahkan customer untuk segera menyelesaikan
+                            transaksi.</p>
+                    </div>
+                </div>
+                <div class="explanation-item">
+                    <div class="exp-number">4</div>
+                    <div class="exp-content">
+                        <h3>Footer Kontak &amp; Support</h3>
+                        <p>Berikan rasa aman dengan mencantumkan kontak CS jika ada kendala. Trust naik = Konversi naik.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Page Number -->
+        <div class="page-number">19</div>
+        <!-- Speaker Notes -->
+        <div class="notes-container">
+            Template email invoice harus branded dan profesional. Customer yang terima invoice rapi akan lebih percaya
+            dan cepat bayar. Include semua info penting: detail produk, total, rekening tujuan, dan kontak CS. Ini
+            meningkatkan conversion payment signifikan.
+        </div>
+    </div>
+</body>
+
+</html>

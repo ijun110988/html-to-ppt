@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+
+<html lang="id">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Customer Database sebagai Aset</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&amp;family=Inter:wght@300;400;500;600&amp;display=swap"
+        rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc;
+            overflow: hidden;
+        }
+
+        .slide-container {
+            width: 1280px;
+            height: 720px;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            background-color: #f8fafc;
+            background-image: url('data:image/svg+xml;utf8,<svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><circle cx="2" cy="2" r="1" fill="%23cbd5e1"/></svg>');
+        }
+
+        .font-poppins {
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .mindset-item {
+            background-color: white;
+            transition: all 0.3s ease;
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            height: 100%;
+        }
+
+        .mindset-item:hover {
+            transform: translateY(-3px);
+            border-color: #3b82f6;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+
+        .icon-box {
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 12px;
+            font-size: 1.25rem;
+            flex-shrink: 0;
+        }
+
+        .insight-card {
+            background-color: #1e293b;
+            color: white;
+            border-radius: 16px;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .number-badge {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            color: #cbd5e1;
+            font-size: 3rem;
+            line-height: 1;
+            opacity: 0.2;
+            position: absolute;
+            right: 10px;
+            top: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="slide-container p-12">
+        <!-- Header -->
+        <div class="flex justify-between items-end mb-6 border-b border-slate-200 pb-4">
+            <div>
+                <span
+                    class="bg-blue-100 text-blue-700 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider mb-2 inline-block">Modul
+                    5: Conversion &amp; Retention</span>
+                <h1 class="text-4xl font-bold text-slate-900 font-poppins">Customer Database sebagai Aset</h1>
+            </div>
+            <div class="hidden md:block">
+                <p class="text-slate-500 text-sm font-medium italic">"Data is the new oil of digital economy"</p>
+            </div>
+        </div>
+        <!-- Main Content: Grid Layout -->
+        <div class="flex-grow grid grid-cols-2 gap-x-8 gap-y-4 px-2">
+            <!-- Left Column -->
+            <div class="flex flex-col gap-4">
+                <!-- Point 1 -->
+                <div class="mindset-item p-4 rounded-xl flex items-start relative overflow-hidden">
+                    <span class="number-badge">01</span>
+                    <div class="icon-box bg-blue-50 text-blue-600 mr-4 z-10">
+                        <i class="fas fa-address-book"></i>
+                    </div>
+                    <div class="z-10">
+                        <h3 class="text-lg font-bold text-slate-800 mb-1 font-poppins">Kumpulkan Data Inti</h3>
+                        <p class="text-slate-600 text-sm leading-snug">Wajib mencatat Nama, No. WhatsApp, Email, dan
+                            riwayat pembelian setiap pelanggan secara disiplin.</p>
+                    </div>
+                </div>
+                <!-- Point 2 -->
+                <div class="mindset-item p-4 rounded-xl flex items-start relative overflow-hidden">
+                    <span class="number-badge">02</span>
+                    <div class="icon-box bg-purple-50 text-purple-600 mr-4 z-10">
+                        <i class="fas fa-table"></i>
+                    </div>
+                    <div class="z-10">
+                        <h3 class="text-lg font-bold text-slate-800 mb-1 font-poppins">Gunakan CRM Sederhana</h3>
+                        <p class="text-slate-600 text-sm leading-snug">Tidak perlu software mahal di awal. Gunakan
+                            Google Sheets, Notion, atau Excel untuk merapikan database.</p>
+                    </div>
+                </div>
+                <!-- Point 3 -->
+                <div class="mindset-item p-4 rounded-xl flex items-start relative overflow-hidden">
+                    <span class="number-badge">03</span>
+                    <div class="icon-box bg-green-50 text-green-600 mr-4 z-10">
+                        <i class="fas fa-hand-holding-usd"></i>
+                    </div>
+                    <div class="z-10">
+                        <h3 class="text-lg font-bold text-slate-800 mb-1 font-poppins">Retargeting 5x Lebih Murah</h3>
+                        <p class="text-slate-600 text-sm leading-snug">Biaya marketing ke pelanggan lama jauh lebih
+                            rendah dibandingkan biaya mengakuisisi pelanggan baru.</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Right Column -->
+            <div class="flex flex-col gap-4">
+                <!-- Point 4 -->
+                <div class="mindset-item p-4 rounded-xl flex items-start relative overflow-hidden">
+                    <span class="number-badge">04</span>
+                    <div class="icon-box bg-orange-50 text-orange-600 mr-4 z-10">
+                        <i class="fas fa-gift"></i>
+                    </div>
+                    <div class="z-10">
+                        <h3 class="text-lg font-bold text-slate-800 mb-1 font-poppins">Manfaat Strategis</h3>
+                        <p class="text-slate-600 text-sm leading-snug">Aset untuk broadcast promo eksklusif, program
+                            loyalitas (points/rewards), dan riset produk baru.</p>
+                    </div>
+                </div>
+                <!-- Point 5 -->
+                <div class="mindset-item p-4 rounded-xl flex items-start relative overflow-hidden">
+                    <span class="number-badge">05</span>
+                    <div class="icon-box bg-teal-50 text-teal-600 mr-4 z-10">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <div class="z-10">
+                        <h3 class="text-lg font-bold text-slate-800 mb-1 font-poppins">Contoh Nyata</h3>
+                        <p class="text-slate-600 text-sm leading-snug">Segmentasi 'High Spender' untuk penawaran paket
+                            premium dapat meningkatkan Customer Lifetime Value (CLV) hingga 25%.</p>
+                    </div>
+                </div>
+                <!-- Visual Placeholder for Balance -->
+                <div
+                    class="flex-grow flex items-center justify-center border-2 border-dashed border-slate-300 rounded-xl bg-slate-50 opacity-70">
+                    <div class="text-center p-4">
+                        <i class="fas fa-database text-5xl text-slate-300 mb-2"></i>
+                        <p class="text-xs text-slate-400 font-bold uppercase tracking-widest">OWNED MEDIA ASSET</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Insight Footer -->
+        <div class="mt-auto pt-4">
+            <div class="insight-card p-5 flex items-center shadow-lg">
+                <div class="bg-blue-500 p-3 rounded-xl mr-5 shadow-lg flex-shrink-0">
+                    <i class="fas fa-lightbulb text-2xl text-white"></i>
+                </div>
+                <div class="flex-grow border-l border-slate-600 pl-5">
+                    <p class="text-blue-400 text-xs font-bold uppercase tracking-widest mb-1">GOLDEN INSIGHT</p>
+                    <p class="text-lg text-white font-medium italic">"Bisnis yang memiliki database pelanggan kuat bisa
+                        bertahan (survive) dari krisis, bahkan tanpa ketergantungan pada media sosial."</p>
+                </div>
+                <div class="ml-6 text-slate-600 font-bold text-5xl opacity-20 select-none">25</div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

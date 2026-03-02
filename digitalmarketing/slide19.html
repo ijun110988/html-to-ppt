@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+
+<html lang="id">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Funnel Iklan (Cold–Warm–Hot)</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&amp;family=Inter:wght@300;400;500;600&amp;display=swap"
+        rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc;
+        }
+
+        .slide-container {
+            width: 1280px;
+            height: 720px;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            background-color: #f8fafc;
+            background-image: url('data:image/svg+xml;utf8,<svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><circle cx="2" cy="2" r="1" fill="%23cbd5e1"/></svg>');
+        }
+
+        .font-poppins {
+            font-family: 'Poppins', sans-serif;
+        }
+
+        /* Funnel Shapes */
+        .funnel-stage {
+            position: relative;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            color: white;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+
+        .stage-cold {
+            background-color: #3b82f6;
+            /* Blue 500 */
+            border-radius: 16px 16px 4px 4px;
+            width: 100%;
+            height: 110px;
+            z-index: 30;
+        }
+
+        .stage-warm {
+            background-color: #f59e0b;
+            /* Amber 500 */
+            border-radius: 4px;
+            width: 85%;
+            height: 110px;
+            margin-top: 4px;
+            z-index: 20;
+        }
+
+        .stage-hot {
+            background-color: #ef4444;
+            /* Red 500 */
+            border-radius: 4px 4px 16px 16px;
+            width: 70%;
+            height: 110px;
+            margin-top: 4px;
+            z-index: 10;
+        }
+
+        /* Detail Cards */
+        .detail-card {
+            background: white;
+            border-radius: 12px;
+            padding: 16px 20px;
+            height: 110px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            border-left: 6px solid #cbd5e1;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+
+        .detail-cold {
+            border-left-color: #3b82f6;
+        }
+
+        .detail-warm {
+            border-left-color: #f59e0b;
+        }
+
+        .detail-hot {
+            border-left-color: #ef4444;
+        }
+
+        .connector-line {
+            position: absolute;
+            left: -20px;
+            top: 50%;
+            width: 20px;
+            height: 2px;
+            background-color: #cbd5e1;
+            transform: translateY(-50%);
+        }
+
+        .arrow-down {
+            color: #cbd5e1;
+            font-size: 1.5rem;
+            margin: -10px 0;
+            z-index: 5;
+            text-shadow: 0 2px 0 white;
+        }
+
+        .insight-box {
+            background-color: #1e293b;
+            color: white;
+            border-radius: 12px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="slide-container p-8">
+        <!-- Header -->
+        <div class="flex justify-between items-start mb-6">
+            <div>
+                <span
+                    class="bg-blue-100 text-blue-700 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider mb-2 inline-block">Modul
+                    4: Digital Ads</span>
+                <h1 class="text-4xl font-bold text-slate-900 font-poppins">Funnel Iklan (Cold–Warm–Hot)</h1>
+                <p class="text-slate-500 mt-2 text-lg">Jangan jual langsung ke orang asing. Pahami tahapan audiens Anda.
+                </p>
+            </div>
+            <div class="bg-white p-3 rounded-xl shadow-sm border border-slate-200">
+                <i class="fas fa-filter text-4xl text-blue-600"></i>
+            </div>
+        </div>
+        <!-- Main Content Layout -->
+        <div class="flex flex-row gap-8 h-full mb-4">
+            <!-- Left Column: The Funnel Visual -->
+            <div class="w-1/3 flex flex-col items-center justify-center py-2">
+                <!-- Cold Stage -->
+                <div class="funnel-stage stage-cold relative group">
+                    <div class="absolute top-2 right-4 text-blue-200 opacity-50 text-6xl font-bold font-poppins">1</div>
+                    <i class="fas fa-snowflake text-3xl mb-2 opacity-90"></i>
+                    <h3 class="text-2xl font-bold font-poppins">Cold Audience</h3>
+                    <p class="text-blue-100 text-sm font-medium">Belum Kenal Brand</p>
+                </div>
+                <!-- Connector -->
+                <div class="h-5 flex items-center justify-center">
+                    <i class="fas fa-chevron-down text-slate-400"></i>
+                </div>
+                <!-- Warm Stage -->
+                <div class="funnel-stage stage-warm relative">
+                    <div class="absolute top-2 right-4 text-yellow-200 opacity-50 text-6xl font-bold font-poppins">2
+                    </div>
+                    <i class="fas fa-fire-alt text-3xl mb-2 opacity-90"></i>
+                    <h3 class="text-2xl font-bold font-poppins">Warm Audience</h3>
+                    <p class="text-yellow-100 text-sm font-medium">Sudah Pernah Interaksi</p>
+                </div>
+                <!-- Connector -->
+                <div class="h-5 flex items-center justify-center">
+                    <i class="fas fa-chevron-down text-slate-400"></i>
+                </div>
+                <!-- Hot Stage -->
+                <div class="funnel-stage stage-hot relative">
+                    <div class="absolute top-2 right-4 text-red-200 opacity-50 text-6xl font-bold font-poppins">3</div>
+                    <i class="fas fa-pepper-hot text-3xl mb-2 opacity-90"></i>
+                    <h3 class="text-2xl font-bold font-poppins">Hot Audience</h3>
+                    <p class="text-red-100 text-sm font-medium">Siap Membeli</p>
+                </div>
+            </div>
+            <!-- Right Column: Details & Strategy -->
+            <div class="w-2/3 flex flex-col justify-between py-4 space-y-4">
+                <!-- Detail Cold -->
+                <div class="detail-card detail-cold relative">
+                    <div class="flex justify-between items-start mb-2">
+                        <h4 class="text-lg font-bold text-slate-800 font-poppins">Strategi: Awareness &amp; Edukasi</h4>
+                        <span class="bg-blue-100 text-blue-700 text-xs font-bold px-2 py-1 rounded">Objective:
+                            Reach</span>
+                    </div>
+                    <p class="text-sm text-slate-600 mb-2">Perkenalkan brand tanpa hard selling. Fokus pada masalah yang
+                        mereka hadapi.</p>
+                    <div class="flex items-center text-xs font-semibold text-slate-500 bg-slate-50 p-2 rounded">
+                        <i class="fas fa-play-circle text-blue-500 mr-2"></i>
+                        <span>Contoh: Video Edukasi, Tips Praktis, Konten Viral</span>
+                    </div>
+                </div>
+                <!-- Spacer to align with funnel visual vertically -->
+                <div class="h-2"></div>
+                <!-- Detail Warm -->
+                <div class="detail-card detail-warm">
+                    <div class="flex justify-between items-start mb-2">
+                        <h4 class="text-lg font-bold text-slate-800 font-poppins">Strategi: Consideration &amp; Trust
+                        </h4>
+                        <span class="bg-yellow-100 text-yellow-700 text-xs font-bold px-2 py-1 rounded">Objective:
+                            Traffic</span>
+                    </div>
+                    <p class="text-sm text-slate-600 mb-2">Bangun kepercayaan. Tunjukkan bahwa solusi Anda valid dan
+                        terbukti.</p>
+                    <div class="flex items-center text-xs font-semibold text-slate-500 bg-slate-50 p-2 rounded">
+                        <i class="fas fa-star text-yellow-500 mr-2"></i>
+                        <span>Contoh: Testimoni, Review Produk, Keunggulan Fitur</span>
+                    </div>
+                </div>
+                <!-- Spacer to align with funnel visual vertically -->
+                <div class="h-2"></div>
+                <!-- Detail Hot -->
+                <div class="detail-card detail-hot">
+                    <div class="flex justify-between items-start mb-2">
+                        <h4 class="text-lg font-bold text-slate-800 font-poppins">Strategi: Conversion (Closing)</h4>
+                        <span class="bg-red-100 text-red-700 text-xs font-bold px-2 py-1 rounded">Objective:
+                            Sales</span>
+                    </div>
+                    <p class="text-sm text-slate-600 mb-2">Berikan penawaran yang sulit ditolak. Gunakan urgensi.</p>
+                    <div class="flex items-center text-xs font-semibold text-slate-500 bg-slate-50 p-2 rounded">
+                        <i class="fas fa-tag text-red-500 mr-2"></i>
+                        <span>Contoh: Diskon Terbatas, Bonus Spesial, "Beli Sekarang"</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Insight Footer -->
+        <div class="mt-auto">
+            <div class="insight-box p-4 flex items-center shadow-lg border border-slate-700">
+                <div class="bg-green-500 p-3 rounded-lg mr-4 shadow-md flex-shrink-0">
+                    <i class="fas fa-coins text-white text-xl"></i>
+                </div>
+                <div>
+                    <p class="text-green-400 text-xs font-bold uppercase tracking-widest mb-1">BUDGET ALLOCATION INSIGHT
+                    </p>
+                    <p class="text-white text-sm">
+                        "Alokasikan <span class="font-bold text-green-400">80% budget iklan</span> untuk audiens Warm
+                        &amp; Hot (Retargeting) karena konversi terjadi di sini. Gunakan sisanya untuk mencari trafik
+                        baru (Cold)."
+                    </p>
+                </div>
+                <div class="ml-auto text-slate-600 font-bold text-4xl opacity-20 select-none">
+                    19
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

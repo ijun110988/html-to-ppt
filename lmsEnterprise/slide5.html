@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+
+<html lang="id">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=1280, height=720" name="viewport" />
+    <title>Ruang Lingkup A — Learning &amp; Content Management</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&amp;display=swap"
+        rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" rel="stylesheet" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            overflow: hidden;
+        }
+
+        .slide-container {
+            width: 1280px;
+            height: 720px;
+            display: flex;
+            flex-direction: column;
+            background-color: #FFFFFF;
+            position: relative;
+        }
+
+        .header {
+            padding: 45px 60px 25px 60px;
+            border-bottom: 3px solid #2563EB;
+        }
+
+        .header-title {
+            font-size: 40px;
+            font-weight: 700;
+            color: #1B3A6B;
+            letter-spacing: -0.5px;
+        }
+
+        .content-wrapper {
+            flex: 1;
+            padding: 40px 60px 40px 60px;
+            display: flex;
+            gap: 40px;
+        }
+
+        .column {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .bullet-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+            padding: 16px 20px;
+            background-color: #F8FAFC;
+            border-left: 4px solid #2563EB;
+            transition: all 0.3s ease;
+        }
+
+        .bullet-item:hover {
+            background-color: #EFF6FF;
+            transform: translateX(4px);
+        }
+
+        .bullet-icon {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #2563EB;
+            color: #FFFFFF;
+            font-size: 18px;
+            border-radius: 6px;
+            flex-shrink: 0;
+        }
+
+        .bullet-content {
+            flex: 1;
+            padding-top: 2px;
+        }
+
+        .bullet-title {
+            font-size: 16px;
+            font-weight: 700;
+            color: #1B3A6B;
+            margin-bottom: 6px;
+            line-height: 1.3;
+        }
+
+        .bullet-description {
+            font-size: 14px;
+            font-weight: 400;
+            color: #4B5563;
+            line-height: 1.5;
+        }
+
+        .visual-separator {
+            width: 2px;
+            background-color: #E5E7EB;
+            margin: 0 10px;
+            position: relative;
+        }
+
+        .visual-separator::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 32px;
+            height: 32px;
+            background-color: #2563EB;
+            border-radius: 50%;
+        }
+
+        .visual-separator::after {
+            content: '\f054';
+            font-family: 'Font Awesome 5 Free';
+            font-weight: 900;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #FFFFFF;
+            font-size: 14px;
+            z-index: 1;
+        }
+
+        .section-badge {
+            display: inline-block;
+            background-color: #2563EB;
+            color: #FFFFFF;
+            padding: 6px 16px;
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="slide-container">
+        <div class="header">
+            <div class="header-title">
+                <p>Ruang Lingkup A — Learning &amp; Content Management</p>
+            </div>
+        </div>
+        <div class="content-wrapper">
+            <div class="column">
+                <div class="section-badge">
+                    <p>Content Repository</p>
+                </div>
+                <div class="bullet-item">
+                    <div class="bullet-icon">
+                        <i class="fas fa-database"></i>
+                    </div>
+                    <div class="bullet-content">
+                        <div class="bullet-title">
+                            <p>Repository Terpusat</p>
+                        </div>
+                        <div class="bullet-description">
+                            <p>Penyimpanan konten pembelajaran terpusat: video, dokumen, SOP, kuis, dan materi
+                                sertifikasi dengan akses terkontrol</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="bullet-item">
+                    <div class="bullet-icon">
+                        <i class="fas fa-sitemap"></i>
+                    </div>
+                    <div class="bullet-content">
+                        <div class="bullet-title">
+                            <p>Struktur Course → Module → Lesson</p>
+                        </div>
+                        <div class="bullet-description">
+                            <p>Hierarki konten yang terstruktur untuk konsistensi materi dan pembelajaran bertahap yang
+                                sistematis</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="visual-separator"></div>
+            <div class="column">
+                <div class="section-badge">
+                    <p>Learning Delivery</p>
+                </div>
+                <div class="bullet-item">
+                    <div class="bullet-icon">
+                        <i class="fas fa-certificate"></i>
+                    </div>
+                    <div class="bullet-content">
+                        <div class="bullet-title">
+                            <p>Sertifikasi Otomatis</p>
+                        </div>
+                        <div class="bullet-description">
+                            <p>Penerbitan sertifikat otomatis berbasis aturan penyelesaian, passing score, dan validasi
+                                untuk compliance tracking</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="bullet-item">
+                    <div class="bullet-icon">
+                        <i class="fas fa-tasks"></i>
+                    </div>
+                    <div class="bullet-content">
+                        <div class="bullet-title">
+                            <p>Blended Learning &amp; OJT Validation</p>
+                        </div>
+                        <div class="bullet-description">
+                            <p>Kombinasi self-paced learning dengan OJT validation workflow dan bukti praktik untuk
+                                memastikan kompetensi aktual</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

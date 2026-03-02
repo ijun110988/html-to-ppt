@@ -5,236 +5,302 @@
 <head>
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <title>Chaos Sistem Manual</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
-    <link
-        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&amp;family=Inter:wght@300;400;600&amp;display=swap"
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&amp;display=swap"
         rel="stylesheet" />
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" rel="stylesheet" />
     <style>
         body {
             margin: 0;
-            padding: 0;
-            background-color: #f3f4f6;
-            font-family: 'Inter', sans-serif;
-            overflow: hidden;
         }
 
-        .slide-container {
+        .slide {
             width: 1280px;
             height: 720px;
-            background-color: #FFFFFF;
+            display: flex;
+            background: #0E1A3A;
+            font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
             position: relative;
             overflow: hidden;
-            display: flex;
         }
 
-        /* Sidebar Left - Dark Theme */
-        .sidebar {
-            width: 400px;
-            background-color: #0B0F19;
-            height: 100%;
-            padding: 60px 40px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            position: relative;
-            z-index: 2;
+        .gold {
+            color: #F5A623;
         }
 
-        .decorative-pattern {
+        .gold-bg {
+            background: #F5A623;
+        }
+
+        .muted {
+            color: rgba(255, 255, 255, 0.78);
+        }
+
+        .muted2 {
+            color: rgba(255, 255, 255, 0.62);
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(245, 166, 35, 0.20);
+        }
+
+        .glow {
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            opacity: 0.05;
-            background-image: radial-gradient(#D4AF37 1px, transparent 1px);
-            background-size: 20px 20px;
-            z-index: -1;
+            inset: -45% -35% auto auto;
+            width: 860px;
+            height: 860px;
+            border-radius: 9999px;
+            background: radial-gradient(circle at 30% 30%, rgba(245, 166, 35, 0.14), rgba(14, 26, 58, 0) 60%);
+            pointer-events: none;
         }
 
-        .gold-line {
-            width: 60px;
-            height: 4px;
-            background-color: #D4AF37;
-            margin-bottom: 30px;
-        }
-
-        h1 {
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 800;
-            font-size: 48px;
-            line-height: 1.1;
-            color: #FFFFFF;
-            margin-bottom: 20px;
-        }
-
-        .subtitle {
-            font-family: 'Inter', sans-serif;
-            font-size: 18px;
-            color: #9CA3AF;
-            line-height: 1.6;
-        }
-
-        /* Main Content - Right Side */
-        .main-content {
-            flex: 1;
-            padding: 60px 80px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            background-color: #F9FAFB;
-        }
-
-        .list-container {
-            display: flex;
-            flex-direction: column;
-            gap: 24px;
-        }
-
-        .list-item {
-            display: flex;
-            align-items: center;
-            background-color: #FFFFFF;
-            padding: 20px 30px;
-            border-radius: 12px;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
-            border-left: 4px solid #EF4444;
-            /* Red for alert/problem */
-            transition: transform 0.2s ease;
-        }
-
-        .list-item:hover {
-            transform: translateX(10px);
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-        }
-
-        .icon-box {
-            width: 50px;
-            height: 50px;
-            border-radius: 10px;
-            background-color: #FEF2F2;
-            color: #EF4444;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 24px;
-            margin-right: 25px;
-            flex-shrink: 0;
-        }
-
-        .text-content h3 {
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 700;
-            font-size: 20px;
-            color: #1F2937;
-            margin: 0 0 4px 0;
-        }
-
-        .text-content p {
-            font-family: 'Inter', sans-serif;
-            font-size: 16px;
-            color: #6B7280;
-            margin: 0;
-        }
-
-        /* Bottom Decoration */
-        .page-number {
-            position: absolute;
-            bottom: 30px;
-            right: 40px;
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 600;
-            color: #D1D5DB;
-            font-size: 14px;
-        }
-
-        /* Speaker Notes (Hidden in visual but structured for reference) */
-        .notes-container {
-            display: none;
+        .hairline {
+            border-color: rgba(245, 166, 35, 0.45);
         }
     </style>
 </head>
 
 <body>
-    <div class="slide-container">
-        <!-- Sidebar -->
-        <div class="sidebar">
-            <div class="decorative-pattern"></div>
-            <div class="gold-line"></div>
-            <h1>CHAOS<br /><span style="color: #EF4444;">SISTEM<br />MANUAL</span></h1>
-            <p class="subtitle">
-                Masalah utama yang menghambat pertumbuhan bisnis UMKM saat masih mengandalkan cara manual.
-            </p>
-            <!-- Abstract Visual -->
-            <div style="margin-top: 60px; position: relative; height: 200px;">
-                <i class="fa-solid fa-triangle-exclamation"
-                    style="font-size: 120px; color: rgba(239, 68, 68, 0.1); position: absolute; bottom: 0; left: 0;"></i>
-                <i class="fa-solid fa-bomb"
-                    style="font-size: 60px; color: rgba(212, 175, 55, 0.2); position: absolute; top: 20px; right: 40px;"></i>
+    <div class="slide">
+        <!-- Decorative geometry (no gradients) -->
+        <div class="absolute inset-0" style="pointer-events:none;">
+            <div class="glow"></div>
+            <div class="absolute"
+                style="left:-140px; top:-160px; width:560px; height:560px; border-radius:9999px; border:2px solid rgba(245,166,35,0.26);">
+            </div>
+            <div class="absolute"
+                style="left:86px; top:78px; width:190px; height:190px; border-radius:9999px; border:2px solid rgba(255,255,255,0.10);">
+            </div>
+            <div class="absolute"
+                style="right:-170px; bottom:-190px; width:650px; height:650px; border-radius:9999px; border:2px solid rgba(245,166,35,0.22);">
+            </div>
+            <div class="absolute"
+                style="right:120px; bottom:96px; width:230px; height:230px; border-radius:9999px; border:2px solid rgba(255,255,255,0.10);">
+            </div>
+            <!-- Left rail -->
+            <div class="absolute" style="left:0; top:0; width:100%; height:100%;">
+                <div class="absolute gold-bg" style="left:0; top:0; width:10px; height:100%; opacity:0.9;"></div>
+                <div class="absolute"
+                    style="left:18px; top:0; width:2px; height:100%; background: rgba(245,166,35,0.30);"></div>
+                <div class="absolute"
+                    style="left:0; top:66px; width:100%; height:1px; background: rgba(255,255,255,0.06);"></div>
             </div>
         </div>
-        <!-- Main Content -->
-        <div class="main-content">
-            <div class="list-container">
-                <!-- Item 1 -->
-                <div class="list-item">
-                    <div class="icon-box">
-                        <i class="fa-solid fa-comments"></i>
+        <!-- Main -->
+        <div class="relative flex-1 flex flex-col">
+            <!-- Header -->
+            <div class="w-full px-16 pt-10 flex items-center justify-between">
+                <div class="flex items-center space-x-3">
+                    <div class="card flex items-center justify-center" style="width:44px; height:44px; border-radius:10px;">
+                        <i class="fa-solid fa-building" style="color: rgba(255,255,255,0.82); font-size:18px;"></i>
                     </div>
-                    <div class="text-content">
-                        <h3>Chat Menumpuk &amp; Pesanan Terlewat</h3>
-                        <p>Admin kewalahan membalas ratusan chat, order fix tenggelam.</p>
-                    </div>
-                </div>
-                <!-- Item 2 -->
-                <div class="list-item">
-                    <div class="icon-box">
-                        <i class="fa-solid fa-circle-xmark"></i>
-                    </div>
-                    <div class="text-content">
-                        <h3>Salah Input Data &amp; Varian</h3>
-                        <p>Human error tinggi saat rekap manual alamat dan varian produk.</p>
+                    <div class="flex flex-col">
+                        <p class="muted2 text-xs tracking-widest font-semibold">UNTUK</p>
+                        <p class="text-white text-sm font-semibold tracking-wide">PT YKK AP Indonesia</p>
                     </div>
                 </div>
-                <!-- Item 3 -->
-                <div class="list-item">
-                    <div class="icon-box">
-                        <i class="fa-solid fa-database"></i>
-                    </div>
-                    <div class="text-content">
-                        <h3>Data Customer Hilang</h3>
-                        <p>Tidak ada database terpusat, history order hilang saat ganti HP.</p>
-                    </div>
-                </div>
-                <!-- Item 4 -->
-                <div class="list-item">
-                    <div class="icon-box">
-                        <i class="fa-solid fa-file-invoice"></i>
-                    </div>
-                    <div class="text-content">
-                        <h3>Invoice Manual Memakan Waktu</h3>
-                        <p>Habis waktu 3-5 menit hanya untuk ketik totalan satu customer.</p>
-                    </div>
-                </div>
-                <!-- Item 5 -->
-                <div class="list-item">
-                    <div class="icon-box">
-                        <i class="fa-solid fa-truck-fast"></i>
-                    </div>
-                    <div class="text-content">
-                        <h3>Resi Dikirim Satu per Satu</h3>
-                        <p>Proses copy-paste nomor resi ke chat yang sangat melelahkan.</p>
+                <div class="flex items-center space-x-3">
+                    <div class="card px-4 py-2 rounded-full">
+                        <p class="text-white text-xs font-semibold tracking-widest">TAHUN <span class="gold">2026</span></p>
                     </div>
                 </div>
             </div>
+            <!-- Title + Body -->
+            <div class="flex-1 px-16 pt-5 pb-4 flex">
+                <!-- Left: Title / context -->
+                <div class="flex flex-col" style="width: 430px;">
+                    <div class="flex items-center space-x-4 mb-6">
+                        <div class="gold-bg" style="width:64px; height:6px; border-radius:9999px;"></div>
+                        <div style="width:10px; height:10px; border-radius:9999px; background: rgba(245,166,35,0.85);">
+                        </div>
+                        <div style="width:10px; height:10px; border-radius:9999px; background: rgba(245,166,35,0.45);">
+                        </div>
+                    </div>
+                    <div class="mb-5">
+                        <p class="text-white font-extrabold leading-tight"
+                            style="font-size:44px; letter-spacing:-0.02em;">Agenda <span class="gold">Presentasi</span>
+                        </p>
+                    </div>
+                    <div class="mb-8">
+                        <p class="muted text-base leading-relaxed">
+                            Alur pembahasan mencakup tantangan proses pelatihan saat ini, dampak implementasi LMS, serta
+                            opsi model implementasi yang paling sesuai untuk kebutuhan PT YKK AP Indonesia.
+                        </p>
+                    </div>
+                    <div class="card rounded-2xl p-5">
+                        <div class="flex items-center space-x-3 mb-3">
+                            <div class="gold-bg"
+                                style="width:34px; height:34px; border-radius:10px; display:flex; align-items:center; justify-content:center;">
+                                <i class="fa-solid fa-bullseye" style="color:#0E1A3A; font-size:14px;"></i>
+                            </div>
+                            <div>
+                                <p class="text-white text-sm font-semibold">Outcome yang diharapkan</p>
+                                <p class="muted2 text-xs">Kesepakatan arah &amp; rencana tindak lanjut</p>
+                            </div>
+                        </div>
+                        <div class="space-y-2">
+                            <div class="flex items-center space-x-3">
+                                <i class="fa-regular fa-circle-check"
+                                    style="color: rgba(245,166,35,0.95); font-size:14px;"></i>
+                                <p class="muted text-sm">Pemetaan kebutuhan L&amp;D dan compliance yang lebih jelas</p>
+                            </div>
+                            <div class="flex items-center space-x-3">
+                                <i class="fa-regular fa-circle-check"
+                                    style="color: rgba(245,166,35,0.95); font-size:14px;"></i>
+                                <p class="muted text-sm">Pemilihan model LMS (On-Premise vs SaaS) yang paling tepat</p>
+                            </div>
+                            <div class="flex items-center space-x-3">
+                                <i class="fa-regular fa-circle-check"
+                                    style="color: rgba(245,166,35,0.95); font-size:14px;"></i>
+                                <p class="muted text-sm">Gambaran timeline implementasi &amp; dukungan pasca go-live</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Right: Numbered agenda list -->
+                <div class="flex-1 pl-12 flex flex-col">
+                    <div class="card rounded-3xl p-6">
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="flex items-center space-x-3">
+                                <div class="gold-bg"
+                                    style="width:36px; height:36px; border-radius:12px; display:flex; align-items:center; justify-content:center;">
+                                    <i class="fa-solid fa-list-check" style="color:#0E1A3A; font-size:16px;"></i>
+                                </div>
+                                <div>
+                                    <p class="text-white text-sm font-semibold">Agenda</p>
+                                    <p class="muted2 text-xs">8 topik • ringkas • terstruktur</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center space-x-2">
+                                <div
+                                    style="width:10px; height:10px; border-radius:9999px; background: rgba(245,166,35,0.75);">
+                                </div>
+                                <div
+                                    style="width:10px; height:10px; border-radius:9999px; background: rgba(255,255,255,0.20);">
+                                </div>
+                                <div
+                                    style="width:10px; height:10px; border-radius:9999px; background: rgba(255,255,255,0.12);">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-2 gap-3">
+                            <!-- Item -->
+                            <div class="flex items-start space-x-4 p-3 rounded-2xl"
+                                style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06);">
+                                <div class="gold-bg flex items-center justify-center"
+                                    style="width:34px; height:34px; border-radius:12px; flex: 0 0 auto;">
+                                    <p class="text-xs font-extrabold" style="color:#0E1A3A; letter-spacing:0.04em;">01
+                                    </p>
+                                </div>
+                                <div class="flex-1">
+                                    <p class="text-white text-sm font-semibold">Peran Strategis HR</p>
+                                    <p class="muted2 text-xs">Pengembangan SDM &amp; standar kompetensi</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start space-x-4 p-3 rounded-2xl"
+                                style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06);">
+                                <div class="gold-bg flex items-center justify-center"
+                                    style="width:34px; height:34px; border-radius:12px; flex: 0 0 auto;">
+                                    <p class="text-xs font-extrabold" style="color:#0E1A3A; letter-spacing:0.04em;">02
+                                    </p>
+                                </div>
+                                <div class="flex-1">
+                                    <p class="text-white text-sm font-semibold">Tantangan HR Sebelum LMS</p>
+                                    <p class="muted2 text-xs">Manual, Excel, sertifikat, laporan</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start space-x-4 p-3 rounded-2xl"
+                                style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06);">
+                                <div class="gold-bg flex items-center justify-center"
+                                    style="width:34px; height:34px; border-radius:12px; flex: 0 0 auto;">
+                                    <p class="text-xs font-extrabold" style="color:#0E1A3A; letter-spacing:0.04em;">03
+                                    </p>
+                                </div>
+                                <div class="flex-1">
+                                    <p class="text-white text-sm font-semibold">Dampak Operasional</p>
+                                    <p class="muted2 text-xs">Risiko audit, compliance, efisiensi</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start space-x-4 p-3 rounded-2xl"
+                                style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06);">
+                                <div class="gold-bg flex items-center justify-center"
+                                    style="width:34px; height:34px; border-radius:12px; flex: 0 0 auto;">
+                                    <p class="text-xs font-extrabold" style="color:#0E1A3A; letter-spacing:0.04em;">04
+                                    </p>
+                                </div>
+                                <div class="flex-1">
+                                    <p class="text-white text-sm font-semibold">Transformasi Setelah LMS</p>
+                                    <p class="muted2 text-xs">Terpusat, real-time, otomatis</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start space-x-4 p-3 rounded-2xl"
+                                style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06);">
+                                <div class="gold-bg flex items-center justify-center"
+                                    style="width:34px; height:34px; border-radius:12px; flex: 0 0 auto;">
+                                    <p class="text-xs font-extrabold" style="color:#0E1A3A; letter-spacing:0.04em;">05
+                                    </p>
+                                </div>
+                                <div class="flex-1">
+                                    <p class="text-white text-sm font-semibold">LMS sebagai Tools Strategic HR</p>
+                                    <p class="muted2 text-xs">Gap analysis, talent pipeline, analytics</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start space-x-4 p-3 rounded-2xl"
+                                style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06);">
+                                <div class="gold-bg flex items-center justify-center"
+                                    style="width:34px; height:34px; border-radius:12px; flex: 0 0 auto;">
+                                    <p class="text-xs font-extrabold" style="color:#0E1A3A; letter-spacing:0.04em;">06
+                                    </p>
+                                </div>
+                                <div class="flex-1">
+                                    <p class="text-white text-sm font-semibold">Perbandingan On-Premise vs SaaS</p>
+                                    <p class="muted2 text-xs">Kepemilikan data, biaya, integrasi</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start space-x-4 p-3 rounded-2xl"
+                                style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06);">
+                                <div class="gold-bg flex items-center justify-center"
+                                    style="width:34px; height:34px; border-radius:12px; flex: 0 0 auto;">
+                                    <p class="text-xs font-extrabold" style="color:#0E1A3A; letter-spacing:0.04em;">07
+                                    </p>
+                                </div>
+                                <div class="flex-1">
+                                    <p class="text-white text-sm font-semibold">Timeline Implementasi &amp; Support</p>
+                                    <p class="muted2 text-xs">6 bulan menuju go-live &amp; pendampingan</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start space-x-4 p-3 rounded-2xl"
+                                style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06);">
+                                <div class="gold-bg flex items-center justify-center"
+                                    style="width:34px; height:34px; border-radius:12px; flex: 0 0 auto;">
+                                    <p class="text-xs font-extrabold" style="color:#0E1A3A; letter-spacing:0.04em;">08
+                                    </p>
+                                </div>
+                                <div class="flex-1">
+                                    <p class="text-white text-sm font-semibold">Kesimpulan &amp; Next Step</p>
+                                    <p class="muted2 text-xs">Keputusan scope &amp; langkah eksekusi</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+            <!-- Footer -->
+            <div class="w-full px-16 pb-10 flex items-center justify-between">
+                <div class="flex items-center space-x-3">
+                    <div style="width:8px; height:8px; border-radius:9999px; background:#F5A623;"></div>
+                    <p class="muted2 text-xs">Proposal Implementasi LMS • Agenda Presentasi</p>
+                </div>
+                <div class="flex items-center space-x-3">
+                    <i class="fa-regular fa-calendar" style="color: rgba(255,255,255,0.70); font-size:12px;"></i>
+                    <p class="muted2 text-xs">2026</p>
+                </div>
+            </div>
         </div>
-        <div class="page-number">02</div>
-    </div>
-    <div class="notes-container">
-        Mayoritas UMKM masih menggunakan sistem manual via chat WA. Ini menyebabkan banyak human error, pesanan
-        terlewat, dan customer experience buruk. Sistem manual tidak scalable untuk pertumbuhan bisnis.
     </div>
 </body>
 

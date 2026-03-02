@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+
+<html lang="id">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=1280, height=720" name="viewport" />
+    <title>Dashboard Peran &amp; Tata Kelola</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&amp;display=swap"
+        rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" rel="stylesheet" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            overflow: hidden;
+        }
+
+        .slide-container {
+            width: 1280px;
+            height: 720px;
+            display: flex;
+            flex-direction: column;
+            background-color: #FFFFFF;
+            position: relative;
+        }
+
+        .header {
+            padding: 45px 60px 25px 60px;
+            border-bottom: 3px solid #2563EB;
+        }
+
+        .header-title {
+            font-size: 40px;
+            font-weight: 700;
+            color: #1B3A6B;
+            letter-spacing: -0.5px;
+        }
+
+        .content-wrapper {
+            flex: 1;
+            padding: 30px 60px 35px 60px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            overflow-y: auto;
+        }
+
+        .role-card {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            padding: 16px 24px;
+            background-color: #F8FAFC;
+            border: 2px solid #E5E7EB;
+            border-left: 5px solid #2563EB;
+            transition: all 0.3s ease;
+        }
+
+        .role-card:hover {
+            background-color: #EFF6FF;
+            border-color: #2563EB;
+            transform: translateX(5px);
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.15);
+        }
+
+        .role-icon-wrapper {
+            width: 64px;
+            height: 64px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #2563EB;
+            color: #FFFFFF;
+            font-size: 28px;
+            border-radius: 8px;
+            flex-shrink: 0;
+        }
+
+        .role-info {
+            flex: 1;
+            display: flex;
+            gap: 20px;
+        }
+
+        .role-name-section {
+            min-width: 200px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .role-name {
+            font-size: 17px;
+            font-weight: 700;
+            color: #1B3A6B;
+            margin-bottom: 4px;
+            line-height: 1.2;
+        }
+
+        .role-level {
+            font-size: 12px;
+            font-weight: 600;
+            color: #6B7280;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .role-divider {
+            width: 2px;
+            background-color: #CBD5E1;
+            align-self: stretch;
+        }
+
+        .dashboard-section {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .section-label {
+            font-size: 11px;
+            font-weight: 700;
+            color: #2563EB;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            margin-bottom: 2px;
+        }
+
+        .capability-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .capability-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 4px 10px;
+            background-color: #DBEAFE;
+            color: #1E40AF;
+            font-size: 11px;
+            font-weight: 600;
+            border-radius: 4px;
+        }
+
+        .capability-icon {
+            font-size: 10px;
+        }
+
+        .governance-section {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .governance-text {
+            font-size: 12px;
+            font-weight: 400;
+            color: #4B5563;
+            line-height: 1.4;
+        }
+
+        .footer-note {
+            padding: 0 60px 20px 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .footer-icon {
+            width: 28px;
+            height: 28px;
+            background-color: #2563EB;
+            color: #FFFFFF;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            border-radius: 4px;
+        }
+
+        .footer-note p {
+            font-size: 13px;
+            font-weight: 600;
+            color: #6B7280;
+            letter-spacing: 0.3px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="slide-container">
+        <div class="header">
+            <div class="header-title">
+                <p>Ruang Lingkup G — Role-Based Dashboard &amp; Governance</p>
+            </div>
+        </div>
+        <div class="content-wrapper">
+            <div class="role-card">
+                <div class="role-icon-wrapper">
+                    <i class="fas fa-user"></i>
+                </div>
+                <div class="role-info">
+                    <div class="role-name-section">
+                        <div class="role-name">
+                            <p>Individual Contributor</p>
+                        </div>
+                        <div class="role-level">
+                            <p>Personal View</p>
+                        </div>
+                    </div>
+                    <div class="role-divider"></div>
+                    <div class="dashboard-section">
+                        <div class="section-label">
+                            <p>Dashboard View</p>
+                        </div>
+                        <div class="capability-list">
+                            <span class="capability-tag">
+                                <i class="fas fa-book-open capability-icon"></i>
+                                <p>My Learning Path</p>
+                            </span>
+                            <span class="capability-tag">
+                                <i class="fas fa-tasks capability-icon"></i>
+                                <p>Progress Tracking</p>
+                            </span>
+                            <span class="capability-tag">
+                                <i class="fas fa-certificate capability-icon"></i>
+                                <p>My Certificates</p>
+                            </span>
+                            <span class="capability-tag">
+                                <i class="fas fa-clock capability-icon"></i>
+                                <p>Pending Assignments</p>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="role-divider"></div>
+                    <div class="governance-section">
+                        <div class="section-label">
+                            <p>Governance</p>
+                        </div>
+                        <div class="governance-text">
+                            <p>Visibilitas penuh atas learning journey pribadi, status compliance, dan reminder otomatis
+                                untuk pelatihan wajib</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="role-card">
+                <div class="role-icon-wrapper">
+                    <i class="fas fa-user-tie"></i>
+                </div>
+                <div class="role-info">
+                    <div class="role-name-section">
+                        <div class="role-name">
+                            <p>Supervisor / Team Leader</p>
+                        </div>
+                        <div class="role-level">
+                            <p>Team Management</p>
+                        </div>
+                    </div>
+                    <div class="role-divider"></div>
+                    <div class="dashboard-section">
+                        <div class="section-label">
+                            <p>Dashboard View</p>
+                        </div>
+                        <div class="capability-list">
+                            <span class="capability-tag">
+                                <i class="fas fa-users capability-icon"></i>
+                                <p>Team Progress</p>
+                            </span>
+                            <span class="capability-tag">
+                                <i class="fas fa-exclamation-triangle capability-icon"></i>
+                                <p>Compliance Alerts</p>
+                            </span>
+                            <span class="capability-tag">
+                                <i class="fas fa-check-double capability-icon"></i>
+                                <p>OJT Validation</p>
+                            </span>
+                            <span class="capability-tag">
+                                <i class="fas fa-chart-bar capability-icon"></i>
+                                <p>Team Analytics</p>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="role-divider"></div>
+                    <div class="governance-section">
+                        <div class="section-label">
+                            <p>Governance</p>
+                        </div>
+                        <div class="governance-text">
+                            <p>Monitoring real-time progres tim, validasi OJT, approval sertifikasi, dan notifikasi
+                                untuk anggota tim yang overdue</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="role-card">
+                <div class="role-icon-wrapper">
+                    <i class="fas fa-building"></i>
+                </div>
+                <div class="role-info">
+                    <div class="role-name-section">
+                        <div class="role-name">
+                            <p>Plant Manager</p>
+                        </div>
+                        <div class="role-level">
+                            <p>Plant Operations</p>
+                        </div>
+                    </div>
+                    <div class="role-divider"></div>
+                    <div class="dashboard-section">
+                        <div class="section-label">
+                            <p>Dashboard View</p>
+                        </div>
+                        <div class="capability-list">
+                            <span class="capability-tag">
+                                <i class="fas fa-industry capability-icon"></i>
+                                <p>Plant-wide Compliance</p>
+                            </span>
+                            <span class="capability-tag">
+                                <i class="fas fa-user-check capability-icon"></i>
+                                <p>Certification Status</p>
+                            </span>
+                            <span class="capability-tag">
+                                <i class="fas fa-clipboard-list capability-icon"></i>
+                                <p>Department Breakdown</p>
+                            </span>
+                            <span class="capability-tag">
+                                <i class="fas fa-file-export capability-icon"></i>
+                                <p>Audit Reports</p>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="role-divider"></div>
+                    <div class="governance-section">
+                        <div class="section-label">
+                            <p>Governance</p>
+                        </div>
+                        <div class="governance-text">
+                            <p>Dashboard plant-level: compliance rate per departemen, sertifikasi kritis, readiness
+                                audit, dan drill-down ke individual</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="role-card">
+                <div class="role-icon-wrapper">
+                    <i class="fas fa-globe-asia"></i>
+                </div>
+                <div class="role-info">
+                    <div class="role-name-section">
+                        <div class="role-name">
+                            <p>Regional Manager</p>
+                        </div>
+                        <div class="role-level">
+                            <p>Regional Oversight</p>
+                        </div>
+                    </div>
+                    <div class="role-divider"></div>
+                    <div class="dashboard-section">
+                        <div class="section-label">
+                            <p>Dashboard View</p>
+                        </div>
+                        <div class="capability-list">
+                            <span class="capability-tag">
+                                <i class="fas fa-map-marked-alt capability-icon"></i>
+                                <p>Multi-Plant View</p>
+                            </span>
+                            <span class="capability-tag">
+                                <i class="fas fa-balance-scale capability-icon"></i>
+                                <p>Regional Benchmarking</p>
+                            </span>
+                            <span class="capability-tag">
+                                <i class="fas fa-trophy capability-icon"></i>
+                                <p>Performance Comparison</p>
+                            </span>
+                            <span class="capability-tag">
+                                <i class="fas fa-flag capability-icon"></i>
+                                <p>Risk Indicators</p>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="role-divider"></div>
+                    <div class="governance-section">
+                        <div class="section-label">
+                            <p>Governance</p>
+                        </div>
+                        <div class="governance-text">
+                            <p>Visibilitas lintas plant/region, benchmarking compliance, identifikasi gap kompetensi,
+                                dan strategic workforce planning</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="role-card">
+                <div class="role-icon-wrapper">
+                    <i class="fas fa-briefcase"></i>
+                </div>
+                <div class="role-info">
+                    <div class="role-name-section">
+                        <div class="role-name">
+                            <p>Corporate HR</p>
+                        </div>
+                        <div class="role-level">
+                            <p>Enterprise Control</p>
+                        </div>
+                    </div>
+                    <div class="role-divider"></div>
+                    <div class="dashboard-section">
+                        <div class="section-label">
+                            <p>Dashboard View</p>
+                        </div>
+                        <div class="capability-list">
+                            <span class="capability-tag">
+                                <i class="fas fa-chart-line capability-icon"></i>
+                                <p>Enterprise Analytics</p>
+                            </span>
+                            <span class="capability-tag">
+                                <i class="fas fa-cogs capability-icon"></i>
+                                <p>Policy Configuration</p>
+                            </span>
+                            <span class="capability-tag">
+                                <i class="fas fa-database capability-icon"></i>
+                                <p>Master Data Management</p>
+                            </span>
+                            <span class="capability-tag">
+                                <i class="fas fa-shield-alt capability-icon"></i>
+                                <p>Compliance Dashboard</p>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="role-divider"></div>
+                    <div class="governance-section">
+                        <div class="section-label">
+                            <p>Governance</p>
+                        </div>
+                        <div class="governance-text">
+                            <p>Kontrol penuh: national compliance view, policy enforcement, assignment rules, reporting
+                                untuk manajemen dan audit eksternal</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-note">
+            <div class="footer-icon">
+                <i class="fas fa-eye"></i>
+            </div>
+            <p>Monitoring real-time dengan drill-down capability dari level enterprise hingga individual employee</p>
+        </div>
+    </div>
+</body>
+
+</html>

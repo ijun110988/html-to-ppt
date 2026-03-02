@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+
+<html lang="id">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Memilih Platform yang Tepat</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&amp;family=Inter:wght@300;400;500;600&amp;display=swap"
+        rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc;
+        }
+
+        .slide-container {
+            width: 1280px;
+            height: 720px;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            background-color: #f8fafc;
+            background-image: url('data:image/svg+xml;utf8,<svg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><circle cx="2" cy="2" r="1" fill="%23e2e8f0"/></svg>');
+        }
+
+        .font-poppins {
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .channel-card {
+            background-color: white;
+            border-radius: 16px;
+            transition: all 0.3s ease;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+        }
+
+        .channel-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+
+        .icon-circle {
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 16px;
+            font-size: 26px;
+        }
+
+        /* Platform Specific Styles */
+        .card-ig {
+            border-top: 4px solid #E1306C;
+        }
+
+        .card-ig .icon-circle {
+            background-color: #fce7f3;
+            color: #E1306C;
+        }
+
+        .card-ig:hover {
+            border-color: #E1306C;
+        }
+
+        .card-tiktok {
+            border-top: 4px solid #000000;
+        }
+
+        .card-tiktok .icon-circle {
+            background-color: #f3f4f6;
+            color: #000000;
+        }
+
+        .card-tiktok:hover {
+            border-color: #333;
+        }
+
+        .card-fb {
+            border-top: 4px solid #1877F2;
+        }
+
+        .card-fb .icon-circle {
+            background-color: #eff6ff;
+            color: #1877F2;
+        }
+
+        .card-fb:hover {
+            border-color: #1877F2;
+        }
+
+        .card-linkedin {
+            border-top: 4px solid #0A66C2;
+        }
+
+        .card-linkedin .icon-circle {
+            background-color: #f0f9ff;
+            color: #0A66C2;
+        }
+
+        .card-linkedin:hover {
+            border-color: #0A66C2;
+        }
+
+        .card-wa {
+            border-top: 4px solid #25D366;
+        }
+
+        .card-wa .icon-circle {
+            background-color: #dcfce7;
+            color: #16a34a;
+        }
+
+        .card-wa:hover {
+            border-color: #25D366;
+        }
+
+        .chip {
+            font-size: 10px;
+            padding: 4px 8px;
+            border-radius: 9999px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .chip-ig {
+            background-color: #fce7f3;
+            color: #be185d;
+        }
+
+        .chip-tiktok {
+            background-color: #f3f4f6;
+            color: #1f2937;
+        }
+
+        .chip-fb {
+            background-color: #eff6ff;
+            color: #1d4ed8;
+        }
+
+        .chip-linkedin {
+            background-color: #e0f2fe;
+            color: #0369a1;
+        }
+
+        .chip-wa {
+            background-color: #dcfce7;
+            color: #15803d;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="slide-container p-10">
+        <!-- Header -->
+        <div class="text-center mb-8">
+            <span
+                class="bg-blue-100 text-blue-700 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider mb-3 inline-block">Modul
+                3: Social Media Marketing</span>
+            <h1 class="text-4xl font-bold text-slate-900 font-poppins mb-2">Memilih Platform yang Tepat</h1>
+            <p class="text-slate-500 text-lg max-w-3xl mx-auto">Setiap platform memiliki "kepribadian" dan demografi
+                pengguna yang unik.</p>
+        </div>
+        <!-- Content Grid - Top Row (3 items) -->
+        <div class="grid grid-cols-3 gap-6 mb-6 px-16">
+            <!-- 1. Instagram -->
+            <div class="channel-card card-ig p-6">
+                <div class="flex justify-between items-start">
+                    <div class="icon-circle">
+                        <i class="fab fa-instagram"></i>
+                    </div>
+                    <span class="chip chip-ig">Visual &amp; Lifestyle</span>
+                </div>
+                <h3 class="text-xl font-bold text-slate-800 font-poppins mb-2">Instagram</h3>
+                <p class="text-sm text-slate-600 mb-3 flex-grow leading-relaxed">Fashion, F&amp;B, Travel. Tempat orang
+                    mencari inspirasi visual yang estetik.</p>
+                <div class="text-xs font-medium text-slate-500 pt-3 border-t border-slate-100 flex items-center">
+                    <i class="fas fa-check-circle text-green-500 mr-2"></i> Strong Brand Image
+                </div>
+            </div>
+            <!-- 2. TikTok -->
+            <div class="channel-card card-tiktok p-6">
+                <div class="flex justify-between items-start">
+                    <div class="icon-circle">
+                        <i class="fab fa-tiktok"></i>
+                    </div>
+                    <span class="chip chip-tiktok">Viral &amp; Gen Z</span>
+                </div>
+                <h3 class="text-xl font-bold text-slate-800 font-poppins mb-2">TikTok</h3>
+                <p class="text-sm text-slate-600 mb-3 flex-grow leading-relaxed">Gen Z &amp; Millennial. Konten hiburan
+                    singkat dengan potensi viralitas organik tinggi.</p>
+                <div class="text-xs font-medium text-slate-500 pt-3 border-t border-slate-100 flex items-center">
+                    <i class="fas fa-check-circle text-green-500 mr-2"></i> High Organic Reach
+                </div>
+            </div>
+            <!-- 3. Facebook -->
+            <div class="channel-card card-fb p-6">
+                <div class="flex justify-between items-start">
+                    <div class="icon-circle">
+                        <i class="fab fa-facebook-f"></i>
+                    </div>
+                    <span class="chip chip-fb">Community</span>
+                </div>
+                <h3 class="text-xl font-bold text-slate-800 font-poppins mb-2">Facebook</h3>
+                <p class="text-sm text-slate-600 mb-3 flex-grow leading-relaxed">Usia 30+. Sangat kuat untuk membangun
+                    komunitas lewat Grup dan diskusi.</p>
+                <div class="text-xs font-medium text-slate-500 pt-3 border-t border-slate-100 flex items-center">
+                    <i class="fas fa-check-circle text-green-500 mr-2"></i> Targeted Community
+                </div>
+            </div>
+        </div>
+        <!-- Content Grid - Bottom Row (2 items centered) -->
+        <div class="grid grid-cols-12 gap-6 px-16">
+            <div class="col-span-2"></div> <!-- Spacer -->
+            <!-- 4. LinkedIn -->
+            <div class="col-span-4">
+                <div class="channel-card card-linkedin p-6">
+                    <div class="flex justify-between items-start">
+                        <div class="icon-circle">
+                            <i class="fab fa-linkedin-in"></i>
+                        </div>
+                        <span class="chip chip-linkedin">B2B &amp; Pro</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-800 font-poppins mb-2">LinkedIn</h3>
+                    <p class="text-sm text-slate-600 mb-3 flex-grow leading-relaxed">Jasa profesional &amp; B2B. Tempat
+                        membangun otoritas industri dan networking bisnis.</p>
+                    <div class="text-xs font-medium text-slate-500 pt-3 border-t border-slate-100 flex items-center">
+                        <i class="fas fa-check-circle text-green-500 mr-2"></i> High Ticket Sales
+                    </div>
+                </div>
+            </div>
+            <!-- 5. WhatsApp Business -->
+            <div class="col-span-4">
+                <div class="channel-card card-wa p-6">
+                    <div class="flex justify-between items-start">
+                        <div class="icon-circle">
+                            <i class="fab fa-whatsapp"></i>
+                        </div>
+                        <span class="chip chip-wa">Closing</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-800 font-poppins mb-2">WhatsApp Business</h3>
+                    <p class="text-sm text-slate-600 mb-3 flex-grow leading-relaxed">Saluran personal untuk customer
+                        service, katalog produk, dan closing penjualan.</p>
+                    <div class="text-xs font-medium text-slate-500 pt-3 border-t border-slate-100 flex items-center">
+                        <i class="fas fa-check-circle text-green-500 mr-2"></i> High Conversion Rate
+                    </div>
+                </div>
+            </div>
+            <div class="col-span-2"></div> <!-- Spacer -->
+        </div>
+        <!-- Bottom Insight Bar -->
+        <div class="mt-auto px-16 pb-6">
+            <div
+                class="bg-slate-800 rounded-xl p-4 flex items-center justify-between shadow-lg border-l-4 border-yellow-400">
+                <div class="flex items-center">
+                    <div class="bg-slate-700 p-2 rounded-lg mr-4 text-yellow-400 shadow-sm">
+                        <i class="fas fa-lightbulb text-xl"></i>
+                    </div>
+                    <div>
+                        <p class="text-slate-400 text-xs font-bold uppercase tracking-widest mb-1">STRATEGI PEMULA</p>
+                        <p class="text-white font-medium">Target audience menentukan platform. Jangan hadir di semua
+                            tempat, <span class="text-yellow-400 font-bold">fokus 1-2 platform</span> yang paling
+                            relevan dulu.</p>
+                    </div>
+                </div>
+                <div class="text-slate-600 font-bold text-2xl opacity-40 font-poppins">12</div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

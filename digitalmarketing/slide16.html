@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+
+<html lang="id">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Cara Membaca Insight &amp; Analytics</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&amp;family=Inter:wght@300;400;500;600&amp;display=swap"
+        rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc;
+        }
+
+        .slide-container {
+            width: 1280px;
+            height: 720px;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            background-color: #f8fafc;
+            background-image: url('data:image/svg+xml;utf8,<svg width="40" height="40" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><g fill="%23e2e8f0" fill-rule="evenodd"><path d="M0 40L40 0H20L0 20M40 40V20L20 40"/></g></svg>');
+        }
+
+        .font-poppins {
+            font-family: 'Poppins', sans-serif;
+        }
+
+        /* Metric Card Styles */
+        .metric-card {
+            background: white;
+            border-radius: 16px;
+            padding: 20px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+            border: 1px solid #e2e8f0;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            transition: transform 0.2s ease;
+        }
+
+        .metric-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+
+        .icon-box {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            margin-right: 12px;
+        }
+
+        .trend-up {
+            color: #10b981;
+            font-size: 0.75rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+        }
+
+        /* Chart Placeholders */
+        .bar-chart {
+            display: flex;
+            align-items: flex-end;
+            gap: 4px;
+            height: 40px;
+            margin-top: auto;
+        }
+
+        .bar {
+            width: 6px;
+            border-radius: 2px;
+            opacity: 0.7;
+        }
+
+        .progress-bg {
+            height: 8px;
+            background-color: #f1f5f9;
+            border-radius: 4px;
+            overflow: hidden;
+            margin-top: 10px;
+        }
+
+        .progress-fill {
+            height: 100%;
+            border-radius: 4px;
+        }
+
+        /* Card Themes */
+        .theme-blue .icon-box {
+            background-color: #eff6ff;
+            color: #3b82f6;
+        }
+
+        .theme-blue .bar {
+            background-color: #3b82f6;
+        }
+
+        .theme-green .icon-box {
+            background-color: #ecfdf5;
+            color: #10b981;
+        }
+
+        .theme-green .progress-fill {
+            background-color: #10b981;
+        }
+
+        .theme-purple .icon-box {
+            background-color: #f3e8ff;
+            color: #8b5cf6;
+        }
+
+        .theme-orange .icon-box {
+            background-color: #fff7ed;
+            color: #f97316;
+        }
+
+        .theme-pink .icon-box {
+            background-color: #fdf2f8;
+            color: #ec4899;
+        }
+
+        .insight-footer {
+            background: linear-gradient(to right, #1e293b, #0f172a);
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="slide-container p-10">
+        <!-- Header -->
+        <div class="flex justify-between items-center mb-8">
+            <div>
+                <span
+                    class="bg-blue-100 text-blue-700 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider mb-2 inline-block">Modul
+                    3: Social Media Marketing</span>
+                <h1 class="text-4xl font-bold text-slate-900 font-poppins">Cara Membaca Insight &amp; Analytics</h1>
+                <p class="text-slate-500 mt-2 text-lg">Jangan hanya posting, pelajari data untuk optimasi strategi
+                    konten Anda.</p>
+            </div>
+            <div class="bg-white p-2 rounded-lg shadow-sm border border-slate-200">
+                <i class="fas fa-chart-pie text-3xl text-blue-600"></i>
+            </div>
+        </div>
+        <!-- Dashboard Grid -->
+        <div class="flex-grow grid grid-cols-12 gap-6 mb-6">
+            <!-- Row 1: Key Metrics (3 Cards) -->
+            <div class="col-span-4">
+                <div class="metric-card theme-blue">
+                    <div class="flex justify-between items-start mb-4">
+                        <div class="flex items-center">
+                            <div class="icon-box">
+                                <i class="fas fa-eye"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-sm font-bold text-slate-500 uppercase tracking-wide">Reach</h3>
+                                <p class="text-2xl font-bold text-slate-800 font-poppins">12.5K</p>
+                            </div>
+                        </div>
+                        <div class="trend-up">
+                            <i class="fas fa-arrow-up mr-1"></i> 12%
+                        </div>
+                    </div>
+                    <p class="text-sm text-slate-600 mb-4">Jumlah akun unik yang melihat konten Anda.</p>
+                    <div class="bar-chart">
+                        <div class="bar" style="height: 40%"></div>
+                        <div class="bar" style="height: 60%"></div>
+                        <div class="bar" style="height: 45%"></div>
+                        <div class="bar" style="height: 80%"></div>
+                        <div class="bar" style="height: 55%"></div>
+                        <div class="bar" style="height: 90%"></div>
+                        <div class="bar" style="height: 70%"></div>
+                        <div class="bar" style="height: 100%"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-span-4">
+                <div class="metric-card theme-green">
+                    <div class="flex justify-between items-start mb-4">
+                        <div class="flex items-center">
+                            <div class="icon-box">
+                                <i class="fas fa-chart-line"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-sm font-bold text-slate-500 uppercase tracking-wide">Engagement Rate
+                                </h3>
+                                <p class="text-2xl font-bold text-slate-800 font-poppins">4.8%</p>
+                            </div>
+                        </div>
+                        <div class="trend-up">
+                            <i class="fas fa-arrow-up mr-1"></i> 2.1%
+                        </div>
+                    </div>
+                    <p class="text-sm text-slate-600 mb-2">Interaksi (Like, Comment, Share) dibagi Reach.</p>
+                    <div class="mt-auto">
+                        <div class="flex justify-between text-xs text-slate-500 mb-1">
+                            <span>Avg. Industry</span>
+                            <span>Target</span>
+                        </div>
+                        <div class="progress-bg">
+                            <div class="progress-fill" style="width: 75%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-span-4">
+                <div class="metric-card theme-purple">
+                    <div class="flex justify-between items-start mb-4">
+                        <div class="flex items-center">
+                            <div class="icon-box">
+                                <i class="fas fa-users"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-sm font-bold text-slate-500 uppercase tracking-wide">Demographics</h3>
+                                <p class="text-xl font-bold text-slate-800 font-poppins">F 25-34</p>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-sm text-slate-600 mb-3">Siapa audiens Anda (Usia, Gender, Lokasi).</p>
+                    <div class="flex items-center gap-2 mt-auto">
+                        <div class="flex-1 bg-purple-50 rounded-md p-2 text-center">
+                            <p class="text-xs text-purple-600 font-bold">JKT</p>
+                            <p class="text-xs text-slate-500">45%</p>
+                        </div>
+                        <div class="flex-1 bg-purple-50 rounded-md p-2 text-center">
+                            <p class="text-xs text-purple-600 font-bold">SBY</p>
+                            <p class="text-xs text-slate-500">20%</p>
+                        </div>
+                        <div class="flex-1 bg-purple-50 rounded-md p-2 text-center">
+                            <p class="text-xs text-purple-600 font-bold">BDG</p>
+                            <p class="text-xs text-slate-500">15%</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Row 2: Actionable Metrics (2 Cards) -->
+            <div class="col-span-6">
+                <div class="metric-card theme-orange flex-row items-center">
+                    <div class="icon-box w-16 h-16 text-2xl mr-6 flex-shrink-0">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <div class="flex-grow">
+                        <h3 class="text-sm font-bold text-slate-500 uppercase tracking-wide mb-1">Best Time to Post</h3>
+                        <div class="flex items-end gap-3">
+                            <p class="text-3xl font-bold text-slate-800 font-poppins">19:00 WIB</p>
+                            <span class="bg-orange-100 text-orange-700 text-xs font-bold px-2 py-1 rounded mb-2">Prime
+                                Time</span>
+                        </div>
+                        <p class="text-sm text-slate-600 mt-1">Posting saat audiens paling aktif untuk boost reach awal.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-span-6">
+                <div class="metric-card theme-pink flex-row items-center">
+                    <div class="icon-box w-16 h-16 text-2xl mr-6 flex-shrink-0">
+                        <i class="fas fa-trophy"></i>
+                    </div>
+                    <div class="flex-grow">
+                        <h3 class="text-sm font-bold text-slate-500 uppercase tracking-wide mb-1">Top Performing Content
+                        </h3>
+                        <div class="flex items-end gap-3">
+                            <p class="text-2xl font-bold text-slate-800 font-poppins">Video Tutorial</p>
+                        </div>
+                        <p class="text-sm text-slate-600 mt-1">Format konten yang paling disukai audiens (Replikasi pola
+                            ini!).</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Footer Insight -->
+        <div class="insight-footer rounded-xl p-5 flex items-center shadow-lg mt-auto">
+            <div class="bg-blue-500 p-3 rounded-full mr-5 shadow-md flex-shrink-0">
+                <i class="fas fa-search-plus text-white text-xl"></i>
+            </div>
+            <div>
+                <p class="text-blue-300 text-xs font-bold uppercase tracking-widest mb-1">ANALYTICS INSIGHT</p>
+                <p class="text-white text-base font-medium">"Data tidak berbohong. Jika <span
+                        class="text-green-400">Reach</span> tinggi tapi <span class="text-green-400">Engagement</span>
+                    rendah, artinya konten menarik tapi isinya kurang relevan."</p>
+            </div>
+            <div class="ml-auto text-slate-600 font-bold text-4xl opacity-30">
+                16
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

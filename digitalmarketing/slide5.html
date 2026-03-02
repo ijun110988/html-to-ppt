@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+
+<html lang="id">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Channel Digital Marketing Utama</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&amp;family=Inter:wght@300;400;500;600&amp;display=swap"
+        rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc;
+        }
+
+        .slide-container {
+            width: 1280px;
+            height: 720px;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            background-color: #f8fafc;
+            /* Simple pattern without gradients */
+            background-image: url('data:image/svg+xml;utf8,<svg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><circle cx="2" cy="2" r="1" fill="%23e2e8f0"/></svg>');
+        }
+
+        .font-poppins {
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .channel-card {
+            background-color: white;
+            border-radius: 16px;
+            transition: all 0.3s ease;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+        }
+
+        .channel-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            border-color: #cbd5e1;
+        }
+
+        .icon-circle {
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 16px;
+            font-size: 24px;
+        }
+
+        /* Specific card colors */
+        .card-social .icon-circle {
+            background-color: #eff6ff;
+            color: #3b82f6;
+        }
+
+        .card-social {
+            border-top: 4px solid #3b82f6;
+        }
+
+        .card-web .icon-circle {
+            background-color: #f0fdfa;
+            color: #14b8a6;
+        }
+
+        .card-web {
+            border-top: 4px solid #14b8a6;
+        }
+
+        .card-ads .icon-circle {
+            background-color: #fef2f2;
+            color: #ef4444;
+        }
+
+        .card-ads {
+            border-top: 4px solid #ef4444;
+        }
+
+        .card-email .icon-circle {
+            background-color: #fff7ed;
+            color: #f97316;
+        }
+
+        .card-email {
+            border-top: 4px solid #f97316;
+        }
+
+        .card-market .icon-circle {
+            background-color: #f5f3ff;
+            color: #8b5cf6;
+        }
+
+        .card-market {
+            border-top: 4px solid #8b5cf6;
+        }
+
+        .chip {
+            font-size: 10px;
+            padding: 4px 8px;
+            border-radius: 9999px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="slide-container p-5">
+        <!-- Header -->
+        <div class="text-center mb-4">
+            <span
+                class="bg-blue-100 text-blue-700 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider mb-3 inline-block">Modul
+                1: Fundamental</span>
+            <h1 class="text-4xl font-bold text-slate-900 font-poppins mb-3">Channel Digital Marketing Utama</h1>
+            <p class="text-slate-500 text-lg max-w-3xl mx-auto">Pilih saluran distribusi yang paling relevan dengan
+                perilaku target audiens bisnis Anda.</p>
+        </div>
+        <!-- Content Grid - Top Row (3 items) -->
+        <div class="grid grid-cols-3 gap-6 mb-4 px-10">
+            <!-- 1. Social Media -->
+            <div class="channel-card card-social p-6">
+                <div class="flex justify-between items-start">
+                    <div class="icon-circle">
+                        <i class="fab fa-instagram"></i>
+                    </div>
+                    <span class="chip bg-blue-50 text-blue-600">Branding</span>
+                </div>
+                <h3 class="text-xl font-bold text-slate-800 font-poppins mb-2">Social Media</h3>
+                <p class="text-sm text-slate-600 mb-3 flex-grow leading-relaxed">Platform untuk membangun komunitas dan
+                    interaksi dua arah (IG, TikTok, FB).</p>
+                <div class="text-xs font-medium text-slate-500 pt-3 border-t border-slate-100">
+                    <i class="fas fa-check-circle text-green-500 mr-1"></i> Cocok untuk Engagement
+                </div>
+            </div>
+            <!-- 2. Website / Blog -->
+            <div class="channel-card card-web p-6">
+                <div class="flex justify-between items-start">
+                    <div class="icon-circle">
+                        <i class="fas fa-globe"></i>
+                    </div>
+                    <span class="chip bg-teal-50 text-teal-600">Credibility</span>
+                </div>
+                <h3 class="text-xl font-bold text-slate-800 font-poppins mb-2">Website &amp; SEO</h3>
+                <p class="text-sm text-slate-600 mb-3 flex-grow leading-relaxed">Rumah digital bisnis Anda. Meningkatkan
+                    kredibilitas dan mudah ditemukan di Google.</p>
+                <div class="text-xs font-medium text-slate-500 pt-3 border-t border-slate-100">
+                    <i class="fas fa-check-circle text-green-500 mr-1"></i> Aset Jangka Panjang
+                </div>
+            </div>
+            <!-- 3. Digital Ads -->
+            <div class="channel-card card-ads p-6">
+                <div class="flex justify-between items-start">
+                    <div class="icon-circle">
+                        <i class="fas fa-ad"></i>
+                    </div>
+                    <span class="chip bg-red-50 text-red-600">Speed</span>
+                </div>
+                <h3 class="text-xl font-bold text-slate-800 font-poppins mb-2">Digital Ads</h3>
+                <p class="text-sm text-slate-600 mb-3 flex-grow leading-relaxed">Cara tercepat mendatangkan trafik
+                    tertarget dengan membayar platform (FB/Google Ads).</p>
+                <div class="text-xs font-medium text-slate-500 pt-3 border-t border-slate-100">
+                    <i class="fas fa-check-circle text-green-500 mr-1"></i> Hasil Terukur &amp; Cepat
+                </div>
+            </div>
+        </div>
+        <!-- Content Grid - Bottom Row (2 items centered) -->
+        <div class="grid grid-cols-12 gap-6 px-10">
+            <div class="col-span-2"></div> <!-- Spacer -->
+            <!-- 4. Marketplace -->
+            <div class="col-span-4">
+                <div class="channel-card card-market p-6">
+                    <div class="flex justify-between items-start">
+                        <div class="icon-circle">
+                            <i class="fas fa-store"></i>
+                        </div>
+                        <span class="chip bg-purple-50 text-purple-600">Sales</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-800 font-poppins mb-2">Marketplace</h3>
+                    <p class="text-sm text-slate-600 mb-3 flex-grow leading-relaxed">Shopee/Tokopedia. Tempat orang yang
+                        sudah siap transaksi berkumpul.</p>
+                    <div class="text-xs font-medium text-slate-500 pt-3 border-t border-slate-100">
+                        <i class="fas fa-check-circle text-green-500 mr-1"></i> Transaksi Instan
+                    </div>
+                </div>
+            </div>
+            <!-- 5. Email Marketing -->
+            <div class="col-span-4">
+                <div class="channel-card card-email p-6">
+                    <div class="flex justify-between items-start">
+                        <div class="icon-circle">
+                            <i class="fas fa-envelope-open-text"></i>
+                        </div>
+                        <span class="chip bg-orange-50 text-orange-600">Retention</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-800 font-poppins mb-2">Email Marketing</h3>
+                    <p class="text-sm text-slate-600 mb-3 flex-grow leading-relaxed">Menjaga hubungan dengan pelanggan
+                        lama dan mengirim penawaran eksklusif.</p>
+                    <div class="text-xs font-medium text-slate-500 pt-3 border-t border-slate-100">
+                        <i class="fas fa-check-circle text-green-500 mr-1"></i> ROI Tertinggi
+                    </div>
+                </div>
+            </div>
+            <div class="col-span-2"></div> <!-- Spacer -->
+        </div>
+        <!-- Bottom Insight Bar -->
+        <div class="mt-auto px-10 pb-1">
+            <div class="bg-slate-800 rounded-lg p-2 flex items-center justify-between shadow-lg">
+                <div class="flex items-center">
+                    <div class="bg-yellow-400 p-2 rounded-lg mr-4 text-slate-900">
+                        <i class="fas fa-lightbulb text-lg"></i>
+                    </div>
+                    <div>
+                        <p class="text-yellow-400 text-xs font-bold uppercase tracking-widest mb-1">STRATEGI PEMULA</p>
+                        <p class="text-white font-medium">Jangan coba semua sekaligus! Mulai dari <span
+                                class="text-yellow-400 font-bold">1-2 channel</span> yang paling sering digunakan target
+                            market Anda.</p>
+                    </div>
+                </div>
+                <div class="text-slate-500 font-bold text-xl opacity-30">05</div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

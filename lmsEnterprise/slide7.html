@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+
+<html lang="id">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=1280, height=720" name="viewport" />
+    <title>Ruang Lingkup D &amp; E — Interactive Learning &amp; User Identity</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&amp;display=swap"
+        rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" rel="stylesheet" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            overflow: hidden;
+        }
+
+        .slide-container {
+            width: 1280px;
+            height: 720px;
+            display: flex;
+            flex-direction: column;
+            background-color: #FFFFFF;
+            position: relative;
+        }
+
+        .header {
+            padding: 45px 60px 25px 60px;
+            border-bottom: 3px solid #2563EB;
+        }
+
+        .header-title {
+            font-size: 40px;
+            font-weight: 700;
+            color: #1B3A6B;
+            letter-spacing: -0.5px;
+        }
+
+        .content-wrapper {
+            flex: 1;
+            padding: 40px 60px 40px 60px;
+            display: flex;
+            gap: 40px;
+        }
+
+        .column {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .bullet-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+            padding: 16px 20px;
+            background-color: #F8FAFC;
+            border-left: 4px solid #2563EB;
+            transition: all 0.3s ease;
+        }
+
+        .bullet-item:hover {
+            background-color: #EFF6FF;
+            transform: translateX(4px);
+        }
+
+        .bullet-icon {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #2563EB;
+            color: #FFFFFF;
+            font-size: 18px;
+            border-radius: 6px;
+            flex-shrink: 0;
+        }
+
+        .bullet-content {
+            flex: 1;
+            padding-top: 2px;
+        }
+
+        .bullet-title {
+            font-size: 16px;
+            font-weight: 700;
+            color: #1B3A6B;
+            margin-bottom: 6px;
+            line-height: 1.3;
+        }
+
+        .bullet-description {
+            font-size: 14px;
+            font-weight: 400;
+            color: #4B5563;
+            line-height: 1.5;
+        }
+
+        .visual-separator {
+            width: 2px;
+            background-color: #E5E7EB;
+            margin: 0 10px;
+            position: relative;
+        }
+
+        .visual-separator::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 32px;
+            height: 32px;
+            background-color: #2563EB;
+            border-radius: 50%;
+        }
+
+        .visual-separator::after {
+            content: '\f054';
+            font-family: 'Font Awesome 5 Free';
+            font-weight: 900;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #FFFFFF;
+            font-size: 14px;
+            z-index: 1;
+        }
+
+        .section-badge {
+            display: inline-block;
+            background-color: #2563EB;
+            color: #FFFFFF;
+            padding: 6px 16px;
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="slide-container">
+        <div class="header">
+            <div class="header-title">
+                <p>Ruang Lingkup D &amp; E — Interactive Learning &amp; User Identity</p>
+            </div>
+        </div>
+        <div class="content-wrapper">
+            <div class="column">
+                <div class="section-badge">
+                    <p>Interactive Learning</p>
+                </div>
+                <div class="bullet-item">
+                    <div class="bullet-icon">
+                        <i class="fas fa-play-circle"></i>
+                    </div>
+                    <div class="bullet-content">
+                        <div class="bullet-title">
+                            <p>Embedded Quiz dalam Video</p>
+                        </div>
+                        <div class="bullet-description">
+                            <p>Kuis terintegrasi di dalam konten video untuk validasi pemahaman real-time selama proses
+                                pembelajaran</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="bullet-item">
+                    <div class="bullet-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <div class="bullet-content">
+                        <div class="bullet-title">
+                            <p>Engagement Tracking</p>
+                        </div>
+                        <div class="bullet-description">
+                            <p>Pelacakan watch time, completion rate, attempt history, dan interaksi pembelajaran untuk
+                                analisis keterlibatan</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="bullet-item">
+                    <div class="bullet-icon">
+                        <i class="fas fa-chart-pie"></i>
+                    </div>
+                    <div class="bullet-content">
+                        <div class="bullet-title">
+                            <p>Learning Analytics</p>
+                        </div>
+                        <div class="bullet-description">
+                            <p>Analitik pembelajaran mendalam melampaui status selesai/tidak selesai untuk insight
+                                kualitas pembelajaran</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="visual-separator"></div>
+            <div class="column">
+                <div class="section-badge">
+                    <p>User Identity Management</p>
+                </div>
+                <div class="bullet-item">
+                    <div class="bullet-icon">
+                        <i class="fas fa-user-shield"></i>
+                    </div>
+                    <div class="bullet-content">
+                        <div class="bullet-title">
+                            <p>Master User Identity Architecture</p>
+                        </div>
+                        <div class="bullet-description">
+                            <p>Arsitektur identitas pengguna terpusat untuk kesinambungan data pembelajaran lintas
+                                sistem dan perubahan organisasi</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="bullet-item">
+                    <div class="bullet-icon">
+                        <i class="fas fa-key"></i>
+                    </div>
+                    <div class="bullet-content">
+                        <div class="bullet-title">
+                            <p>Multi-Credential Support</p>
+                        </div>
+                        <div class="bullet-description">
+                            <p>Dukungan berbagai metode autentikasi: email perusahaan, badge ID, SSO untuk akses
+                                fleksibel dan aman</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="bullet-item">
+                    <div class="bullet-icon">
+                        <i class="fas fa-history"></i>
+                    </div>
+                    <div class="bullet-content">
+                        <div class="bullet-title">
+                            <p>Learning History Continuity</p>
+                        </div>
+                        <div class="bullet-description">
+                            <p>Riwayat belajar tersimpan permanen meski ada perubahan status karyawan (transfer,
+                                promosi, resign-rehire)</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
